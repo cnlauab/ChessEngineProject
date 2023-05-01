@@ -19,20 +19,24 @@ std::vector<int> Validator::GetMoveStringArray(std::string input)
 	return result;
 }
 
-bool Validator::ValidMove(std::string input)
+bool Validator::ValidMove(std::string input, char& pieceType, int& target, int& file, int& rank, char& promotionType, bool& isWhite)
 {
 	if (input.length() < 2) return false;
 	if (input == "Resign" || input == "resign") return true;
 
 	char first_letter = input[0];
 	if (isPieceChar(first_letter)) {
-		return isValidPieceMove(input);
+		pieceType = first_letter;
+		return isValidPieceMove(input, target, file, rank);
 	}
 	else if (isFileChar(first_letter)) {
-		return isValidPawnMove(input);
+		pieceType = 'p';
+		file = ChessUtil::GetFileFromChar(first_letter);
+		return isValidPawnMove(input, target, promotionType);
 	}
 	else if (isCastleChar(first_letter)) {
-		return isCastlingMove(input);
+		pieceType = 'k';
+		return isCastlingMove(input, target, isWhite);
 	}
 	else {
 		return false;
@@ -65,68 +69,112 @@ bool Validator::isCastleChar(char c)
 }
 
 //Move Checker
-bool Validator::isCastlingMove(std::string input)
+bool Validator::isCastlingMove(std::string input, int& target, bool& isWhite)
 {
-	return input == "O-O-O" || input == "o-o-o" || input == "O-O" || input == "o-o" || input == "0-0" || input == "0-0-0";
+	if (isWhite) {
+		if (input == "O-O-O" || input == "o-o-o" || input == "0-0-0") target = 1;
+		if (input == "O-O" || input == "o-o" || input == "0-0") target = 6;
+	}
+	else {
+		if (input == "O-O-O" || input == "o-o-o" || input == "0-0-0") target = 57;
+		if (input == "O-O" || input == "o-o" || input == "0-0") target = 62;
+	}
+	return input == "O-O-O" || input == "o-o-o" || input == "0-0-0" || input == "O-O" || input == "o-o" || input == "0-0";
 }
 
-bool Validator::isValidPawnMove(std::string input)
+bool Validator::isValidPawnMove(std::string input, int& target, char& promotionType)
 {
 	char second_letter = input[1];
 	if (isRankChar(second_letter)) {
-		return NextLetterIsPromotion(input, 2) || NextLetterIsEnding(input, 2);
+		if (NextLetterIsPromotion(input, 2) || NextLetterIsEnding(input, 2)) {
+			target = ChessUtil::StringToSquare(std::string({ input[0] ,second_letter }));//eg:b8=Q
+			if (NextLetterIsPromotion(input, 2)) promotionType = input[3];
+			return true;
+		}
+		return false;
 	}
 	else if (isTakeChar(second_letter)) {
 		if (NextTwoLetterIsSquare(input, 2)) {
-			return NextLetterIsPromotion(input, 4) || NextLetterIsEnding(input, 4);
-		}
-		else {
+			if (NextLetterIsPromotion(input, 4) || NextLetterIsEnding(input, 4)) {
+				target = ChessUtil::StringToSquare(std::string({ input[2] ,input[3] }));//eg:bxc8=Q
+				if (NextLetterIsPromotion(input, 4)) promotionType = input[5];
+				return true;
+			}
 			return false;
 		}
-	}
-	else {
 		return false;
 	}
+	return false;
 }
 
-bool Validator::isValidPieceMove(std::string input)
+bool Validator::isValidPieceMove(std::string input, int& target, int& file, int& rank)
 {
 	char second_letter = input[1];
 	char third_letter = input[2];
 	char forth_letter = input[3];
 	if (isFileChar(second_letter)) {
 		if (isTakeChar(third_letter)) {
-			return NextTwoLetterIsSquare(input, 3) && NextLetterIsEnding(input, 5);
+			if (NextTwoLetterIsSquare(input, 3) && NextLetterIsEnding(input, 5)) {
+				target = ChessUtil::StringToSquare(std::string({ forth_letter ,input[4] }));//eg:Nbxc2
+				return true;
+			}
+			return false;
 		}
 		else if (isRankChar(third_letter)) {
 			if (isTakeChar(forth_letter)) {
-				return NextTwoLetterIsSquare(input, 4) && NextLetterIsEnding(input, 6);
+				if(NextTwoLetterIsSquare(input, 4) && NextLetterIsEnding(input, 6)) {
+					target = ChessUtil::StringToSquare(std::string({ input[4] ,input[5] }));//eg:Nb1xc2
+					return true;
+				}
+				return false;
 			}
 			else if (isFileChar(forth_letter)) {
-				return NextTwoLetterIsSquare(input, 3) && NextLetterIsEnding(input, 5);
+				if(NextTwoLetterIsSquare(input, 3) && NextLetterIsEnding(input, 5)) {
+					target = ChessUtil::StringToSquare(std::string({ forth_letter ,input[4] }));//eg:Nb1c2
+					return true;
+				}
+				return false;
 			}
 			else {
-				return NextLetterIsEnding(input, 3);
+				if(NextLetterIsEnding(input, 3)) {
+					target = ChessUtil::StringToSquare(std::string({ second_letter ,third_letter }));//eg:Nc2
+					return true;
+				}
+				return false;
 			}
 		}
 		else {
-			return NextTwoLetterIsSquare(input, 2) && NextLetterIsEnding(input, 4);
+			if (NextTwoLetterIsSquare(input, 2) && NextLetterIsEnding(input, 4)) {
+				target = ChessUtil::StringToSquare(std::string({ third_letter ,forth_letter }));//eg:Nbc2
+				return true;
+			}
+			return false;
 		}
 	}
 	else if (isRankChar(second_letter)) {
 		if (isTakeChar(third_letter)) {
-			return NextTwoLetterIsSquare(input, 3) && NextLetterIsEnding(input, 5);
+			if (NextTwoLetterIsSquare(input, 3) && NextLetterIsEnding(input, 5)) {
+				target = ChessUtil::StringToSquare(std::string({ forth_letter ,input[4] }));//eg:N1xc2
+				return true;
+			}
+			return false;
 		}
 		else {
-			return NextTwoLetterIsSquare(input, 2) && NextLetterIsEnding(input, 4);
+			if(NextTwoLetterIsSquare(input, 2) && NextLetterIsEnding(input, 4)) {
+				target = ChessUtil::StringToSquare(std::string({ third_letter ,forth_letter }));//eg:N1c2
+				return true;
+			}
+			return false;
 		}
 	}
 	else if (isTakeChar(second_letter)) {
-		return NextTwoLetterIsSquare(input, 2) && NextLetterIsEnding(input, 4);
-	}
-	else {
+		if (NextTwoLetterIsSquare(input, 2) && NextLetterIsEnding(input, 4)) {
+			target = ChessUtil::StringToSquare(std::string({ third_letter ,forth_letter }));//eg:Nxc2
+			return true;
+		}
 		return false;
 	}
+	return false;
 }
 
 //Next Letter Checker
@@ -146,7 +194,6 @@ bool Validator::NextLetterIsEnding(std::string input, int nextLetterIndex)
 bool Validator::NextLetterIsPromotion(std::string input, int nextLetterIndex)
 {
 	char nextLetter = input[nextLetterIndex];
-	if (isPieceChar(nextLetter) && NextLetterIsEnding(input, nextLetterIndex + 1)) return true;
 	if (input.length() > nextLetterIndex + 1 && nextLetter == '=' && isPieceChar(input[nextLetterIndex + 1]) && NextLetterIsEnding(input, nextLetterIndex + 1)) return true;
 	return false;
 }

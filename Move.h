@@ -5,18 +5,24 @@
 
 class Move {
 public:
-	//Preset
+	//Input
 	int from;
 	int to;
 	int piece;
+	char promotionType;
+
 	//OutCome
 	int takenPiece;
 	bool check;
 	bool checkMate;
 	bool firstMove;
-	char promotionType;
 
 	Move();
 	Move(int piece, int starting, int target);
-	//Move(int piece, int starting, int target, char promotion);
+	Move(int piece, int starting, int target, char promotionType);
+
+	std::string toString();
+	bool isEmpty();
+
+	bool operator==(const Move& rhs);
 };

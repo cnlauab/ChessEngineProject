@@ -10,18 +10,45 @@ Validator validator;
 Position currentPosition;
 State gameState = State(currentPosition);
 MoveGenerator moveGenerator;
+std::vector<Move> moveMade;
 
 void Turn() {
 	std::string input;
-	int testInt;
 	std::vector<Move> currPossibleMoves = moveGenerator.GenerateAllPossibleMoves(currentPosition);
-	cout << renderer.positionToString(currentPosition) << endl;
-	cout << ((currentPosition.whiteTurn) ? "White" : "Black") << "'s next move: ";
-	cin >> input;
-	bool validMove = validator.ValidMove(input);
-	cout << "The move is valid? " << validMove << endl;
-	cout << endl;
-	if (validMove) currentPosition.whiteTurn = !currentPosition.whiteTurn;
+	bool validMove = false;
+	bool selectedMove = false;
+	Move extractedMove;
+
+	while (!validMove || !selectedMove) {
+		cout << renderer.positionToString(currentPosition) << endl;
+		cout << ((currentPosition.whiteTurn) ? "White" : "Black") << "'s next move: ";
+		cin >> input;
+
+		char pieceType;
+		int target = 99;
+		int file = 99;
+		int rank = 99;
+		char promotionType;
+
+		validMove = validator.ValidMove(input, pieceType, target, file, rank, promotionType, currentPosition.whiteTurn);
+		cout << "The move is valid? " << validMove << endl;
+		if (validMove) {
+			cout << "Piece Type: " << pieceType << endl;
+			cout << "Target: " << target << endl;
+			cout << "File: " << file << endl;
+			cout << "Rank: " << rank << endl;
+			cout << "Promotion Type: " << promotionType << endl;
+
+			extractedMove = moveGenerator.ExtractMove(pieceType, target, file, rank, currentPosition.whiteTurn, currPossibleMoves);
+			selectedMove = !extractedMove.isEmpty();
+			cout << extractedMove.toString() << endl;
+		}
+		cout << endl;
+	}
+	if (validMove && selectedMove) {
+		currentPosition.whiteTurn = !currentPosition.whiteTurn;
+		currentPosition.MovePiece(extractedMove);
+	}
 }
 
 int main()

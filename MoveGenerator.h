@@ -8,6 +8,7 @@
 
 class MoveGenerator {
 public:
+	Move ExtractMove(char pieceType, int target, int file, int rank, bool white, std::vector<Move>& moves);
 	std::vector<Move> ExtractMovesByPieceType(char pieceType, bool white, std::vector<Move>& moves);
 	std::vector<Move> ExtractMovesByTargetSquare(int target, std::vector<Move>& moves);
 	std::vector<Move> ExtractMovesByAmbiguity(int file, int rank, std::vector<Move>& moves);
@@ -18,6 +19,8 @@ public:
 	std::vector<Move> GenerateKnightMoves(int& piece, Position& position);
 	std::vector<Move> GeneratePawnMoves(int& piece, Position& position);
 	std::vector<Move> GenerateKingMoves(int& piece, Position& position);
+
+	std::vector<Move> GenerateCastlingMoves(int& piece, Position& position);
 
 	std::vector<int> GenerateSlidingControlSquare(int& piece, Position& position);
 	std::vector<int> GenerateKnightControlSquare(int& piece, Position& position);

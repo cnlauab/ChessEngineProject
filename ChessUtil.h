@@ -17,6 +17,10 @@ public:
 	static char GetFileChar(int square);
 	static std::string SquareToString(int square);
 	static int StringToSquare(std::string squareString);
+	static int GetRankFromChar(char rank);
+	static int GetFileFromChar(char file);
 
 	static bool IsWhite(int piece);
+	static bool IsPawn(int piece);
+	static bool IsKing(int piece);
 };

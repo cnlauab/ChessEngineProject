@@ -52,8 +52,51 @@ std::string Position::PositionToFen()
 	return std::string();
 }
 
-void Position::MovePiece(int startSquare, int endSquare)
+void Position::MovePiece(Move& move)
 {
-	position[endSquare] = position[startSquare];
-	position[startSquare] = 99;
+	move.takenPiece = position[move.to];
+	position[move.to] = position[move.from];
+	position[move.from] = 99;
+	if(move.takenPiece != 99) pieceLocation[move.takenPiece] = 99;
+	pieceLocation[position[move.to]] = move.to;
+
+	if (ChessUtil::IsPawn(move.piece)) {
+		if (whiteTurn) {
+			if (move.to == enPassantSquare) {
+				pieceLocation[position[move.to - 8]] = 99;
+				position[move.to - 8] = 99;
+			}
+			if (move.to - move.from == 16) {
+				
+			}
+		}
+		else {
+			if (move.to == enPassantSquare) {
+				pieceLocation[position[move.to + 8]] = 99;
+				position[move.to + 8] = 99;
+			}
+			if (move.to - move.from == -16) {
+
+			}
+		}
+	}
+	if (ChessUtil::IsKing(move.piece)) {
+		if (move.to - move.from == 2) {//K
+			if (whiteTurn) {
+
+			}
+			else {
+
+			}
+		}
+		else if (move.to - move.from == -3) //Q
+			if (whiteTurn) {
+
+			}
+			else {
+
+			}
+		}
+	}
+
 }

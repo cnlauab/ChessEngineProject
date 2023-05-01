@@ -21,6 +21,19 @@ bool MoveGenerator::SquareOutbound(int startingSquare, int targetSquare, int off
 	return false;
 }
 
+Move MoveGenerator::ExtractMove(char pieceType, int target, int file, int rank, bool white, std::vector<Move>& moves)
+{
+	std::vector<Move> tmpMoves = ExtractMovesByPieceType(pieceType, white, moves);
+	if (tmpMoves.size() == 1) return tmpMoves[0];
+	if (tmpMoves.size() < 1) return Move();
+	std::vector<Move> tmpMoves1 = ExtractMovesByTargetSquare(target, tmpMoves);
+	if (tmpMoves1.size() == 1) return tmpMoves1[0];
+	if (tmpMoves1.size() < 1) return Move();
+	std::vector<Move> tmpMoves2 = ExtractMovesByAmbiguity(file, rank, tmpMoves1);
+	if (tmpMoves2.size() == 1) return tmpMoves2[0];
+	return Move();
+}
+
 std::vector<Move> MoveGenerator::ExtractMovesByPieceType(char pieceType, bool white, std::vector<Move>& moves)
 {
 	std::vector<Move> result;
@@ -214,6 +227,11 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(int& piece, Position& positio
 	//TODO
 	//Castling
 	return result;
+}
+
+std::vector<Move> MoveGenerator::GenerateCastlingMoves(int& piece, Position& position)
+{
+	return std::vector<Move>();
 }
 
 std::vector<int> MoveGenerator::GenerateSlidingControlSquare(int& piece, Position& position)

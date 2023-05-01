@@ -207,6 +207,20 @@ int ChessUtil::StringToSquare(std::string squareString)
     return squareToIndexMapping[squareString];
 }
 
+int ChessUtil::GetRankFromChar(char rank) {
+    for (int i = 0; i < 8; ++i) {
+        if (ChessUtil::rank[i] == rank) return i;
+    }
+    return 99;
+}
+
+int ChessUtil::GetFileFromChar(char file) {
+    for (int i = 0; i < 8; ++i) {
+        if (ChessUtil::file[i] == file) return i;
+    }
+    return 99;
+}
+
 bool ChessUtil::IsWhite(int piece)
 {
     return piece < 32;

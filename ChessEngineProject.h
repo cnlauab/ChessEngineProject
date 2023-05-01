@@ -7,5 +7,6 @@
 #include "BoardRenderer.h"
 #include "Validator.h"
 #include "MoveGenerator.h"
+#include "Move.h"
 
 // TODO: Reference additional headers your program requires here.
