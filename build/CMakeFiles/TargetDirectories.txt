@@ -1,0 +1,3 @@
+/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles/ChessEngineProject.dir
+/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles/edit_cache.dir
+/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles/rebuild_cache.dir
