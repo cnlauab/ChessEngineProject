@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <string>
 #include "Parser.h"
+#include "Move.h"
 
 class Position {
 public :
@@ -24,7 +25,7 @@ public :
     std::string PositionToFen();
 
 	//Mutator
-	void MovePiece(int startSquare, int endSquare);
+	void MovePiece(Move& move);
 private:
     std::unordered_map<int, int> pieceLocation = {
         {-32,99},
