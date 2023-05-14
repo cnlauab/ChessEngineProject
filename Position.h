@@ -4,6 +4,7 @@
 #include <string>
 #include "Parser.h"
 #include "Move.h"
+#include "ChessUtil.h"
 
 class Position {
 public :

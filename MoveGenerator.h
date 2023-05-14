@@ -1,6 +1,6 @@
 #pragma once
-#include <vector>;
-#include <cctype>;
+#include <vector>
+#include <cctype>
 
 #include "Position.h"
 #include "Move.h"

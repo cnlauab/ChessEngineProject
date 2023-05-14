@@ -8,5 +8,6 @@
 #include "Validator.h"
 #include "MoveGenerator.h"
 #include "Move.h"
+#include "Position.h"
 
 // TODO: Reference additional headers your program requires here.
