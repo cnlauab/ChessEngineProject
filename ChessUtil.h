@@ -10,6 +10,7 @@ public:
 
 	static char file[8];
 	static char rank[8];
+	static int offsets[8];
 	static std::unordered_map <std::string, int> squareToIndexMapping;
 	static int GetRank(int square);
 	static int GetFile(int square);
@@ -23,4 +24,5 @@ public:
 	static bool IsWhite(int piece);
 	static bool IsPawn(int piece);
 	static bool IsKing(int piece);
+	static bool IsRook(int piece);
 };

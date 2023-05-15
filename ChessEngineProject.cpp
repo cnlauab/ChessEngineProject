@@ -9,17 +9,20 @@ BoardRenderer renderer;
 Validator validator;
 Position currentPosition;
 State gameState = State(currentPosition);
-MoveGenerator moveGenerator;
 std::vector<Move> moveMade;
 
 void Turn() {
 	std::string input;
-	std::vector<Move> currPossibleMoves = moveGenerator.GenerateAllPossibleMoves(currentPosition);
-	bool validMove = false;
+	std::vector<Move> currPossibleMoves = MoveGenerator::GenerateAllPossibleMoves(currentPosition);
+	std::vector<Move> currLegalMoves = LegalChecker::EliminateIllegalMoves(currentPosition, currPossibleMoves);
+	
+	if(currLegalMoves.size() == 0) return; //Checkmate or Stalemate
+	
+	bool validMoveInput = false;
 	bool selectedMove = false;
 	Move extractedMove;
 
-	while (!validMove || !selectedMove) {
+	while (!validMoveInput || !selectedMove) {
 		cout << renderer.positionToString(currentPosition) << endl;
 		cout << ((currentPosition.whiteTurn) ? "White" : "Black") << "'s next move: ";
 		cin >> input;
@@ -30,24 +33,30 @@ void Turn() {
 		int rank = 99;
 		char promotionType;
 
-		validMove = validator.ValidMove(input, pieceType, target, file, rank, promotionType, currentPosition.whiteTurn);
-		cout << "The move is valid? " << validMove << endl;
-		if (validMove) {
+		validMoveInput = validator.ValidMove(input, pieceType, target, file, rank, promotionType, currentPosition.whiteTurn);
+		cout << "The move input is valid? " << validMoveInput << endl;
+		if (validMoveInput) {
 			cout << "Piece Type: " << pieceType << endl;
 			cout << "Target: " << target << endl;
 			cout << "File: " << file << endl;
 			cout << "Rank: " << rank << endl;
 			cout << "Promotion Type: " << promotionType << endl;
 
-			extractedMove = moveGenerator.ExtractMove(pieceType, target, file, rank, currentPosition.whiteTurn, currPossibleMoves);
+			extractedMove = MoveGenerator::ExtractMove(pieceType, target, file, rank, currentPosition.whiteTurn, currLegalMoves);
 			selectedMove = !extractedMove.isEmpty();
 			cout << extractedMove.toString() << endl;
 		}
 		cout << endl;
 	}
-	if (validMove && selectedMove) {
-		currentPosition.whiteTurn = !currentPosition.whiteTurn;
+	if (validMoveInput && selectedMove) {
 		currentPosition.MovePiece(extractedMove);
+		moveMade.emplace_back(extractedMove);
+		if(LegalChecker::IsChecked(currentPosition)){
+			cout << "Checked" << endl;
+		}else{
+			cout <<  "Not Checked" << endl;
+		}
+		
 	}
 }
 

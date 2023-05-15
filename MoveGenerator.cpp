@@ -121,7 +121,7 @@ std::vector<Move> MoveGenerator::GenerateSlidingMoves(int& piece, Position& posi
 	if (pieceType == 'b' || pieceType == 'B') { startingDirection = 4; endingDirection = 7; }
 	if (pieceType == 'q' || pieceType == 'Q') { startingDirection = 0; endingDirection = 7; }
 	for (int i = startingDirection; i <= endingDirection; ++i) {
-		int offset = offsets[i];
+		int offset = ChessUtil::offsets[i];
 		int target = starting + offset;
 		bool outOfBound = SquareOutbound(starting, target, i);
 		bool empty = position.TargetIsEmpty(target);
@@ -178,7 +178,7 @@ std::vector<Move> MoveGenerator::GeneratePawnMoves(int& piece, Position& positio
 	std::vector<Move> result;
 	int starting = position.GetPieceLocation(piece);
 	bool firstMove = ChessUtil::GetRank(starting) == (ChessUtil::IsWhite(piece) ? 1 : 6);
-	int pushOneTarget = starting + (ChessUtil::IsWhite(piece) ? offsets[3] : offsets[2]);
+	int pushOneTarget = starting + (ChessUtil::IsWhite(piece) ? ChessUtil::offsets[3] : ChessUtil::offsets[2]);
 	std::cout << "GeneratePawnMoves for " << ChessUtil::SquareToString(starting) << std::endl;
 	//Push one square
 	if (pushOneTarget >= 0 && pushOneTarget < 64 && position.TargetIsEmpty(pushOneTarget)) {
@@ -186,12 +186,12 @@ std::vector<Move> MoveGenerator::GeneratePawnMoves(int& piece, Position& positio
 	}
 	//Push two square
 	if (!result.empty() && firstMove) {
-		int pushTwoTarget = starting + (ChessUtil::IsWhite(piece) ? offsets[3] * 2 : offsets[2] * 2);
+		int pushTwoTarget = starting + (ChessUtil::IsWhite(piece) ? ChessUtil::offsets[3] * 2 : ChessUtil::offsets[2] * 2);
 		if (position.TargetIsEmpty(pushTwoTarget))result.push_back(Move(piece, starting, pushTwoTarget));
 	}
 	//Take and En passant
 	if (ChessUtil::GetFile(starting) != 7) {
-		int rightTarget = starting + (ChessUtil::IsWhite(piece) ? offsets[7] : offsets[5]);
+		int rightTarget = starting + (ChessUtil::IsWhite(piece) ? ChessUtil::offsets[7] : ChessUtil::offsets[5]);
 		if (rightTarget >= 0 && rightTarget < 64 && position.TargetIsOppositeColor(piece, rightTarget)) {
 			result.push_back(Move(piece, starting, rightTarget));//Normal Take
 		}
@@ -200,7 +200,7 @@ std::vector<Move> MoveGenerator::GeneratePawnMoves(int& piece, Position& positio
 		}
 	}
 	if (ChessUtil::GetFile(starting) != 0) {
-		int leftTarget = starting + (ChessUtil::IsWhite(piece) ? offsets[6] : offsets[4]);
+		int leftTarget = starting + (ChessUtil::IsWhite(piece) ? ChessUtil::offsets[6] : ChessUtil::offsets[4]);
 		if (leftTarget >= 0 && leftTarget < 64 && position.TargetIsOppositeColor(piece, leftTarget)) {
 			result.push_back(Move(piece, starting, leftTarget));//Normal Take
 		}
@@ -219,7 +219,7 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(int& piece, Position& positio
 	//Normal move
 	for (int i = 0; i < 8; i++)
 	{
-		int target = starting + offsets[i];
+		int target = starting + ChessUtil::offsets[i];
 		bool outOfBound = SquareOutbound(starting, target, i);
 		bool emptyOrOpposite = position.TargetIsEmpty(target) || position.TargetIsOppositeColor(piece, target);
 		if (!outOfBound && emptyOrOpposite) result.push_back(Move(piece, starting, target));
@@ -234,6 +234,39 @@ std::vector<Move> MoveGenerator::GenerateCastlingMoves(int& piece, Position& pos
 	return std::vector<Move>();
 }
 
+std::vector<int> MoveGenerator::GenerateAllControlSquare(Position& position, bool white)
+{
+	std::vector<int> result;
+	for (int i = 0; i < 64; ++i) {
+		int piece = position.position[i];
+		if(piece != 99 && ChessUtil::IsWhite(piece) == white){
+			std::vector<int> pieceResult = GenerateControlSquare(piece,position);
+			result.insert(result.end(), pieceResult.begin(), pieceResult.end());
+		}
+	}
+	return result;
+}
+
+std::vector<int> MoveGenerator::GenerateControlSquare(int& piece, Position& position)
+{
+	char pieceType = ChessUtil::GetPieceType(piece);
+	if (pieceType == 'r' || pieceType == 'R' || pieceType == 'b' || pieceType == 'B' || pieceType == 'q' || pieceType == 'Q') {
+		return GenerateSlidingControlSquare(piece, position);
+	}
+	else if (pieceType == 'n' || pieceType == 'N') {
+		return GenerateKnightControlSquare(piece, position);
+	}
+	else if(pieceType == 'p' || pieceType == 'P'){
+		return GeneratePawnControlSquare(piece,position);
+	}
+	else if (pieceType == 'k' || pieceType == 'K') {
+		return GenerateKingControlSquare(piece, position);
+	}
+	else {
+		return std::vector<int>();
+	}
+}
+
 std::vector<int> MoveGenerator::GenerateSlidingControlSquare(int& piece, Position& position)
 {
 	std::vector<int> result;
@@ -245,7 +278,7 @@ std::vector<int> MoveGenerator::GenerateSlidingControlSquare(int& piece, Positio
 	if (pieceType == 'b' || pieceType == 'B') { startingDirection = 4; endingDirection = 7; }
 	if (pieceType == 'q' || pieceType == 'Q') { startingDirection = 0; endingDirection = 7; }
 	for (int i = startingDirection; i <= endingDirection; ++i) {
-		int offset = offsets[i];
+		int offset = ChessUtil::offsets[i];
 		int target = starting + offset;
 		bool outOfBound = SquareOutbound(starting, target, i);
 		bool empty = position.TargetIsEmpty(target);
@@ -297,13 +330,13 @@ std::vector<int> MoveGenerator::GeneratePawnControlSquare(int& piece, Position& 
 	std::vector<int> result;
 	int starting = position.GetPieceLocation(piece);
 	if (ChessUtil::GetFile(starting) != 7) {
-		int rightTarget = starting + (ChessUtil::IsWhite(piece) ? offsets[7] : offsets[5]);
+		int rightTarget = starting + (ChessUtil::IsWhite(piece) ? ChessUtil::offsets[7] : ChessUtil::offsets[5]);
 		if (rightTarget >= 0 && rightTarget < 64) {
 			result.push_back(rightTarget);
 		}
 	}
 	if (ChessUtil::GetFile(starting) != 0) {
-		int leftTarget = starting + (ChessUtil::IsWhite(piece) ? offsets[6] : offsets[4]);
+		int leftTarget = starting + (ChessUtil::IsWhite(piece) ? ChessUtil::offsets[6] : ChessUtil::offsets[4]);
 		if (leftTarget >= 0 && leftTarget < 64) {
 			result.push_back(leftTarget);
 		}
@@ -318,7 +351,7 @@ std::vector<int> MoveGenerator::GenerateKingControlSquare(int& piece, Position& 
 	//Normal move
 	for (int i = 0; i < 8; i++)
 	{
-		int target = starting + offsets[i];
+		int target = starting + ChessUtil::offsets[i];
 		bool outOfBound = SquareOutbound(starting, target, i);
 		if (!outOfBound) result.push_back(target);
 	}

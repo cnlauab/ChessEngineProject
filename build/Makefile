@@ -201,6 +201,30 @@ ChessUtil.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.s
 .PHONY : ChessUtil.cpp.s
 
+LegalChecker.o: LegalChecker.cpp.o
+.PHONY : LegalChecker.o
+
+# target to build an object file
+LegalChecker.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o
+.PHONY : LegalChecker.cpp.o
+
+LegalChecker.i: LegalChecker.cpp.i
+.PHONY : LegalChecker.i
+
+# target to preprocess a source file
+LegalChecker.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.i
+.PHONY : LegalChecker.cpp.i
+
+LegalChecker.s: LegalChecker.cpp.s
+.PHONY : LegalChecker.s
+
+# target to generate assembly for a file
+LegalChecker.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.s
+.PHONY : LegalChecker.cpp.s
+
 Move.o: Move.cpp.o
 .PHONY : Move.o
 
@@ -363,6 +387,9 @@ help:
 	@echo "... ChessUtil.o"
 	@echo "... ChessUtil.i"
 	@echo "... ChessUtil.s"
+	@echo "... LegalChecker.o"
+	@echo "... LegalChecker.i"
+	@echo "... LegalChecker.s"
 	@echo "... Move.o"
 	@echo "... Move.i"
 	@echo "... Move.s"

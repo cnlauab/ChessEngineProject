@@ -1,6 +1,6 @@
-CMakeFiles/ChessEngineProject.dir/State.cpp.o: \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.cpp \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h \
+CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o: \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/LegalChecker.cpp \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/LegalChecker.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Position.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/unordered_map \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__config \
@@ -236,4 +236,5 @@ CMakeFiles/ChessEngineProject.dir/State.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_types/_nl_item.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/bitset \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.h
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.h \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MoveGenerator.h

@@ -2,6 +2,7 @@
 #pragma once
 #include <unordered_map>
 #include <string>
+#include <vector>
 #include "Parser.h"
 #include "Move.h"
 #include "ChessUtil.h"
@@ -17,6 +18,7 @@ public :
 	//Constructor
 	Position();
     Position(std::string fen);
+	Position(Position& position, Move& move);
 
     //Getter
     int GetPieceLocation(int piece);

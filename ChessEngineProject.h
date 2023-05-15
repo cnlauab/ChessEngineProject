@@ -7,6 +7,7 @@
 #include "BoardRenderer.h"
 #include "Validator.h"
 #include "MoveGenerator.h"
+#include "LegalChecker.h"
 #include "Move.h"
 #include "Position.h"
 

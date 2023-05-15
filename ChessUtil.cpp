@@ -101,6 +101,7 @@ std::unordered_map<int, char> ChessUtil::pieceMapping = {
 
 char ChessUtil::file[8] = { 'a','b','c','d','e','f','g','h' };
 char ChessUtil::rank[8] = { '1','2','3','4','5','6','7','8' };
+int ChessUtil::offsets[8] = { -1,1,-8,8,-9,-7,7,9 };
 
 std::unordered_map <std::string, int> ChessUtil::squareToIndexMapping = {
     {"a1", 0},
@@ -224,4 +225,19 @@ int ChessUtil::GetFileFromChar(char file) {
 bool ChessUtil::IsWhite(int piece)
 {
     return piece < 32;
+}
+
+bool ChessUtil::IsPawn(int piece)
+{
+    return (piece >= 8 && piece <= 15) || (piece >= 8 && piece <= 15);
+}
+
+bool ChessUtil::IsKing(int piece)
+{
+    return piece == 4 || piece == 60;
+}
+
+bool ChessUtil::IsRook(int piece)
+{
+    return piece == 0 || piece == 7 || piece == 56 || piece == 63 || (piece >= -24 && piece <= -17) || (piece >= 80 && piece <= 87);
 }

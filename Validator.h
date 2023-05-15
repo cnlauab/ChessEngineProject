@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "ChessUtil.h"
-
+//Input Validator
 class Validator {
 public:
 	std::vector<int> GetMoveStringArray(std::string input);
