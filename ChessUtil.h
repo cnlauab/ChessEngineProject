@@ -20,9 +20,13 @@ public:
 	static int StringToSquare(std::string squareString);
 	static int GetRankFromChar(char rank);
 	static int GetFileFromChar(char file);
+	static bool SquareOutbound(int startingSquare, int targetSquare, int offsetType);
 
 	static bool IsWhite(int piece);
 	static bool IsPawn(int piece);
+	static bool IsQueen(int piece);
+	static bool IsBishop(int piece);
+	static bool IsKnight(int piece);
 	static bool IsKing(int piece);
 	static bool IsRook(int piece);
 };

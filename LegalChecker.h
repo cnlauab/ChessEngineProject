@@ -5,6 +5,7 @@
 
 class LegalChecker {
 public :
+    static bool IsCheckedAt(int target, Position& position, bool white);
     static bool IsChecked(Position& position);
     static bool IsChecked(Position& position, bool white);
     static bool IsLegal(Position& position, Move& move);

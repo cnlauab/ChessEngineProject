@@ -222,6 +222,27 @@ int ChessUtil::GetFileFromChar(char file) {
     return 99;
 }
 
+bool ChessUtil::SquareOutbound(int startingSquare, int targetSquare, int offsetType) {
+	if (targetSquare > 63 || targetSquare < 0) return true;
+	if (offsetType < 2) {
+		return ChessUtil::GetRank(startingSquare) != ChessUtil::GetRank(targetSquare);
+	}
+	if (offsetType < 4) {
+		return ChessUtil::GetFile(startingSquare) != ChessUtil::GetFile(targetSquare);
+	}
+	else {
+		bool higher = ChessUtil::GetRank(targetSquare) > ChessUtil::GetRank(startingSquare);
+		bool lower = ChessUtil::GetRank(targetSquare) < ChessUtil::GetRank(startingSquare);
+		bool righter = ChessUtil::GetFile(targetSquare) > ChessUtil::GetFile(startingSquare);
+		bool lefter = ChessUtil::GetFile(targetSquare) < ChessUtil::GetFile(startingSquare);
+		if (offsetType == 4) return !(lower && lefter);
+		if (offsetType == 5) return !(lower && righter);
+		if (offsetType == 6) return !(higher && lefter);
+		if (offsetType == 7) return !(higher && righter);
+	}
+	return false;
+}
+
 bool ChessUtil::IsWhite(int piece)
 {
     return piece < 32;
@@ -230,6 +251,21 @@ bool ChessUtil::IsWhite(int piece)
 bool ChessUtil::IsPawn(int piece)
 {
     return (piece >= 8 && piece <= 15) || (piece >= 8 && piece <= 15);
+}
+
+bool ChessUtil::IsQueen(int piece)
+{
+    return piece == 3 || piece == 59 || (piece >= -8 && piece <= -1) || (piece >= 64 && piece <= 71);
+}
+
+bool ChessUtil::IsBishop(int piece)
+{
+    return piece == 2 || piece == 5 || piece == 58 || piece == 61 || (piece >= -16 && piece <= -9) || (piece >= 72 && piece <= 79);
+}
+
+bool ChessUtil::IsKnight(int piece)
+{
+    return piece == 1 || piece == 6 || piece == 57 || piece == 62 || (piece >= -32 && piece <= -25) || (piece >= 88 && piece <= 95);
 }
 
 bool ChessUtil::IsKing(int piece)
@@ -241,3 +277,4 @@ bool ChessUtil::IsRook(int piece)
 {
     return piece == 0 || piece == 7 || piece == 56 || piece == 63 || (piece >= -24 && piece <= -17) || (piece >= 80 && piece <= 87);
 }
+

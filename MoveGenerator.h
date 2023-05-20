@@ -30,6 +30,4 @@ public:
 	static std::vector<int> GenerateKingControlSquare(int& piece, Position& position);
 
 	static bool PieceMatchTurn(int piece, Position& position);
-private:
-	static bool SquareOutbound(int startingSquare, int targetSquare, int offsetType);
 };

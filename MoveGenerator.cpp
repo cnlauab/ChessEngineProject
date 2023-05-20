@@ -1,26 +1,5 @@
 #include "MoveGenerator.h"
 
-bool MoveGenerator::SquareOutbound(int startingSquare, int targetSquare, int offsetType) {
-	if (targetSquare > 63 || targetSquare < 0) return true;
-	if (offsetType < 2) {
-		return ChessUtil::GetRank(startingSquare) != ChessUtil::GetRank(targetSquare);
-	}
-	if (offsetType < 4) {
-		return ChessUtil::GetFile(startingSquare) != ChessUtil::GetFile(targetSquare);
-	}
-	else {
-		bool higher = ChessUtil::GetRank(targetSquare) > ChessUtil::GetRank(startingSquare);
-		bool lower = ChessUtil::GetRank(targetSquare) < ChessUtil::GetRank(startingSquare);
-		bool righter = ChessUtil::GetFile(targetSquare) > ChessUtil::GetFile(startingSquare);
-		bool lefter = ChessUtil::GetFile(targetSquare) < ChessUtil::GetFile(startingSquare);
-		if (offsetType == 4) return !(lower && lefter);
-		if (offsetType == 5) return !(lower && righter);
-		if (offsetType == 6) return !(higher && lefter);
-		if (offsetType == 7) return !(higher && righter);
-	}
-	return false;
-}
-
 Move MoveGenerator::ExtractMove(char pieceType, int target, int file, int rank, bool white, std::vector<Move>& moves)
 {
 	std::vector<Move> tmpMoves = ExtractMovesByPieceType(pieceType, white, moves);
@@ -123,7 +102,7 @@ std::vector<Move> MoveGenerator::GenerateSlidingMoves(int& piece, Position& posi
 	for (int i = startingDirection; i <= endingDirection; ++i) {
 		int offset = ChessUtil::offsets[i];
 		int target = starting + offset;
-		bool outOfBound = SquareOutbound(starting, target, i);
+		bool outOfBound = ChessUtil::SquareOutbound(starting, target, i);
 		bool empty = position.TargetIsEmpty(target);
 		bool oppositeColor = position.TargetIsOppositeColor(piece, target);
 		//std::cout << "Target: " << target << " outOfBound: " << outOfBound << " empty: " << empty << " oppositeColor: " << oppositeColor << std::endl;
@@ -131,7 +110,7 @@ std::vector<Move> MoveGenerator::GenerateSlidingMoves(int& piece, Position& posi
 			result.push_back(Move(piece, starting, target));
 			if (oppositeColor) break;
 			target += offset;
-			outOfBound = SquareOutbound(starting, target, i);
+			outOfBound = ChessUtil::SquareOutbound(starting, target, i);
 			empty = position.TargetIsEmpty(target);
 			oppositeColor = position.TargetIsOppositeColor(piece, target);
 			//std::cout << "Target: " << target << " outOfBound: " << outOfBound << " empty: " << empty << " oppositeColor: " << oppositeColor << std::endl;
@@ -220,7 +199,7 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(int& piece, Position& positio
 	for (int i = 0; i < 8; i++)
 	{
 		int target = starting + ChessUtil::offsets[i];
-		bool outOfBound = SquareOutbound(starting, target, i);
+		bool outOfBound = ChessUtil::SquareOutbound(starting, target, i);
 		bool emptyOrOpposite = position.TargetIsEmpty(target) || position.TargetIsOppositeColor(piece, target);
 		if (!outOfBound && emptyOrOpposite) result.push_back(Move(piece, starting, target));
 	}
@@ -280,13 +259,13 @@ std::vector<int> MoveGenerator::GenerateSlidingControlSquare(int& piece, Positio
 	for (int i = startingDirection; i <= endingDirection; ++i) {
 		int offset = ChessUtil::offsets[i];
 		int target = starting + offset;
-		bool outOfBound = SquareOutbound(starting, target, i);
+		bool outOfBound = ChessUtil::SquareOutbound(starting, target, i);
 		bool empty = position.TargetIsEmpty(target);
 		while (!outOfBound) {
 			result.push_back(target);
 			if (!empty) break;
 			target += offset;
-			outOfBound = SquareOutbound(starting, target, i);
+			outOfBound = ChessUtil::SquareOutbound(starting, target, i);
 			empty = position.TargetIsEmpty(target);
 		}
 	}
@@ -352,7 +331,7 @@ std::vector<int> MoveGenerator::GenerateKingControlSquare(int& piece, Position& 
 	for (int i = 0; i < 8; i++)
 	{
 		int target = starting + ChessUtil::offsets[i];
-		bool outOfBound = SquareOutbound(starting, target, i);
+		bool outOfBound = ChessUtil::SquareOutbound(starting, target, i);
 		if (!outOfBound) result.push_back(target);
 	}
 	return result;
