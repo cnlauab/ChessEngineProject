@@ -37,7 +37,7 @@ std::string Move::toString()
 	std::string result = "";
 	char type = ChessUtil::GetPieceType(piece);
 	//result += type + "(" + std::to_string(piece) + ")" + ChessUtil::SquareToString(from) + " to " + ChessUtil::SquareToString(to) + " promoting to " + promotionType + "\n";
-	result += type + ChessUtil::SquareToString(from) + " to " + ChessUtil::SquareToString(to) + " promoting to " + promotionType + "\n";
+	result += type + ChessUtil::SquareToString(from) + " to " + ChessUtil::SquareToString(to) + " promoting to " + promotionType;
 	return result;
 }
 

@@ -3,7 +3,6 @@
 Move MoveGenerator::ExtractMove(char pieceType, int target, int file, int rank, bool white, std::vector<Move>& moves)
 {
 	std::vector<Move> tmpMoves = ExtractMovesByPieceType(pieceType, white, moves);
-	if (tmpMoves.size() == 1) return tmpMoves[0];
 	if (tmpMoves.size() < 1) return Move();
 	std::vector<Move> tmpMoves1 = ExtractMovesByTargetSquare(target, tmpMoves);
 	if (tmpMoves1.size() == 1) return tmpMoves1[0];
@@ -15,6 +14,7 @@ Move MoveGenerator::ExtractMove(char pieceType, int target, int file, int rank, 
 
 std::vector<Move> MoveGenerator::ExtractMovesByPieceType(char pieceType, bool white, std::vector<Move>& moves)
 {
+	std::cout << "ExtractMovesByPieceType" << std::endl;
 	std::vector<Move> result;
 	char finalType = white ? tolower(pieceType) : toupper(pieceType);
 	for (int i = 0; i < moves.size(); ++i) {
@@ -27,6 +27,7 @@ std::vector<Move> MoveGenerator::ExtractMovesByPieceType(char pieceType, bool wh
 
 std::vector<Move> MoveGenerator::ExtractMovesByTargetSquare(int target, std::vector<Move>& moves)
 {
+	std::cout << "ExtractMovesByTargetSquare" << std::endl;
 	std::vector<Move> result;
 	for (int i = 0; i < moves.size(); ++i) {
 		int t = moves[i].to;
@@ -37,6 +38,7 @@ std::vector<Move> MoveGenerator::ExtractMovesByTargetSquare(int target, std::vec
 
 std::vector<Move> MoveGenerator::ExtractMovesByAmbiguity(int file, int rank, std::vector<Move>& moves)
 {
+	std::cout << "ExtractMovesByAmbiguity" << std::endl;
 	std::vector<Move> result;
 	for (int i = 0; i < moves.size(); ++i) {
 		int starting = moves[i].from;
@@ -45,10 +47,10 @@ std::vector<Move> MoveGenerator::ExtractMovesByAmbiguity(int file, int rank, std
 		if (f == file && r == rank) {
 			result.push_back(moves[i]);
 		}
-		else if (f == 99 && r == rank) {
+		else if (file == 99 && r == rank) {
 			result.push_back(moves[i]);
 		}
-		else if (f == file && r == 99) {
+		else if (f == file && rank == 99) {
 			result.push_back(moves[i]);
 		}
 	}

@@ -116,6 +116,7 @@ bool Validator::isValidPieceMove(std::string input, int& target, int& file, int&
 		if (isTakeChar(third_letter)) {
 			if (NextTwoLetterIsSquare(input, 3) && NextLetterIsEnding(input, 5)) {
 				target = ChessUtil::StringToSquare(std::string({ forth_letter ,input[4] }));//eg:Nbxc2
+				file = ChessUtil::GetFileFromChar(second_letter);
 				return true;
 			}
 			return false;
@@ -124,6 +125,8 @@ bool Validator::isValidPieceMove(std::string input, int& target, int& file, int&
 			if (isTakeChar(forth_letter)) {
 				if(NextTwoLetterIsSquare(input, 4) && NextLetterIsEnding(input, 6)) {
 					target = ChessUtil::StringToSquare(std::string({ input[4] ,input[5] }));//eg:Nb1xc2
+					file = ChessUtil::GetFileFromChar(second_letter);
+					rank = ChessUtil::GetRankFromChar(third_letter);
 					return true;
 				}
 				return false;
@@ -131,6 +134,8 @@ bool Validator::isValidPieceMove(std::string input, int& target, int& file, int&
 			else if (isFileChar(forth_letter)) {
 				if(NextTwoLetterIsSquare(input, 3) && NextLetterIsEnding(input, 5)) {
 					target = ChessUtil::StringToSquare(std::string({ forth_letter ,input[4] }));//eg:Nb1c2
+					file = ChessUtil::GetFileFromChar(second_letter);
+					rank = ChessUtil::GetRankFromChar(third_letter);
 					return true;
 				}
 				return false;
@@ -146,6 +151,7 @@ bool Validator::isValidPieceMove(std::string input, int& target, int& file, int&
 		else {
 			if (NextTwoLetterIsSquare(input, 2) && NextLetterIsEnding(input, 4)) {
 				target = ChessUtil::StringToSquare(std::string({ third_letter ,forth_letter }));//eg:Nbc2
+				file = ChessUtil::GetFileFromChar(second_letter);
 				return true;
 			}
 			return false;
@@ -155,6 +161,7 @@ bool Validator::isValidPieceMove(std::string input, int& target, int& file, int&
 		if (isTakeChar(third_letter)) {
 			if (NextTwoLetterIsSquare(input, 3) && NextLetterIsEnding(input, 5)) {
 				target = ChessUtil::StringToSquare(std::string({ forth_letter ,input[4] }));//eg:N1xc2
+				rank = ChessUtil::GetRankFromChar(second_letter);
 				return true;
 			}
 			return false;
@@ -162,6 +169,7 @@ bool Validator::isValidPieceMove(std::string input, int& target, int& file, int&
 		else {
 			if(NextTwoLetterIsSquare(input, 2) && NextLetterIsEnding(input, 4)) {
 				target = ChessUtil::StringToSquare(std::string({ third_letter ,forth_letter }));//eg:N1c2
+				rank = ChessUtil::GetRankFromChar(second_letter);
 				return true;
 			}
 			return false;

@@ -34,6 +34,7 @@ void Turn() {
 		char promotionType;
 
 		validMoveInput = validator.ValidMove(input, pieceType, target, file, rank, promotionType, currentPosition.whiteTurn);
+		cout << "######## " << endl;
 		cout << "The move input is valid? " << validMoveInput << endl;
 		if (validMoveInput) {
 			cout << "Piece Type: " << pieceType << endl;
@@ -44,9 +45,9 @@ void Turn() {
 
 			extractedMove = MoveGenerator::ExtractMove(pieceType, target, file, rank, currentPosition.whiteTurn, currLegalMoves);
 			selectedMove = !extractedMove.isEmpty();
-			cout << extractedMove.toString() << endl;
+			cout << "Selected Move: " << extractedMove.toString() << endl;
 		}
-		cout << endl;
+		cout << "######## " << endl;
 	}
 	if (validMoveInput && selectedMove) {
 		currentPosition.MovePiece(extractedMove);
@@ -56,8 +57,9 @@ void Turn() {
 		}else{
 			cout <<  "Not Checked" << endl;
 		}
-		
 	}
+	cout << "######## " << endl;
+	cout << endl;
 }
 
 int main()
