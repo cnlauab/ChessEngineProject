@@ -235,6 +235,44 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(int& piece, Position& positio
 	}
 	//TODO
 	//Castling
+	if(position.GetCastlingQuota(piece,true)){//King side
+		if(ChessUtil::IsWhite(piece)){
+			//rook 7 exist
+			bool rookExists = position.GetPieceLocation(7) != 99;
+			//5,6 is empty
+			bool emptyPath = position.TargetIsEmpty(5) && position.TargetIsEmpty(6);
+			//4,5,6 is not checked
+			bool pathNotChecked = !LegalChecker::IsCheckedAt(4, position, true) && !LegalChecker::IsCheckedAt(5, position, true) && !LegalChecker::IsCheckedAt(6, position, true);
+			if(rookExists&&emptyPath&&pathNotChecked) result.push_back(Move(piece, 4, 6));
+		}else{
+			//rook 63 exist
+			bool rookExists = position.GetPieceLocation(63) != 99;
+			//62,61 is empty
+			bool emptyPath = position.TargetIsEmpty(61) && position.TargetIsEmpty(62);
+			//60,61,62 is not checked
+			bool pathNotChecked = !LegalChecker::IsCheckedAt(60, position, false) && !LegalChecker::IsCheckedAt(61, position, false) && !LegalChecker::IsCheckedAt(62, position, false);
+			if(rookExists&&emptyPath&&pathNotChecked) result.push_back(Move(piece, 60, 62));
+		}
+	}
+	if(position.GetCastlingQuota(piece,false)){//Queen side
+		if(ChessUtil::IsWhite(piece)){
+			//rook 0 exist
+			bool rookExists = position.GetPieceLocation(0) != 99;
+			//1,2,3 is empty
+			bool emptyPath = position.TargetIsEmpty(1) && position.TargetIsEmpty(2) && position.TargetIsEmpty(3);
+			//2,3,4 is not checked
+			bool pathNotChecked = !LegalChecker::IsCheckedAt(2, position, true) && !LegalChecker::IsCheckedAt(3, position, true) && !LegalChecker::IsCheckedAt(4, position, true);
+			if(rookExists&&emptyPath&&pathNotChecked) result.push_back(Move(piece, 4, 2));
+		}else{
+			//rook 56 exist
+			bool rookExists = position.GetPieceLocation(56) != 99;
+			//57,58,59 is empty
+			bool emptyPath = position.TargetIsEmpty(57) && position.TargetIsEmpty(58) && position.TargetIsEmpty(59);
+			//58,59,60 is not checked
+			bool pathNotChecked = !LegalChecker::IsCheckedAt(58, position, false) && !LegalChecker::IsCheckedAt(59, position, false) && !LegalChecker::IsCheckedAt(60, position, false);
+			if(rookExists&&emptyPath&&pathNotChecked) result.push_back(Move(piece, 60, 58));
+		}
+	}
 	return result;
 }
 

@@ -23,6 +23,7 @@ public :
     //Getter
     int ReadPosition(int location);
     int GetPieceLocation(int piece);
+    bool GetCastlingQuota(int piece, bool kingSide);
     bool TargetIsEmpty(int target) const;
     bool TargetIsOppositeColor(int piece, int target) const;
     bool EnpassantSquareIsOppositeColor(int piece) const;

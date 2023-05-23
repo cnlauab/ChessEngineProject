@@ -48,6 +48,16 @@ int Position::GetPieceLocation(int piece)
 	return pieceLocation[piece];
 }
 
+bool Position::GetCastlingQuota(int piece, bool kingSide) 
+{
+	if(ChessUtil::IsWhite(piece)){
+		return (kingSide) ? castlingQuota['K'] : castlingQuota['Q'];
+	}else{
+		return (kingSide) ? castlingQuota['k'] : castlingQuota['q'];
+	}
+	return false;
+}
+
 bool Position::TargetIsEmpty(int target) const
 {
 	return position[target] == 99;
@@ -110,24 +120,41 @@ void Position::MovePiece(Move& move)
 		if(enPassantSquare != 99) enPassantSquare = 99;
 	}
 	if (ChessUtil::IsKing(move.piece)) {
+		//Update castling quota
+		if (whiteTurn && castlingQuota['K']) {
+			castlingQuota['K'] = false;
+		}
+		else if(!whiteTurn && castlingQuota['k']) {
+			castlingQuota['k'] = false;
+		}
+		if (whiteTurn && castlingQuota['Q']) {
+			castlingQuota['Q'] = false;
+		}
+		else if(!whiteTurn && castlingQuota['q']) {
+			castlingQuota['q'] = false;
+		}
+		//Move rook if castling
 		if (move.to - move.from == 2) {
-			if (whiteTurn && castlingQuota['K']) {
-				castlingQuota['K'] = false;
-			}
-			else if(!whiteTurn && castlingQuota['k']) {
-				castlingQuota['k'] = false;
+			if(whiteTurn){
+				position[5] = 7;
+				pieceLocation[7] = 5;
+			}else{
+				position[61] = 63;
+				pieceLocation[63] = 61;
 			}
 		}
 		else if (move.to - move.from == -3){
-			if (whiteTurn && castlingQuota['Q']) {
-				castlingQuota['Q'] = false;
-			}
-			else if(!whiteTurn && castlingQuota['q']) {
-				castlingQuota['q'] = false;
+			if(whiteTurn){
+				position[3] = 0;
+				pieceLocation[0] = 3;
+			}else{
+				position[59] = 56;
+				pieceLocation[56] = 59;
 			}
 		}
 	}
 	if (ChessUtil::IsRook(move.piece)) {
+		//Update castling quota
 		if(move.piece == 0 && castlingQuota['Q']){
 			castlingQuota['Q'] = false;
 		}else if(move.piece == 7 && castlingQuota['K']){
