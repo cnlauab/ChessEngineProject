@@ -22,6 +22,7 @@ public:
 	static int GetFileFromChar(char file);
 	static bool SquareOutbound(int startingSquare, int targetSquare, int offsetType);
 
+	static bool IsEmpty(int piece);
 	static bool IsWhite(int piece);
 	static bool IsPawn(int piece);
 	static bool IsQueen(int piece);

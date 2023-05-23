@@ -21,6 +21,7 @@ public :
 	Position(Position& position, Move& move);
 
     //Getter
+    int ReadPosition(int location);
     int GetPieceLocation(int piece);
     bool TargetIsEmpty(int target) const;
     bool TargetIsOppositeColor(int piece, int target) const;

@@ -11,6 +11,7 @@ bool LegalChecker::IsCheckedAt(int target, Position& position, bool white){
 			bool lower = ChessUtil::GetRank(targets[i]) < ChessUtil::GetRank(target);
 			if (lefter && lower) {
                 if(ChessUtil::IsKnight(position.position[targets[i]]) && white != ChessUtil::IsWhite(position.position[targets[i]])){
+                    std::cout << "Knight Check" << std::endl;
                     return true;
                 }
             }
@@ -20,6 +21,7 @@ bool LegalChecker::IsCheckedAt(int target, Position& position, bool white){
 			bool lower = ChessUtil::GetRank(targets[i]) < ChessUtil::GetRank(target);
 			if (righter && lower) {
                 if(ChessUtil::IsKnight(position.position[targets[i]]) && white != ChessUtil::IsWhite(position.position[targets[i]])){
+                    std::cout << "Knight Check" << std::endl;
                     return true;
                 }
             }
@@ -29,6 +31,7 @@ bool LegalChecker::IsCheckedAt(int target, Position& position, bool white){
 			bool higher = ChessUtil::GetRank(targets[i]) > ChessUtil::GetRank(target);
 			if (lefter && higher) {
                 if(ChessUtil::IsKnight(position.position[targets[i]]) && white != ChessUtil::IsWhite(position.position[targets[i]])){
+                    std::cout << "Knight Check" << std::endl;
                     return true;
                 }
             }
@@ -38,6 +41,7 @@ bool LegalChecker::IsCheckedAt(int target, Position& position, bool white){
 			bool higher = ChessUtil::GetRank(targets[i]) > ChessUtil::GetRank(target);
 			if (righter && higher) {
                 if(ChessUtil::IsKnight(position.position[targets[i]]) && white != ChessUtil::IsWhite(position.position[targets[i]])){
+                    std::cout << "Knight Check" << std::endl;
                     return true;
                 }
             }
@@ -48,20 +52,48 @@ bool LegalChecker::IsCheckedAt(int target, Position& position, bool white){
         int offset = ChessUtil::offsets[i];
 		int square = target + offset;
 		bool outOfBound = ChessUtil::SquareOutbound(target, square, i);
+        int counter = 0;
 		while (!outOfBound) {
 			square += offset;
+            if(counter == 0)counter++;
 			if(i>=0 && i<=3){
-                if((ChessUtil::IsRook(position.position[targets[i]]) || ChessUtil::IsQueen(position.position[targets[i]])) && white != ChessUtil::IsWhite(position.position[targets[i]])) return true;
+                if((ChessUtil::IsRook(position.position[targets[i]]) || ChessUtil::IsQueen(position.position[targets[i]])) && white != ChessUtil::IsWhite(position.position[targets[i]])) {
+                    std::cout << "Rook or Queen Check" << std::endl;
+                    return true;
+                }
+                if(counter == 1 && ChessUtil::IsKing(position.position[targets[i]]) && white != ChessUtil::IsWhite(position.position[targets[i]])) {
+                    std::cout << "King Check" << std::endl;
+                    return true;
+                }
                 if(!position.TargetIsEmpty(square)) break;
             }else{
-                if((ChessUtil::IsBishop(position.position[targets[i]]) || ChessUtil::IsQueen(position.position[targets[i]])) && white != ChessUtil::IsWhite(position.position[targets[i]])) return true;
+                if((ChessUtil::IsBishop(position.position[targets[i]]) || ChessUtil::IsQueen(position.position[targets[i]])) && white != ChessUtil::IsWhite(position.position[targets[i]])) {
+                    std::cout << "Bishop or Queen Check" << std::endl;
+                    return true;
+                }
+                if(counter == 1 && ChessUtil::IsKing(position.position[targets[i]]) && white != ChessUtil::IsWhite(position.position[targets[i]])) {
+                    std::cout << "King Check" << std::endl;
+                    return true;
+                }
                 if(!position.TargetIsEmpty(square)) break;
             }
 			outOfBound = ChessUtil::SquareOutbound(target, square, i);
 		}
     }
     //Pawn squares
-    //King squares
+    int square1 = 99;
+    int square2 = 99;
+    if(white){
+        if(ChessUtil::GetFile(target) != 0) square1 = target + 7;
+        if(ChessUtil::GetFile(target) != 7) square1 = target + 9;
+    }else{
+        if(ChessUtil::GetFile(target) != 0) square1 = target - 9;
+        if(ChessUtil::GetFile(target) != 7) square1 = target - 7;
+    }
+    int piece1 = position.ReadPosition(square1);
+    int piece2 = position.ReadPosition(square2);
+    if(!ChessUtil::IsEmpty(square1) && ChessUtil::IsPawn(position.ReadPosition(square1)) && !ChessUtil::IsWhite(position.ReadPosition(square1))) return true;
+    if(!ChessUtil::IsEmpty(square2) && ChessUtil::IsPawn(position.ReadPosition(square2)) && !ChessUtil::IsWhite(position.ReadPosition(square2))) return true;
 
     return false;
 }

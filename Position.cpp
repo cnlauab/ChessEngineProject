@@ -38,6 +38,11 @@ Position::Position(Position& currPosition, Move& move){
 	MovePiece(move);
 }
 
+int Position::ReadPosition(int location)
+{
+	return position[location];
+}
+
 int Position::GetPieceLocation(int piece)
 {
 	return pieceLocation[piece];

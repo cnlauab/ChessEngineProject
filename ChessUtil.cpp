@@ -243,6 +243,11 @@ bool ChessUtil::SquareOutbound(int startingSquare, int targetSquare, int offsetT
 	return false;
 }
 
+bool ChessUtil::IsEmpty(int piece)
+{
+    return piece == 99;
+}
+
 bool ChessUtil::IsWhite(int piece)
 {
     return piece < 32;
