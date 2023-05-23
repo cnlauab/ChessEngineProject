@@ -869,8 +869,7 @@ CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o: ../LegalChecker.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__split_buffer \
   ../Parser.h \
   ../Move.h \
-  ../ChessUtil.h \
-  ../MoveGenerator.h
+  ../ChessUtil.h
 
 CMakeFiles/ChessEngineProject.dir/Move.cpp.o: ../Move.cpp \
   ../Move.h \
@@ -1343,7 +1342,8 @@ CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o: ../MoveGenerator.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_types/_nl_item.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
-  ../ChessUtil.h
+  ../ChessUtil.h \
+  ../LegalChecker.h
 
 CMakeFiles/ChessEngineProject.dir/Parser.cpp.o: ../Parser.cpp \
   ../Parser.h \

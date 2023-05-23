@@ -874,7 +874,6 @@ CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Parser.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Move.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.h
- /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MoveGenerator.h
 
 CMakeFiles/ChessEngineProject.dir/Move.cpp.o
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Move.cpp
@@ -1350,6 +1349,7 @@ CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o
  /Library/Developer/CommandLineTools/usr/include/c++/v1/__bsd_locale_defaults.h
  /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/LegalChecker.h
 
 CMakeFiles/ChessEngineProject.dir/Parser.cpp.o
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Parser.cpp

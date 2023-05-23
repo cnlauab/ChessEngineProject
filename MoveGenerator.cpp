@@ -109,7 +109,10 @@ std::vector<Move> MoveGenerator::GenerateSlidingMoves(int& piece, Position& posi
 		bool oppositeColor = position.TargetIsOppositeColor(piece, target);
 		//std::cout << "Target: " << target << " outOfBound: " << outOfBound << " empty: " << empty << " oppositeColor: " << oppositeColor << std::endl;
 		while (!outOfBound && (empty || oppositeColor)) {
-			result.push_back(Move(piece, starting, target));
+
+			Move move = Move(piece, starting, target);
+			if(LegalChecker::IsLegal(position, move))result.push_back(move);
+
 			if (oppositeColor) break;
 			target += offset;
 			outOfBound = ChessUtil::SquareOutbound(starting, target, i);
@@ -134,22 +137,34 @@ std::vector<Move> MoveGenerator::GenerateKnightMoves(int& piece, Position& posit
 		if (i == 0 || i == 1) {
 			bool lefter = ChessUtil::GetFile(targets[i]) < ChessUtil::GetFile(starting);
 			bool lower = ChessUtil::GetRank(targets[i]) < ChessUtil::GetRank(starting);
-			if (lefter && lower && emptyOrOpposite) result.push_back(Move(piece, starting, targets[i]));
+			if (lefter && lower && emptyOrOpposite) {
+				Move move = Move(piece, starting, targets[i]);
+				if(LegalChecker::IsLegal(position, move))result.push_back(move);
+			}
 		}
 		else if (i == 2 || i == 3) {
 			bool righter = ChessUtil::GetFile(targets[i]) > ChessUtil::GetFile(starting);
 			bool lower = ChessUtil::GetRank(targets[i]) < ChessUtil::GetRank(starting);
-			if (righter && lower && emptyOrOpposite) result.push_back(Move(piece, starting, targets[i]));
+			if (righter && lower && emptyOrOpposite) {
+				Move move = Move(piece, starting, targets[i]);
+				if(LegalChecker::IsLegal(position, move))result.push_back(move);
+			}
 		}
 		else if (i == 4 || i == 5) {
 			bool lefter = ChessUtil::GetFile(targets[i]) < ChessUtil::GetFile(starting);
 			bool higher = ChessUtil::GetRank(targets[i]) > ChessUtil::GetRank(starting);
-			if (lefter && higher && emptyOrOpposite) result.push_back(Move(piece, starting, targets[i]));
+			if (lefter && higher && emptyOrOpposite) {
+				Move move = Move(piece, starting, targets[i]);
+				if(LegalChecker::IsLegal(position, move))result.push_back(move);
+			}
 		}
 		else if (i == 6 || i == 7) {
 			bool righter = ChessUtil::GetFile(targets[i]) > ChessUtil::GetFile(starting);
 			bool higher = ChessUtil::GetRank(targets[i]) > ChessUtil::GetRank(starting);
-			if (righter && higher && emptyOrOpposite) result.push_back(Move(piece, starting, targets[i]));
+			if (righter && higher && emptyOrOpposite) {
+				Move move = Move(piece, starting, targets[i]);
+				if(LegalChecker::IsLegal(position, move))result.push_back(move);
+			}
 		}
 	}
 	return result;
@@ -163,32 +178,42 @@ std::vector<Move> MoveGenerator::GeneratePawnMoves(int& piece, Position& positio
 	std::cout << "GeneratePawnMoves for " << ChessUtil::SquareToString(starting) << std::endl;
 	//Push one square
 	if (pushOneTarget >= 0 && pushOneTarget < 64 && position.TargetIsEmpty(pushOneTarget)) {
-		result.push_back(Move(piece, starting, pushOneTarget));
+		Move move = Move(piece, starting, pushOneTarget);
+		if(LegalChecker::IsLegal(position, move))result.push_back(move);
 	}
 	//Push two square
-	if (!result.empty() && firstMove) {
+	if (position.TargetIsEmpty(pushOneTarget) && firstMove) {
 		int pushTwoTarget = starting + (ChessUtil::IsWhite(piece) ? ChessUtil::offsets[3] * 2 : ChessUtil::offsets[2] * 2);
-		if (position.TargetIsEmpty(pushTwoTarget))result.push_back(Move(piece, starting, pushTwoTarget));
+		if (position.TargetIsEmpty(pushTwoTarget)){
+			Move move = Move(piece, starting, pushTwoTarget);
+			if(LegalChecker::IsLegal(position, move))result.push_back(move);
+		}
 	}
 	//Take and En passant
 	if (ChessUtil::GetFile(starting) != 7) {
 		int rightTarget = starting + (ChessUtil::IsWhite(piece) ? ChessUtil::offsets[7] : ChessUtil::offsets[5]);
 		if (rightTarget >= 0 && rightTarget < 64 && position.TargetIsOppositeColor(piece, rightTarget)) {
-			result.push_back(Move(piece, starting, rightTarget));//Normal Take
+			Move move = Move(piece, starting, rightTarget);
+			if(LegalChecker::IsLegal(position, move))result.push_back(move);//Normal Take
 		}
 		else if (rightTarget == position.enPassantSquare && position.EnpassantSquareIsOppositeColor(piece)) {
-			result.push_back(Move(piece, starting, rightTarget));//En Passant
+			Move move = Move(piece, starting, rightTarget);
+			if(LegalChecker::IsLegal(position, move))result.push_back(move);//En Passant
 		}
 	}
 	if (ChessUtil::GetFile(starting) != 0) {
 		int leftTarget = starting + (ChessUtil::IsWhite(piece) ? ChessUtil::offsets[6] : ChessUtil::offsets[4]);
 		if (leftTarget >= 0 && leftTarget < 64 && position.TargetIsOppositeColor(piece, leftTarget)) {
-			result.push_back(Move(piece, starting, leftTarget));//Normal Take
+			Move move = Move(piece, starting, leftTarget);
+			if(LegalChecker::IsLegal(position, move))result.push_back(move);//Normal Take
 		}
 		else if (leftTarget == position.enPassantSquare && position.EnpassantSquareIsOppositeColor(piece)) {
-			result.push_back(Move(piece, starting, leftTarget));//En Passant
+			Move move = Move(piece, starting, leftTarget);
+			if(LegalChecker::IsLegal(position, move))result.push_back(move);//En Passant
 		}
 	}
+	//Promotion
+	//TODO
 	return result;
 }
 
@@ -203,7 +228,10 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(int& piece, Position& positio
 		int target = starting + ChessUtil::offsets[i];
 		bool outOfBound = ChessUtil::SquareOutbound(starting, target, i);
 		bool emptyOrOpposite = position.TargetIsEmpty(target) || position.TargetIsOppositeColor(piece, target);
-		if (!outOfBound && emptyOrOpposite) result.push_back(Move(piece, starting, target));
+		if (!outOfBound && emptyOrOpposite) {
+			Move move = Move(piece, starting, target);
+			if(LegalChecker::IsLegal(position, move))result.push_back(move);
+		}
 	}
 	//TODO
 	//Castling

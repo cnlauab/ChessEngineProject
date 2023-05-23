@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include "Position.h"
-#include "MoveGenerator.h"
 
 class LegalChecker {
 public :

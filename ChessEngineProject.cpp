@@ -13,9 +13,10 @@ std::vector<Move> moveMade;
 
 void Turn() {
 	std::string input;
-	std::vector<Move> currPossibleMoves = MoveGenerator::GenerateAllPossibleMoves(currentPosition);
-	std::vector<Move> currLegalMoves = LegalChecker::EliminateIllegalMoves(currentPosition, currPossibleMoves);
-	
+	//std::vector<Move> currPossibleMoves = MoveGenerator::GenerateAllPossibleMoves(currentPosition);
+	//std::vector<Move> currLegalMoves = LegalChecker::EliminateIllegalMoves(currentPosition, currPossibleMoves);
+	std::vector<Move> currLegalMoves = MoveGenerator::GenerateAllPossibleMoves(currentPosition);
+	cout << "No. of Legal Moves: " << currLegalMoves.size() << endl;
 	if(currLegalMoves.size() == 0) return; //Checkmate or Stalemate
 	
 	bool validMoveInput = false;

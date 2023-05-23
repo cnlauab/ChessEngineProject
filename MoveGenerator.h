@@ -5,6 +5,7 @@
 #include "Position.h"
 #include "Move.h"
 #include "ChessUtil.h"
+#include "LegalChecker.h"
 
 class MoveGenerator {
 public:
