@@ -2,6 +2,7 @@
 
 void Parser::FenToPosition(std::string fen, int position[]) {
 	//int result[64];
+
 	int fenIterator = 0;
 
 	//Position
@@ -69,15 +70,6 @@ void Parser::FenToPosition(std::string fen, int position[]) {
 		++fenIterator;
 	}
 
-	//Turn
-
-	//Castling
-
-	//Last move
-
-	//Halfmove
-
-	//Fullmove
 }
 
 Move Parser::InputToMove(std::string input)

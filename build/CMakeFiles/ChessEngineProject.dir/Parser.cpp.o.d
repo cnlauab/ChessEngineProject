@@ -1,22 +1,12 @@
 CMakeFiles/ChessEngineProject.dir/Parser.cpp.o: \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Parser.cpp \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Parser.h \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/string \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/vector \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/pthread.h \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/string_view \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__string \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/algorithm \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/initializer_list \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cstddef \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__cxx_version \
-  /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include/stddef.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include/__stddef_max_align_t.h \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__nullptr \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/type_traits \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cstring \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/string.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/string.h \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iosfwd \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/wchar.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/wchar.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/cdefs.h \
@@ -28,9 +18,9 @@ CMakeFiles/ChessEngineProject.dir/Parser.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/Availability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/AvailabilityVersions.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/AvailabilityInternal.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_size_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_null.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_rsize_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_size_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_mbstate_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/machine/types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/i386/types.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_int8_t.h \
@@ -43,8 +33,48 @@ CMakeFiles/ChessEngineProject.dir/Parser.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_u_int64_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_intptr_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_uintptr_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_errno_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_ct_rune_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_rune_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_wchar_t.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include/stdarg.h \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/stdio.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/stdio.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_stdio.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_va_list.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/stdio.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_ctermid.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_off_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_ssize_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/time.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_clock_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_time_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_timespec.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_wctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/__wctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_wint_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_types/_wctype_t.h \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/ctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/ctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_ctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/runetype.h \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__bit_reference \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/bit \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/limits \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/type_traits \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cstddef \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__cxx_version \
+  /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include/stddef.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include/__stddef_max_align_t.h \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__nullptr \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__undef_macros \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__debug \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/algorithm \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/initializer_list \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cstring \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/string.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/string.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_rsize_t.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_errno_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/strings.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/utility \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__tuple \
@@ -58,34 +88,6 @@ CMakeFiles/ChessEngineProject.dir/Parser.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_types/_uint64_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_types/_intmax_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_types/_uintmax_t.h \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__debug \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iosfwd \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/wchar.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/wchar.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_mbstate_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_ct_rune_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_rune_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_wchar_t.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include/stdarg.h \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/stdio.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/stdio.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_stdio.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_va_list.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/stdio.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_ctermid.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_off_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/time.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_clock_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_time_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_timespec.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_wctype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/__wctype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_wint_t.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_types/_wctype_t.h \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/ctype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/ctype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_ctype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/runetype.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/memory \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/typeinfo \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/exception \
@@ -121,8 +123,6 @@ CMakeFiles/ChessEngineProject.dir/Parser.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/_types/_mode_t.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/math.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/math.h \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/limits \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__undef_macros \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/new \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iterator \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__functional_base \
@@ -132,7 +132,18 @@ CMakeFiles/ChessEngineProject.dir/Parser.cpp.o: \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cassert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/assert.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/functional \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/bit \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/climits \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/limits.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include/limits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/limits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/machine/limits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/i386/limits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/i386/_limits.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/syslimits.h \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__split_buffer \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/string \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/string_view \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__string \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cstdio \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cwchar \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cwctype \
@@ -154,14 +165,6 @@ CMakeFiles/ChessEngineProject.dir/Parser.cpp.o: \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/chrono \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/ctime \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/ratio \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/climits \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/limits.h \
-  /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include/limits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/limits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/machine/limits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/i386/limits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/i386/_limits.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/syslimits.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/system_error \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__errc \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cerrno \
@@ -231,5 +234,4 @@ CMakeFiles/ChessEngineProject.dir/Parser.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_types/_nl_item.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/bitset \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__bit_reference \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.h

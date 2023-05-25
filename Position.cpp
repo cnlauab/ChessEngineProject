@@ -14,14 +14,45 @@ Position::Position()
 
 Position::Position(std::string fen)
 {
+	std::vector<std::string> parameters;
+	std::string delimiter = " ";
+
+	size_t pos = 0;
+	std::string token;
+	while ((pos = fen.find(delimiter)) != std::string::npos) {
+		token = fen.substr(0, pos);
+		std::cout << token << std::endl;
+		parameters.emplace_back(token);
+		fen.erase(0, pos + delimiter.length());
+	}
+
 	Parser parser;
-	parser.FenToPosition(fen, position);
+	parser.FenToPosition(parameters[0], position);
 	for (int i = 0; i < 64; ++i) {
 		int piece = position[i];
 		if (piece != 99) {
 			pieceLocation[piece] = i;
 		}
 	}
+
+	//Turn
+	if(parameters[1] == "w"){
+		whiteTurn = true;
+	}else if(parameters[1] == "b"){
+		whiteTurn = false;
+	}
+
+	//Castling
+	for(char c : parameters[2]){
+		castlingQuota[c] = true;
+	}
+
+	//Enpassant move
+	if(parameters.size() >= 4) enPassantSquare = ChessUtil::StringToSquare(parameters[3]);
+	//Halfmove
+	if(parameters.size() >= 5) halfmove = std::stoi(parameters[4]);
+	//Fullmove
+	if(parameters.size() >= 6) halfmove = std::stoi(parameters[5]);
 }
 
 Position::Position(Position& currPosition, Move& move){

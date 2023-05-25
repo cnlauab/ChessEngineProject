@@ -233,7 +233,6 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(int& piece, Position& positio
 			if(LegalChecker::IsLegal(position, move))result.push_back(move);
 		}
 	}
-	//TODO
 	//Castling
 	if(position.GetCastlingQuota(piece,true)){//King side
 		if(ChessUtil::IsWhite(piece)){
