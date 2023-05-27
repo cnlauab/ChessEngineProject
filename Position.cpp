@@ -25,6 +25,7 @@ Position::Position(std::string fen)
 		parameters.emplace_back(token);
 		fen.erase(0, pos + delimiter.length());
 	}
+	parameters.emplace_back(fen);
 
 	Parser parser;
 	parser.FenToPosition(parameters[0], position);
@@ -44,11 +45,12 @@ Position::Position(std::string fen)
 
 	//Castling
 	for(char c : parameters[2]){
+		//std::cout<<c<<std::endl;
 		castlingQuota[c] = true;
 	}
 
 	//Enpassant move
-	if(parameters.size() >= 4) enPassantSquare = ChessUtil::StringToSquare(parameters[3]);
+	if(parameters.size() >= 4 && parameters[3] != "-") enPassantSquare = ChessUtil::StringToSquare(parameters[3]);
 	//Halfmove
 	if(parameters.size() >= 5) halfmove = std::stoi(parameters[4]);
 	//Fullmove
@@ -147,6 +149,15 @@ void Position::MovePiece(Move& move)
 				enPassantSquare = move.from - 8;
 			}
 		}
+		if(promotionType == 'Q'){//Promotion
+			position[move.to] +=  (whiteTurn) ? -16 : 16;
+		}else if(promotionType == 'B'){
+			position[move.to] +=  (whiteTurn) ? -24 : 24;
+		}else if(promotionType == 'R'){
+			position[move.to] +=  (whiteTurn) ? -32 : 32;
+		}else if(promotionType == 'N'){
+			position[move.to] +=  (whiteTurn) ? -40 : 40;
+		}
 	}else{
 		if(enPassantSquare != 99) enPassantSquare = 99;
 	}
@@ -168,18 +179,22 @@ void Position::MovePiece(Move& move)
 		if (move.to - move.from == 2) {
 			if(whiteTurn){
 				position[5] = 7;
+				position[7] = 99;
 				pieceLocation[7] = 5;
 			}else{
 				position[61] = 63;
+				position[63] = 99;
 				pieceLocation[63] = 61;
 			}
 		}
 		else if (move.to - move.from == -3){
 			if(whiteTurn){
 				position[3] = 0;
+				position[0] = 99;
 				pieceLocation[0] = 3;
 			}else{
 				position[59] = 56;
+				position[56] = 99;
 				pieceLocation[56] = 59;
 			}
 		}

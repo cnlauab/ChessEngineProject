@@ -178,8 +178,21 @@ std::vector<Move> MoveGenerator::GeneratePawnMoves(int& piece, Position& positio
 	std::cout << "GeneratePawnMoves for " << ChessUtil::SquareToString(starting) << std::endl;
 	//Push one square
 	if (pushOneTarget >= 0 && pushOneTarget < 64 && position.TargetIsEmpty(pushOneTarget)) {
-		Move move = Move(piece, starting, pushOneTarget);
-		if(LegalChecker::IsLegal(position, move))result.push_back(move);
+		if(ChessUtil::GetRank(pushOneTarget) == 0 || ChessUtil::GetRank(pushOneTarget) == 7){
+			Move promoteQueen = Move(piece, starting, pushOneTarget, 'Q');
+			Move promoteKnight = Move(piece, starting, pushOneTarget, 'N');
+			Move promoteBishop = Move(piece, starting, pushOneTarget, 'B');
+			Move promoteRook = Move(piece, starting, pushOneTarget, 'R');
+			if(LegalChecker::IsLegal(position, promoteQueen)){
+				result.push_back(promoteQueen);
+				result.push_back(promoteKnight);
+				result.push_back(promoteBishop);
+				result.push_back(promoteRook);
+			}
+		}else{
+			Move move = Move(piece, starting, pushOneTarget);
+			if(LegalChecker::IsLegal(position, move))result.push_back(move);
+		}
 	}
 	//Push two square
 	if (position.TargetIsEmpty(pushOneTarget) && firstMove) {
@@ -193,8 +206,21 @@ std::vector<Move> MoveGenerator::GeneratePawnMoves(int& piece, Position& positio
 	if (ChessUtil::GetFile(starting) != 7) {
 		int rightTarget = starting + (ChessUtil::IsWhite(piece) ? ChessUtil::offsets[7] : ChessUtil::offsets[5]);
 		if (rightTarget >= 0 && rightTarget < 64 && position.TargetIsOppositeColor(piece, rightTarget)) {
-			Move move = Move(piece, starting, rightTarget);
-			if(LegalChecker::IsLegal(position, move))result.push_back(move);//Normal Take
+			if(ChessUtil::GetRank(rightTarget) == 0 || ChessUtil::GetRank(rightTarget) == 7){
+				Move promoteQueen = Move(piece, starting, rightTarget, 'Q');
+				Move promoteKnight = Move(piece, starting, rightTarget, 'N');
+				Move promoteBishop = Move(piece, starting, rightTarget, 'B');
+				Move promoteRook = Move(piece, starting, rightTarget, 'R');
+				if(LegalChecker::IsLegal(position, promoteQueen)){
+					result.push_back(promoteQueen);
+					result.push_back(promoteKnight);
+					result.push_back(promoteBishop);
+					result.push_back(promoteRook);
+				}
+			}else{
+				Move move = Move(piece, starting, rightTarget);
+				if(LegalChecker::IsLegal(position, move))result.push_back(move);
+			}
 		}
 		else if (rightTarget == position.enPassantSquare && position.EnpassantSquareIsOppositeColor(piece)) {
 			Move move = Move(piece, starting, rightTarget);
@@ -204,16 +230,27 @@ std::vector<Move> MoveGenerator::GeneratePawnMoves(int& piece, Position& positio
 	if (ChessUtil::GetFile(starting) != 0) {
 		int leftTarget = starting + (ChessUtil::IsWhite(piece) ? ChessUtil::offsets[6] : ChessUtil::offsets[4]);
 		if (leftTarget >= 0 && leftTarget < 64 && position.TargetIsOppositeColor(piece, leftTarget)) {
-			Move move = Move(piece, starting, leftTarget);
-			if(LegalChecker::IsLegal(position, move))result.push_back(move);//Normal Take
+			if(ChessUtil::GetRank(leftTarget) == 0 || ChessUtil::GetRank(leftTarget) == 7){
+				Move promoteQueen = Move(piece, starting, leftTarget, 'Q');
+				Move promoteKnight = Move(piece, starting, leftTarget, 'N');
+				Move promoteBishop = Move(piece, starting, leftTarget, 'B');
+				Move promoteRook = Move(piece, starting, leftTarget, 'R');
+				if(LegalChecker::IsLegal(position, promoteQueen)){
+					result.push_back(promoteQueen);
+					result.push_back(promoteKnight);
+					result.push_back(promoteBishop);
+					result.push_back(promoteRook);
+				}
+			}else{
+				Move move = Move(piece, starting, leftTarget);
+				if(LegalChecker::IsLegal(position, move))result.push_back(move);
+			}
 		}
 		else if (leftTarget == position.enPassantSquare && position.EnpassantSquareIsOppositeColor(piece)) {
 			Move move = Move(piece, starting, leftTarget);
 			if(LegalChecker::IsLegal(position, move))result.push_back(move);//En Passant
 		}
 	}
-	//Promotion
-	//TODO
 	return result;
 }
 
@@ -243,6 +280,7 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(int& piece, Position& positio
 			//4,5,6 is not checked
 			bool pathNotChecked = !LegalChecker::IsCheckedAt(4, position, true) && !LegalChecker::IsCheckedAt(5, position, true) && !LegalChecker::IsCheckedAt(6, position, true);
 			if(rookExists&&emptyPath&&pathNotChecked) result.push_back(Move(piece, 4, 6));
+			std::cout << "rookExists: " << rookExists << " ,emptyPath: " <<emptyPath << " ,pathNotChecked: " << pathNotChecked << std::endl;
 		}else{
 			//rook 63 exist
 			bool rookExists = position.GetPieceLocation(63) != 99;
@@ -251,6 +289,7 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(int& piece, Position& positio
 			//60,61,62 is not checked
 			bool pathNotChecked = !LegalChecker::IsCheckedAt(60, position, false) && !LegalChecker::IsCheckedAt(61, position, false) && !LegalChecker::IsCheckedAt(62, position, false);
 			if(rookExists&&emptyPath&&pathNotChecked) result.push_back(Move(piece, 60, 62));
+			std::cout << "rookExists: " << rookExists << " ,emptyPath: " <<emptyPath << " ,pathNotChecked: " << pathNotChecked << std::endl;
 		}
 	}
 	if(position.GetCastlingQuota(piece,false)){//Queen side
@@ -262,6 +301,7 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(int& piece, Position& positio
 			//2,3,4 is not checked
 			bool pathNotChecked = !LegalChecker::IsCheckedAt(2, position, true) && !LegalChecker::IsCheckedAt(3, position, true) && !LegalChecker::IsCheckedAt(4, position, true);
 			if(rookExists&&emptyPath&&pathNotChecked) result.push_back(Move(piece, 4, 2));
+			std::cout << "rookExists: " << rookExists << " ,emptyPath: " <<emptyPath << " ,pathNotChecked: " << pathNotChecked << std::endl;
 		}else{
 			//rook 56 exist
 			bool rookExists = position.GetPieceLocation(56) != 99;
@@ -270,6 +310,7 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(int& piece, Position& positio
 			//58,59,60 is not checked
 			bool pathNotChecked = !LegalChecker::IsCheckedAt(58, position, false) && !LegalChecker::IsCheckedAt(59, position, false) && !LegalChecker::IsCheckedAt(60, position, false);
 			if(rookExists&&emptyPath&&pathNotChecked) result.push_back(Move(piece, 60, 58));
+			std::cout << "rookExists: " << rookExists << " ,emptyPath: " <<emptyPath << " ,pathNotChecked: " << pathNotChecked << std::endl;
 		}
 	}
 	return result;

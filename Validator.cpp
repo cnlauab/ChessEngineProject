@@ -72,11 +72,11 @@ bool Validator::isCastleChar(char c)
 bool Validator::isCastlingMove(std::string input, int& target, bool& isWhite)
 {
 	if (isWhite) {
-		if (input == "O-O-O" || input == "o-o-o" || input == "0-0-0") target = 1;
+		if (input == "O-O-O" || input == "o-o-o" || input == "0-0-0") target = 2;
 		if (input == "O-O" || input == "o-o" || input == "0-0") target = 6;
 	}
 	else {
-		if (input == "O-O-O" || input == "o-o-o" || input == "0-0-0") target = 57;
+		if (input == "O-O-O" || input == "o-o-o" || input == "0-0-0") target = 58;
 		if (input == "O-O" || input == "o-o" || input == "0-0") target = 62;
 	}
 	return input == "O-O-O" || input == "o-o-o" || input == "0-0-0" || input == "O-O" || input == "o-o" || input == "0-0";
