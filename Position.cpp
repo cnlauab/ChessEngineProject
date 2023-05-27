@@ -149,13 +149,13 @@ void Position::MovePiece(Move& move)
 				enPassantSquare = move.from - 8;
 			}
 		}
-		if(promotionType == 'Q'){//Promotion
+		if(move.promotionType == 'Q'){//Promotion
 			position[move.to] +=  (whiteTurn) ? -16 : 16;
-		}else if(promotionType == 'B'){
+		}else if(move.promotionType == 'B'){
 			position[move.to] +=  (whiteTurn) ? -24 : 24;
-		}else if(promotionType == 'R'){
+		}else if(move.promotionType == 'R'){
 			position[move.to] +=  (whiteTurn) ? -32 : 32;
-		}else if(promotionType == 'N'){
+		}else if(move.promotionType == 'N'){
 			position[move.to] +=  (whiteTurn) ? -40 : 40;
 		}
 	}else{
