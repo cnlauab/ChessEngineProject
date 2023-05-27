@@ -1,6 +1,6 @@
 #include "MoveGenerator.h"
 
-Move MoveGenerator::ExtractMove(char pieceType, int target, int file, int rank, bool white, std::vector<Move>& moves)
+Move MoveGenerator::ExtractMove(char pieceType, int target, int file, int rank, bool white, char promotionType, std::vector<Move>& moves)
 {
 	std::vector<Move> tmpMoves = ExtractMovesByPieceType(pieceType, white, moves);
 	if (tmpMoves.size() < 1) return Move();

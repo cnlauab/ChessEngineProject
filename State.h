@@ -15,6 +15,7 @@ public:
 
 	//Getter
 	bool Ended();
+	std::string EndMessage();
 
 	//Mutator
 	void Resign();

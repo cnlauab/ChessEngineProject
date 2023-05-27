@@ -9,7 +9,7 @@
 
 class MoveGenerator {
 public:
-	static Move ExtractMove(char pieceType, int target, int file, int rank, bool white, std::vector<Move>& moves);
+	static Move ExtractMove(char pieceType, int target, int file, int rank, bool white, char promotionType, std::vector<Move>& moves);
 	static std::vector<Move> ExtractMovesByPieceType(char pieceType, bool white, std::vector<Move>& moves);
 	static std::vector<Move> ExtractMovesByTargetSquare(int target, std::vector<Move>& moves);
 	static std::vector<Move> ExtractMovesByAmbiguity(int file, int rank, std::vector<Move>& moves);

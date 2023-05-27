@@ -14,3 +14,11 @@ void State::Resign() {
 		whiteWon = true;
 	}
 }
+
+std::string State::EndMessage(){
+	if(draw) return "Draw";
+	if(stalemate) return "Stalemate";
+	if(whiteWon) return "whiteWon";
+	if(blackWon) return "BlackWon";
+	return "Unexpected Ending";
+}

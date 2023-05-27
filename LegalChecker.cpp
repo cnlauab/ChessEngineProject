@@ -123,6 +123,7 @@ bool LegalChecker::IsLegal(Position& position, Move& move){
     //white then being checked by black (during black's turn to move)
     bool getChecked = IsChecked(newPosition, position.whiteTurn);
     //the move is not legal
+    //std::cout << "getChecked: " << getChecked << std::endl;
     return !getChecked;
 }
 
