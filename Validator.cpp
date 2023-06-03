@@ -202,6 +202,6 @@ bool Validator::NextLetterIsEnding(std::string input, int nextLetterIndex)
 bool Validator::NextLetterIsPromotion(std::string input, int nextLetterIndex)
 {
 	char nextLetter = input[nextLetterIndex];
-	if (input.length() > nextLetterIndex + 1 && nextLetter == '=' && isPieceChar(input[nextLetterIndex + 1]) && NextLetterIsEnding(input, nextLetterIndex + 1)) return true;
+	if (input.length() > nextLetterIndex + 1 && nextLetter == '=' && isPieceChar(input[nextLetterIndex + 1]) && NextLetterIsEnding(input, nextLetterIndex + 2)) return true;
 	return false;
 }

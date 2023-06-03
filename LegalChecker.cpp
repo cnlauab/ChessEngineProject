@@ -52,27 +52,23 @@ bool LegalChecker::IsCheckedAt(int target, Position& position, bool white){
         int offset = ChessUtil::offsets[i];
 		int square = target + offset;
 		bool outOfBound = ChessUtil::SquareOutbound(target, square, i);
-        int counter = 0;
+        
+        if(!outOfBound && ChessUtil::IsKing(position.position[square]) && white != ChessUtil::IsWhite(position.position[square])) {
+            std::cout << "King at " << target << " King Check " << square << std::endl;
+            return true;
+        }
+
 		while (!outOfBound) {
             //std::cout << offset << " Sliding Check " << position.position[square] << " at " << square << std::endl;
-            if(counter == 0)counter++;
 			if(i>=0 && i<=3){
                 if((ChessUtil::IsRook(position.position[square]) || ChessUtil::IsQueen(position.position[square])) && white != ChessUtil::IsWhite(position.position[square])) {
                     std::cout << "Rook or Queen Check " << square << std::endl;
-                    return true;
-                }
-                if(counter == 1 && ChessUtil::IsKing(position.position[square]) && white != ChessUtil::IsWhite(position.position[square])) {
-                    std::cout << "King Check " << square << std::endl;
                     return true;
                 }
                 if(!position.TargetIsEmpty(square)) break;
             }else{
                 if((ChessUtil::IsBishop(position.position[square]) || ChessUtil::IsQueen(position.position[square])) && white != ChessUtil::IsWhite(position.position[square])) {
                     std::cout << "Bishop or Queen Check " << square << std::endl;
-                    return true;
-                }
-                if(counter == 1 && ChessUtil::IsKing(position.position[square]) && white != ChessUtil::IsWhite(position.position[square])) {
-                    std::cout << "King Check " << square << std::endl;
                     return true;
                 }
                 if(!position.TargetIsEmpty(square)) break;

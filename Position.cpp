@@ -29,6 +29,10 @@ Position::Position(std::string fen)
 
 	Parser parser;
 	parser.FenToPosition(parameters[0], position);
+	for (auto& it: pieceLocation) {
+		it.second = 99;
+		//std::cout << it.second << std::endl;
+	}
 	for (int i = 0; i < 64; ++i) {
 		int piece = position[i];
 		if (piece != 99) {

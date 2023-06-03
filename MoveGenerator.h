@@ -13,6 +13,7 @@ public:
 	static std::vector<Move> ExtractMovesByPieceType(char pieceType, bool white, std::vector<Move>& moves);
 	static std::vector<Move> ExtractMovesByTargetSquare(int target, std::vector<Move>& moves);
 	static std::vector<Move> ExtractMovesByAmbiguity(int file, int rank, std::vector<Move>& moves);
+	static std::vector<Move> ExtractMovesByPromotionType(char promotionType, std::vector<Move>& moves);
 
 	static std::vector<Move> GenerateAllPossibleMoves(Position& position);
 	static std::vector<Move> GeneratePossibleMoves(int& piece, Position& position);

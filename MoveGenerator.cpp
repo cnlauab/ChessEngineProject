@@ -8,7 +8,11 @@ Move MoveGenerator::ExtractMove(char pieceType, int target, int file, int rank, 
 	if (tmpMoves1.size() == 1) return tmpMoves1[0];
 	if (tmpMoves1.size() < 1) return Move();
 	std::vector<Move> tmpMoves2 = ExtractMovesByAmbiguity(file, rank, tmpMoves1);
+	//std::cout << "tmpMoves2: " << tmpMoves2.size() << std::endl;
 	if (tmpMoves2.size() == 1) return tmpMoves2[0];
+	if (tmpMoves1.size() < 1) return Move();
+	std::vector<Move> tmpMoves3 = ExtractMovesByPromotionType(promotionType, tmpMoves2);
+	if (tmpMoves3.size() == 1) return tmpMoves3[0];
 	return Move();
 }
 
@@ -53,6 +57,17 @@ std::vector<Move> MoveGenerator::ExtractMovesByAmbiguity(int file, int rank, std
 		else if (f == file && rank == 99) {
 			result.push_back(moves[i]);
 		}
+	}
+	return result;
+}
+
+std::vector<Move> MoveGenerator::ExtractMovesByPromotionType(char promotionType, std::vector<Move>& moves)
+{
+	std::cout << "ExtractMovesByPromotionType" << std::endl;
+	std::vector<Move> result;
+	for (int i = 0; i < moves.size(); ++i) {
+		char t = moves[i].promotionType;
+		if (t == promotionType) result.push_back(moves[i]);
 	}
 	return result;
 }
