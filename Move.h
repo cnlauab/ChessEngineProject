@@ -15,7 +15,6 @@ public:
 	int takenPiece;
 	bool check;
 	bool checkMate;
-	bool firstMove;
 
 	Move();
 	Move(int piece, int starting, int target);

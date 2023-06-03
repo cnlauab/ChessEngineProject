@@ -9,8 +9,7 @@
 class Parser {
 public:
 	void FenToPosition(std::string fen, int position[]);
-	Move InputToMove(std::string input);
-	std::string MoveToString(Move move);
+	
 private:
 	int whitePawns[8] = {8,9,10,11,12,13,14,15};
 	int blackPawns[8] = {48,49,50,51,52,53,54,55};

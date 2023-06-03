@@ -6,6 +6,10 @@ Move::Move()
 	Move::to = 99;
 	Move::piece = 99;
 	Move::promotionType = ' ';
+
+	Move::takenPiece = 99;
+	Move::check = false;
+	Move::checkMate = false;
 }
 
 Move::Move(int piece, int starting, int target)
@@ -15,8 +19,12 @@ Move::Move(int piece, int starting, int target)
 	Move::piece = piece;
 	Move::promotionType = ' ';
 
-	char type = ChessUtil::GetPieceType(piece);
-	std::cout << type  << ChessUtil::SquareToString(starting) << " to " << ChessUtil::SquareToString(target) << std::endl;
+	Move::takenPiece = 99;
+	Move::check = false;
+	Move::checkMate = false;
+
+	//std::cout << type  << ChessUtil::SquareToString(starting) << " to " << ChessUtil::SquareToString(target) << std::endl;
+	std::cout << toString() << std::endl;
 }
 
 Move::Move(int piece, int starting, int target, char promotionType)
@@ -26,8 +34,12 @@ Move::Move(int piece, int starting, int target, char promotionType)
 	Move::piece = piece;
 	Move::promotionType = promotionType;
 
-	char type = ChessUtil::GetPieceType(piece);
-	std::cout << type << ChessUtil::SquareToString(starting) << " to " << ChessUtil::SquareToString(target) << " promoting to " << promotionType << std::endl;
+	Move::takenPiece = 99;
+	Move::check = false;
+	Move::checkMate = false;
+
+	//std::cout << type << ChessUtil::SquareToString(starting) << " to " << ChessUtil::SquareToString(target) << " promoting to " << promotionType << std::endl;
+	std::cout << toString() << std::endl;
 }
 
 std::string Move::toString()
@@ -35,9 +47,21 @@ std::string Move::toString()
 	if (isEmpty()) return "Move is Empty...";
 
 	std::string result = "";
-	char type = ChessUtil::GetPieceType(piece);
-	//result += type + "(" + std::to_string(piece) + ")" + ChessUtil::SquareToString(from) + " to " + ChessUtil::SquareToString(to) + " promoting to " + promotionType + "\n";
-	result += type + ChessUtil::SquareToString(from) + " to " + ChessUtil::SquareToString(to) + " promoting to " + promotionType;
+	char type = toupper(ChessUtil::GetPieceType(piece));
+
+	//result += type + ChessUtil::SquareToString(from) + " to " + ChessUtil::SquareToString(to) + " promoting to " + promotionType;
+	
+	if(type != 'P') result += type;
+	result += ChessUtil::SquareToString(from);
+	if(takenPiece != 99) result += 'x';
+	result += ChessUtil::SquareToString(to);
+	if(promotionType != ' ') result += '=' + promotionType;
+	if(check) {
+		result += '+';
+	}else if(checkMate){
+		result += '#';
+	}
+
 	return result;
 }
 

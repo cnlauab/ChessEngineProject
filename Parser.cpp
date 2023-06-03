@@ -72,12 +72,4 @@ void Parser::FenToPosition(std::string fen, int position[]) {
 
 }
 
-Move Parser::InputToMove(std::string input)
-{
-	return Move();
-}
 
-std::string Parser::MoveToString(Move move)
-{
-	return std::string();
-}
