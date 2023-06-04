@@ -50,12 +50,15 @@ std::vector<Move> MoveGenerator::ExtractMovesByAmbiguity(int file, int rank, std
 		int r = ChessUtil::GetRank(starting);
 		if (f == file && r == rank) {
 			result.push_back(moves[i]);
+			moves[i].UpdateAmbiguity(true, true);
 		}
 		else if (file == 99 && r == rank) {
 			result.push_back(moves[i]);
+			moves[i].UpdateAmbiguity(true, false);
 		}
 		else if (f == file && rank == 99) {
 			result.push_back(moves[i]);
+			moves[i].UpdateAmbiguity(false, true);
 		}
 	}
 	return result;

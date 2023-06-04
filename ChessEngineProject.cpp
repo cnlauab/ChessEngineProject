@@ -20,6 +20,7 @@ bool IsEnded(std::vector<Move> currLegalMoves){
 			}else{
 				gameState.whiteWon = true;
 			}
+			moveMade.back().UpdateCheck(false,true);
 		}else{
 			gameState.stalemate = true;
 		}
@@ -39,6 +40,9 @@ void ComputerTurn(){
 
 	currentPosition.MovePiece(extractedMove);
 	moveMade.emplace_back(extractedMove);
+	if(LegalChecker::IsChecked(currentPosition)){
+		extractedMove.UpdateCheck(true,false);
+	}
 	cout << "Move made: " << extractedMove.toString() << endl;
 
 }
@@ -83,12 +87,10 @@ void Turn() {
 	if (validMoveInput && selectedMove) {
 		currentPosition.MovePiece(extractedMove);
 		moveMade.emplace_back(extractedMove);
-		cout << "Move made: " << extractedMove.toString() << endl;
 		if(LegalChecker::IsChecked(currentPosition)){
-			cout << "Checked" << endl;
-		}else{
-			cout <<  "Not Checked" << endl;
+			extractedMove.UpdateCheck(true,false);
 		}
+		cout << "Move made: " << extractedMove.toString() << endl;
 	}
 	cout << "######## " << endl;
 	cout << endl;

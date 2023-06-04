@@ -37,9 +37,22 @@ Move::Move(int piece, int starting, int target, char promotionType)
 	Move::takenPiece = 99;
 	Move::check = false;
 	Move::checkMate = false;
+	Move::rankAmbiguity = false;
+	Move::fileAmbiguity = false;
 
 	//std::cout << type << ChessUtil::SquareToString(starting) << " to " << ChessUtil::SquareToString(target) << " promoting to " << promotionType << std::endl;
 	std::cout << toString() << std::endl;
+}
+
+void Move::UpdateCheck(bool check, bool checkMate){
+	Move::check = check;
+	Move::checkMate = checkMate;
+}
+
+
+void Move::UpdateAmbiguity(bool rankAmbiguity, bool fileAmbiguity){
+	Move::rankAmbiguity = rankAmbiguity;
+	Move::fileAmbiguity = fileAmbiguity;
 }
 
 std::string Move::toString()
