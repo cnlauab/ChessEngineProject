@@ -24,6 +24,10 @@ public:
 
 	void UpdateCheck(bool check, bool checkMate);
 	void UpdateAmbiguity(bool rankAmbiguity, bool fileAmbiguity);
+	bool IsShortCastling();
+	bool IsLongCastling();
+
+	std::string toSimpleString();
 	std::string toString();
 	bool isEmpty();
 	bool operator==(const Move& rhs);

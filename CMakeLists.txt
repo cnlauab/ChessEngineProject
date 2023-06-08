@@ -14,7 +14,7 @@ endif()
 project ("ChessEngineProject")
 
 # Add source to this project's executable.
-add_executable (ChessEngineProject "ChessEngineProject.cpp" "ChessEngineProject.h" "BoardRenderer.cpp" "BoardRenderer.h" "Position.h" "Position.cpp" "State.cpp" "State.h" "Parser.cpp" "Parser.h" "Move.cpp" "Move.h" "Validator.cpp" "Validator.h" "MoveGenerator.cpp" "MoveGenerator.h" "ChessUtil.h" "ChessUtil.cpp" "LegalChecker.cpp" "LegalChecker.h")
+add_executable (ChessEngineProject "ChessEngineProject.cpp" "ChessEngineProject.h" "BoardRenderer.cpp" "BoardRenderer.h" "Position.h" "Position.cpp" "State.cpp" "State.h" "Parser.cpp" "Parser.h" "Move.cpp" "Move.h" "Validator.cpp" "Validator.h" "MoveGenerator.cpp" "MoveGenerator.h" "ChessUtil.h" "ChessUtil.cpp" "LegalChecker.cpp" "LegalChecker.h" "Debug.cpp" "Debug.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET ChessEngineProject PROPERTY CXX_STANDARD 20)

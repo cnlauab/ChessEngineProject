@@ -24,7 +24,7 @@ Move::Move(int piece, int starting, int target)
 	Move::checkMate = false;
 
 	//std::cout << type  << ChessUtil::SquareToString(starting) << " to " << ChessUtil::SquareToString(target) << std::endl;
-	std::cout << toString() << std::endl;
+	//std::cout << toString() << std::endl;
 }
 
 Move::Move(int piece, int starting, int target, char promotionType)
@@ -41,7 +41,7 @@ Move::Move(int piece, int starting, int target, char promotionType)
 	Move::fileAmbiguity = false;
 
 	//std::cout << type << ChessUtil::SquareToString(starting) << " to " << ChessUtil::SquareToString(target) << " promoting to " << promotionType << std::endl;
-	std::cout << toString() << std::endl;
+	//std::cout << toString() << std::endl;
 }
 
 void Move::UpdateCheck(bool check, bool checkMate){
@@ -55,6 +55,28 @@ void Move::UpdateAmbiguity(bool rankAmbiguity, bool fileAmbiguity){
 	Move::fileAmbiguity = fileAmbiguity;
 }
 
+bool Move::IsShortCastling(){
+	return ChessUtil::IsKing(piece) && to - from == 2;
+}
+
+bool Move::IsLongCastling(){
+	return ChessUtil::IsKing(piece) && to - from == -2;
+}
+
+std::string Move::toSimpleString()
+{
+	if (isEmpty()) return "Move is Empty...";
+
+	std::string result = "";
+	char type = toupper(ChessUtil::GetPieceType(piece));
+	result += type;
+	result += ChessUtil::SquareToString(from);
+	result += ChessUtil::SquareToString(to);
+	if(promotionType != 99)result += promotionType;
+
+	return result;
+}
+
 std::string Move::toString()
 {
 	if (isEmpty()) return "Move is Empty...";
@@ -63,12 +85,22 @@ std::string Move::toString()
 	char type = toupper(ChessUtil::GetPieceType(piece));
 
 	//result += type + ChessUtil::SquareToString(from) + " to " + ChessUtil::SquareToString(to) + " promoting to " + promotionType;
-	
-	if(type != 'P') result += type;
-	result += ChessUtil::SquareToString(from);
-	if(takenPiece != 99) result += 'x';
-	result += ChessUtil::SquareToString(to);
-	if(promotionType != ' ') result += '=' + promotionType;
+	if(IsShortCastling()){
+		result += "O-O";
+	}else if(IsLongCastling()){
+		result += "O-O-O";
+	}else{
+		if(type != 'P') result += type;
+		//result += ChessUtil::SquareToString(from);
+		if((type == 'P' && takenPiece != 99) || fileAmbiguity) result += ChessUtil::GetFileChar(from);
+		if(rankAmbiguity) result += ChessUtil::GetRankChar(from);
+		if(takenPiece != 99) result += 'x';
+		result += ChessUtil::SquareToString(to);
+		if(promotionType != ' ') {
+			result += '=';
+			result += promotionType;
+		}
+	}
 	if(check) {
 		result += '+';
 	}else if(checkMate){

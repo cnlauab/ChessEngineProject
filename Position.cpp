@@ -10,6 +10,8 @@ Position::Position()
 			position[i] = 99;
 		}
 	}
+
+	prevMove = Move();
 }
 
 Position::Position(std::string fen)
@@ -59,6 +61,8 @@ Position::Position(std::string fen)
 	if(parameters.size() >= 5) halfmove = std::stoi(parameters[4]);
 	//Fullmove
 	if(parameters.size() >= 6) halfmove = std::stoi(parameters[5]);
+
+	prevMove = Move();
 }
 
 Position::Position(Position& currPosition, Move& move){
@@ -73,6 +77,8 @@ Position::Position(Position& currPosition, Move& move){
 	castlingQuota = currPosition.castlingQuota;
 
 	MovePiece(move);
+
+	prevMove = move;
 }
 
 int Position::ReadPosition(int location)
@@ -115,11 +121,74 @@ bool Position::EnpassantSquareIsOppositeColor(int piece) const
 
 std::string Position::PositionToFen()
 {
-	return std::string();
+	std::string result = "";
+	//int rowCounter = 0;
+	int spaceCounter = 0;
+	for(int i = 0; i < 64; ++i){
+		if(position[i] != 99){
+			if(spaceCounter > 0){
+				result += (48 + spaceCounter);
+				spaceCounter = 0;
+			}
+			result += ChessUtil::pieceMapping[position[i]];
+		}else{
+			spaceCounter += 1;
+		}
+		if((i + 1) % 8 == 0){
+			if(spaceCounter > 0){
+				result += (48 + spaceCounter);
+				spaceCounter = 0;
+			}
+			if(i != 63) result += '/';
+		}
+	}
+	result += ' ';
+	//Turn
+	if(whiteTurn){
+		result += 'w';
+	}else{
+		result += 'b';
+	}
+	result += ' ';
+	//Castling
+	bool noQuota = true;
+	if(castlingQuota['K']){
+		result += 'K';
+		noQuota = false;
+	}
+	if(castlingQuota['Q']){
+		result += 'Q';
+		noQuota = false;
+	}
+	if(castlingQuota['k']){
+		result += 'k';
+		noQuota = false;
+	}
+	if(castlingQuota['q']){
+		result += 'q';
+		noQuota = false;
+	}
+	if (noQuota){
+		result += '-';
+	}
+	result += ' ';
+	//En Passant
+	if(enPassantSquare != 99){
+		result += ChessUtil::SquareToString(enPassantSquare);
+	}else{
+		result += '-';
+	}
+	result += ' ';
+	//Halfmove fullmove
+	result += std::to_string(halfmove);
+	result += ' ';
+	result += std::to_string(fullmove);
+	return result;
 }
 
 void Position::MovePiece(Move& move)
 {
+	//std::cout << "Moving " << move.piece << std::endl;
 	//Update Clock
 	halfmove++;
 	if(!whiteTurn)fullmove++;
@@ -134,6 +203,7 @@ void Position::MovePiece(Move& move)
 	pieceLocation[position[move.to]] = move.to;
 	//Piece Specific Update
 	if (ChessUtil::IsPawn(move.piece)) {
+		//std::cout << "Is Pawn " << move.piece << std::endl;
 		halfmove = 0;
 		if (whiteTurn) {
 			if (move.to == enPassantSquare) {
@@ -153,6 +223,7 @@ void Position::MovePiece(Move& move)
 				enPassantSquare = move.from - 8;
 			}
 		}
+		//std::cout << "Pawn " << position[move.to] << " promote to ";
 		if(move.promotionType == 'Q'){//Promotion
 			position[move.to] +=  (whiteTurn) ? -16 : 16;
 		}else if(move.promotionType == 'B'){
@@ -162,6 +233,7 @@ void Position::MovePiece(Move& move)
 		}else if(move.promotionType == 'N'){
 			position[move.to] +=  (whiteTurn) ? -40 : 40;
 		}
+		//std::cout << position[move.to] << std::endl;
 	}else{
 		if(enPassantSquare != 99) enPassantSquare = 99;
 	}
@@ -191,7 +263,7 @@ void Position::MovePiece(Move& move)
 				pieceLocation[63] = 61;
 			}
 		}
-		else if (move.to - move.from == -3){
+		else if (move.to - move.from == -2){
 			if(whiteTurn){
 				position[3] = 0;
 				position[0] = 99;
@@ -217,4 +289,5 @@ void Position::MovePiece(Move& move)
 	}
 	//Update Opposite Turn
 	whiteTurn = !whiteTurn;
+	prevMove = move;
 }

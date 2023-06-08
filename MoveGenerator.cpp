@@ -113,7 +113,7 @@ std::vector<Move> MoveGenerator::GenerateSlidingMoves(int& piece, Position& posi
 	std::vector<Move> result;
 	char pieceType = ChessUtil::GetPieceType(piece);
 	int starting = position.GetPieceLocation(piece);
-	std::cout << "GenerateSlidingMoves for " << pieceType << ChessUtil::SquareToString(starting) << std::endl;
+	//std::cout << "GenerateSlidingMoves for " << pieceType << ChessUtil::SquareToString(starting) << std::endl;
 	int startingDirection = 0;
 	int endingDirection = 7;
 	if (pieceType == 'r' || pieceType == 'R') { startingDirection = 0; endingDirection = 3; }
@@ -147,7 +147,7 @@ std::vector<Move> MoveGenerator::GenerateKnightMoves(int& piece, Position& posit
 	std::vector<Move> result;
 	int starting = position.GetPieceLocation(piece);
 	int targets[8] = {starting - 10, starting - 17, starting -15, starting -6, starting + 6, starting + 15, starting + 17, starting + 10};
-	std::cout << "GenerateKnightMoves for N" << ChessUtil::SquareToString(starting) << std::endl;
+	//std::cout << "GenerateKnightMoves for N" << ChessUtil::SquareToString(starting) << std::endl;
 	for (int i = 0; i < 8; i++)
 	{
 		if (targets[i] > 63 || targets[i] < 0) continue;
@@ -193,7 +193,7 @@ std::vector<Move> MoveGenerator::GeneratePawnMoves(int& piece, Position& positio
 	int starting = position.GetPieceLocation(piece);
 	bool firstMove = ChessUtil::GetRank(starting) == (ChessUtil::IsWhite(piece) ? 1 : 6);
 	int pushOneTarget = starting + (ChessUtil::IsWhite(piece) ? ChessUtil::offsets[3] : ChessUtil::offsets[2]);
-	std::cout << "GeneratePawnMoves for " << ChessUtil::SquareToString(starting) << std::endl;
+	//std::cout << "GeneratePawnMoves for " << ChessUtil::SquareToString(starting) << std::endl;
 	//Push one square
 	if (pushOneTarget >= 0 && pushOneTarget < 64 && position.TargetIsEmpty(pushOneTarget)) {
 		if(ChessUtil::GetRank(pushOneTarget) == 0 || ChessUtil::GetRank(pushOneTarget) == 7){
@@ -276,7 +276,7 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(int& piece, Position& positio
 {
 	std::vector<Move> result;
 	int starting = position.GetPieceLocation(piece);
-	std::cout << "GenerateKingMoves for K" << ChessUtil::SquareToString(starting) << std::endl;
+	//std::cout << "GenerateKingMoves for K" << ChessUtil::SquareToString(starting) << std::endl;
 	//Normal move
 	for (int i = 0; i < 8; i++)
 	{

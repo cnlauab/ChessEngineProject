@@ -80,7 +80,7 @@ bool LegalChecker::IsCheckedAt(int target, Position& position, bool white){
     //Pawn squares
     int square1 = 99;
     int square2 = 99;
-    if(white){
+    if(!white){
         if(ChessUtil::GetFile(target) != 0) square1 = target + 7;
         if(ChessUtil::GetFile(target) != 7) square2 = target + 9;
     }else{

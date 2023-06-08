@@ -4,6 +4,7 @@
 #pragma once
 
 #include <iostream>
+#include "Debug.h"
 #include "BoardRenderer.h"
 #include "Validator.h"
 #include "MoveGenerator.h"

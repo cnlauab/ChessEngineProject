@@ -8,5 +8,5 @@
 
 class BoardRenderer {
 public:
-	std::string positionToString(const Position& position);
+	static std::string positionToString(const Position& position);
 };

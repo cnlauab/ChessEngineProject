@@ -15,6 +15,8 @@ public :
     int fullmove = 0;
 	int position[64];
 
+    Move prevMove;
+
 	//Constructor
 	Position();
     Position(std::string fen);

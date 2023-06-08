@@ -1,6 +1,6 @@
-CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o: \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessEngineProject.cpp \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessEngineProject.h \
+CMakeFiles/ChessEngineProject.dir/Debug.cpp.o: \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Debug.cpp \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Debug.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/pthread.h \
@@ -226,7 +226,6 @@ CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o: \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/bitset \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__bit_reference \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Debug.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/fstream \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/filesystem \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/stack \
@@ -244,7 +243,4 @@ CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o: \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/vector \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Parser.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Move.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Validator.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MoveGenerator.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/LegalChecker.h
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h
