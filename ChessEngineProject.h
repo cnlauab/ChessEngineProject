@@ -4,6 +4,8 @@
 #pragma once
 
 #include <iostream>
+#include "Node.h"
+#include "Evaluation.h"
 #include "Debug.h"
 #include "BoardRenderer.h"
 #include "Validator.h"

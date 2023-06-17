@@ -121,21 +121,27 @@ int main()
 	//currentPosition = Position();
 	int moveCounter = 0;
 
-	Debug::ClearLog();
+	//Debug::ClearLog();
 
-	while (!gameState.Ended() && moveCounter < 100) {
-		PrintMoveMade();
-		cout << BoardRenderer::positionToString(currentPosition) << endl;
-		cout << currentPosition.PositionToFen() << endl;
-		if(currentPosition.whiteTurn && whiteIsComp || !currentPosition.whiteTurn && !whiteIsComp){
-			ComputerTurn();
-		}else{
-			ComputerTurn();
-			//Turn();
-		}
-		Debug::GameLog(currentPosition);
-		moveCounter++;
-	}
+	//while (!gameState.Ended() && moveCounter < 100) {
+	//	PrintMoveMade();
+	//	cout << BoardRenderer::positionToString(currentPosition) << endl;
+	//	cout << currentPosition.PositionToFen() << endl;
+	//	if(currentPosition.whiteTurn && whiteIsComp || !currentPosition.whiteTurn && !whiteIsComp){
+	//		ComputerTurn();
+	//	}else{
+	//		ComputerTurn();
+	//		//Turn();
+	//	}
+	//	Debug::GameLog(currentPosition);
+	//	moveCounter++;
+	//}
+
+	Node* root = new Node(&currentPosition);
+	Evaluation::ConstructTree(root, 5);
+	//Evaluation::DeleteTree(root);
+	Evaluation::BFS(root);
+
 	cout << gameState.EndMessage() << endl;
 	return 0;
 }

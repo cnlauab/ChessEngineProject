@@ -225,6 +225,30 @@ Debug.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Debug.cpp.s
 .PHONY : Debug.cpp.s
 
+Evaluation.o: Evaluation.cpp.o
+.PHONY : Evaluation.o
+
+# target to build an object file
+Evaluation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o
+.PHONY : Evaluation.cpp.o
+
+Evaluation.i: Evaluation.cpp.i
+.PHONY : Evaluation.i
+
+# target to preprocess a source file
+Evaluation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.i
+.PHONY : Evaluation.cpp.i
+
+Evaluation.s: Evaluation.cpp.s
+.PHONY : Evaluation.s
+
+# target to generate assembly for a file
+Evaluation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.s
+.PHONY : Evaluation.cpp.s
+
 LegalChecker.o: LegalChecker.cpp.o
 .PHONY : LegalChecker.o
 
@@ -296,6 +320,30 @@ MoveGenerator.s: MoveGenerator.cpp.s
 MoveGenerator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.s
 .PHONY : MoveGenerator.cpp.s
+
+Node.o: Node.cpp.o
+.PHONY : Node.o
+
+# target to build an object file
+Node.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Node.cpp.o
+.PHONY : Node.cpp.o
+
+Node.i: Node.cpp.i
+.PHONY : Node.i
+
+# target to preprocess a source file
+Node.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Node.cpp.i
+.PHONY : Node.cpp.i
+
+Node.s: Node.cpp.s
+.PHONY : Node.s
+
+# target to generate assembly for a file
+Node.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Node.cpp.s
+.PHONY : Node.cpp.s
 
 Parser.o: Parser.cpp.o
 .PHONY : Parser.o
@@ -414,6 +462,9 @@ help:
 	@echo "... Debug.o"
 	@echo "... Debug.i"
 	@echo "... Debug.s"
+	@echo "... Evaluation.o"
+	@echo "... Evaluation.i"
+	@echo "... Evaluation.s"
 	@echo "... LegalChecker.o"
 	@echo "... LegalChecker.i"
 	@echo "... LegalChecker.s"
@@ -423,6 +474,9 @@ help:
 	@echo "... MoveGenerator.o"
 	@echo "... MoveGenerator.i"
 	@echo "... MoveGenerator.s"
+	@echo "... Node.o"
+	@echo "... Node.i"
+	@echo "... Node.s"
 	@echo "... Parser.o"
 	@echo "... Parser.i"
 	@echo "... Parser.s"

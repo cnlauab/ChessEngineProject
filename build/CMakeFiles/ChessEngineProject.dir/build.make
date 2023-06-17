@@ -223,6 +223,34 @@ CMakeFiles/ChessEngineProject.dir/Debug.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChessEngineProject.dir/Debug.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Debug.cpp -o CMakeFiles/ChessEngineProject.dir/Debug.cpp.s
 
+CMakeFiles/ChessEngineProject.dir/Node.cpp.o: CMakeFiles/ChessEngineProject.dir/flags.make
+CMakeFiles/ChessEngineProject.dir/Node.cpp.o: ../Node.cpp
+CMakeFiles/ChessEngineProject.dir/Node.cpp.o: CMakeFiles/ChessEngineProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/ChessEngineProject.dir/Node.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ChessEngineProject.dir/Node.cpp.o -MF CMakeFiles/ChessEngineProject.dir/Node.cpp.o.d -o CMakeFiles/ChessEngineProject.dir/Node.cpp.o -c /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Node.cpp
+
+CMakeFiles/ChessEngineProject.dir/Node.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChessEngineProject.dir/Node.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Node.cpp > CMakeFiles/ChessEngineProject.dir/Node.cpp.i
+
+CMakeFiles/ChessEngineProject.dir/Node.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChessEngineProject.dir/Node.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Node.cpp -o CMakeFiles/ChessEngineProject.dir/Node.cpp.s
+
+CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o: CMakeFiles/ChessEngineProject.dir/flags.make
+CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o: ../Evaluation.cpp
+CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o: CMakeFiles/ChessEngineProject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o -MF CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o.d -o CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o -c /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Evaluation.cpp
+
+CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Evaluation.cpp > CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.i
+
+CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Evaluation.cpp -o CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.s
+
 # Object files for target ChessEngineProject
 ChessEngineProject_OBJECTS = \
 "CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o" \
@@ -235,7 +263,9 @@ ChessEngineProject_OBJECTS = \
 "CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o" \
 "CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.o" \
 "CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o" \
-"CMakeFiles/ChessEngineProject.dir/Debug.cpp.o"
+"CMakeFiles/ChessEngineProject.dir/Debug.cpp.o" \
+"CMakeFiles/ChessEngineProject.dir/Node.cpp.o" \
+"CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o"
 
 # External object files for target ChessEngineProject
 ChessEngineProject_EXTERNAL_OBJECTS =
@@ -251,9 +281,11 @@ ChessEngineProject: CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o
 ChessEngineProject: CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.o
 ChessEngineProject: CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o
 ChessEngineProject: CMakeFiles/ChessEngineProject.dir/Debug.cpp.o
+ChessEngineProject: CMakeFiles/ChessEngineProject.dir/Node.cpp.o
+ChessEngineProject: CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o
 ChessEngineProject: CMakeFiles/ChessEngineProject.dir/build.make
 ChessEngineProject: CMakeFiles/ChessEngineProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable ChessEngineProject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable ChessEngineProject"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ChessEngineProject.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

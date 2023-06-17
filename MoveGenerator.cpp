@@ -85,6 +85,9 @@ std::vector<Move> MoveGenerator::GenerateAllPossibleMoves(Position& position)
 			result.insert(result.end(), pieceResult.begin(), pieceResult.end());
 		}
 	}
+	//for(auto move : result){
+	//	std::cout << move.toString() << std::endl;
+	//}
 	return result;
 }
 
@@ -298,7 +301,7 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(int& piece, Position& positio
 			//4,5,6 is not checked
 			bool pathNotChecked = !LegalChecker::IsCheckedAt(4, position, true) && !LegalChecker::IsCheckedAt(5, position, true) && !LegalChecker::IsCheckedAt(6, position, true);
 			if(rookExists&&emptyPath&&pathNotChecked) result.push_back(Move(piece, 4, 6));
-			std::cout << "rookExists: " << rookExists << " ,emptyPath: " <<emptyPath << " ,pathNotChecked: " << pathNotChecked << std::endl;
+			//std::cout << "rookExists: " << rookExists << " ,emptyPath: " <<emptyPath << " ,pathNotChecked: " << pathNotChecked << std::endl;
 		}else{
 			//rook 63 exist
 			bool rookExists = position.GetPieceLocation(63) != 99;
@@ -307,7 +310,7 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(int& piece, Position& positio
 			//60,61,62 is not checked
 			bool pathNotChecked = !LegalChecker::IsCheckedAt(60, position, false) && !LegalChecker::IsCheckedAt(61, position, false) && !LegalChecker::IsCheckedAt(62, position, false);
 			if(rookExists&&emptyPath&&pathNotChecked) result.push_back(Move(piece, 60, 62));
-			std::cout << "rookExists: " << rookExists << " ,emptyPath: " <<emptyPath << " ,pathNotChecked: " << pathNotChecked << std::endl;
+			//std::cout << "rookExists: " << rookExists << " ,emptyPath: " <<emptyPath << " ,pathNotChecked: " << pathNotChecked << std::endl;
 		}
 	}
 	if(position.GetCastlingQuota(piece,false)){//Queen side
@@ -319,7 +322,7 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(int& piece, Position& positio
 			//2,3,4 is not checked
 			bool pathNotChecked = !LegalChecker::IsCheckedAt(2, position, true) && !LegalChecker::IsCheckedAt(3, position, true) && !LegalChecker::IsCheckedAt(4, position, true);
 			if(rookExists&&emptyPath&&pathNotChecked) result.push_back(Move(piece, 4, 2));
-			std::cout << "rookExists: " << rookExists << " ,emptyPath: " <<emptyPath << " ,pathNotChecked: " << pathNotChecked << std::endl;
+			//std::cout << "rookExists: " << rookExists << " ,emptyPath: " <<emptyPath << " ,pathNotChecked: " << pathNotChecked << std::endl;
 		}else{
 			//rook 56 exist
 			bool rookExists = position.GetPieceLocation(56) != 99;
@@ -328,7 +331,7 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(int& piece, Position& positio
 			//58,59,60 is not checked
 			bool pathNotChecked = !LegalChecker::IsCheckedAt(58, position, false) && !LegalChecker::IsCheckedAt(59, position, false) && !LegalChecker::IsCheckedAt(60, position, false);
 			if(rookExists&&emptyPath&&pathNotChecked) result.push_back(Move(piece, 60, 58));
-			std::cout << "rookExists: " << rookExists << " ,emptyPath: " <<emptyPath << " ,pathNotChecked: " << pathNotChecked << std::endl;
+			//std::cout << "rookExists: " << rookExists << " ,emptyPath: " <<emptyPath << " ,pathNotChecked: " << pathNotChecked << std::endl;
 		}
 	}
 	return result;
