@@ -2,16 +2,7 @@
 
 Position::Position()
 {
-	for (int i = 0; i < 64; i++) {
-		if (i < 16 || i >47) {
-			position[i] = i;
-		}
-		else {
-			position[i] = 99;
-		}
-	}
-
-	prevMove = Move();
+	Position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 0");
 }
 
 Position::Position(std::string fen)

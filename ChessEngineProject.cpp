@@ -49,6 +49,7 @@ void ComputerTurn(){
 	if(IsEnded(currLegalMoves)) return;
 
 	int randomNum = rand() % currLegalMoves.size();
+	cout << "Random number: " << randomNum << endl;
 	Move extractedMove = currLegalMoves[randomNum];
 
 	currentPosition.MovePiece(extractedMove);
@@ -112,6 +113,10 @@ void Turn() {
 
 int main()
 {	
+   // Seed
+   unsigned seed = time(0);
+   srand(seed);
+
 	//currentPosition = Position("8/6P1/7k/4B3/4B2K/8/8/8 w - - 0 1");
 	//currentPosition = Position("2b2rk1/2q2ppn/2p5/p1n1p1B1/p3P3/2P2QNP/Br3PP1/R3R1K1");
 	//currentPosition = Position("rnbqkb1r/ppp2ppp/4pn2/3p4/8/5NP1/PPPPPPBP/RNBQK2R w KQkq - 0 4");
@@ -121,26 +126,27 @@ int main()
 	//currentPosition = Position();
 	int moveCounter = 0;
 
-	//Debug::ClearLog();
+	//Game
+	Debug::ClearLog();
+	while (!gameState.Ended() && moveCounter < 100) {
+		PrintMoveMade();
+		cout << BoardRenderer::positionToString(currentPosition) << endl;
+		cout << currentPosition.PositionToFen() << endl;
+		if(currentPosition.whiteTurn && whiteIsComp || !currentPosition.whiteTurn && !whiteIsComp){
+			ComputerTurn();
+		}else{
+			ComputerTurn();
+			//Turn();
+		}
+		Debug::GameLog(currentPosition);
+		moveCounter++;
+	}
 
-	//while (!gameState.Ended() && moveCounter < 100) {
-	//	PrintMoveMade();
-	//	cout << BoardRenderer::positionToString(currentPosition) << endl;
-	//	cout << currentPosition.PositionToFen() << endl;
-	//	if(currentPosition.whiteTurn && whiteIsComp || !currentPosition.whiteTurn && !whiteIsComp){
-	//		ComputerTurn();
-	//	}else{
-	//		ComputerTurn();
-	//		//Turn();
-	//	}
-	//	Debug::GameLog(currentPosition);
-	//	moveCounter++;
-	//}
-
-	Node* root = new Node(&currentPosition);
-	Evaluation::ConstructTree(root, 5);
+	//Evaluation 
+	//Node* root = new Node(&currentPosition);
+	//Evaluation::ConstructTree(root, 5);
 	//Evaluation::DeleteTree(root);
-	Evaluation::BFS(root);
+	//Evaluation::BFS(root);
 
 	cout << gameState.EndMessage() << endl;
 	return 0;
