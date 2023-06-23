@@ -239,8 +239,9 @@ CMakeFiles/ChessEngineProject.dir/Debug.cpp.o: \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__node_handle \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/optional \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Position.h \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/vector \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Position.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Parser.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Move.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h

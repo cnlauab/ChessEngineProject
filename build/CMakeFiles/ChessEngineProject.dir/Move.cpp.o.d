@@ -231,4 +231,7 @@ CMakeFiles/ChessEngineProject.dir/Move.cpp.o: \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__hash_table \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cmath \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__node_handle \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/optional
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/optional \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.h \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/vector \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__split_buffer

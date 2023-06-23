@@ -3,15 +3,21 @@
 #include <unordered_map>
 #include <string>
 
+#include "SquareControl.h"
+
 class ChessUtil {
 public:
     static std::unordered_map<int, char> pieceMapping;
+	static std::unordered_map<int, int> pieceValueMapping;
     static char GetPieceType(int piece);
 
 	static char file[8];
 	static char rank[8];
 	static int offsets[8];
 	static std::unordered_map <std::string, int> squareToIndexMapping;
+
+	static SquareControl squareControlMap[64];
+
 	static int GetRank(int square);
 	static int GetFile(int square);
 	static char GetRankChar(int square);

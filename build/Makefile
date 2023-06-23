@@ -393,6 +393,30 @@ Position.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Position.cpp.s
 .PHONY : Position.cpp.s
 
+SquareControl.o: SquareControl.cpp.o
+.PHONY : SquareControl.o
+
+# target to build an object file
+SquareControl.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o
+.PHONY : SquareControl.cpp.o
+
+SquareControl.i: SquareControl.cpp.i
+.PHONY : SquareControl.i
+
+# target to preprocess a source file
+SquareControl.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.i
+.PHONY : SquareControl.cpp.i
+
+SquareControl.s: SquareControl.cpp.s
+.PHONY : SquareControl.s
+
+# target to generate assembly for a file
+SquareControl.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.s
+.PHONY : SquareControl.cpp.s
+
 State.o: State.cpp.o
 .PHONY : State.o
 
@@ -483,6 +507,9 @@ help:
 	@echo "... Position.o"
 	@echo "... Position.i"
 	@echo "... Position.s"
+	@echo "... SquareControl.o"
+	@echo "... SquareControl.i"
+	@echo "... SquareControl.s"
 	@echo "... State.o"
 	@echo "... State.i"
 	@echo "... State.s"

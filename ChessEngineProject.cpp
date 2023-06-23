@@ -46,6 +46,8 @@ void ComputerTurn(){
 	std::vector<Move> currLegalMoves = MoveGenerator::GenerateAllPossibleMoves(currentPosition);
 	cout << "No. of Legal Moves: " << currLegalMoves.size() << endl;
 	
+	Debug::MoveSelectionLog(currLegalMoves);
+
 	if(IsEnded(currLegalMoves)) return;
 
 	int randomNum = rand() % currLegalMoves.size();
@@ -126,9 +128,11 @@ int main()
 	//currentPosition = Position();
 	int moveCounter = 0;
 
+	cout << ChessUtil::squareControlMap[30].toString() << endl;
+
 	//Game
 	Debug::ClearLog();
-	while (!gameState.Ended() && moveCounter < 100) {
+	while (!gameState.Ended() && moveCounter < 10) {
 		PrintMoveMade();
 		cout << BoardRenderer::positionToString(currentPosition) << endl;
 		cout << currentPosition.PositionToFen() << endl;

@@ -16,6 +16,7 @@ public :
 	int position[64];
 
     Move prevMove;
+    std::vector<int> pieceOnBoard;
 
 	//Constructor
 	Position();

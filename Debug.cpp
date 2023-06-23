@@ -28,5 +28,11 @@ void Debug::MoveMadeLog(std::vector<Move> moves){
 }
 
 void Debug::MoveSelectionLog(std::vector<Move> possibleMoves){
-    
+    std::ofstream outfile;
+    outfile.open("game_log.txt", std::fstream::in | std::fstream::out | std::fstream::app);
+    outfile << "Possible move in this position " << std::endl;
+    for(auto move : possibleMoves){
+        outfile << move.toSimpleString() << std::endl;
+    }
+    outfile.close();
 }

@@ -7,6 +7,7 @@ Position::Position()
 
 Position::Position(std::string fen)
 {
+	std::cout << "Position created." << std::endl;
 	std::vector<std::string> parameters;
 	std::string delimiter = " ";
 
@@ -14,7 +15,7 @@ Position::Position(std::string fen)
 	std::string token;
 	while ((pos = fen.find(delimiter)) != std::string::npos) {
 		token = fen.substr(0, pos);
-		std::cout << token << std::endl;
+		//std::cout << token << std::endl;
 		parameters.emplace_back(token);
 		fen.erase(0, pos + delimiter.length());
 	}
@@ -30,6 +31,7 @@ Position::Position(std::string fen)
 		int piece = position[i];
 		if (piece != 99) {
 			pieceLocation[piece] = i;
+			pieceOnBoard.push_back(piece);
 		}
 	}
 
@@ -189,6 +191,7 @@ void Position::MovePiece(Move& move)
 	position[move.from] = 99;
 	if(move.takenPiece != 99) {
 		pieceLocation[move.takenPiece] = 99;
+		remove(pieceOnBoard.begin(),pieceOnBoard.end(),move.takenPiece);
 		halfmove = 0;
 	}
 	pieceLocation[position[move.to]] = move.to;
@@ -216,13 +219,21 @@ void Position::MovePiece(Move& move)
 		}
 		//std::cout << "Pawn " << position[move.to] << " promote to ";
 		if(move.promotionType == 'Q'){//Promotion
+			remove(pieceOnBoard.begin(),pieceOnBoard.end(),position[move.to]);
 			position[move.to] +=  (whiteTurn) ? -16 : 16;
+			pieceOnBoard.push_back(position[move.to]);
 		}else if(move.promotionType == 'B'){
+			remove(pieceOnBoard.begin(),pieceOnBoard.end(),position[move.to]);
 			position[move.to] +=  (whiteTurn) ? -24 : 24;
+			pieceOnBoard.push_back(position[move.to]);
 		}else if(move.promotionType == 'R'){
+			remove(pieceOnBoard.begin(),pieceOnBoard.end(),position[move.to]);
 			position[move.to] +=  (whiteTurn) ? -32 : 32;
+			pieceOnBoard.push_back(position[move.to]);
 		}else if(move.promotionType == 'N'){
+			remove(pieceOnBoard.begin(),pieceOnBoard.end(),position[move.to]);
 			position[move.to] +=  (whiteTurn) ? -40 : 40;
+			pieceOnBoard.push_back(position[move.to]);
 		}
 		//std::cout << position[move.to] << std::endl;
 	}else{

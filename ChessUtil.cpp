@@ -99,6 +99,105 @@ std::unordered_map<int, char> ChessUtil::pieceMapping = {
         {99,' '}
 };
 
+std::unordered_map<int, int> ChessUtil::pieceValueMapping = {
+        {-32,3},
+        {-31,3},
+        {-30,3},
+        {-29,3},
+        {-28,3},
+        {-27,3},
+        {-26,3},
+        {-25,3},
+        {-24,5},
+        {-23,5},
+        {-22,5},
+        {-21,5},
+        {-20,5},
+        {-19,5},
+        {-18,5},
+        {-17,5},
+        {-16,3},
+        {-15,3},
+        {-14,3},
+        {-13,3},
+        {-12,3},
+        {-11,3},
+        {-10,3},
+        {-9,3},
+        {-8,9},
+        {-7,9},
+        {-6,9},
+        {-5,9},
+        {-4,9},
+        {-3,9},
+        {-2,9},
+        {-1,9},
+        {0,5},
+        {1,3},
+        {2,3},
+        {3,9},
+        {4,99},
+        {5,3},
+        {6,3},
+        {7,5},
+        {8,1},
+        {9,1},
+        {10,1},
+        {11,1},
+        {12,1},
+        {13,1},
+        {14,1},
+        {15,1},
+        {48,-1},
+        {49,-1},
+        {50,-1},
+        {51,-1},
+        {52,-1},
+        {53,-1},
+        {54,-1},
+        {55,-1},
+        {56,-5},
+        {57,-3},
+        {58,-3},
+        {59,-9},
+        {60,-99},
+        {61,-3},
+        {62,-3},
+        {63,-5},
+        {64,-9},
+        {65,-9},
+        {66,-9},
+        {67,-9},
+        {68,-9},
+        {69,-9},
+        {70,-9},
+        {71,-9},
+        {72,-3},
+        {73,-3},
+        {74,-3},
+        {75,-3},
+        {76,-3},
+        {77,-3},
+        {78,-3},
+        {79,-3},
+        {80,-5},
+        {81,-5},
+        {82,-5},
+        {83,-5},
+        {84,-5},
+        {85,-5},
+        {86,-5},
+        {87,-5},
+        {88,-3},
+        {89,-3},
+        {90,-3},
+        {91,-3},
+        {92,-3},
+        {93,-3},
+        {94,-3},
+        {95,-3},
+        {99,0}
+};
 char ChessUtil::file[8] = { 'a','b','c','d','e','f','g','h' };
 char ChessUtil::rank[8] = { '1','2','3','4','5','6','7','8' };
 int ChessUtil::offsets[8] = { -1,1,-8,8,-9,-7,7,9 };
@@ -170,18 +269,85 @@ std::unordered_map <std::string, int> ChessUtil::squareToIndexMapping = {
     {"h8", 63}
 };
 
+SquareControl ChessUtil::squareControlMap[64] = {
+    SquareControl(0),
+    SquareControl(1),
+    SquareControl(2),
+    SquareControl(3),
+    SquareControl(4),
+    SquareControl(5),
+    SquareControl(6),
+    SquareControl(7),
+    SquareControl(8),
+    SquareControl(9),
+    SquareControl(10),
+    SquareControl(11),
+    SquareControl(12),
+    SquareControl(13),
+    SquareControl(14),
+    SquareControl(15),
+    SquareControl(16),
+    SquareControl(17),
+    SquareControl(18),
+    SquareControl(19),
+    SquareControl(20),
+    SquareControl(21),
+    SquareControl(22),
+    SquareControl(23),
+    SquareControl(24),
+    SquareControl(25),
+    SquareControl(26),
+    SquareControl(27),
+    SquareControl(28),
+    SquareControl(29),
+    SquareControl(30),
+    SquareControl(31),
+    SquareControl(32),
+    SquareControl(33),
+    SquareControl(34),
+    SquareControl(35),
+    SquareControl(36),
+    SquareControl(37),
+    SquareControl(38),
+    SquareControl(39),
+    SquareControl(40),
+    SquareControl(41),
+    SquareControl(42),
+    SquareControl(43),
+    SquareControl(44),
+    SquareControl(45),
+    SquareControl(46),
+    SquareControl(47),
+    SquareControl(48),
+    SquareControl(49),
+    SquareControl(50),
+    SquareControl(51),
+    SquareControl(52),
+    SquareControl(53),
+    SquareControl(54),
+    SquareControl(55),
+    SquareControl(56),
+    SquareControl(57),
+    SquareControl(58),
+    SquareControl(59),
+    SquareControl(60),
+    SquareControl(61),
+    SquareControl(62),
+    SquareControl(63)
+};
+
 char ChessUtil::GetPieceType(int piece) {
     return pieceMapping[piece];
 };
 
 int ChessUtil::GetRank(int square)
 {
-    return square / 8;
+    return SquareControl::GetRank(square);
 }
 
 int ChessUtil::GetFile(int square)
 {
-    return square % 8;
+    return SquareControl::GetFile(square);
 }
 
 char ChessUtil::GetRankChar(int square)
@@ -223,24 +389,7 @@ int ChessUtil::GetFileFromChar(char file) {
 }
 
 bool ChessUtil::SquareOutbound(int startingSquare, int targetSquare, int offsetType) {
-	if (targetSquare > 63 || targetSquare < 0) return true;
-	if (offsetType < 2) {
-		return ChessUtil::GetRank(startingSquare) != ChessUtil::GetRank(targetSquare);
-	}
-	if (offsetType < 4) {
-		return ChessUtil::GetFile(startingSquare) != ChessUtil::GetFile(targetSquare);
-	}
-	else {
-		bool higher = ChessUtil::GetRank(targetSquare) > ChessUtil::GetRank(startingSquare);
-		bool lower = ChessUtil::GetRank(targetSquare) < ChessUtil::GetRank(startingSquare);
-		bool righter = ChessUtil::GetFile(targetSquare) > ChessUtil::GetFile(startingSquare);
-		bool lefter = ChessUtil::GetFile(targetSquare) < ChessUtil::GetFile(startingSquare);
-		if (offsetType == 4) return !(lower && lefter);
-		if (offsetType == 5) return !(lower && righter);
-		if (offsetType == 6) return !(higher && lefter);
-		if (offsetType == 7) return !(higher && righter);
-	}
-	return false;
+	return SquareControl::SquareOutbound(startingSquare, targetSquare, offsetType);
 }
 
 bool ChessUtil::IsEmpty(int piece)
