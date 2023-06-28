@@ -11,6 +11,7 @@ SquareControl::SquareControl(int square){
 			bool lefter = SquareControl::GetFile(knight[i]) < SquareControl::GetFile(square);
 			bool lower = SquareControl::GetRank(knight[i]) < SquareControl::GetRank(square);
 			if (lefter && lower) {
+                //std::cout << "Knight square (" << square << "): " << knight[i] << std::endl;
                 knightSquare.push_back(knight[i]);
             }
 		}
@@ -18,6 +19,7 @@ SquareControl::SquareControl(int square){
 			bool righter = SquareControl::GetFile(knight[i]) > SquareControl::GetFile(square);
 			bool lower = SquareControl::GetRank(knight[i]) < SquareControl::GetRank(square);
 			if (righter && lower) {
+                //std::cout << "Knight square (" << square << "): " << knight[i] << std::endl;
                 knightSquare.push_back(knight[i]);
             }
 		}
@@ -25,6 +27,7 @@ SquareControl::SquareControl(int square){
 			bool lefter = SquareControl::GetFile(knight[i]) < SquareControl::GetFile(square);
 			bool higher = SquareControl::GetRank(knight[i]) > SquareControl::GetRank(square);
 			if (lefter && higher) {
+                //std::cout << "Knight square (" << square << "): " << knight[i] << std::endl;
                 knightSquare.push_back(knight[i]);
             }
 		}
@@ -32,6 +35,7 @@ SquareControl::SquareControl(int square){
 			bool righter = SquareControl::GetFile(knight[i]) > SquareControl::GetFile(square);
 			bool higher = SquareControl::GetRank(knight[i]) > SquareControl::GetRank(square);
 			if (righter && higher) {
+                //std::cout << "Knight square (" << square << "): " << knight[i] << std::endl;
                 knightSquare.push_back(knight[i]);
             }
 		}
@@ -101,6 +105,23 @@ std::string SquareControl::toString()
     return result;
 }
 
+std::vector<int> SquareControl::GetKnightSquare(){
+    return knightSquare;
+}
+
+std::vector<int> SquareControl::GetSlidingSquare(int offsetType){
+    return slidingSquare[offsetType];
+}
+
+std::vector<int> SquareControl::GetKingSquare(){
+    return kingSquare;
+}
+
+std::vector<int> SquareControl::GetPawnSquare(bool isAbove){
+    if(isAbove) return pawnSquareAbove;
+    return pawnSquareBelow;
+}
+
 int SquareControl::GetRank(int square)
 {
     return square / 8;
@@ -110,7 +131,6 @@ int SquareControl::GetFile(int square)
 {
     return square % 8;
 }
-
 
 bool SquareControl::SquareOutbound(int startingSquare, int targetSquare, int offsetType) {
 	if (targetSquare > 63 || targetSquare < 0) return true;

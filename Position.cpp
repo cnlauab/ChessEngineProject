@@ -68,6 +68,7 @@ Position::Position(Position& currPosition, Move& move){
 	}
 	pieceLocation = currPosition.pieceLocation;
 	castlingQuota = currPosition.castlingQuota;
+	pieceOnBoard = currPosition.pieceOnBoard;
 
 	MovePiece(move);
 
@@ -191,7 +192,17 @@ void Position::MovePiece(Move& move)
 	position[move.from] = 99;
 	if(move.takenPiece != 99) {
 		pieceLocation[move.takenPiece] = 99;
+		//std::cout << "Taken: " << move.takenPiece <<std::endl;
+		//for(int piece : pieceOnBoard){
+		//	std::cout << piece <<",";
+		//}
+		//std::cout << std::endl;
 		remove(pieceOnBoard.begin(),pieceOnBoard.end(),move.takenPiece);
+		pieceOnBoard.pop_back();
+		//for(int piece : pieceOnBoard){
+		//	std::cout << piece <<",";
+		//}
+		//std::cout << std::endl;
 		halfmove = 0;
 	}
 	pieceLocation[position[move.to]] = move.to;
@@ -201,6 +212,8 @@ void Position::MovePiece(Move& move)
 		halfmove = 0;
 		if (whiteTurn) {
 			if (move.to == enPassantSquare) {
+				remove(pieceOnBoard.begin(),pieceOnBoard.end(),position[move.to - 8]);
+				pieceOnBoard.pop_back();
 				pieceLocation[position[move.to - 8]] = 99;
 				position[move.to - 8] = 99;
 			}
@@ -210,6 +223,8 @@ void Position::MovePiece(Move& move)
 		}
 		else {
 			if (move.to == enPassantSquare) {
+				remove(pieceOnBoard.begin(),pieceOnBoard.end(),position[move.to + 8]);
+				pieceOnBoard.pop_back();
 				pieceLocation[position[move.to + 8]] = 99;
 				position[move.to + 8] = 99;
 			}
@@ -220,18 +235,22 @@ void Position::MovePiece(Move& move)
 		//std::cout << "Pawn " << position[move.to] << " promote to ";
 		if(move.promotionType == 'Q'){//Promotion
 			remove(pieceOnBoard.begin(),pieceOnBoard.end(),position[move.to]);
+			pieceOnBoard.pop_back();
 			position[move.to] +=  (whiteTurn) ? -16 : 16;
 			pieceOnBoard.push_back(position[move.to]);
 		}else if(move.promotionType == 'B'){
 			remove(pieceOnBoard.begin(),pieceOnBoard.end(),position[move.to]);
+			pieceOnBoard.pop_back();
 			position[move.to] +=  (whiteTurn) ? -24 : 24;
 			pieceOnBoard.push_back(position[move.to]);
 		}else if(move.promotionType == 'R'){
 			remove(pieceOnBoard.begin(),pieceOnBoard.end(),position[move.to]);
+			pieceOnBoard.pop_back();
 			position[move.to] +=  (whiteTurn) ? -32 : 32;
 			pieceOnBoard.push_back(position[move.to]);
 		}else if(move.promotionType == 'N'){
 			remove(pieceOnBoard.begin(),pieceOnBoard.end(),position[move.to]);
+			pieceOnBoard.pop_back();
 			position[move.to] +=  (whiteTurn) ? -40 : 40;
 			pieceOnBoard.push_back(position[move.to]);
 		}

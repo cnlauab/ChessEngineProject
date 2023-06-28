@@ -15,6 +15,7 @@ public :
     int fullmove = 0;
 	int position[64];
 
+    bool checked;
     Move prevMove;
     std::vector<int> pieceOnBoard;
 

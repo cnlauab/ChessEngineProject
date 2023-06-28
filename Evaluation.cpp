@@ -35,8 +35,6 @@ void Evaluation::BFS(Node* root){
     std::vector<Node*> visited;
     int level = 0;
     std::unordered_map<int,int> resultMap;
-
-    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     
     Node* currentNode = root; 
     do{
@@ -58,8 +56,4 @@ void Evaluation::BFS(Node* root){
     for (auto const& item : resultMap) {
         std::cout<< "Level " << item.first << ": " << item.second <<std::endl;
     }
-    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-
-    std::cout << "Time elapsed = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[Milliseconds]" << std::endl;
-    
 }

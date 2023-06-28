@@ -2,100 +2,58 @@
 
 bool LegalChecker::IsCheckedAt(int target, Position& position, bool white){
     //Knight squares
-	int targets[8] = { target - 10, target - 17, target - 15, target - 6, target + 6, target + 15, target + 17, target + 10 };
-	for (int i = 0; i < 8; i++)
-	{
-		if (targets[i] > 63 || targets[i] < 0) continue;
-		if (i == 0 || i == 1) {
-			bool lefter = ChessUtil::GetFile(targets[i]) < ChessUtil::GetFile(target);
-			bool lower = ChessUtil::GetRank(targets[i]) < ChessUtil::GetRank(target);
-			if (lefter && lower) {
-                if(ChessUtil::IsKnight(position.position[targets[i]]) && white != ChessUtil::IsWhite(position.position[targets[i]])){
-                    //std::cout << "Knight Check " << targets[i] << std::endl;
-                    return true;
-                }
-            }
-		}
-		else if (i == 2 || i == 3) {
-			bool righter = ChessUtil::GetFile(targets[i]) > ChessUtil::GetFile(target);
-			bool lower = ChessUtil::GetRank(targets[i]) < ChessUtil::GetRank(target);
-			if (righter && lower) {
-                if(ChessUtil::IsKnight(position.position[targets[i]]) && white != ChessUtil::IsWhite(position.position[targets[i]])){
-                    //std::cout << "Knight Check " << targets[i] << std::endl;
-                    return true;
-                }
-            }
-		}
-		else if (i == 4 || i == 5) {
-			bool lefter = ChessUtil::GetFile(targets[i]) < ChessUtil::GetFile(target);
-			bool higher = ChessUtil::GetRank(targets[i]) > ChessUtil::GetRank(target);
-			if (lefter && higher) {
-                if(ChessUtil::IsKnight(position.position[targets[i]]) && white != ChessUtil::IsWhite(position.position[targets[i]])){
-                    //std::cout << "Knight Check " << targets[i] << std::endl;
-                    return true;
-                }
-            }
-		}
-		else if (i == 6 || i == 7) {
-			bool righter = ChessUtil::GetFile(targets[i]) > ChessUtil::GetFile(target);
-			bool higher = ChessUtil::GetRank(targets[i]) > ChessUtil::GetRank(target);
-			if (righter && higher) {
-                if(ChessUtil::IsKnight(position.position[targets[i]]) && white != ChessUtil::IsWhite(position.position[targets[i]])){
-                    //std::cout << "Knight Check " << targets[i] << std::endl;
-                    return true;
-                }
-            }
-		}
-	}
+    std::vector<int> knightSquare = ChessUtil::squareControlMap[target].GetKnightSquare();
+    for(int i = 0; i < knightSquare.size(); i++){
+        int piece = position.ReadPosition(knightSquare[i]);
+        bool oppositeColor = white != ChessUtil::IsWhite(piece);
+        bool isKnight = ChessUtil::IsKnight(piece);
+        if(isKnight && oppositeColor){
+            //std::cout << "Knight Check " << targets[i] << std::endl;
+            return true;
+        }
+    }
+
     //Sliding squares
     for(int i = 0; i < 8; ++i){
-        int offset = ChessUtil::offsets[i];
-		int square = target + offset;
-		bool outOfBound = ChessUtil::SquareOutbound(target, square, i);
-        
-        if(!outOfBound && ChessUtil::IsKing(position.position[square]) && white != ChessUtil::IsWhite(position.position[square])) {
+        std::vector<int> slidingSquare = ChessUtil::squareControlMap[target].GetSlidingSquare(i);
+        if(slidingSquare.size() == 0) continue;
+        if(!position.TargetIsEmpty(slidingSquare[0]) && ChessUtil::IsKing(position.ReadPosition(slidingSquare[0])) && white != ChessUtil::IsWhite(position.ReadPosition(slidingSquare[0]))) {
             //std::cout << "King at " << target << " King Check " << square << std::endl;
             return true;
         }
-
-		while (!outOfBound) {
-            //std::cout << offset << " Sliding Check " << position.position[square] << " at " << square << std::endl;
-			if(i>=0 && i<=3){
-                if((ChessUtil::IsRook(position.position[square]) || ChessUtil::IsQueen(position.position[square])) && white != ChessUtil::IsWhite(position.position[square])) {
-                    //std::cout << "Rook or Queen Check " << square << std::endl;
-                    return true;
+        for(int j = 0; j < slidingSquare.size(); j++){
+            int piece = position.ReadPosition(slidingSquare[j]);
+            bool occupied = !position.TargetIsEmpty(slidingSquare[j]);
+            bool oppositeColor = white != ChessUtil::IsWhite(piece);
+            if(occupied && !oppositeColor) break;
+            if(occupied && oppositeColor){
+                if(i>=0 && i<=3){
+                    if((ChessUtil::IsRook(piece) || ChessUtil::IsQueen(piece))) {
+                        //std::cout << "Rook or Queen Check " << square << std::endl;
+                        return true;
+                    }
+                    break;
+                }else{
+                    if((ChessUtil::IsBishop(piece) || ChessUtil::IsQueen(piece))) {
+                        //std::cout << "Bishop or Queen Check " << square << std::endl;
+                        return true;
+                    }
+                    break;
                 }
-                if(!position.TargetIsEmpty(square)) break;
-            }else{
-                if((ChessUtil::IsBishop(position.position[square]) || ChessUtil::IsQueen(position.position[square])) && white != ChessUtil::IsWhite(position.position[square])) {
-                    //std::cout << "Bishop or Queen Check " << square << std::endl;
-                    return true;
-                }
-                if(!position.TargetIsEmpty(square)) break;
             }
-			square += offset;
-			outOfBound = ChessUtil::SquareOutbound(target, square, i);
-		}
+        }
     }
+
     //Pawn squares
-    int square1 = 99;
-    int square2 = 99;
-    if(!white){
-        if(ChessUtil::GetFile(target) != 0) square1 = target + 7;
-        if(ChessUtil::GetFile(target) != 7) square2 = target + 9;
-    }else{
-        if(ChessUtil::GetFile(target) != 0) square1 = target - 9;
-        if(ChessUtil::GetFile(target) != 7) square2 = target - 7;
-    }
-    int piece1 = position.ReadPosition(square1);
-    int piece2 = position.ReadPosition(square2);
-    if(!ChessUtil::IsEmpty(square1) && ChessUtil::IsPawn(position.ReadPosition(square1)) && !ChessUtil::IsWhite(position.ReadPosition(square1))) {
-        //std::cout << "Pawn Check " << square1 << std::endl;
-        return true;
-    }
-    if(!ChessUtil::IsEmpty(square2) && ChessUtil::IsPawn(position.ReadPosition(square2)) && !ChessUtil::IsWhite(position.ReadPosition(square2))) {
-        //std::cout << "Pawn Check " << square2 << std::endl;
-        return true;
+    std::vector<int> pawnSquare = ChessUtil::squareControlMap[target].GetPawnSquare(white);
+    for(int i = 0; i < pawnSquare.size(); i++){
+        int piece = position.ReadPosition(pawnSquare[i]);
+        bool oppositeColor = white != ChessUtil::IsWhite(piece);
+        bool isPawn = ChessUtil::IsPawn(piece);
+        if(oppositeColor && isPawn){
+            //std::cout << "Pawn Check " << square1 << std::endl;
+            return true;
+        }
     }
 
     return false;

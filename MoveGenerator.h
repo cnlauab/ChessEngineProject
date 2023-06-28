@@ -22,8 +22,6 @@ public:
 	static std::vector<Move> GeneratePawnMoves(int& piece, Position& position);
 	static std::vector<Move> GenerateKingMoves(int& piece, Position& position);
 
-	static std::vector<Move> GenerateCastlingMoves(int& piece, Position& position);
-
 	static std::vector<int> GenerateAllControlSquare(Position& position, bool white);
 	static std::vector<int> GenerateControlSquare(int& piece, Position& position);
 	static std::vector<int> GenerateSlidingControlSquare(int& piece, Position& position);
