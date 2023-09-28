@@ -315,6 +315,7 @@ void Position::MovePiece(Move& move)
 				ep = true;
 				capture = true;
 			}
+			enPassantSquare = 99;
 			if (move.to - move.from == 16) {
 				enPassantSquare = move.from + 8;
 			}
@@ -328,6 +329,7 @@ void Position::MovePiece(Move& move)
 				ep = true;
 				capture = true;
 			}
+			enPassantSquare = 99;
 			if (move.to - move.from == -16) {
 				enPassantSquare = move.from - 8;
 			}
@@ -371,6 +373,7 @@ void Position::MovePiece(Move& move)
 					blackPieceOnBoard.push_back(position[move.to]);
 				}
 			}
+			if(enPassantSquare != 99) enPassantSquare = 99;
 		}
 		//std::cout << position[move.to] << std::endl;
 	}else{

@@ -43,6 +43,7 @@ void Evaluation::BFS(Node* root){
     std::unordered_map<int,int> checkMap;
     std::unordered_map<int,int> doubleCheckMap;
     std::unordered_map<int,int> discoverCheckMap;
+    std::unordered_map<int,int> checkmateMap;
     
     Node* currentNode = root; 
     do{
@@ -64,6 +65,7 @@ void Evaluation::BFS(Node* root){
         if(currentNode->position->check) checkMap[levelQueue.front()] += 1;
         if(currentNode->position->discoverCheck) discoverCheckMap[levelQueue.front()] += 1;
         if(currentNode->position->doubleCheck) doubleCheckMap[levelQueue.front()] += 1;
+        if(currentNode->childrenNodes.size() == 0) checkmateMap[levelQueue.front()] += 1;
         levelQueue.pop();
 
     }while(queue.size() > 0 || currentNode->childrenNodes.size() > 0);
@@ -77,6 +79,7 @@ void Evaluation::BFS(Node* root){
         << " \tChecks: " << checkMap[item.first] 
         << " \tDiscovery Checks: " << discoverCheckMap[item.first] 
         << " \tDouble Checks: " << doubleCheckMap[item.first] 
+        << " \tCheckmates: " << checkmateMap[item.first] 
         <<std::endl;
     }
 }
