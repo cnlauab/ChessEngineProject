@@ -447,9 +447,10 @@ void Position::MovePiece(Move& move)
 	}
 	if(cb.size() > 0) {
 		check = true;
-		if(cb.size() == 1 && move.piece != cb[0]) discoverCheck = true;
-		if(cb.size() > 1){
+		if(cb.size() == 1 && move.piece != cb[0]) {
 			discoverCheck = true;
+		}
+		if(cb.size() > 1){
 			doubleCheck = true;
 		}
 	}
