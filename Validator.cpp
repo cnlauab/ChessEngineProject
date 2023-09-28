@@ -1,25 +1,25 @@
 #include "Validator.h"
 
-std::vector<int> Validator::GetMoveStringArray(std::string input)
-{//TODO
-	std::vector<int> result;
+std::vector<short> Validator::GetMoveStringArray(std::string input)
+{
+	std::vector<short> result;
 	if (input.length() < 2) return result;
 
 	char first_letter = input[0];
 	if (isPieceChar(first_letter)) {
-		result.push_back((int)first_letter);
+		result.push_back((short)first_letter);
 	}
 	else if (isFileChar(first_letter)) {
-		result.push_back((int)'p');
+		result.push_back((short)'p');
 	}
 	else if (isCastleChar(first_letter)) {
-		result.push_back((int)'K');
+		result.push_back((short)'K');
 	}
 
 	return result;
 }
 
-bool Validator::ValidMove(std::string input, char& pieceType, int& target, int& file, int& rank, char& promotionType, bool& isWhite)
+bool Validator::ValidMove(std::string input, char& pieceType, short& target, short& file, short& rank, char& promotionType, bool& isWhite)
 {
 	if (input.length() < 2) return false;
 	if (input == "Resign" || input == "resign") return true;
@@ -69,7 +69,7 @@ bool Validator::isCastleChar(char c)
 }
 
 //Move Checker
-bool Validator::isCastlingMove(std::string input, int& target, bool& isWhite)
+bool Validator::isCastlingMove(std::string input, short& target, bool& isWhite)
 {
 	if (isWhite) {
 		if (input == "O-O-O" || input == "o-o-o" || input == "0-0-0") target = 2;
@@ -82,7 +82,7 @@ bool Validator::isCastlingMove(std::string input, int& target, bool& isWhite)
 	return input == "O-O-O" || input == "o-o-o" || input == "0-0-0" || input == "O-O" || input == "o-o" || input == "0-0";
 }
 
-bool Validator::isValidPawnMove(std::string input, int& target, char& promotionType)
+bool Validator::isValidPawnMove(std::string input, short& target, char& promotionType)
 {
 	char second_letter = input[1];
 	if (isRankChar(second_letter)) {
@@ -107,7 +107,7 @@ bool Validator::isValidPawnMove(std::string input, int& target, char& promotionT
 	return false;
 }
 
-bool Validator::isValidPieceMove(std::string input, int& target, int& file, int& rank)
+bool Validator::isValidPieceMove(std::string input, short& target, short& file, short& rank)
 {
 	char second_letter = input[1];
 	char third_letter = input[2];
@@ -186,20 +186,20 @@ bool Validator::isValidPieceMove(std::string input, int& target, int& file, int&
 }
 
 //Next Letter Checker
-bool Validator::NextTwoLetterIsSquare(std::string input, int nextLetterIndex)
+bool Validator::NextTwoLetterIsSquare(std::string input, short nextLetterIndex)
 {
 	if (input.length() <= nextLetterIndex + 1) return false;
 	return isFileChar(input[nextLetterIndex]) && isRankChar(input[nextLetterIndex + 1]);
 }
 
-bool Validator::NextLetterIsEnding(std::string input, int nextLetterIndex)
+bool Validator::NextLetterIsEnding(std::string input, short nextLetterIndex)
 {
 	if (input.length() == nextLetterIndex) return true;
 	if ((input[nextLetterIndex] == '+' || input[nextLetterIndex] == '#') && input.length() == nextLetterIndex + 1) return true;
 	return false;
 }
 
-bool Validator::NextLetterIsPromotion(std::string input, int nextLetterIndex)
+bool Validator::NextLetterIsPromotion(std::string input, short nextLetterIndex)
 {
 	char nextLetter = input[nextLetterIndex];
 	if (input.length() > nextLetterIndex + 1 && nextLetter == '=' && isPieceChar(input[nextLetterIndex + 1]) && NextLetterIsEnding(input, nextLetterIndex + 2)) return true;

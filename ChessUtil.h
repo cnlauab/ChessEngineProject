@@ -7,33 +7,33 @@
 
 class ChessUtil {
 public:
-    static std::unordered_map<int, char> pieceMapping;
-	static std::unordered_map<int, int> pieceValueMapping;
-    static char GetPieceType(int piece);
+    static std::unordered_map<short, char> pieceMapping;
+	static std::unordered_map<short, int> pieceValueMapping;
+    static char GetPieceType(short piece);
 
 	static char file[8];
 	static char rank[8];
-	static int offsets[8];
-	static std::unordered_map <std::string, int> squareToIndexMapping;
+	static short offsets[8];
+	static std::unordered_map <std::string, short> squareToIndexMapping;
 
 	static SquareControl squareControlMap[64];
 
-	static int GetRank(int square);
-	static int GetFile(int square);
-	static char GetRankChar(int square);
-	static char GetFileChar(int square);
-	static std::string SquareToString(int square);
-	static int StringToSquare(std::string squareString);
-	static int GetRankFromChar(char rank);
-	static int GetFileFromChar(char file);
-	static bool SquareOutbound(int startingSquare, int targetSquare, int offsetType);
+	static short GetRank(short square);
+	static short GetFile(short square);
+	static char GetRankChar(short square);
+	static char GetFileChar(short square);
+	static std::string SquareToString(short square);
+	static short StringToSquare(std::string squareString);
+	static short GetRankFromChar(char rank);
+	static short GetFileFromChar(char file);
+	static bool SquareOutbound(short startingSquare, short targetSquare, short offsetType);
 
-	static bool IsEmpty(int piece);
-	static bool IsWhite(int piece);
-	static bool IsPawn(int piece);
-	static bool IsQueen(int piece);
-	static bool IsBishop(int piece);
-	static bool IsKnight(int piece);
-	static bool IsKing(int piece);
-	static bool IsRook(int piece);
+	static bool IsEmpty(short piece);
+	static bool IsWhite(short piece);
+	static bool IsPawn(short piece);
+	static bool IsQueen(short piece);
+	static bool IsBishop(short piece);
+	static bool IsKnight(short piece);
+	static bool IsKing(short piece);
+	static bool IsRook(short piece);
 };

@@ -35,6 +35,59 @@ void Evaluation::BFS(Node* root){
     std::vector<Node*> visited;
     int level = 0;
     std::unordered_map<int,int> resultMap;
+
+    std::unordered_map<int,int> epMap;
+    std::unordered_map<int,int> castleMap;
+    std::unordered_map<int,int> promotionMap;
+    std::unordered_map<int,int> captureMap;
+    std::unordered_map<int,int> checkMap;
+    std::unordered_map<int,int> doubleCheckMap;
+    std::unordered_map<int,int> discoverCheckMap;
+    
+    Node* currentNode = root; 
+    do{
+        for(Node* child : currentNode->childrenNodes){
+            queue.push(child);
+            levelQueue.push(level + 1);
+        }
+
+        visited.push_back(currentNode);
+        currentNode = queue.front();
+        queue.pop();
+
+        level = levelQueue.front();
+        resultMap[levelQueue.front()] += 1;
+        if(currentNode->position->ep) epMap[levelQueue.front()] += 1;
+        if(currentNode->position->castle) castleMap[levelQueue.front()] += 1;
+        if(currentNode->position->promotion) promotionMap[levelQueue.front()] += 1;
+        if(currentNode->position->capture) captureMap[levelQueue.front()] += 1;
+        if(currentNode->position->check) checkMap[levelQueue.front()] += 1;
+        if(currentNode->position->discoverCheck) discoverCheckMap[levelQueue.front()] += 1;
+        if(currentNode->position->doubleCheck) doubleCheckMap[levelQueue.front()] += 1;
+        levelQueue.pop();
+
+    }while(queue.size() > 0 || currentNode->childrenNodes.size() > 0);
+
+    for (auto const& item : resultMap) {
+        std::cout<< "Level " << item.first << ": " << item.second << "\t"
+        << " \tCaptures: " << captureMap[item.first] 
+        << " \tE.p.: " << epMap[item.first] 
+        << " \tCastles: " << castleMap[item.first] 
+        << " \tPromotions: " << promotionMap[item.first] 
+        << " \tChecks: " << checkMap[item.first] 
+        << " \tDiscovery Checks: " << discoverCheckMap[item.first] 
+        << " \tDouble Checks: " << doubleCheckMap[item.first] 
+        <<std::endl;
+    }
+}
+
+void Evaluation::PossiblePositionsAfterMoves(Node* root, int numOfMoves){
+    std::queue<Node*> queue;
+    std::queue<int> levelQueue;
+    std::vector<Node*> visited;
+    int level = 0;
+    std::unordered_map<int,int> resultMap;
+    std::unordered_map<Node*,Node*> pathMap;
     
     Node* currentNode = root; 
     do{

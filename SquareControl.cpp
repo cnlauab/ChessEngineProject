@@ -1,9 +1,18 @@
 #include "SquareControl.h"
 
-SquareControl::SquareControl(int square){
+SquareControl::SquareControl(short square){
     //std::cout << "Square Control Constructed " << square << std::endl;
     //Knight squares
-	int knight[8] = { square - 10, square - 17, square - 15, square - 6, square + 6, square + 15, square + 17, square + 10 };
+	short starting1 = square - 10;
+	short starting2 = square - 17;
+	short starting3 = square - 15;
+	short starting4 = square - 6;
+	short starting5 = square + 6;
+	short starting6 = square + 15;
+	short starting7 = square + 17;
+	short starting8 = square + 10;
+	short knight[8] = { starting1, starting2, starting3, starting4, starting5, starting6, starting7, starting8 };
+	//short knight[8] = { square - 10, square - 17, square - 15, square - 6, square + 6, square + 15, square + 17, square + 10 };
 	for (int i = 0; i < 8; i++)
 	{
 		if (knight[i] > 63 || knight[i] < 0) continue;
@@ -41,10 +50,10 @@ SquareControl::SquareControl(int square){
 		}
     }
     //Sliding squares and King squares and Pawn squares
-    int offsets[8] = {-1,1,-8,8,-9,-7,7,9};
+    short offsets[8] = {-1,1,-8,8,-9,-7,7,9};
     for(int i = 0; i < 8; ++i){
-        int offset = offsets[i];
-		int target = square + offset;
+        short offset = offsets[i];
+		short target = square + offset;
 		bool outOfBound = SquareControl::SquareOutbound(square, target, i);
         
         if(!outOfBound) {
@@ -72,67 +81,77 @@ std::string SquareControl::toString()
 {
     std::string result = "";
     result += "Kight Squares: ";
-    for(int square : knightSquare) {
+    for(short square : knightSquare) {
         result += std::to_string(square);
         result += " ";
     }
     result += "\n";
     result += "Sliding Squares: ";
     for(int i = 0; i < 8; i++){
-        for(int square : slidingSquare[i]) {
+        for(short square : slidingSquare[i]) {
             result += std::to_string(square);
             result += " ";
         }
         result += "\n";
     }
     result += "King Squares: ";
-    for(int square : kingSquare) {
+    for(short square : kingSquare) {
         result += std::to_string(square);
         result += " ";
     }
     result += "\n";
     result += "Pawn(Above) Squares: ";
-    for(int square : pawnSquareAbove) {
+    for(short square : pawnSquareAbove) {
         result += std::to_string(square);
         result += " ";
     }
     result += "\n";
     result += "Pawn(Below) Squares: ";
-    for(int square : pawnSquareBelow) {
+    for(short square : pawnSquareBelow) {
         result += std::to_string(square);
         result += " ";
     }
     return result;
 }
 
-std::vector<int> SquareControl::GetKnightSquare(){
+std::vector<short> SquareControl::GetKnightSquare(){
     return knightSquare;
 }
 
-std::vector<int> SquareControl::GetSlidingSquare(int offsetType){
+std::vector<short> SquareControl::GetSlidingSquare(int offsetType){
     return slidingSquare[offsetType];
 }
 
-std::vector<int> SquareControl::GetKingSquare(){
+std::vector<short> SquareControl::GetKingSquare(){
     return kingSquare;
 }
 
-std::vector<int> SquareControl::GetPawnSquare(bool isAbove){
+std::vector<short> SquareControl::GetPawnSquare(bool isAbove){
     if(isAbove) return pawnSquareAbove;
     return pawnSquareBelow;
 }
 
-int SquareControl::GetRank(int square)
+bool SquareControl::OnSameLine(short square){
+    for(int i = 0; i < 8; i++){
+        if(slidingSquare[i].size() == 0) continue;
+        for(int j = 0; j < slidingSquare[i].size(); j++){
+            if(square == slidingSquare[i][j]) return true;
+        }
+    }
+    return false;
+}
+
+int SquareControl::GetRank(short square)
 {
     return square / 8;
 }
 
-int SquareControl::GetFile(int square)
+int SquareControl::GetFile(short square)
 {
     return square % 8;
 }
 
-bool SquareControl::SquareOutbound(int startingSquare, int targetSquare, int offsetType) {
+bool SquareControl::SquareOutbound(short startingSquare, short targetSquare, short offsetType) {
 	if (targetSquare > 63 || targetSquare < 0) return true;
 	if (offsetType < 2) {
 		return SquareControl::GetRank(startingSquare) != SquareControl::GetRank(targetSquare);

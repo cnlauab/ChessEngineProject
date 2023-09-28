@@ -5,27 +5,27 @@
 
 class SquareControl {
 public:
-    std::vector<int> knightSquare;
+    std::vector<short> knightSquare;
 
-    std::vector<int> slidingSquare[8];
+    std::vector<short> slidingSquare[8];
 
-    std::vector<int> kingSquare;
+    std::vector<short> kingSquare;
     
-    std::vector<int> pawnSquareAbove;
-    std::vector<int> pawnSquareBelow;
+    std::vector<short> pawnSquareAbove;
+    std::vector<short> pawnSquareBelow;
 
     //Constructor
-    SquareControl(int square);
+    SquareControl(short square);
     //Member
     std::string toString();
-    std::vector<int> GetKnightSquare();
-    std::vector<int> GetSlidingSquare(int offsetType);
-    std::vector<int> GetKingSquare();
-    std::vector<int> GetPawnSquare(bool isAbove);
+    std::vector<short> GetKnightSquare();
+    std::vector<short> GetSlidingSquare(int offsetType);
+    std::vector<short> GetKingSquare();
+    std::vector<short> GetPawnSquare(bool isAbove);
 
-    bool OnSameLine(int square);
+    bool OnSameLine(short square);
     //Static
-	static int GetRank(int square);
-	static int GetFile(int square);
-	static bool SquareOutbound(int startingSquare, int targetSquare, int offsetType);
+	static int GetRank(short square);
+	static int GetFile(short square);
+	static bool SquareOutbound(short startingSquare, short targetSquare, short offsetType);
 };

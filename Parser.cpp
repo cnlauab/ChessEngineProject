@@ -1,6 +1,6 @@
 #include "Parser.h"
 
-void Parser::FenToPosition(std::string fen, int position[]) {
+void Parser::FenToPosition(std::string fen, short position[]) {
 	//int result[64];
 
 	int fenIterator = 0;

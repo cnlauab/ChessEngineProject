@@ -1,5 +1,5 @@
 #include "ChessUtil.h"
-std::unordered_map<int, char> ChessUtil::pieceMapping = {
+std::unordered_map<short, char> ChessUtil::pieceMapping = {
         {-32,'N'},
         {-31,'N'},
         {-30,'N'},
@@ -99,7 +99,7 @@ std::unordered_map<int, char> ChessUtil::pieceMapping = {
         {99,' '}
 };
 
-std::unordered_map<int, int> ChessUtil::pieceValueMapping = {
+std::unordered_map<short, int> ChessUtil::pieceValueMapping = {
         {-32,3},
         {-31,3},
         {-30,3},
@@ -200,9 +200,9 @@ std::unordered_map<int, int> ChessUtil::pieceValueMapping = {
 };
 char ChessUtil::file[8] = { 'a','b','c','d','e','f','g','h' };
 char ChessUtil::rank[8] = { '1','2','3','4','5','6','7','8' };
-int ChessUtil::offsets[8] = { -1,1,-8,8,-9,-7,7,9 };
+short ChessUtil::offsets[8] = { -1,1,-8,8,-9,-7,7,9 };
 
-std::unordered_map <std::string, int> ChessUtil::squareToIndexMapping = {
+std::unordered_map <std::string, short> ChessUtil::squareToIndexMapping = {
     {"a1", 0},
     {"b1", 1},
     {"c1", 2},
@@ -336,31 +336,31 @@ SquareControl ChessUtil::squareControlMap[64] = {
     SquareControl(63)
 };
 
-char ChessUtil::GetPieceType(int piece) {
+char ChessUtil::GetPieceType(short piece) {
     return pieceMapping[piece];
 };
 
-int ChessUtil::GetRank(int square)
+short ChessUtil::GetRank(short square)
 {
     return SquareControl::GetRank(square);
 }
 
-int ChessUtil::GetFile(int square)
+short ChessUtil::GetFile(short square)
 {
     return SquareControl::GetFile(square);
 }
 
-char ChessUtil::GetRankChar(int square)
+char ChessUtil::GetRankChar(short square)
 {
     return rank[GetRank(square)];
 }
 
-char ChessUtil::GetFileChar(int square)
+char ChessUtil::GetFileChar(short square)
 {
     return file[GetFile(square)];
 }
 
-std::string ChessUtil::SquareToString(int square)
+std::string ChessUtil::SquareToString(short square)
 {
     std::string result;
     result.push_back(GetFileChar(square));
@@ -368,66 +368,66 @@ std::string ChessUtil::SquareToString(int square)
     return result;
 }
 
-int ChessUtil::StringToSquare(std::string squareString)
+short ChessUtil::StringToSquare(std::string squareString)
 {
     if(squareString.length() > 2) return 99;
     return squareToIndexMapping[squareString];
 }
 
-int ChessUtil::GetRankFromChar(char rank) {
+short ChessUtil::GetRankFromChar(char rank) {
     for (int i = 0; i < 8; ++i) {
         if (ChessUtil::rank[i] == rank) return i;
     }
     return 99;
 }
 
-int ChessUtil::GetFileFromChar(char file) {
+short ChessUtil::GetFileFromChar(char file) {
     for (int i = 0; i < 8; ++i) {
         if (ChessUtil::file[i] == file) return i;
     }
     return 99;
 }
 
-bool ChessUtil::SquareOutbound(int startingSquare, int targetSquare, int offsetType) {
+bool ChessUtil::SquareOutbound(short startingSquare, short targetSquare, short offsetType) {
 	return SquareControl::SquareOutbound(startingSquare, targetSquare, offsetType);
 }
 
-bool ChessUtil::IsEmpty(int piece)
+bool ChessUtil::IsEmpty(short piece)
 {
     return piece == 99;
 }
 
-bool ChessUtil::IsWhite(int piece)
+bool ChessUtil::IsWhite(short piece)
 {
     return piece < 32;
 }
 
-bool ChessUtil::IsPawn(int piece)
+bool ChessUtil::IsPawn(short piece)
 {
     return (piece >= 8 && piece <= 15) || (piece >= 48 && piece <= 55);
 }
 
-bool ChessUtil::IsQueen(int piece)
+bool ChessUtil::IsQueen(short piece)
 {
     return piece == 3 || piece == 59 || (piece >= -8 && piece <= -1) || (piece >= 64 && piece <= 71);
 }
 
-bool ChessUtil::IsBishop(int piece)
+bool ChessUtil::IsBishop(short piece)
 {
     return piece == 2 || piece == 5 || piece == 58 || piece == 61 || (piece >= -16 && piece <= -9) || (piece >= 72 && piece <= 79);
 }
 
-bool ChessUtil::IsKnight(int piece)
+bool ChessUtil::IsKnight(short piece)
 {
     return piece == 1 || piece == 6 || piece == 57 || piece == 62 || (piece >= -32 && piece <= -25) || (piece >= 88 && piece <= 95);
 }
 
-bool ChessUtil::IsKing(int piece)
+bool ChessUtil::IsKing(short piece)
 {
     return piece == 4 || piece == 60;
 }
 
-bool ChessUtil::IsRook(int piece)
+bool ChessUtil::IsRook(short piece)
 {
     return piece == 0 || piece == 7 || piece == 56 || piece == 63 || (piece >= -24 && piece <= -17) || (piece >= 80 && piece <= 87);
 }

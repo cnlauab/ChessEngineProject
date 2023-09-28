@@ -15,4 +15,5 @@ public:
     static void DeleteTree(Node* root);
 
     static void BFS(Node* root);
+    static void PossiblePositionsAfterMoves(Node* root, int numOfMoves);
 };

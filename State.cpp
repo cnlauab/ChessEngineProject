@@ -20,5 +20,5 @@ std::string State::EndMessage(){
 	if(stalemate) return "Stalemate";
 	if(whiteWon) return "whiteWon";
 	if(blackWon) return "BlackWon";
-	return "Unexpected Ending";
+	return "Game Ended by Program";
 }
