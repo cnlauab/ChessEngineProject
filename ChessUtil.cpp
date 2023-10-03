@@ -319,7 +319,7 @@ short ChessUtil::endGameScoreMap[64] = {
         3,3,3,3,3,3,3,3,
         5,5,5,5,5,5,5,5,
     };
-short ChessUtil::checkScore = 200;
+short ChessUtil::checkScore = 100;
 
 std::unordered_map <std::string, short> ChessUtil::squareToIndexMapping = {
     {"a1", 0},

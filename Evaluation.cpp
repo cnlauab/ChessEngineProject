@@ -2,10 +2,10 @@
 
 Move Evaluation::Evaluate(Position& position){
 	Node* root = new Node(&position);
-	Evaluation::ConstructTree(root, 4);
-    minimax(root, 4, position.whiteTurn);
+	Evaluation::ConstructTree(root, 3);
+    minimax(root, 10, position.whiteTurn);
     Move bestMove = root->bestMove;
-    Evaluation::DeleteTree(root);
+    //Evaluation::DeleteTree(root);
     return bestMove;
 }
 

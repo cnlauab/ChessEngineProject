@@ -1,0 +1,390 @@
+Turn 0
+Black to move
+[r][n][b][q][k][b][n][r] 8
+[p][p][p][p][p][p][p][p] 7
+[ ][ ][ ][ ][ ][ ][ ][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][ ][ ][ ][ ][ ][ ] 3
+[P][P][P][ ][P][P][P][P] 2
+[R][N][B][Q][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq d3 0 0
+Move made: 2d4
+################
+Turn 1
+White to move
+[r][n][b][q][k][b][n][r] 8
+[p][p][p][ ][p][p][p][p] 7
+[ ][ ][ ][ ][ ][ ][ ][ ] 6
+[ ][ ][ ][p][ ][ ][ ][ ] 5
+[ ][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][ ][ ][ ][ ][ ][ ] 3
+[P][P][P][ ][P][P][P][P] 2
+[R][N][B][Q][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+rnbqkbnr/ppp1pppp/8/3p4/3P4/8/PPP1PPPP/RNBQKBNR w KQkq d6 0 1
+Move made: 7d5
+################
+Turn 1
+Black to move
+[r][n][b][q][k][b][n][r] 8
+[p][p][p][ ][p][p][p][p] 7
+[ ][ ][ ][ ][ ][ ][ ][ ] 6
+[ ][ ][ ][p][ ][ ][ ][ ] 5
+[ ][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][ ][ ][ ][ ][ ][ ] 3
+[P][P][P][Q][P][P][P][P] 2
+[R][N][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+rnbqkbnr/ppp1pppp/8/3p4/3P4/8/PPPQPPPP/RNB1KBNR b KQkq - 1 1
+Move made: Q1d2
+################
+Turn 2
+White to move
+[r][n][b][ ][k][b][n][r] 8
+[p][p][p][ ][p][p][p][p] 7
+[ ][ ][ ][q][ ][ ][ ][ ] 6
+[ ][ ][ ][p][ ][ ][ ][ ] 5
+[ ][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][ ][ ][ ][ ][ ][ ] 3
+[P][P][P][Q][P][P][P][P] 2
+[R][N][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+rnb1kbnr/ppp1pppp/3q4/3p4/3P4/8/PPPQPPPP/RNB1KBNR w KQkq - 2 2
+Move made: Q8d6
+################
+Turn 2
+Black to move
+[r][n][b][ ][k][b][n][r] 8
+[p][p][p][ ][p][p][p][p] 7
+[ ][ ][ ][q][ ][ ][ ][ ] 6
+[ ][ ][ ][p][ ][ ][ ][ ] 5
+[ ][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][ ][ ][ ][N][ ][ ] 3
+[P][P][P][Q][P][P][P][P] 2
+[R][N][B][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+rnb1kbnr/ppp1pppp/3q4/3p4/3P4/5N2/PPPQPPPP/RNB1KB1R b KQkq - 3 2
+Move made: N1f3
+################
+Turn 3
+White to move
+[r][ ][b][ ][k][b][n][r] 8
+[p][p][p][n][p][p][p][p] 7
+[ ][ ][ ][q][ ][ ][ ][ ] 6
+[ ][ ][ ][p][ ][ ][ ][ ] 5
+[ ][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][ ][ ][ ][N][ ][ ] 3
+[P][P][P][Q][P][P][P][P] 2
+[R][N][B][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+r1b1kbnr/pppnpppp/3q4/3p4/3P4/5N2/PPPQPPPP/RNB1KB1R w KQkq - 4 3
+Move made: N8d7
+################
+Turn 3
+Black to move
+[r][ ][b][ ][k][b][n][r] 8
+[p][p][p][n][p][p][p][p] 7
+[ ][ ][ ][q][ ][ ][ ][ ] 6
+[ ][ ][ ][p][ ][ ][ ][ ] 5
+[ ][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][Q][ ][ ][N][ ][ ] 3
+[P][P][P][ ][P][P][P][P] 2
+[R][N][B][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+r1b1kbnr/pppnpppp/3q4/3p4/3P4/2Q2N2/PPP1PPPP/RNB1KB1R b KQkq - 5 3
+Move made: Q2c3
+################
+Turn 4
+White to move
+[r][ ][b][ ][k][b][ ][r] 8
+[p][p][p][n][p][p][p][p] 7
+[ ][ ][ ][q][ ][ ][ ][n] 6
+[ ][ ][ ][p][ ][ ][ ][ ] 5
+[ ][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][Q][ ][ ][N][ ][ ] 3
+[P][P][P][ ][P][P][P][P] 2
+[R][N][B][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+r1b1kb1r/pppnpppp/3q3n/3p4/3P4/2Q2N2/PPP1PPPP/RNB1KB1R w KQkq - 6 4
+Move made: N8h6
+################
+Turn 4
+Black to move
+[r][ ][b][ ][k][b][ ][r] 8
+[p][p][p][n][p][p][p][p] 7
+[ ][ ][ ][q][ ][ ][ ][n] 6
+[ ][ ][ ][p][ ][ ][ ][ ] 5
+[ ][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][Q][ ][ ][N][ ][ ] 3
+[P][P][P][B][P][P][P][P] 2
+[R][N][ ][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+r1b1kb1r/pppnpppp/3q3n/3p4/3P4/2Q2N2/PPPBPPPP/RN2KB1R b KQkq - 7 4
+Move made: B1d2
+################
+Turn 5
+White to move
+[r][ ][b][ ][k][b][ ][r] 8
+[ ][p][p][n][p][p][p][p] 7
+[ ][ ][ ][q][ ][ ][ ][n] 6
+[p][ ][ ][p][ ][ ][ ][ ] 5
+[ ][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][Q][ ][ ][N][ ][ ] 3
+[P][P][P][B][P][P][P][P] 2
+[R][N][ ][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+r1b1kb1r/1ppnpppp/3q3n/p2p4/3P4/2Q2N2/PPPBPPPP/RN2KB1R w KQkq a6 0 5
+Move made: 7a5
+################
+Turn 5
+Black to move
+[r][ ][b][ ][k][b][ ][r] 8
+[ ][p][p][n][p][p][p][p] 7
+[ ][ ][ ][q][ ][ ][ ][n] 6
+[p][ ][ ][p][ ][ ][ ][ ] 5
+[P][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][Q][ ][ ][N][ ][ ] 3
+[ ][P][P][B][P][P][P][P] 2
+[R][N][ ][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+r1b1kb1r/1ppnpppp/3q3n/p2p4/P2P4/2Q2N2/1PPBPPPP/RN2KB1R b KQkq a3 0 5
+Move made: 2a4
+################
+Turn 6
+White to move
+[ ][ ][b][ ][k][b][ ][r] 8
+[ ][p][p][n][p][p][p][p] 7
+[r][ ][ ][q][ ][ ][ ][n] 6
+[p][ ][ ][p][ ][ ][ ][ ] 5
+[P][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][Q][ ][ ][N][ ][ ] 3
+[ ][P][P][B][P][P][P][P] 2
+[R][N][ ][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+2b1kb1r/1ppnpppp/r2q3n/p2p4/P2P4/2Q2N2/1PPBPPPP/RN2KB1R w KQk - 1 6
+Move made: R8a6
+################
+Turn 6
+Black to move
+[ ][ ][b][ ][k][b][ ][r] 8
+[ ][p][p][n][p][p][p][p] 7
+[r][ ][ ][q][ ][ ][ ][n] 6
+[p][ ][ ][p][ ][ ][ ][ ] 5
+[P][ ][ ][P][ ][ ][ ][ ] 4
+[R][ ][Q][ ][ ][N][ ][ ] 3
+[ ][P][P][B][P][P][P][P] 2
+[ ][N][ ][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+2b1kb1r/1ppnpppp/r2q3n/p2p4/P2P4/R1Q2N2/1PPBPPPP/1N2KB1R b Kk - 2 6
+Move made: R1a3
+################
+Turn 7
+White to move
+[ ][ ][b][ ][k][b][ ][r] 8
+[ ][p][p][n][p][p][p][p] 7
+[ ][ ][r][q][ ][ ][ ][n] 6
+[p][ ][ ][p][ ][ ][ ][ ] 5
+[P][ ][ ][P][ ][ ][ ][ ] 4
+[R][ ][Q][ ][ ][N][ ][ ] 3
+[ ][P][P][B][P][P][P][P] 2
+[ ][N][ ][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+2b1kb1r/1ppnpppp/2rq3n/p2p4/P2P4/R1Q2N2/1PPBPPPP/1N2KB1R w Kk - 3 7
+Move made: R6c6
+################
+Turn 7
+Black to move
+[ ][ ][b][ ][k][b][ ][r] 8
+[ ][p][p][n][p][p][p][p] 7
+[ ][ ][r][q][ ][ ][ ][n] 6
+[p][ ][ ][p][ ][ ][ ][ ] 5
+[P][ ][ ][P][ ][ ][ ][ ] 4
+[R][ ][ ][Q][ ][N][ ][ ] 3
+[ ][P][P][B][P][P][P][P] 2
+[ ][N][ ][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+2b1kb1r/1ppnpppp/2rq3n/p2p4/P2P4/R2Q1N2/1PPBPPPP/1N2KB1R b Kk - 4 7
+Move made: Q3d3
+################
+Turn 8
+White to move
+[ ][ ][b][ ][k][b][ ][r] 8
+[ ][p][p][n][p][p][ ][p] 7
+[ ][ ][r][q][ ][ ][ ][n] 6
+[p][ ][ ][p][ ][ ][p][ ] 5
+[P][ ][ ][P][ ][ ][ ][ ] 4
+[R][ ][ ][Q][ ][N][ ][ ] 3
+[ ][P][P][B][P][P][P][P] 2
+[ ][N][ ][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+2b1kb1r/1ppnpp1p/2rq3n/p2p2p1/P2P4/R2Q1N2/1PPBPPPP/1N2KB1R w Kk g6 0 8
+Move made: 7g5
+################
+Turn 8
+Black to move
+[ ][ ][b][ ][k][b][ ][r] 8
+[ ][p][p][n][p][p][ ][p] 7
+[ ][ ][r][q][ ][ ][ ][n] 6
+[p][ ][ ][p][ ][ ][p][ ] 5
+[P][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][R][Q][ ][N][ ][ ] 3
+[ ][P][P][B][P][P][P][P] 2
+[ ][N][ ][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+2b1kb1r/1ppnpp1p/2rq3n/p2p2p1/P2P4/2RQ1N2/1PPBPPPP/1N2KB1R b Kk - 1 8
+Move made: R3c3
+################
+Turn 9
+White to move
+[ ][ ][b][ ][k][ ][ ][r] 8
+[ ][p][p][n][p][p][b][p] 7
+[ ][ ][r][q][ ][ ][ ][n] 6
+[p][ ][ ][p][ ][ ][p][ ] 5
+[P][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][R][Q][ ][N][ ][ ] 3
+[ ][P][P][B][P][P][P][P] 2
+[ ][N][ ][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+2b1k2r/1ppnppbp/2rq3n/p2p2p1/P2P4/2RQ1N2/1PPBPPPP/1N2KB1R w Kk - 2 9
+Move made: B8g7
+################
+Turn 9
+Black to move
+[ ][ ][b][ ][k][ ][ ][r] 8
+[ ][p][p][n][p][p][b][p] 7
+[ ][ ][R][q][ ][ ][ ][n] 6
+[p][ ][ ][p][ ][ ][p][ ] 5
+[P][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][ ][Q][ ][N][ ][ ] 3
+[ ][P][P][B][P][P][P][P] 2
+[ ][N][ ][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+2b1k2r/1ppnppbp/2Rq3n/p2p2p1/P2P4/3Q1N2/1PPBPPPP/1N2KB1R b Kk - 0 9
+Move made: R3xc6
+################
+Turn 10
+White to move
+[ ][ ][b][ ][k][ ][ ][r] 8
+[ ][ ][p][n][p][p][b][p] 7
+[ ][ ][p][q][ ][ ][ ][n] 6
+[p][ ][ ][p][ ][ ][p][ ] 5
+[P][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][ ][Q][ ][N][ ][ ] 3
+[ ][P][P][B][P][P][P][P] 2
+[ ][N][ ][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+2b1k2r/2pnppbp/2pq3n/p2p2p1/P2P4/3Q1N2/1PPBPPPP/1N2KB1R w Kk - 0 10
+Move made: b7xc6
+################
+Turn 10
+Black to move
+[ ][ ][b][ ][k][ ][ ][r] 8
+[ ][ ][p][n][p][p][b][p] 7
+[ ][ ][p][q][ ][ ][ ][n] 6
+[p][ ][ ][p][ ][ ][B][ ] 5
+[P][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][ ][Q][ ][N][ ][ ] 3
+[ ][P][P][ ][P][P][P][P] 2
+[ ][N][ ][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+2b1k2r/2pnppbp/2pq3n/p2p2B1/P2P4/3Q1N2/1PP1PPPP/1N2KB1R b Kk - 0 10
+Move made: B2xg5
+################
+Turn 11
+White to move
+[ ][ ][ ][ ][k][ ][ ][r] 8
+[ ][ ][p][n][p][p][b][p] 7
+[b][ ][p][q][ ][ ][ ][n] 6
+[p][ ][ ][p][ ][ ][B][ ] 5
+[P][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][ ][Q][ ][N][ ][ ] 3
+[ ][P][P][ ][P][P][P][P] 2
+[ ][N][ ][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+4k2r/2pnppbp/b1pq3n/p2p2B1/P2P4/3Q1N2/1PP1PPPP/1N2KB1R w Kk - 1 11
+Move made: B8a6
+################
+Turn 11
+Black to move
+[ ][ ][ ][ ][k][ ][ ][r] 8
+[ ][ ][p][n][p][p][b][p] 7
+[b][ ][p][q][ ][ ][ ][n] 6
+[p][ ][ ][p][ ][ ][B][ ] 5
+[P][ ][ ][P][ ][ ][ ][ ] 4
+[ ][ ][ ][ ][Q][N][ ][ ] 3
+[ ][P][P][ ][P][P][P][P] 2
+[ ][N][ ][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+4k2r/2pnppbp/b1pq3n/p2p2B1/P2P4/4QN2/1PP1PPPP/1N2KB1R b Kk - 2 11
+Move made: Q3e3
+################
+Turn 12
+White to move
+[ ][ ][ ][ ][k][ ][ ][r] 8
+[ ][ ][p][n][p][p][b][p] 7
+[b][ ][p][q][ ][ ][ ][ ] 6
+[p][ ][ ][p][ ][ ][B][ ] 5
+[P][ ][ ][P][ ][ ][n][ ] 4
+[ ][ ][ ][ ][Q][N][ ][ ] 3
+[ ][P][P][ ][P][P][P][P] 2
+[ ][N][ ][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+4k2r/2pnppbp/b1pq4/p2p2B1/P2P2n1/4QN2/1PP1PPPP/1N2KB1R w Kk - 3 12
+Move made: N6g4
+################
+Turn 12
+Black to move
+[ ][ ][ ][ ][k][ ][ ][r] 8
+[ ][ ][p][n][p][p][b][p] 7
+[b][ ][p][q][ ][ ][ ][ ] 6
+[p][ ][ ][p][ ][ ][B][ ] 5
+[P][ ][ ][P][ ][ ][n][ ] 4
+[Q][ ][ ][ ][ ][N][ ][ ] 3
+[ ][P][P][ ][P][P][P][P] 2
+[ ][N][ ][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+4k2r/2pnppbp/b1pq4/p2p2B1/P2P2n1/Q4N2/1PP1PPPP/1N2KB1R b Kk - 4 12
+Move made: Q3a3
+################
+Turn 13
+White to move
+[ ][ ][ ][ ][k][ ][ ][r] 8
+[ ][ ][p][n][p][p][b][p] 7
+[b][ ][ ][q][ ][ ][ ][ ] 6
+[p][ ][p][p][ ][ ][B][ ] 5
+[P][ ][ ][P][ ][ ][n][ ] 4
+[Q][ ][ ][ ][ ][N][ ][ ] 3
+[ ][P][P][ ][P][P][P][P] 2
+[ ][N][ ][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+4k2r/2pnppbp/b2q4/p1pp2B1/P2P2n1/Q4N2/1PP1PPPP/1N2KB1R w Kk - 0 13
+Move made: 6c5
+################

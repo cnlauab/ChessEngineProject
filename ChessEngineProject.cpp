@@ -25,8 +25,8 @@ void PrintMoveMade(){
 	cout << endl;
 }
 
-bool IsEnded(std::vector<Move> currLegalMoves){
-	if(currLegalMoves.size() == 0) {//Checkmate or Stalemate
+bool IsEnded(int noOfLegalMoves){
+	if(noOfLegalMoves == 0) {//Checkmate or Stalemate
 		bool isChecked = currentPosition.IsChecked(currentPosition.whiteTurn);
 		if(isChecked){
 			if(currentPosition.whiteTurn){
@@ -44,20 +44,23 @@ bool IsEnded(std::vector<Move> currLegalMoves){
 }
 
 void ComputerTurn(){
-	std::vector<Move> currLegalMoves = MoveGenerator::GenerateAllPossibleMoves(currentPosition);
-	cout << "No. of Legal Moves: " << currLegalMoves.size() << endl;
-	for(Move move : currLegalMoves){
-		cout << move.toSimpleString() << endl;
-	}
-	
-	Debug::MoveSelectionLog(currLegalMoves);
+	//std::vector<Move> currLegalMoves = MoveGenerator::GenerateAllPossibleMoves(currentPosition);
+	//cout << "No. of Legal Moves: " << currLegalMoves.size() << endl;
+	//for(Move move : currLegalMoves){
+	//	cout << move.toSimpleString() << endl;
+	//}
+	//
+	//Debug::MoveSelectionLog(currLegalMoves);
+//
+	//if(IsEnded(currLegalMoves)) return;
+//
+	//short randomNum = rand() % currLegalMoves.size();
+	//cout << "Random number: " << randomNum << endl;
+	//Move extractedMove = currLegalMoves[randomNum];
 
-	if(IsEnded(currLegalMoves)) return;
+	Move extractedMove = Evaluation::Evaluate(currentPosition);
 
-	short randomNum = rand() % currLegalMoves.size();
-	cout << "Random number: " << randomNum << endl;
-	Move extractedMove = currLegalMoves[randomNum];
-
+	if(IsEnded(!extractedMove.isEmpty())) return;
 	currentPosition.MovePiece(extractedMove);
 	moveMade.emplace_back(extractedMove);
 
@@ -75,7 +78,7 @@ void Turn() {
 	std::vector<Move> currLegalMoves = MoveGenerator::GenerateAllPossibleMoves(currentPosition);
 	cout << "No. of Legal Moves: " << currLegalMoves.size() << endl;
 	
-	if(IsEnded(currLegalMoves)) return;
+	if(IsEnded(currLegalMoves.size())) return;
 
 	bool validMoveInput = false;
 	bool selectedMove = false;
@@ -150,31 +153,35 @@ int main()
 	cout << "Score: " << currentPosition.CalculateScore() << endl;
 
 	//Game
-	//Debug::ClearLog();
-	//while (!gameState.Ended() && moveCounter < 2) {
-	//	PrintMoveMade();
-	//	cout << BoardRenderer::positionToString(currentPosition) << endl;
-	//	cout << currentPosition.PositionToFen() << endl;
-	//	if(currentPosition.whiteTurn && whiteIsComp || !currentPosition.whiteTurn && !whiteIsComp){
-	//		ComputerTurn();
-	//		//Turn();
-	//	}else{
-	//		ComputerTurn();
-	//		//Turn();
-	//	}
-	//	Debug::GameLog(currentPosition);
-	//	moveCounter++;
-	//}
+	Debug::ClearLog();
+	while (!gameState.Ended() && moveCounter < 500) {
+		PrintMoveMade();
+		cout << BoardRenderer::positionToString(currentPosition) << endl;
+		cout << currentPosition.PositionToFen() << endl;
+		if(currentPosition.whiteTurn && whiteIsComp || !currentPosition.whiteTurn && !whiteIsComp){
+			ComputerTurn();
+			//Turn();
+		}else{
+			//ComputerTurn();
+			Turn();
+		}
+		Debug::GameLog(currentPosition);
+		moveCounter++;
+	}
 
-	//Evaluation 
-	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+	//Evaluation Test
+	//std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 	
-	Node* root = new Node(&currentPosition);
-	Evaluation::ConstructTree(root, 3);
-	Evaluation::BFS(root);
+	//Node* root = new Node(&currentPosition);
+	//Evaluation::ConstructTree(root, 3);
+	//Evaluation::BFS(root);
+
+	//cout << BoardRenderer::positionToString(currentPosition) << endl;
+	//Move chosenMove = Evaluation::Evaluate(currentPosition);
+	//cout << "Move chosen: " << chosenMove.toString() << endl;
 	
-	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-	std::cout << "Time elapsed = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[Milliseconds]" << std::endl;
+	//std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+	//std::cout << "Time elapsed = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[Milliseconds]" << std::endl;
     
 	//End
 	cout << gameState.EndMessage() << endl;
