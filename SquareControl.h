@@ -13,6 +13,10 @@ public:
     
     std::vector<short> pawnSquareAbove;
     std::vector<short> pawnSquareBelow;
+    short whitePawnPushOneSquare;
+    short blackPawnPushOneSquare;
+    short whitePawnPushTwoSquare;
+    short blackPawnPushTwoSquare;
 
     //Constructor
     SquareControl(short square);
@@ -21,7 +25,7 @@ public:
     std::vector<short> GetKnightSquare();
     std::vector<short> GetSlidingSquare(int offsetType);
     std::vector<short> GetKingSquare();
-    std::vector<short> GetPawnSquare(bool isAbove);
+    std::vector<short> GetPawnSquare(bool upward);
 
     bool OnSameLine(short square);
     //Static

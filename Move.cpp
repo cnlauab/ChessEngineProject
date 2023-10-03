@@ -12,7 +12,7 @@ Move::Move()
 	Move::checkMate = false;
 }
 
-Move::Move(int piece, int starting, int target)
+Move::Move(short piece, short starting, short target)
 {
 	Move::from = starting;
 	Move::to = target;
@@ -27,7 +27,7 @@ Move::Move(int piece, int starting, int target)
 	//std::cout << toString() << std::endl;
 }
 
-Move::Move(int piece, int starting, int target, char promotionType)
+Move::Move(short piece, short starting, short target, char promotionType)
 {
 	Move::from = starting;
 	Move::to = target;

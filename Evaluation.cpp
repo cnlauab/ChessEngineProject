@@ -1,7 +1,12 @@
 #include "Evaluation.h"
 
-float Evaluation::Eval(Position& position){
-    return 1.0;
+Move Evaluation::Evaluate(Position& position){
+	Node* root = new Node(&position);
+	Evaluation::ConstructTree(root, 4);
+    minimax(root, 4, position.whiteTurn);
+    Move bestMove = root->bestMove;
+    Evaluation::DeleteTree(root);
+    return bestMove;
 }
 
 Node* Evaluation::ConstructTree(Node* root, int level){
@@ -65,8 +70,13 @@ void Evaluation::BFS(Node* root){
         if(currentNode->position->check) checkMap[levelQueue.front()] += 1;
         if(currentNode->position->discoverCheck) discoverCheckMap[levelQueue.front()] += 1;
         if(currentNode->position->doubleCheck) doubleCheckMap[levelQueue.front()] += 1;
-        if(currentNode->childrenNodes.size() == 0) checkmateMap[levelQueue.front()] += 1;
+        //if(currentNode->childrenNodes.size() == 0) checkmateMap[levelQueue.front()] += 1;
+        if(currentNode->position->checkmate) checkmateMap[levelQueue.front()] += 1;
         levelQueue.pop();
+
+        //if(currentNode->position->discoverCheck) {
+        //    std::cout << currentNode->position->PositionToFen() << "|| Prev Move: " << currentNode->position->prevMove.toString() << std::endl;
+        //}
 
     }while(queue.size() > 0 || currentNode->childrenNodes.size() > 0);
 
@@ -84,32 +94,30 @@ void Evaluation::BFS(Node* root){
     }
 }
 
-void Evaluation::PossiblePositionsAfterMoves(Node* root, int numOfMoves){
-    std::queue<Node*> queue;
-    std::queue<int> levelQueue;
-    std::vector<Node*> visited;
-    int level = 0;
-    std::unordered_map<int,int> resultMap;
-    std::unordered_map<Node*,Node*> pathMap;
-    
-    Node* currentNode = root; 
-    do{
-        for(Node* child : currentNode->childrenNodes){
-            queue.push(child);
-            levelQueue.push(level + 1);
+short Evaluation::minimax(Node* node, int depth, bool maxingPlayer){
+    if(depth == 0 || node->childrenNodes.size() == 0){
+        return node->score;
+    }
+
+    if(maxingPlayer){
+        short maxEval = -9999;
+        for(Node* child : node->childrenNodes){
+            short eval = minimax(child, depth - 1, false);
+            if(eval > maxEval){
+                maxEval = eval;
+                node->bestMove = child->position->prevMove;
+            }
         }
-
-        visited.push_back(currentNode);
-        currentNode = queue.front();
-        queue.pop();
-
-        level = levelQueue.front();
-        resultMap[levelQueue.front()] += 1;
-        levelQueue.pop();
-
-    }while(queue.size() > 0 || currentNode->childrenNodes.size() > 0);
-
-    for (auto const& item : resultMap) {
-        std::cout<< "Level " << item.first << ": " << item.second <<std::endl;
+        return maxEval;
+    }else{
+        short minEval = 9999;
+        for(Node* child : node->childrenNodes){
+            short eval = minimax(child, depth - 1, true);
+            if(eval < minEval){
+                minEval = eval;
+                node->bestMove = child->position->prevMove;
+            }
+        }
+        return minEval;
     }
 }

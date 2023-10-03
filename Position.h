@@ -27,6 +27,7 @@ public :
     bool check;
     bool doubleCheck;
     bool discoverCheck;
+    bool checkmate;
 
     //States
     Move prevMove;
@@ -51,12 +52,16 @@ public :
 
     bool OpponentCanReach(short target, bool white);
     std::vector<short> GetOpponentCanReach(short target, bool white);
+    std::vector<short> GetFriendlyCanReach(short target, bool attacking);
     std::vector<short> GetCheckedBy(bool white);
     bool IsChecked(bool white);
 
 	//Mutator
 	void MovePiece(Move& move);
     void prevMoveLeadToCheck(Move& move);
+
+    //Evaluation
+    short CalculateScore();
 private:
     std::unordered_map<char, bool> castlingQuota = { {'K',true}, {'Q',true}, {'k',true}, {'q',true} };
 };

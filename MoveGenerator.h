@@ -22,5 +22,10 @@ public:
 	static std::vector<Move> GeneratePawnMoves(short& piece, Position& position);
 	static std::vector<Move> GenerateKingMoves(short& piece, Position& position);
 
+	static std::vector<Move> GenerateMovesWhenChecked(Position& position);
+	static std::vector<Move> GenerateMovesByEvading(Position& position);
+	static std::vector<Move> GenerateMovesByCapturing(Position& position);
+	static std::vector<Move> GenerateMovesByBlocking(Position& position);
+
 	static bool PieceMatchTurn(short piece, Position& position);
 };

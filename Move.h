@@ -6,21 +6,21 @@
 class Move {
 public:
 	//Input
-	int from;
-	int to;
-	int piece;
+	short from;
+	short to;
+	short piece;
 	char promotionType;
 
 	//OutCome
-	int takenPiece;
+	short takenPiece;
 	bool check;
 	bool checkMate;
 	bool rankAmbiguity;
 	bool fileAmbiguity;
 
 	Move();
-	Move(int piece, int starting, int target);
-	Move(int piece, int starting, int target, char promotionType);
+	Move(short piece, short starting, short target);
+	Move(short piece, short starting, short target, char promotionType);
 
 	void UpdateCheck(bool check, bool checkMate);
 	void UpdateAmbiguity(bool rankAmbiguity, bool fileAmbiguity);

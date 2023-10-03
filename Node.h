@@ -6,11 +6,13 @@
 
 class Node{
     public:
-        float score;
+        short score;
         Position* position;
 
         Node* parentNode;
         std::vector<Node*> childrenNodes;
+
+        Move bestMove;
 
         Node(Position* pos);
         Node(Node* parent, Position* pos);

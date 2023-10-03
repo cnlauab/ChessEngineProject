@@ -1,5 +1,5 @@
 #include "MoveGenerator.h"
-
+//Get move from move list
 Move MoveGenerator::ExtractMove(char pieceType, short target, short file, short rank, bool white, char promotionType, std::vector<Move>& moves)
 {
 	std::vector<Move> tmpMoves = ExtractMovesByPieceType(pieceType, white, moves);
@@ -74,21 +74,24 @@ std::vector<Move> MoveGenerator::ExtractMovesByPromotionType(char promotionType,
 	}
 	return result;
 }
-
+//Generate Moves
 std::vector<Move> MoveGenerator::GenerateAllPossibleMoves(Position& position)
 {
-	std::vector<Move> result;
-	std::vector<short> pieceOnBoard = position.whiteTurn ? position.whitePieceOnBoard : position.blackPieceOnBoard;
-
-	for(int i = 0; i < pieceOnBoard.size(); i++){
-		short piece = pieceOnBoard[i];
-		//std::cout << "Generating move for " << piece << std::endl;
-		if(PieceMatchTurn(piece, position)){
-			std::vector<Move> pieceResult = GeneratePossibleMoves(piece,position);
-			result.insert(result.end(), pieceResult.begin(), pieceResult.end());
+	if(!position.check){
+		std::vector<Move> result;
+		std::vector<short> pieceOnBoard = position.whiteTurn ? position.whitePieceOnBoard : position.blackPieceOnBoard;
+		for(int i = 0; i < pieceOnBoard.size(); i++){
+			short piece = pieceOnBoard[i];
+			//std::cout << "Generating move for " << piece << std::endl;
+			if(PieceMatchTurn(piece, position)){
+				std::vector<Move> pieceResult = GeneratePossibleMoves(piece,position);
+				result.insert(result.end(), pieceResult.begin(), pieceResult.end());
+			}
 		}
+		return result;
+	}else{
+		return GenerateMovesWhenChecked(position);
 	}
-	return result;
 }
 
 std::vector<Move> MoveGenerator::GeneratePossibleMoves(short& piece, Position& position)
@@ -320,7 +323,146 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(short& piece, Position& posit
 	}
 	return result;
 }
+//Generate moves when Checked
+std::vector<Move> MoveGenerator::GenerateMovesWhenChecked(Position& position){
+	std::vector<Move> result;
+	if(position.doubleCheck){
+		result = GenerateMovesByEvading(position);
+	}else{
+		if(ChessUtil::IsKnight(position.checkedBy[0]) || ChessUtil::IsPawn(position.checkedBy[0])){
+			std::vector<Move> result1 = GenerateMovesByCapturing(position);
+			std::vector<Move> result2 = GenerateMovesByEvading(position);
+			result.insert(result.end(), result1.begin(), result1.end());
+			result.insert(result.end(), result2.begin(), result2.end());
+			//std::cout << "Check evasion move by " << ChessUtil::SquareToString(position.GetPieceLocation(position.checkedBy[0])) << ": ";
+			//for(Move move : result1) std::cout << move.toString() << ", ";
+			//std::cout << std::endl;
+		}else{
+			std::vector<Move> result1 = GenerateMovesByCapturing(position);
+			std::vector<Move> result2 = GenerateMovesByEvading(position);
+			std::vector<Move> result3 = GenerateMovesByBlocking(position);
+			result.insert(result.end(), result1.begin(), result1.end());
+			result.insert(result.end(), result2.begin(), result2.end());
+			result.insert(result.end(), result3.begin(), result3.end());
+			//if(result1.size() == 0 && result2.size() == 0 && result3.size() != 0){
+			//	std::cout << position.PositionToFen();
+			//	std::cout << "Check evasion move by " << ChessUtil::SquareToString(position.GetPieceLocation(position.checkedBy[0])) << ": ";
+			//	for(Move move : result) std::cout << move.toString() << ", ";
+			//	std::cout << std::endl;
+			//}
+		}
+	}
+	if(result.size() == 0) position.checkmate = true;
+	return result;
+}
 
+std::vector<Move> MoveGenerator::GenerateMovesByEvading(Position& position){
+	//if(position.GetPieceLocation(position.checkedBy[0]) == 63 && ChessUtil::IsQueen(position.checkedBy[0])){std::cout << "Generating check evading for Qxh8" << std::endl;}
+	short piece = position.whiteTurn ? 4 : 60;
+	short starting = position.whiteTurn ? position.whiteKingLocation : position.blackKingLocation;
+	std::vector<short> kingSquare = ChessUtil::squareControlMap[starting].GetKingSquare();
+	std::vector<Move> result;
+	for (int i = 0; i < kingSquare.size(); i++)
+	{
+		bool empty = position.TargetIsEmpty(kingSquare[i]);
+		bool opposite = position.TargetIsOppositeColor(piece, kingSquare[i]);
+		if (empty || opposite) {
+			Move move = Move(piece, starting, kingSquare[i]);
+			if(LegalChecker::IsLegal(position, move)){
+				//std::cout << move.toSimpleString() << " is legal" << std::endl;
+				result.push_back(move);
+			}else{
+				//std::cout << move.toSimpleString() << " is illegal" << std::endl;
+			}
+		}
+	}
+	return result;
+}
+
+std::vector<Move> MoveGenerator::GenerateMovesByCapturing(Position& position){
+	short target = position.GetPieceLocation(position.checkedBy[0]);
+	//if(target == 63 && ChessUtil::IsQueen(position.checkedBy[0])){std::cout << "Generating check capturing for Qxh8" << std::endl;}
+	std::vector<short> pieces = position.GetFriendlyCanReach(target, true);
+	std::vector<Move> result;
+	for(short piece : pieces){
+		if(ChessUtil::IsKing(piece)) continue;
+		Move move = Move(piece, position.GetPieceLocation(piece), target);
+		if(LegalChecker::IsLegal(position, move)){
+			result.push_back(move);
+		}
+	}
+	if(position.ep){
+		std::vector<short> pawnSquares = ChessUtil::squareControlMap[(int)position.enPassantSquare].GetPawnSquare(!position.whiteTurn);
+		for(short starting : pawnSquares){
+			short piece = position.ReadPosition(starting);
+			if(ChessUtil::IsPawn(piece) && ChessUtil::IsWhite(piece) == position.whiteTurn){
+				Move move = Move(piece, starting, position.enPassantSquare);
+				if(LegalChecker::IsLegal(position, move)){
+					result.push_back(move);
+				}
+			}
+		}
+	}
+	return result;
+}
+
+std::vector<Move> MoveGenerator::GenerateMovesByBlocking(Position& position){ 
+	short kingSquare = position.whiteTurn ? position.whiteKingLocation : position.blackKingLocation;
+	short attackerSquare = position.GetPieceLocation(position.checkedBy[0]);
+	//if(attackerSquare == 63 && ChessUtil::IsQueen(position.checkedBy[0])){std::cout << "Generating check blocking for Qxh8" << std::endl;}
+	std::vector<short> targetSquare;
+	std::vector<Move> result;
+	short x0 = ChessUtil::GetFile(kingSquare);
+	short y0 = ChessUtil::GetRank(kingSquare);
+	short x1 = ChessUtil::GetFile(attackerSquare);
+	short y1 = ChessUtil::GetRank(attackerSquare);
+	short a = x0;
+	short b = y0;
+	//GetTargetSquares
+	//if(x0 == x1 || y0 == y1) std::cout << "{ " << x0 << " , " << y0 << " } and { " << x1 << " , " << y1 << " }" << std::endl;
+	while(a != x1 || b != y1){
+		if(x0 != x1){
+			if(x0 < x1){
+				a+=1;
+			}else{
+				a-=1;
+			}
+		}
+		if(y0 != y1){
+			if(y0 < y1){
+				b+=1;
+			}else{
+				b-=1;
+			}
+		}
+		if(a == x1 && b == y1){
+			break;
+		}else{
+			//if(attackerSquare == 63 && ChessUtil::IsQueen(position.checkedBy[0])){std::cout << "{" << a << "," << b << "}" << std::endl;}
+			targetSquare.push_back(ChessUtil::GetSquareFromFileRank(a,b));
+		}
+	}
+	//GenerateMoves
+	for(short target : targetSquare){
+		std::vector<short> pieces = position.GetFriendlyCanReach(target, false);
+		for(short piece : pieces){
+			Move move = Move(piece, position.GetPieceLocation(piece), target);
+			if(LegalChecker::IsLegal(position, move)){
+				result.push_back(move);
+			}
+		}
+	}
+	//if(result.size() == 0 && targetSquare.size() != 0) {
+	//if(x0 == x1 || y0 == y1) {
+	//if(result.size() != 0 && targetSquare.size() != 0 && (x0 == x1 || y0 == y1) && position.fullmove == 2) {
+	//	std::cout << "Blocking: " << position.PositionToFen() << " ";
+	//	for(short target : targetSquare) std::cout << ChessUtil::SquareToString(target) << " King at " << ChessUtil::SquareToString(kingSquare) << " checked by " << ChessUtil::SquareToString(attackerSquare) << " || ";
+	//	for(Move move : result) std::cout << move.toString() << ", ";
+	//	std::cout << std::endl;
+	//}
+	return result;
+}
+//Util
 bool MoveGenerator::PieceMatchTurn(short piece, Position& position)
 {
 	return ChessUtil::IsWhite(piece) == position.whiteTurn;

@@ -8,6 +8,7 @@
 class ChessUtil {
 public:
     static std::unordered_map<short, char> pieceMapping;
+    static std::unordered_map<short, short> pieceScoreMapping;
 	static std::unordered_map<short, int> pieceValueMapping;
     static char GetPieceType(short piece);
 
@@ -17,6 +18,9 @@ public:
 	static std::unordered_map <std::string, short> squareToIndexMapping;
 
 	static SquareControl squareControlMap[64];
+	static short midGameScoreMap[64];
+	static short endGameScoreMap[64];
+	static short checkScore;
 
 	static short GetRank(short square);
 	static short GetFile(short square);
@@ -26,6 +30,7 @@ public:
 	static short StringToSquare(std::string squareString);
 	static short GetRankFromChar(char rank);
 	static short GetFileFromChar(char file);
+	static short GetSquareFromFileRank(short file, short rank);
 	static bool SquareOutbound(short startingSquare, short targetSquare, short offsetType);
 
 	static bool IsEmpty(short piece);

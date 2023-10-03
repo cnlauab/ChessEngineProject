@@ -10,10 +10,10 @@
 
 class Evaluation{
 public:
-    static float Eval(Position& position);
+    static Move Evaluate(Position& position);
     static Node* ConstructTree(Node* root, int level);
     static void DeleteTree(Node* root);
 
     static void BFS(Node* root);
-    static void PossiblePositionsAfterMoves(Node* root, int numOfMoves);
+    static short minimax(Node* node, int depth, bool maxingPlayer);
 };

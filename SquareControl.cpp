@@ -74,7 +74,11 @@ SquareControl::SquareControl(short square){
 			outOfBound = SquareControl::SquareOutbound(square, target, i);
 		}
     }
-
+    //Pawn push squares
+    whitePawnPushTwoSquare = (square > 7 && square < 16) ? square + 16 : 99;
+    blackPawnPushTwoSquare = (square > 47 && square < 56) ? square - 16 : 99;
+    whitePawnPushOneSquare = (square <= 55) ? square + 8 : 99;
+    blackPawnPushOneSquare = (square >= 8) ? square - 8 : 99;
 }
 
 std::string SquareControl::toString()
@@ -126,8 +130,8 @@ std::vector<short> SquareControl::GetKingSquare(){
     return kingSquare;
 }
 
-std::vector<short> SquareControl::GetPawnSquare(bool isAbove){
-    if(isAbove) return pawnSquareAbove;
+std::vector<short> SquareControl::GetPawnSquare(bool upward){
+    if(upward) return pawnSquareAbove;
     return pawnSquareBelow;
 }
 
