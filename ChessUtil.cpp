@@ -555,3 +555,7 @@ bool ChessUtil::IsRook(short piece)
     return piece == 0 || piece == 7 || piece == 56 || piece == 63 || (piece >= -24 && piece <= -17) || (piece >= 80 && piece <= 87);
 }
 
+bool ChessUtil::IsLightSquare(short square){
+    return square == 1 || square == 3 || square == 5 || square == 7 || square == 8 || square == 10 || square == 12 || square == 14 || square == 17 || square == 19 || square == 21 || square == 23 || square == 24 || square == 26 || square == 28 || square == 30 || square == 33 || square == 35 || square == 37 || square == 39 || square == 40 || square == 42 || square == 44 || square == 46 || square == 49 || square == 51 || square == 53 || square == 55 || square == 56 || square == 58 || square == 60 || square == 62;
+}
+

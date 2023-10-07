@@ -482,6 +482,7 @@ CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o: ../ChessEngineProjec
   ../Move.h \
   ../ChessUtil.h \
   ../SquareControl.h \
+  ../State.h \
   ../Evaluation.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/queue \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/deque \
@@ -493,7 +494,6 @@ CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o: ../ChessEngineProjec
   /Library/Developer/CommandLineTools/usr/include/c++/v1/stack \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip \
   ../BoardRenderer.h \
-  ../State.h \
   ../Validator.h
 
 CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.o: ../ChessUtil.cpp \
@@ -1221,6 +1221,7 @@ CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o: ../Evaluation.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   ../ChessUtil.h \
   ../SquareControl.h \
+  ../State.h \
   ../MoveGenerator.h \
   ../LegalChecker.h
 
@@ -1462,7 +1463,8 @@ CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o: ../LegalChecker.cpp \
   ../Parser.h \
   ../Move.h \
   ../ChessUtil.h \
-  ../SquareControl.h
+  ../SquareControl.h \
+  ../State.h
 
 CMakeFiles/ChessEngineProject.dir/Move.cpp.o: ../Move.cpp \
   ../Move.h \
@@ -1940,6 +1942,7 @@ CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o: ../MoveGenerator.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   ../ChessUtil.h \
   ../SquareControl.h \
+  ../State.h \
   ../LegalChecker.h
 
 CMakeFiles/ChessEngineProject.dir/Node.cpp.o: ../Node.cpp \
@@ -2180,7 +2183,8 @@ CMakeFiles/ChessEngineProject.dir/Node.cpp.o: ../Node.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   ../ChessUtil.h \
-  ../SquareControl.h
+  ../SquareControl.h \
+  ../State.h
 
 CMakeFiles/ChessEngineProject.dir/Parser.cpp.o: ../Parser.cpp \
   ../Parser.h \
@@ -2657,7 +2661,8 @@ CMakeFiles/ChessEngineProject.dir/Position.cpp.o: ../Position.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   ../ChessUtil.h \
-  ../SquareControl.h
+  ../SquareControl.h \
+  ../State.h
 
 CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o: ../SquareControl.cpp \
   ../SquareControl.h \
@@ -2891,10 +2896,12 @@ CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o: ../SquareControl.cpp \
 
 CMakeFiles/ChessEngineProject.dir/State.cpp.o: ../State.cpp \
   ../State.h \
-  ../Position.h \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/algorithm \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/string \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/pthread.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/string_view \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/__string \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/algorithm \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/initializer_list \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/cstddef \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__cxx_version \
@@ -3021,14 +3028,6 @@ CMakeFiles/ChessEngineProject.dir/State.cpp.o: ../State.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/assert.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/functional \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bit \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/unordered_map \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/__hash_table \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/cmath \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/__node_handle \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/optional \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/string \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/string_view \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/__string \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/cstdio \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/cwchar \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/cwctype \
@@ -3047,6 +3046,12 @@ CMakeFiles/ChessEngineProject.dir/State.cpp.o: ../State.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/i386/_limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/syslimits.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__split_buffer \
+  ../Position.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/unordered_map \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/__hash_table \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/cmath \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/__node_handle \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/optional \
   ../Parser.h \
   ../Move.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/iostream \

@@ -383,6 +383,52 @@ bool Position::IsChecked(bool white){
     return GetCheckedBy(white).size() > 0;
 }
 
+bool Position::IsDraw(){
+	return halfmove == 100 || stalemate || !SufficientMaterial();
+}
+
+bool Position::SufficientMaterial(){
+	bool hasLightBishop = false;
+	bool hasDarkBishop = false;
+	bool hasKnight = false;
+	for(short piece : whitePieceOnBoard){
+		if(ChessUtil::IsPawn(piece) || ChessUtil::IsRook(piece) || ChessUtil::IsQueen(piece)) return true;
+		if(ChessUtil::IsKnight(piece)){
+			if(hasKnight || hasDarkBishop || hasLightBishop) return true;
+			hasKnight = true;
+		}
+		if(ChessUtil::IsBishop(piece)){
+			if(hasKnight) return true;
+			if(ChessUtil::IsLightSquare(GetPieceLocation(piece))) {
+				hasLightBishop = true;
+			}else{
+				hasDarkBishop = true;
+			}
+			if(hasLightBishop && hasDarkBishop) return true;
+		}
+	}
+	hasLightBishop = false;
+	hasDarkBishop = false;
+	hasKnight = false;
+	for(short piece : blackPieceOnBoard){
+		if(ChessUtil::IsPawn(piece) || ChessUtil::IsRook(piece) || ChessUtil::IsQueen(piece)) return true;
+		if(ChessUtil::IsKnight(piece)){
+			if(hasKnight || hasDarkBishop || hasLightBishop) return true;
+			hasKnight = true;
+		}
+		if(ChessUtil::IsBishop(piece)){
+			if(hasKnight) return true;
+			if(ChessUtil::IsLightSquare(GetPieceLocation(piece))) {
+				hasLightBishop = true;
+			}else{
+				hasDarkBishop = true;
+			}
+			if(hasLightBishop && hasDarkBishop) return true;
+		}
+	}
+	return false;
+}
+
 void Position::MovePiece(Move& move)
 {
 	//Update Perft
@@ -394,6 +440,7 @@ void Position::MovePiece(Move& move)
 	check = false;
 	doubleCheck = false;
 	checkmate = false;
+	stalemate = false;
 	//Update Clock
 	halfmove++;
 	if(!whiteTurn)fullmove++;
@@ -569,12 +616,32 @@ void Position::MovePiece(Move& move)
 short Position::CalculateScore(){
 	short whiteScore = 0;
 	short blackScore = 0;
+	short finalScore = 0;
+	//CheckMate
+	if(checkmate && whiteTurn){
+		return -4000;
+	}else if(checkmate && !whiteTurn){
+		return 4000;
+	}
+	//Castle
+	if(castlingQuota['k']){
+		blackScore += 30;
+	}
+	if(castlingQuota['q']){
+		blackScore += 30;
+	}
+	if(castlingQuota['Q']){
+		whiteScore += 30;
+	}
+	if(castlingQuota['K']){
+		whiteScore += 30;
+	}
 	//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 	for(short piece : whitePieceOnBoard){
 		short square = GetPieceLocation(piece);
 		//std::cout << ChessUtil::pieceMapping[piece] << ChessUtil::SquareToString(square) << std::endl;;
 		if(ChessUtil::IsPawn(piece)){
-			whiteScore += 2 * ChessUtil::pieceScoreMapping[piece];
+			whiteScore += 3 * ChessUtil::pieceScoreMapping[piece];
 			//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 			std::vector<short> controlSquare = ChessUtil::squareControlMap[(int)square].GetPawnSquare(true);
 			for(short s : controlSquare){
@@ -587,12 +654,16 @@ short Position::CalculateScore(){
 					//std::cout << "King: " << ChessUtil::SquareToString(s) << " Checked by " << ReadPosition(s) << std::endl;
 					//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 				}else{
+					short targetPiece = ReadPosition(s);
 					whiteScore += 0.5*ChessUtil::pieceScoreMapping[ReadPosition(s)];
+					if(ChessUtil::IsPawn(targetPiece) || ChessUtil::IsKnight(targetPiece)){
+						if(ChessUtil::IsWhite(targetPiece)) whiteScore += 0.5*ChessUtil::pieceScoreMapping[ReadPosition(s)];
+					}
 					//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 				}
 			}
 		}else if(ChessUtil::IsBishop(piece)){
-			whiteScore += 2 * ChessUtil::pieceScoreMapping[piece];
+			whiteScore += 3 * ChessUtil::pieceScoreMapping[piece];
 			//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 			for(int i = 4; i < 8; i++){
 				std::vector<short> controlSquare = ChessUtil::squareControlMap[(int)square].GetSlidingSquare(i);
@@ -613,7 +684,7 @@ short Position::CalculateScore(){
 				}
 			}
 		}else if(ChessUtil::IsKnight(piece)){
-			whiteScore += 2 * ChessUtil::pieceScoreMapping[piece];
+			whiteScore += 3 * ChessUtil::pieceScoreMapping[piece];
 			//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 			std::vector<short> controlSquare = ChessUtil::squareControlMap[(int)square].GetKnightSquare();
 			for(short s : controlSquare){
@@ -630,7 +701,7 @@ short Position::CalculateScore(){
 				}
 			}
 		}else if(ChessUtil::IsRook(piece)){
-			whiteScore += 2 * ChessUtil::pieceScoreMapping[piece];
+			whiteScore += 3 * ChessUtil::pieceScoreMapping[piece];
 			//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 			for(int i = 0; i < 4; i++){
 				std::vector<short> controlSquare = ChessUtil::squareControlMap[(int)square].GetSlidingSquare(i);
@@ -651,13 +722,13 @@ short Position::CalculateScore(){
 				}
 			}
 		}else if(ChessUtil::IsQueen(piece)){
-			whiteScore += 2 * ChessUtil::pieceScoreMapping[piece];
+			whiteScore += 3 * ChessUtil::pieceScoreMapping[piece];
 			//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 			for(int i = 0; i < 8; i++){
 				std::vector<short> controlSquare = ChessUtil::squareControlMap[(int)square].GetSlidingSquare(i);
 				for(short s : controlSquare){
 					if(TargetIsEmpty(s)){
-						whiteScore += 2 * ChessUtil::midGameScoreMap[(int)s];
+						whiteScore += ChessUtil::midGameScoreMap[(int)s];
 						//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 					}else if(!ChessUtil::IsWhite(ReadPosition(s)) && ChessUtil::IsKing(ReadPosition(s))){
 						whiteScore += ChessUtil::checkScore;
@@ -671,13 +742,27 @@ short Position::CalculateScore(){
 					}
 				}
 			}
+		}else if(ChessUtil::IsKing(piece)){
+			whiteScore += 80;
+			for(int i = 0; i < 8; i++){
+				std::vector<short> controlSquare = ChessUtil::squareControlMap[(int)square].GetSlidingSquare(i);
+				for(short s : controlSquare){
+					if(!TargetIsEmpty(s)){
+						whiteScore += 40;
+						break;
+						//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
+					}else{
+						whiteScore -= 4;
+					}
+				}
+			}
 		}
 	}
 	for(short piece : blackPieceOnBoard){
 		short square = GetPieceLocation(piece);
 		//std::cout << ChessUtil::pieceMapping[piece] << ChessUtil::SquareToString(square) << std::endl;
 		if(ChessUtil::IsPawn(piece)){
-			blackScore += 2 * ChessUtil::pieceScoreMapping[piece];
+			blackScore += 3 * ChessUtil::pieceScoreMapping[piece];
 			//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 			std::vector<short> controlSquare = ChessUtil::squareControlMap[(int)square].GetPawnSquare(false);
 			for(short s : controlSquare){
@@ -690,12 +775,16 @@ short Position::CalculateScore(){
 					//std::cout << "King: " << ChessUtil::SquareToString(s) << " Checked by " << ReadPosition(s) << std::endl;
 					//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 				}else{
+					short targetPiece = ReadPosition(s);
 					blackScore += 0.5*ChessUtil::pieceScoreMapping[ReadPosition(s)];
+					if(ChessUtil::IsPawn(targetPiece) || ChessUtil::IsKnight(targetPiece)){
+						if(!ChessUtil::IsWhite(targetPiece)) blackScore += 0.5*ChessUtil::pieceScoreMapping[ReadPosition(s)];
+					}
 					//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 				}
 			}
 		}else if(ChessUtil::IsBishop(piece)){
-			blackScore += 2 * ChessUtil::pieceScoreMapping[piece];
+			blackScore += 3 * ChessUtil::pieceScoreMapping[piece];
 			//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 			for(int i = 4; i < 8; i++){
 				std::vector<short> controlSquare = ChessUtil::squareControlMap[(int)square].GetSlidingSquare(i);
@@ -716,7 +805,7 @@ short Position::CalculateScore(){
 				}
 			}
 		}else if(ChessUtil::IsKnight(piece)){
-			blackScore += 2 * ChessUtil::pieceScoreMapping[piece];
+			blackScore += 3 * ChessUtil::pieceScoreMapping[piece];
 			//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 			std::vector<short> controlSquare = ChessUtil::squareControlMap[(int)square].GetKnightSquare();
 			for(short s : controlSquare){
@@ -735,7 +824,7 @@ short Position::CalculateScore(){
 				}
 			}
 		}else if(ChessUtil::IsRook(piece)){
-			blackScore += 2 * ChessUtil::pieceScoreMapping[piece];
+			blackScore += 3 * ChessUtil::pieceScoreMapping[piece];
 			//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 			for(int i = 0; i < 4; i++){
 				std::vector<short> controlSquare = ChessUtil::squareControlMap[(int)square].GetSlidingSquare(i);
@@ -756,13 +845,13 @@ short Position::CalculateScore(){
 				}
 			}
 		}else if(ChessUtil::IsQueen(piece)){
-			blackScore += 2 * ChessUtil::pieceScoreMapping[piece];
+			blackScore += 3 * ChessUtil::pieceScoreMapping[piece];
 			//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 			for(int i = 0; i < 8; i++){
 				std::vector<short> controlSquare = ChessUtil::squareControlMap[(int)square].GetSlidingSquare(i);
 				for(short s : controlSquare){
 					if(TargetIsEmpty(s)){
-						blackScore += 2 * ChessUtil::midGameScoreMap[(int)s];
+						blackScore += ChessUtil::midGameScoreMap[(int)s];
 						//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 					}else if(ChessUtil::IsWhite(ReadPosition(s)) && ChessUtil::IsKing(ReadPosition(s))){
 						blackScore += ChessUtil::checkScore;
@@ -776,8 +865,29 @@ short Position::CalculateScore(){
 					}
 				}
 			}
+		}else if(ChessUtil::IsKing(piece)){
+			blackScore += 80;
+			for(int i = 0; i < 8; i++){
+				std::vector<short> controlSquare = ChessUtil::squareControlMap[(int)square].GetSlidingSquare(i);
+				for(short s : controlSquare){
+					if(!TargetIsEmpty(s)){
+						blackScore += 40;
+						break;
+						//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
+					}else{
+						blackScore -= 4;
+					}
+				}
+			}
 		}
 	}
+	finalScore = whiteScore - blackScore;
+	//Draw
+	if(finalScore > 100 && !whiteTurn && IsDraw()){
+		finalScore = -2000;
+	}else if(finalScore < 100 && whiteTurn && IsDraw()){
+		finalScore = 2000;
+	}
 	//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
-	return whiteScore - blackScore;
+	return finalScore;
 }

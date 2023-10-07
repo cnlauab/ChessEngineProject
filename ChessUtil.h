@@ -41,4 +41,6 @@ public:
 	static bool IsKnight(short piece);
 	static bool IsKing(short piece);
 	static bool IsRook(short piece);
+
+	static bool IsLightSquare(short square);
 };

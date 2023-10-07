@@ -352,7 +352,13 @@ std::vector<Move> MoveGenerator::GenerateMovesWhenChecked(Position& position){
 			//}
 		}
 	}
-	if(result.size() == 0) position.checkmate = true;
+	if(result.size() == 0) {
+		if(position.check){
+			position.checkmate = true;
+		}else{
+			position.stalemate = true;
+		}
+	}
 	return result;
 }
 

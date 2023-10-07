@@ -1,6 +1,10 @@
 
 #pragma once
+#include <string>
+#include <vector>
 #include "Position.h"
+#include "Move.h"
+
 //Game State
 class State {
 public:
@@ -11,15 +15,19 @@ public:
 	bool whiteWon = false;
 	bool blackWon = false;
 
-	State(Position& position_);
+	std::vector<std::string> prevPositionsFen;
+	std::vector<Move> moveList;
 
 	//Getter
+	bool ThreeTimesRepeated();
+	std::string MoveListToString();
+
 	bool Ended();
 	std::string EndMessage();
 
 	//Mutator
-	void Resign();
+	void Resign(bool white);
 
 private:
-	Position& position;
+
 };

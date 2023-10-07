@@ -1,13 +1,15 @@
 #include "State.h"
 
-State::State(Position& position_) : position(position_){}
+bool State::ThreeTimesRepeated(){
+	return false;
+}
 
 bool State::Ended() {
 	return draw || stalemate || whiteWon || blackWon;
 }
 
-void State::Resign() {
-	if (position.whiteTurn) {
+void State::Resign(bool white) {
+	if (white) {
 		blackWon = true;
 	}
 	else {

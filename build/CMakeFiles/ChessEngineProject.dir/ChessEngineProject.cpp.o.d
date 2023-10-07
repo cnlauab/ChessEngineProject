@@ -239,6 +239,7 @@ CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o: \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Move.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.h \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Evaluation.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/queue \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/deque \
@@ -250,5 +251,4 @@ CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o: \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/stack \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iomanip \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BoardRenderer.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Validator.h

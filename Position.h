@@ -6,6 +6,7 @@
 #include <vector>
 #include "Parser.h"
 #include "Move.h"
+#include "State.h"
 #include "ChessUtil.h"
 
 class Position {
@@ -28,6 +29,7 @@ public :
     bool doubleCheck;
     bool discoverCheck;
     bool checkmate;
+    bool stalemate;
 
     //States
     Move prevMove;
@@ -55,6 +57,9 @@ public :
     std::vector<short> GetFriendlyCanReach(short target, bool attacking);
     std::vector<short> GetCheckedBy(bool white);
     bool IsChecked(bool white);
+    
+    bool IsDraw();
+    bool SufficientMaterial();
 
 	//Mutator
 	void MovePiece(Move& move);

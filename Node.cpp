@@ -13,3 +13,7 @@ Node::Node(Node* parent, Position* pos){
 
 Node::~Node(){
 }
+
+void Node::UpdateScore(){
+    score = position->CalculateScore();
+}

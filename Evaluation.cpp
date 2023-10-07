@@ -18,6 +18,9 @@ Node* Evaluation::ConstructTree(Node* root, int level){
         root->childrenNodes.emplace_back(childNode);
         if(level > 1){
             ConstructTree(childNode, level-1);
+        }else if(level > 0 && childNode->position->check){
+            ConstructTree(childNode, level-1);
+            childNode->UpdateScore();
         }
     }
     //std::cout << "Level: " << level << " Move generated: " << root->childrenNodes.size() << std::endl;

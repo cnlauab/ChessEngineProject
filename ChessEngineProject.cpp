@@ -7,11 +7,11 @@ using namespace std;
 
 Validator validator;
 Position currentPosition;
-State gameState = State(currentPosition);
+State gameState;
 std::vector<Move> moveMade;
 bool whiteIsComp = false;
 
-void PrintMoveMade(){
+void PrintMoveMade(){//TODO move to State.cpp
 	if(moveMade.size() == 0) return;
 	int counter = 1;
 	for(int i = 0; i < moveMade.size(); i++){
@@ -153,6 +153,7 @@ int main()
 	cout << "Score: " << currentPosition.CalculateScore() << endl;
 
 	//Game
+	
 	Debug::ClearLog();
 	while (!gameState.Ended() && moveCounter < 500) {
 		PrintMoveMade();
@@ -162,27 +163,28 @@ int main()
 			ComputerTurn();
 			//Turn();
 		}else{
-			//ComputerTurn();
-			Turn();
+			ComputerTurn();
+			//Turn();
 		}
 		Debug::GameLog(currentPosition);
 		moveCounter++;
 	}
 
 	//Evaluation Test
-	//std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+	/*
+	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 	
-	//Node* root = new Node(&currentPosition);
-	//Evaluation::ConstructTree(root, 3);
-	//Evaluation::BFS(root);
+	Node* root = new Node(&currentPosition);
+	Evaluation::ConstructTree(root, 4);
+	Evaluation::BFS(root);
 
 	//cout << BoardRenderer::positionToString(currentPosition) << endl;
 	//Move chosenMove = Evaluation::Evaluate(currentPosition);
 	//cout << "Move chosen: " << chosenMove.toString() << endl;
 	
-	//std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-	//std::cout << "Time elapsed = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[Milliseconds]" << std::endl;
-    
+	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+	std::cout << "Time elapsed = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[Milliseconds]" << std::endl;
+    */
 	//End
 	cout << gameState.EndMessage() << endl;
 	return 0;

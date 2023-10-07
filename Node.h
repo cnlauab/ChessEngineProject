@@ -18,4 +18,6 @@ class Node{
         Node(Node* parent, Position* pos);
 
         ~Node();
+
+        void UpdateScore();
 };
