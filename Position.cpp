@@ -624,6 +624,7 @@ short Position::CalculateScore(){
 		return 4000;
 	}
 	//Castle
+	/*
 	if(castlingQuota['k']){
 		blackScore += 30;
 	}
@@ -636,6 +637,7 @@ short Position::CalculateScore(){
 	if(castlingQuota['K']){
 		whiteScore += 30;
 	}
+	*/
 	//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 	for(short piece : whitePieceOnBoard){
 		short square = GetPieceLocation(piece);
@@ -647,7 +649,7 @@ short Position::CalculateScore(){
 			for(short s : controlSquare){
 				if(TargetIsEmpty(s)){
 					whiteScore += ChessUtil::midGameScoreMap[(int)s];
-					if(fullmove < 2) whiteScore += 3 * ChessUtil::midGameScoreMap[(int)s];
+					if(fullmove < 2) whiteScore += 10 * ChessUtil::midGameScoreMap[(int)s];
 					//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 				}else if(!ChessUtil::IsWhite(ReadPosition(s)) && ChessUtil::IsKing(ReadPosition(s))){
 					whiteScore += ChessUtil::checkScore;
@@ -655,9 +657,9 @@ short Position::CalculateScore(){
 					//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 				}else{
 					short targetPiece = ReadPosition(s);
-					whiteScore += 0.5*ChessUtil::pieceScoreMapping[ReadPosition(s)];
-					if(ChessUtil::IsPawn(targetPiece) || ChessUtil::IsKnight(targetPiece)){
-						if(ChessUtil::IsWhite(targetPiece)) whiteScore += 0.5*ChessUtil::pieceScoreMapping[ReadPosition(s)];
+					whiteScore += ChessUtil::pieceScoreMapping[ReadPosition(s)];
+					if(ChessUtil::IsPawn(targetPiece)){
+						if(ChessUtil::IsWhite(targetPiece)) whiteScore += 2*ChessUtil::pieceScoreMapping[ReadPosition(s)];
 					}
 					//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 				}
@@ -748,11 +750,11 @@ short Position::CalculateScore(){
 				std::vector<short> controlSquare = ChessUtil::squareControlMap[(int)square].GetSlidingSquare(i);
 				for(short s : controlSquare){
 					if(!TargetIsEmpty(s)){
-						whiteScore += 40;
+						whiteScore += 60;
 						break;
 						//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 					}else{
-						whiteScore -= 4;
+						whiteScore -= 10;
 					}
 				}
 			}
@@ -768,7 +770,7 @@ short Position::CalculateScore(){
 			for(short s : controlSquare){
 				if(TargetIsEmpty(s)){
 					blackScore += ChessUtil::midGameScoreMap[(int)s];
-					if(fullmove < 2) blackScore += 3 * ChessUtil::midGameScoreMap[(int)s];
+					if(fullmove < 2) blackScore += 10 * ChessUtil::midGameScoreMap[(int)s];
 					//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 				}else if(ChessUtil::IsWhite(ReadPosition(s)) && ChessUtil::IsKing(ReadPosition(s))){
 					blackScore += ChessUtil::checkScore;
@@ -776,9 +778,9 @@ short Position::CalculateScore(){
 					//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 				}else{
 					short targetPiece = ReadPosition(s);
-					blackScore += 0.5*ChessUtil::pieceScoreMapping[ReadPosition(s)];
-					if(ChessUtil::IsPawn(targetPiece) || ChessUtil::IsKnight(targetPiece)){
-						if(!ChessUtil::IsWhite(targetPiece)) blackScore += 0.5*ChessUtil::pieceScoreMapping[ReadPosition(s)];
+					blackScore += ChessUtil::pieceScoreMapping[ReadPosition(s)];
+					if(ChessUtil::IsPawn(targetPiece)){
+						if(!ChessUtil::IsWhite(targetPiece)) blackScore += 2*ChessUtil::pieceScoreMapping[ReadPosition(s)];
 					}
 					//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 				}
@@ -871,11 +873,11 @@ short Position::CalculateScore(){
 				std::vector<short> controlSquare = ChessUtil::squareControlMap[(int)square].GetSlidingSquare(i);
 				for(short s : controlSquare){
 					if(!TargetIsEmpty(s)){
-						blackScore += 40;
+						blackScore += 60;
 						break;
 						//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 					}else{
-						blackScore -= 4;
+						blackScore -= 10;
 					}
 				}
 			}

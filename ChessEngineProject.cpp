@@ -163,8 +163,8 @@ int main()
 			ComputerTurn();
 			//Turn();
 		}else{
-			ComputerTurn();
-			//Turn();
+			//ComputerTurn();
+			Turn();
 		}
 		Debug::GameLog(currentPosition);
 		moveCounter++;
