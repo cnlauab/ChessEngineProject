@@ -431,6 +431,7 @@ bool Position::SufficientMaterial(){
 
 void Position::MovePiece(Move& move)
 {
+	move.piece = position[move.from];
 	//Update Perft
 	ep = false;
 	castle = false;

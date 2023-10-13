@@ -12,11 +12,27 @@ Move::Move()
 	Move::checkMate = false;
 }
 
-Move::Move(short piece, short starting, short target)
+Move::Move(std::string uci){
+	Move::from = 99;
+	Move::to = 99;
+	Move::piece = 99;
+	Move::promotionType = ' ';
+
+	Move::takenPiece = 99;
+	Move::check = false;
+	Move::checkMate = false;
+	if(uci.length() < 4) return;
+
+	Move::from  = ChessUtil::GetSquareFromFileRank(ChessUtil::GetFileFromChar(uci[0]),ChessUtil::GetRankFromChar(uci[1]));
+	Move::to = ChessUtil::GetSquareFromFileRank(ChessUtil::GetFileFromChar(uci[2]),ChessUtil::GetRankFromChar(uci[3]));
+	Move::promotionType = (char)toupper(uci[5]);
+}
+
+Move::Move(short starting, short target)
 {
 	Move::from = starting;
 	Move::to = target;
-	Move::piece = piece;
+	Move::piece = 99;
 	Move::promotionType = ' ';
 
 	Move::takenPiece = 99;
@@ -27,11 +43,11 @@ Move::Move(short piece, short starting, short target)
 	//std::cout << toString() << std::endl;
 }
 
-Move::Move(short piece, short starting, short target, char promotionType)
+Move::Move(short starting, short target, char promotionType)
 {
 	Move::from = starting;
 	Move::to = target;
-	Move::piece = piece;
+	Move::piece = 99;
 	Move::promotionType = promotionType;
 
 	Move::takenPiece = 99;
@@ -68,11 +84,9 @@ std::string Move::toSimpleString()
 	if (isEmpty()) return "Move is Empty...";
 
 	std::string result = "";
-	char type = toupper(ChessUtil::GetPieceType(piece));
-	result += type;
 	result += ChessUtil::SquareToString(from);
 	result += ChessUtil::SquareToString(to);
-	if(promotionType != 99)result += promotionType;
+	if(promotionType != 99)result += (char)tolower(promotionType);
 
 	return result;
 }
@@ -82,7 +96,7 @@ std::string Move::toString()
 	if (isEmpty()) return "Move is Empty...";
 
 	std::string result = "";
-	char type = toupper(ChessUtil::GetPieceType(piece));
+	char type = (piece != 99) ? toupper(ChessUtil::GetPieceType(piece)) : ' ';
 
 	//result += type + ChessUtil::SquareToString(from) + " to " + ChessUtil::SquareToString(to) + " promoting to " + promotionType;
 	if(IsShortCastling()){
@@ -112,7 +126,7 @@ std::string Move::toString()
 
 bool Move::isEmpty()
 {
-	return from == 99 || to == 99 || piece == 99;
+	return from == 99 || to == 99;
 }
 
 bool Move::operator==(const Move& rhs)

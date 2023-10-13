@@ -1,6 +1,6 @@
-CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o: \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessEngineProject.cpp \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessEngineProject.h \
+CMakeFiles/ChessEngineProject.dir/UCI.cpp.o: \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/UCI.cpp \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/UCI.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/pthread.h \
@@ -226,30 +226,23 @@ CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o: \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/bitset \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__bit_reference \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Node.h \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/vector \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Debug.h \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/fstream \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/filesystem \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/stack \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/deque \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__split_buffer \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Position.h \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iomanip \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BoardRenderer.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/unordered_map \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__hash_table \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cmath \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__node_handle \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/optional \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Parser.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Move.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Evaluation.h \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/queue \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/deque \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MoveGenerator.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/LegalChecker.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Debug.h \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/fstream \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/filesystem \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/stack \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iomanip \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BoardRenderer.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Validator.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/UCI.h
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/vector \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Position.h \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Parser.h \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Move.h \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h

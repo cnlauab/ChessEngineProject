@@ -19,8 +19,9 @@ public:
 	bool fileAmbiguity;
 
 	Move();
-	Move(short piece, short starting, short target);
-	Move(short piece, short starting, short target, char promotionType);
+	Move(std::string uci);
+	Move(short starting, short target);
+	Move(short starting, short target, char promotionType);
 
 	void UpdateCheck(bool check, bool checkMate);
 	void UpdateAmbiguity(bool rankAmbiguity, bool fileAmbiguity);

@@ -127,9 +127,9 @@ void Turn() {
 
 int main()
 {	
-   // Seed
-   unsigned seed = time(0);
-   srand(seed);
+	// Seed
+	unsigned seed = time(0);
+	srand(seed);
 
 	//currentPosition = Position("8/6P1/7k/4B3/4B2K/8/8/8 w - - 0 1");
 	//currentPosition = Position("2b2rk1/2q2ppn/2p5/p1n1p1B1/p3P3/2P2QNP/Br3PP1/R3R1K1");
@@ -145,15 +145,16 @@ int main()
 	//currentPosition = Position("r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2B1P1b1/P1NP1N2/1PP1QPPP/R4RK1 w - - 0 10");//position 6
 
 	//Original
+	/*
 	currentPosition = Position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 0");
-	//currentPosition = Position();
 	int moveCounter = 0;
 
 	cout << currentPosition.PositionToFen() << endl;
 	cout << "Score: " << currentPosition.CalculateScore() << endl;
+	*/
 
 	//Game
-	
+	/*
 	Debug::ClearLog();
 	while (!gameState.Ended() && moveCounter < 500) {
 		PrintMoveMade();
@@ -169,7 +170,7 @@ int main()
 		Debug::GameLog(currentPosition);
 		moveCounter++;
 	}
-
+	*/
 	//Evaluation Test
 	/*
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
@@ -186,6 +187,12 @@ int main()
 	std::cout << "Time elapsed = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[Milliseconds]" << std::endl;
     */
 	//End
-	cout << gameState.EndMessage() << endl;
+	//cout << gameState.EndMessage() << endl;
+
+	//UCI Mode
+
+    Debug::UCILog("Starting Main()", true);
+	UCI::UCILoop();
+
 	return 0;
 }

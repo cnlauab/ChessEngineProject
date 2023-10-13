@@ -441,6 +441,30 @@ State.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/State.cpp.s
 .PHONY : State.cpp.s
 
+UCI.o: UCI.cpp.o
+.PHONY : UCI.o
+
+# target to build an object file
+UCI.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/UCI.cpp.o
+.PHONY : UCI.cpp.o
+
+UCI.i: UCI.cpp.i
+.PHONY : UCI.i
+
+# target to preprocess a source file
+UCI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/UCI.cpp.i
+.PHONY : UCI.cpp.i
+
+UCI.s: UCI.cpp.s
+.PHONY : UCI.s
+
+# target to generate assembly for a file
+UCI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/UCI.cpp.s
+.PHONY : UCI.cpp.s
+
 Validator.o: Validator.cpp.o
 .PHONY : Validator.o
 
@@ -513,6 +537,9 @@ help:
 	@echo "... State.o"
 	@echo "... State.i"
 	@echo "... State.s"
+	@echo "... UCI.o"
+	@echo "... UCI.i"
+	@echo "... UCI.s"
 	@echo "... Validator.o"
 	@echo "... Validator.i"
 	@echo "... Validator.s"

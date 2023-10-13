@@ -72,4 +72,3 @@ void Parser::FenToPosition(std::string fen, short position[]) {
 
 }
 
-

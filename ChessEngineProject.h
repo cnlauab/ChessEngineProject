@@ -13,5 +13,6 @@
 #include "LegalChecker.h"
 #include "Move.h"
 #include "Position.h"
+#include "UCI.h"
 
 // TODO: Reference additional headers your program requires here.

@@ -21,6 +21,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Position.cpp" "CMakeFiles/ChessEngineProject.dir/Position.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/Position.cpp.o.d"
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.cpp" "CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o.d"
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.cpp" "CMakeFiles/ChessEngineProject.dir/State.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/State.cpp.o.d"
+  "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/UCI.cpp" "CMakeFiles/ChessEngineProject.dir/UCI.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/UCI.cpp.o.d"
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Validator.cpp" "CMakeFiles/ChessEngineProject.dir/Validator.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/Validator.cpp.o.d"
   )
 

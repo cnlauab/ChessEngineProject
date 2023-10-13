@@ -25,6 +25,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o.d"
   "CMakeFiles/ChessEngineProject.dir/State.cpp.o"
   "CMakeFiles/ChessEngineProject.dir/State.cpp.o.d"
+  "CMakeFiles/ChessEngineProject.dir/UCI.cpp.o"
+  "CMakeFiles/ChessEngineProject.dir/UCI.cpp.o.d"
   "CMakeFiles/ChessEngineProject.dir/Validator.cpp.o"
   "CMakeFiles/ChessEngineProject.dir/Validator.cpp.o.d"
   "ChessEngineProject"

@@ -1,0 +1,90 @@
+Turn 0
+Black to move
+[r][n][b][q][k][b][n][r] 8
+[p][p][p][p][p][p][p][p] 7
+[ ][ ][ ][ ][ ][ ][ ][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][P][ ][ ][ ][ ][ ] 4
+[ ][ ][ ][ ][ ][ ][ ][ ] 3
+[P][P][ ][P][P][P][P][P] 2
+[R][N][B][Q][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+rnbqkbnr/pppppppp/8/8/2P5/8/PP1PPPPP/RNBQKBNR b KQkq c3 0 0
+Move made: 2c4
+################
+Turn 1
+White to move
+[r][n][b][q][k][b][n][r] 8
+[p][p][p][p][ ][p][p][p] 7
+[ ][ ][ ][ ][p][ ][ ][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][P][ ][ ][ ][ ][ ] 4
+[ ][ ][ ][ ][ ][ ][ ][ ] 3
+[P][P][ ][P][P][P][P][P] 2
+[R][N][B][Q][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+rnbqkbnr/pppp1ppp/4p3/8/2P5/8/PP1PPPPP/RNBQKBNR w KQkq - 0 1
+Move made: 7e6
+################
+Turn 1
+Black to move
+[r][n][b][q][k][b][n][r] 8
+[p][p][p][p][ ][p][p][p] 7
+[ ][ ][ ][ ][p][ ][ ][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][P][P][ ][ ][ ][ ] 4
+[ ][ ][ ][ ][ ][ ][ ][ ] 3
+[P][P][ ][ ][P][P][P][P] 2
+[R][N][B][Q][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+rnbqkbnr/pppp1ppp/4p3/8/2PP4/8/PP2PPPP/RNBQKBNR b KQkq d3 0 1
+Move made: 2d4
+################
+Turn 2
+White to move
+[r][n][b][q][k][b][n][r] 8
+[p][ ][p][p][ ][p][p][p] 7
+[ ][p][ ][ ][p][ ][ ][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][P][P][ ][ ][ ][ ] 4
+[ ][ ][ ][ ][ ][ ][ ][ ] 3
+[P][P][ ][ ][P][P][P][P] 2
+[R][N][B][Q][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+rnbqkbnr/p1pp1ppp/1p2p3/8/2PP4/8/PP2PPPP/RNBQKBNR w KQkq - 0 2
+Move made: 7b6
+################
+Turn 2
+Black to move
+[r][n][b][q][k][b][n][r] 8
+[p][ ][p][p][ ][p][p][p] 7
+[ ][p][ ][ ][p][ ][ ][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][P][P][P][ ][ ][ ] 4
+[ ][ ][ ][ ][ ][ ][ ][ ] 3
+[P][P][ ][ ][ ][P][P][P] 2
+[R][N][B][Q][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+rnbqkbnr/p1pp1ppp/1p2p3/8/2PPP3/8/PP3PPP/RNBQKBNR b KQkq e3 0 2
+Move made: 2e4
+################
+Turn 3
+White to move
+[r][n][b][ ][k][b][n][r] 8
+[p][ ][p][p][ ][p][p][p] 7
+[ ][p][ ][ ][p][q][ ][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][P][P][P][ ][ ][ ] 4
+[ ][ ][ ][ ][ ][ ][ ][ ] 3
+[P][P][ ][ ][ ][P][P][P] 2
+[R][N][B][Q][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+rnb1kbnr/p1pp1ppp/1p2pq2/8/2PPP3/8/PP3PPP/RNBQKBNR w KQkq - 1 3
+Move made: Q8f6
+################

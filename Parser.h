@@ -5,10 +5,12 @@
 #include <ctype.h>
 #include <unordered_map>
 #include "Move.h"
+#include "ChessUtil.h"
 
 class Parser {
 public:
 	void FenToPosition(std::string fen, short position[]);
+	Move UCIToMove(std::string moveString);
 	
 private:
 	short whitePawns[8] = {8,9,10,11,12,13,14,15};

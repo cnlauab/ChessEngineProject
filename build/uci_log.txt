@@ -1,0 +1,4 @@
+[IN] Testing UCI Log
+Thu Oct 12 23:02:47 2023
+[IN] Starting Main()
+23:06:31[IN] Starting Main()
