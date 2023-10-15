@@ -1,8 +1,31 @@
 #include "UCI.h"
 
+void UCI::SelfPlay(){
+    Debug::UCILog("Starting SelfPlay()", true);
+    int moves = 0;
+    std::string positionCommand = "position startpos";
+    Debug::UCILog(positionCommand, true);
+    Position currPosition = ParsePosition(positionCommand);
+    positionCommand += " moves";
+    Debug::UCILog("\n" + BoardRenderer::positionToString(currPosition), true);
+    Debug::UCILog(currPosition.PositionToFen(), true);
+    while(!currPosition.checkmate || moves > 200){
+        Move bestMove = Evaluation::Evaluate(currPosition);
+        Debug::UCILog("bestmove " + bestMove.toSimpleString(), false);
+        if(bestMove.isEmpty()) break;
+        positionCommand += " " + bestMove.toSimpleString();
+        currPosition = Position(currPosition, bestMove);
+        Debug::UCILog(positionCommand, true);
+        Debug::UCILog("\n" + BoardRenderer::positionToString(currPosition), true);
+        Debug::UCILog(currPosition.PositionToFen(), true);
+        moves++;
+    }
+    Debug::UCILog("SelfPlay() Ended", true);
+}
+
 void UCI::UCILoop(){
     string Line; //to read the command given by the GUI
-	int flag =1; //to change the value of chess squares from 'a' to 'h'
+    Position currPosition;
 
 	cout.setf (ios::unitbuf);// Make sure that the outputs are sent straight away to the GUI
     
@@ -29,41 +52,71 @@ void UCI::UCILoop(){
 			; // nothing to do
 		}
 
-		if ( Line.substr(0,23) == "position startpos moves " ) {
-			//cout << "bestmove d2d4" << endl;
-            //Debug::UCILog("bestmove d2d4", false);
+		if ( Line.substr(0,8) == "position" ) {
+            currPosition = ParsePosition(Line);
+            Debug::UCILog("\n" + BoardRenderer::positionToString(currPosition), true);
+            Debug::UCILog(currPosition.PositionToFen(), true);
 
 		} else if ( Line == "stop" ) {
 			; // nothing to do
 
 		} else if ( Line.substr( 0, 3 ) == "go " ) {
-			// Received a command like: "go wtime 300000 btime 300000 winc 0 binc 0"
-			cout << "bestmove " << char(105-flag) << "2" << char(105-flag) << "4" << endl;
-			//Output like: "bestmove h7h5"
-			flag++; //increase flag to move other pawn on next turn
+            Move bestMove = Evaluation::Evaluate(currPosition);
+            cout << "bestmove " << bestMove.toSimpleString() << endl;
+            Debug::UCILog("bestmove " + bestMove.toSimpleString(), false);
+
+            currPosition.MovePiece(bestMove);
+            Debug::UCILog("\n" + BoardRenderer::positionToString(currPosition), true);
+            Debug::UCILog(currPosition.PositionToFen(), true);
 		}
 	}
 }
 
 Position UCI::ParsePosition(std::string line){
-    std::size_t fenPos = line.find("fen");
-    std::size_t startposPos = line.find("startpos");
-    std::size_t movesPos = line.find("moves");
-
-    if(fenPos == std::string::npos && startposPos == std::string::npos) return Position();
-    if(startposPos) {
-        if(movesPos == std::string::npos) {
-            return Position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 0");
+    if(line.find("position") == std::string::npos) return Position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 0");
+    if(line.find("startpos") != std::string::npos){
+        Position position = Position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 0");
+        size_t charptr = line.find("moves");
+        if(charptr != std::string::npos){
+            std::vector<Move> moveList;
+            charptr += 6;
+            while(charptr != std::string::npos && charptr < line.length()){
+                std::string moveStr = line.substr(charptr, 5);
+                if(moveStr.length() >= 4) moveList.push_back(Move(moveStr));
+                if(moveStr[4] == ' ') {
+                    charptr += 5;
+                }else{
+                    charptr += 6;
+                }
+            }
+            return Position(position, moveList);
         }else{
-            //TODO with moves
+            return position;
         }
-    }else if(fenPos){
+    }else if(line.find("fen") != std::string::npos){
+        size_t charptr = line.find("fen") + 4;
         std::string fen;
-        if(movesPos == std::string::npos) {
-            fen = line.substr(fenPos + 4, line.length() - 13);
-            return Position(fen);
+        if(line.find("moves") != std::string::npos){
+            fen = line.substr(charptr, line.find("moves") - charptr - 1);
+            Position position = Position(fen);
+            charptr = line.find("moves");
+            if(charptr != std::string::npos){
+                std::vector<Move> moveList;
+                charptr += 6;
+                while(charptr != std::string::npos && charptr < line.length()){
+                    std::string moveStr = line.substr(charptr, 5);
+                    if(moveStr.length() >= 4) moveList.push_back(Move(moveStr));
+                    if(moveStr[4] == ' ') {
+                        charptr += 5;
+                    }else{
+                        charptr += 6;
+                    }
+                }
+                return Position(position, moveList);
+            }
         }else{
-            //TODO with moves
+            fen = line.substr(charptr);
+            return Position(fen);
         }
     }
     return Position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 0");

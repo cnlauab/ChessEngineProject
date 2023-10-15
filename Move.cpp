@@ -25,7 +25,7 @@ Move::Move(std::string uci){
 
 	Move::from  = ChessUtil::GetSquareFromFileRank(ChessUtil::GetFileFromChar(uci[0]),ChessUtil::GetRankFromChar(uci[1]));
 	Move::to = ChessUtil::GetSquareFromFileRank(ChessUtil::GetFileFromChar(uci[2]),ChessUtil::GetRankFromChar(uci[3]));
-	Move::promotionType = (char)toupper(uci[5]);
+	if(uci.length() > 4 && uci[4] != ' ') Move::promotionType = (char)toupper(uci[4]);
 }
 
 Move::Move(short starting, short target)

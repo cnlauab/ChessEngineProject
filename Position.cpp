@@ -78,6 +78,26 @@ Position::Position(Position& currPosition, Move& move){
 	prevMove = move;
 }
 
+Position::Position(Position& position, std::vector<Move>& moveList){
+	whiteTurn = position.whiteTurn;
+	enPassantSquare = position.enPassantSquare;
+	halfmove = position.halfmove;
+	fullmove = position.fullmove;
+	for(int i = 0; i < 64; ++i){
+		Position::position[i] = position.position[i];
+	}
+	castlingQuota = position.castlingQuota;
+	whitePieceOnBoard = position.whitePieceOnBoard;
+	blackPieceOnBoard = position.blackPieceOnBoard;
+	whiteKingLocation = position.whiteKingLocation;
+	blackKingLocation = position.blackKingLocation;
+
+	for(Move move : moveList){
+		MovePiece(move);
+		prevMove = move;
+	}
+}
+
 short Position::ReadPosition(short location)
 {
 	return position[location];
@@ -381,6 +401,17 @@ bool Position::IsChecked(bool white){
 	//int kingsLocation = position.GetPieceLocation(king);
     short kingsLocation = white ? whiteKingLocation : blackKingLocation;
     return GetCheckedBy(white).size() > 0;
+}
+
+bool Position::IsEndgame(){
+	short score = 0;
+	for(short piece : whitePieceOnBoard){
+		score+=ChessUtil::pieceScoreMapping[piece];
+	}
+	for(short piece : blackPieceOnBoard){
+		score+=ChessUtil::pieceScoreMapping[piece];
+	}
+	return score < 250;
 }
 
 bool Position::IsDraw(){

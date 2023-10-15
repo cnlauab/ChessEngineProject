@@ -42,6 +42,7 @@ public :
 	Position();
     Position(std::string fen);
 	Position(Position& position, Move& move);
+	Position(Position& position, std::vector<Move>& moveList);
 
     //Getter
     short ReadPosition(short location);
@@ -58,6 +59,7 @@ public :
     std::vector<short> GetCheckedBy(bool white);
     bool IsChecked(bool white);
     
+    bool IsEndgame();
     bool IsDraw();
     bool SufficientMaterial();
 

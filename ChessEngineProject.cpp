@@ -1,5 +1,5 @@
 ﻿// ChessEngineProject.cpp : Defines the entry point for the application.
-//
+// On Lichess : https://lichess.org/@/honeybbot
 
 #include "ChessEngineProject.h"
 
@@ -127,6 +127,7 @@ void Turn() {
 
 int main()
 {	
+	Debug::UCILog("############ HoneyB Program Started ############", true);
 	// Seed
 	unsigned seed = time(0);
 	srand(seed);
@@ -191,8 +192,16 @@ int main()
 
 	//UCI Mode
 
+	//test uci
+	//currentPosition = UCI::ParsePosition("position startpos moves d2d4 e7e5");
+	//currentPosition = UCI::ParsePosition("position fen 8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - moves b4b1");
+	//cout << BoardRenderer::positionToString(currentPosition) << endl;
+	//cout << currentPosition.PositionToFen() << endl;
+
+	//UCI::SelfPlay();
     Debug::UCILog("Starting Main()", true);
 	UCI::UCILoop();
+	
 
 	return 0;
 }

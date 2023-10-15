@@ -1,8 +1,9 @@
 #include "Evaluation.h"
 
 Move Evaluation::Evaluate(Position& position){
+    int depth = position.IsEndgame()? 4 : 3;
 	Node* root = new Node(&position);
-	Evaluation::ConstructTree(root, 3);
+	Evaluation::ConstructTree(root, depth);
     minimax(root, 10, position.whiteTurn);
     Move bestMove = root->bestMove;
     //Evaluation::DeleteTree(root);
@@ -18,7 +19,7 @@ Node* Evaluation::ConstructTree(Node* root, int level){
         root->childrenNodes.emplace_back(childNode);
         if(level > 1){
             ConstructTree(childNode, level-1);
-        }else if(level > 0 && childNode->position->check){
+        }else if(level > 0 && (childNode->position->check)){
             ConstructTree(childNode, level-1);
             childNode->UpdateScore();
         }

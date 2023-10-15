@@ -2,3 +2,1447 @@
 Thu Oct 12 23:02:47 2023
 [IN] Starting Main()
 23:06:31[IN] Starting Main()
+22:24:04 [IN] Starting SelfPlay()
+22:24:04 [IN] position startpos
+22:24:04 [IN] rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 0
+22:24:05 [OUT] bestmove e2e3 
+22:24:05 [IN] SelfPlay() Ended
+22:27:14 [IN] ############ HoneyB Program Started ############
+22:27:14 [IN] Starting SelfPlay()
+22:27:14 [IN] position startpos
+22:27:14 [IN] rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 0
+22:27:15 [OUT] bestmove e2e3 
+22:27:15 [IN] position startpos moves e2e3 
+22:27:15 [IN] rnbqkbnr/pppppppp/8/8/8/4P3/PPPP1PPP/RNBQKBNR b KQkq - 0 0
+22:27:16 [OUT] bestmove e7e6 
+22:27:16 [IN] position startpos moves e2e3  e7e6 
+22:27:16 [IN] rnbqkbnr/pppp1ppp/4p3/8/8/4P3/PPPP1PPP/RNBQKBNR w KQkq - 0 1
+22:27:19 [OUT] bestmove d1f3 
+22:27:19 [IN] position startpos moves e2e3  e7e6  d1f3 
+22:27:19 [IN] rnbqkbnr/pppp1ppp/4p3/8/8/4PQ2/PPPP1PPP/RNB1KBNR b KQkq - 1 1
+22:27:21 [OUT] bestmove d8f6 
+22:27:21 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6 
+22:27:21 [IN] rnb1kbnr/pppp1ppp/4pq2/8/8/4PQ2/PPPP1PPP/RNB1KBNR w KQkq - 2 2
+22:27:26 [OUT] bestmove b1c3 
+22:27:26 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3 
+22:27:26 [IN] rnb1kbnr/pppp1ppp/4pq2/8/8/2N1PQ2/PPPP1PPP/R1B1KBNR b KQkq - 3 2
+22:27:30 [OUT] bestmove b8c6 
+22:27:30 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6 
+22:27:30 [IN] r1b1kbnr/pppp1ppp/2n1pq2/8/8/2N1PQ2/PPPP1PPP/R1B1KBNR w KQkq - 4 3
+22:27:36 [OUT] bestmove h2h3 
+22:27:36 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3 
+22:27:36 [IN] r1b1kbnr/pppp1ppp/2n1pq2/8/8/2N1PQ1P/PPPP1PP1/R1B1KBNR b KQkq - 0 3
+22:27:45 [OUT] bestmove g7g6 
+22:27:45 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6 
+22:27:45 [IN] r1b1kbnr/pppp1p1p/2n1pqp1/8/8/2N1PQ1P/PPPP1PP1/R1B1KBNR w KQkq - 0 4
+22:27:50 [OUT] bestmove b2b3 
+22:27:50 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3 
+22:27:50 [IN] r1b1kbnr/pppp1p1p/2n1pqp1/8/8/1PN1PQ1P/P1PP1PP1/R1B1KBNR b KQkq - 0 4
+22:28:08 [OUT] bestmove a7a6 
+22:28:08 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6 
+22:28:08 [IN] r1b1kbnr/1ppp1p1p/p1n1pqp1/8/8/1PN1PQ1P/P1PP1PP1/R1B1KBNR w KQkq - 0 5
+22:28:15 [OUT] bestmove a1b1 
+22:28:15 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1 
+22:28:15 [IN] r1b1kbnr/1ppp1p1p/p1n1pqp1/8/8/1PN1PQ1P/P1PP1PP1/1RB1KBNR b Kkq - 1 5
+22:28:29 [OUT] bestmove f8e7 
+22:28:29 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7 
+22:28:29 [IN] r1b1k1nr/1pppbp1p/p1n1pqp1/8/8/1PN1PQ1P/P1PP1PP1/1RB1KBNR w Kkq - 2 6
+22:28:35 [OUT] bestmove f3g4 
+22:28:35 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4 
+22:28:35 [IN] r1b1k1nr/1pppbp1p/p1n1pqp1/8/6Q1/1PN1P2P/P1PP1PP1/1RB1KBNR b Kkq - 3 6
+22:28:42 [OUT] bestmove e7b4 
+22:28:42 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4 
+22:28:42 [IN] r1b1k1nr/1ppp1p1p/p1n1pqp1/8/1b4Q1/1PN1P2P/P1PP1PP1/1RB1KBNR w Kkq - 4 7
+22:28:52 [OUT] bestmove g4f3 
+22:28:52 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3 
+22:28:52 [IN] r1b1k1nr/1ppp1p1p/p1n1pqp1/8/1b6/1PN1PQ1P/P1PP1PP1/1RB1KBNR b Kkq - 5 7
+22:28:59 [OUT] bestmove b4c3 
+22:28:59 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3 
+22:28:59 [IN] r1b1k1nr/1ppp1p1p/p1n1pqp1/8/8/1Pb1PQ1P/P1PP1PP1/1RB1KBNR w Kkq - 0 8
+22:29:03 [OUT] bestmove d2c3 
+22:29:03 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3 
+22:29:03 [IN] r1b1k1nr/1ppp1p1p/p1n1pqp1/8/8/1PP1PQ1P/P1P2PP1/1RB1KBNR b Kkq - 0 8
+22:29:08 [OUT] bestmove a8b8 
+22:29:08 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8 
+22:29:08 [IN] 1rb1k1nr/1ppp1p1p/p1n1pqp1/8/8/1PP1PQ1P/P1P2PP1/1RB1KBNR w Kk - 1 9
+22:29:11 [OUT] bestmove b3b4 
+22:29:11 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4 
+22:29:11 [IN] 1rb1k1nr/1ppp1p1p/p1n1pqp1/8/1P6/2P1PQ1P/P1P2PP1/1RB1KBNR b Kk - 0 9
+22:29:16 [OUT] bestmove h7h5 
+22:29:16 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5 
+22:29:16 [IN] 1rb1k1nr/1ppp1p2/p1n1pqp1/7p/1P6/2P1PQ1P/P1P2PP1/1RB1KBNR w Kk h6 0 10
+22:29:20 [OUT] bestmove b1b3 
+22:29:20 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3 
+22:29:20 [IN] 1rb1k1nr/1ppp1p2/p1n1pqp1/7p/1P6/1RP1PQ1P/P1P2PP1/2B1KBNR b Kk - 1 10
+22:29:26 [OUT] bestmove b8a8 
+22:29:26 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8 
+22:29:26 [IN] r1b1k1nr/1ppp1p2/p1n1pqp1/7p/1P6/1RP1PQ1P/P1P2PP1/2B1KBNR w Kk - 2 11
+22:29:32 [OUT] bestmove f3e4 
+22:29:32 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4 
+22:29:32 [IN] r1b1k1nr/1ppp1p2/p1n1pqp1/7p/1P2Q3/1RP1P2P/P1P2PP1/2B1KBNR b Kk - 3 11
+22:29:44 [OUT] bestmove c6e7 
+22:29:44 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7 
+22:29:44 [IN] r1b1k1nr/1pppnp2/p3pqp1/7p/1P2Q3/1RP1P2P/P1P2PP1/2B1KBNR w Kk - 4 12
+22:29:48 [OUT] bestmove g1f3 
+22:29:48 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3 
+22:29:48 [IN] r1b1k1nr/1pppnp2/p3pqp1/7p/1P2Q3/1RP1PN1P/P1P2PP1/2B1KB1R b Kk - 5 12
+22:29:52 [OUT] bestmove g8h6 
+22:29:52 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6 
+22:29:52 [IN] r1b1k2r/1pppnp2/p3pqpn/7p/1P2Q3/1RP1PN1P/P1P2PP1/2B1KB1R w Kk - 6 13
+22:29:58 [OUT] bestmove e1d2 
+22:29:58 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2 
+22:29:58 [IN] r1b1k2r/1pppnp2/p3pqpn/7p/1P2Q3/1RP1PN1P/P1PK1PP1/2B2B1R b k - 7 13
+22:30:04 [OUT] bestmove c7c5 
+22:30:04 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5 
+22:30:04 [IN] r1b1k2r/1p1pnp2/p3pqpn/2p4p/1P2Q3/1RP1PN1P/P1PK1PP1/2B2B1R w k c6 0 14
+22:30:10 [OUT] bestmove f1d3 
+22:30:10 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3 
+22:30:10 [IN] r1b1k2r/1p1pnp2/p3pqpn/2p4p/1P2Q3/1RPBPN1P/P1PK1PP1/2B4R b k - 1 14
+22:30:16 [OUT] bestmove d7d5 
+22:30:16 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5 
+22:30:16 [IN] r1b1k2r/1p2np2/p3pqpn/2pp3p/1P2Q3/1RPBPN1P/P1PK1PP1/2B4R w k d6 0 15
+22:30:22 [OUT] bestmove e4e5 
+22:30:22 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5 
+22:30:22 [IN] r1b1k2r/1p2np2/p3pqpn/2ppQ2p/1P6/1RPBPN1P/P1PK1PP1/2B4R b k - 1 15
+22:30:27 [OUT] bestmove f6e5 
+22:30:27 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5 
+22:30:27 [IN] r1b1k2r/1p2np2/p3p1pn/2ppq2p/1P6/1RPBPN1P/P1PK1PP1/2B4R w k - 0 16
+22:30:31 [OUT] bestmove f3e5 
+22:30:31 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5 
+22:30:31 [IN] r1b1k2r/1p2np2/p3p1pn/2ppN2p/1P6/1RPBP2P/P1PK1PP1/2B4R b k - 0 16
+22:30:33 [OUT] bestmove c5c4 
+22:30:33 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4 
+22:30:33 [IN] r1b1k2r/1p2np2/p3p1pn/3pN2p/1Pp5/1RPBP2P/P1PK1PP1/2B4R w k - 0 17
+22:30:36 [OUT] bestmove e5g6 
+22:30:36 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6 
+22:30:36 [IN] r1b1k2r/1p2np2/p3p1Nn/3p3p/1Pp5/1RPBP2P/P1PK1PP1/2B4R b k - 0 17
+22:30:37 [OUT] bestmove e7g6 
+22:30:37 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6 
+22:30:37 [IN] r1b1k2r/1p3p2/p3p1nn/3p3p/1Pp5/1RPBP2P/P1PK1PP1/2B4R w k - 0 18
+22:30:39 [OUT] bestmove d3g6 
+22:30:39 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6 
+22:30:39 [IN] r1b1k2r/1p3p2/p3p1Bn/3p3p/1Pp5/1RP1P2P/P1PK1PP1/2B4R b k - 0 18
+22:30:40 [OUT] bestmove f7g6 
+22:30:40 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6 
+22:30:40 [IN] r1b1k2r/1p6/p3p1pn/3p3p/1Pp5/1RP1P2P/P1PK1PP1/2B4R w k - 0 19
+22:30:41 [OUT] bestmove h1e1 
+22:30:41 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1 
+22:30:41 [IN] r1b1k2r/1p6/p3p1pn/3p3p/1Pp5/1RP1P2P/P1PK1PP1/2B1R3 b k - 1 19
+22:30:42 [OUT] bestmove c4b3 
+22:30:42 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3 
+22:30:42 [IN] r1b1k2r/1p6/p3p1pn/3p3p/1P6/1pP1P2P/P1PK1PP1/2B1R3 w k - 0 20
+22:30:43 [OUT] bestmove a2b3 
+22:30:43 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3 
+22:30:43 [IN] r1b1k2r/1p6/p3p1pn/3p3p/1P6/1PP1P2P/2PK1PP1/2B1R3 b k - 0 20
+22:30:43 [OUT] bestmove c8d7 
+22:30:43 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7 
+22:30:43 [IN] r3k2r/1p1b4/p3p1pn/3p3p/1P6/1PP1P2P/2PK1PP1/2B1R3 w k - 1 21
+22:30:44 [OUT] bestmove g2g4 
+22:30:44 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4 
+22:30:44 [IN] r3k2r/1p1b4/p3p1pn/3p3p/1P4P1/1PP1P2P/2PK1P2/2B1R3 b k g3 0 21
+22:30:45 [OUT] bestmove a8c8 
+22:30:45 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8 
+22:30:45 [IN] 2r1k2r/1p1b4/p3p1pn/3p3p/1P4P1/1PP1P2P/2PK1P2/2B1R3 w k - 1 22
+22:30:46 [OUT] bestmove g4h5 
+22:30:46 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5 
+22:30:46 [IN] 2r1k2r/1p1b4/p3p1pn/3p3P/1P6/1PP1P2P/2PK1P2/2B1R3 b k - 0 22
+22:30:47 [OUT] bestmove g6h5 
+22:30:47 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5 
+22:30:47 [IN] 2r1k2r/1p1b4/p3p2n/3p3p/1P6/1PP1P2P/2PK1P2/2B1R3 w k - 0 23
+22:30:48 [OUT] bestmove c1b2 
+22:30:48 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2 
+22:30:48 [IN] 2r1k2r/1p1b4/p3p2n/3p3p/1P6/1PP1P2P/1BPK1P2/4R3 b k - 1 23
+22:30:49 [OUT] bestmove h8f8 
+22:30:49 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8 
+22:30:49 [IN] 2r1kr2/1p1b4/p3p2n/3p3p/1P6/1PP1P2P/1BPK1P2/4R3 w - - 2 24
+22:30:50 [OUT] bestmove c3c4 
+22:30:50 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4 
+22:30:50 [IN] 2r1kr2/1p1b4/p3p2n/3p3p/1PP5/1P2P2P/1BPK1P2/4R3 b - - 0 24
+22:30:52 [OUT] bestmove f8f2 
+22:30:52 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2 
+22:30:52 [IN] 2r1k3/1p1b4/p3p2n/3p3p/1PP5/1P2P2P/1BPK1r2/4R3 w - - 0 25
+22:30:53 [OUT] bestmove d2d3 
+22:30:53 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3 
+22:30:53 [IN] 2r1k3/1p1b4/p3p2n/3p3p/1PP5/1P1KP2P/1BP2r2/4R3 b - - 1 25
+22:30:55 [OUT] bestmove f2c2 
+22:30:55 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2 
+22:30:55 [IN] 2r1k3/1p1b4/p3p2n/3p3p/1PP5/1P1KP2P/1Br5/4R3 w - - 0 26
+22:30:57 [OUT] bestmove d3c2 
+22:30:57 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2 
+22:30:57 [IN] 2r1k3/1p1b4/p3p2n/3p3p/1PP5/1P2P2P/1BK5/4R3 b - - 0 26
+22:30:59 [OUT] bestmove d5c4 
+22:30:59 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4 
+22:30:59 [IN] 2r1k3/1p1b4/p3p2n/7p/1Pp5/1P2P2P/1BK5/4R3 w - - 0 27
+22:31:01 [OUT] bestmove e1d1 
+22:31:01 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1 
+22:31:01 [IN] 2r1k3/1p1b4/p3p2n/7p/1Pp5/1P2P2P/1BK5/3R4 b - - 1 27
+22:31:02 [OUT] bestmove c4c3 
+22:31:02 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3 
+22:31:02 [IN] 2r1k3/1p1b4/p3p2n/7p/1P6/1Pp1P2P/1BK5/3R4 w - - 0 28
+22:31:03 [OUT] bestmove b2c1 
+22:31:03 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1 
+22:31:03 [IN] 2r1k3/1p1b4/p3p2n/7p/1P6/1Pp1P2P/2K5/2BR4 b - - 1 28
+22:31:04 [OUT] bestmove d7b5 
+22:31:04 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5 
+22:31:04 [IN] 2r1k3/1p6/p3p2n/1b5p/1P6/1Pp1P2P/2K5/2BR4 w - - 2 29
+22:31:05 [OUT] bestmove e3e4 
+22:31:05 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4 
+22:31:05 [IN] 2r1k3/1p6/p3p2n/1b5p/1P2P3/1Pp4P/2K5/2BR4 b - - 0 29
+22:31:06 [OUT] bestmove h6g8 
+22:31:06 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8 
+22:31:06 [IN] 2r1k1n1/1p6/p3p3/1b5p/1P2P3/1Pp4P/2K5/2BR4 w - - 1 30
+22:31:07 [OUT] bestmove d1g1 
+22:31:07 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1 
+22:31:07 [IN] 2r1k1n1/1p6/p3p3/1b5p/1P2P3/1Pp4P/2K5/2B3R1 b - - 2 30
+22:31:08 [OUT] bestmove e8d7 
+22:31:08 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7 
+22:31:08 [IN] 2r3n1/1p1k4/p3p3/1b5p/1P2P3/1Pp4P/2K5/2B3R1 w - - 3 31
+22:31:09 [OUT] bestmove g1g8 
+22:31:09 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8 
+22:31:09 [IN] 2r3R1/1p1k4/p3p3/1b5p/1P2P3/1Pp4P/2K5/2B5 b - - 0 31
+22:31:10 [OUT] bestmove c8g8 
+22:31:10 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8 
+22:31:10 [IN] 6r1/1p1k4/p3p3/1b5p/1P2P3/1Pp4P/2K5/2B5 w - - 0 32
+22:31:19 [OUT] bestmove c1e3 
+22:31:19 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3 
+22:31:19 [IN] 6r1/1p1k4/p3p3/1b5p/1P2P3/1Pp1B2P/2K5/8 b - - 1 32
+22:31:41 [OUT] bestmove g8c8 
+22:31:41 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8 
+22:31:41 [IN] 2r5/1p1k4/p3p3/1b5p/1P2P3/1Pp1B2P/2K5/8 w - - 2 33
+22:31:57 [OUT] bestmove e3f2 
+22:31:57 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2 
+22:31:57 [IN] 2r5/1p1k4/p3p3/1b5p/1P2P3/1Pp4P/2K2B2/8 b - - 3 33
+22:32:12 [OUT] bestmove h5h4 
+22:32:12 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4 
+22:32:12 [IN] 2r5/1p1k4/p3p3/1b6/1P2P2p/1Pp4P/2K2B2/8 w - - 0 34
+22:32:29 [OUT] bestmove f2h4 
+22:32:29 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4 
+22:32:29 [IN] 2r5/1p1k4/p3p3/1b6/1P2P2B/1Pp4P/2K5/8 b - - 0 34
+22:32:39 [OUT] bestmove d7c6 
+22:32:39 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6 
+22:32:39 [IN] 2r5/1p6/p1k1p3/1b6/1P2P2B/1Pp4P/2K5/8 w - - 1 35
+22:32:45 [OUT] bestmove h4g3 
+22:32:45 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3 
+22:32:45 [IN] 2r5/1p6/p1k1p3/1b6/1P2P3/1Pp3BP/2K5/8 b - - 2 35
+22:32:53 [OUT] bestmove c8d8 
+22:32:53 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8 
+22:32:53 [IN] 3r4/1p6/p1k1p3/1b6/1P2P3/1Pp3BP/2K5/8 w - - 3 36
+22:33:12 [OUT] bestmove g3e1 
+22:33:12 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1 
+22:33:12 [IN] 3r4/1p6/p1k1p3/1b6/1P2P3/1Pp4P/2K5/4B3 b - - 4 36
+22:33:24 [OUT] bestmove d8d3 
+22:33:24 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3 
+22:33:24 [IN] 8/1p6/p1k1p3/1b6/1P2P3/1Ppr3P/2K5/4B3 w - - 5 37
+22:33:28 [OUT] bestmove e1c3 
+22:33:28 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3 
+22:33:28 [IN] 8/1p6/p1k1p3/1b6/1P2P3/1PBr3P/2K5/8 b - - 0 37
+22:33:38 [OUT] bestmove d3d6 
+22:33:38 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6 
+22:33:38 [IN] 8/1p6/p1krp3/1b6/1P2P3/1PB4P/2K5/8 w - - 1 38
+22:33:48 [OUT] bestmove c3a1 
+22:33:48 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6  c3a1 
+22:33:48 [IN] 8/1p6/p1krp3/1b6/1P2P3/1P5P/2K5/B7 b - - 2 38
+22:33:53 [OUT] bestmove d6d3 
+22:33:53 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6  c3a1  d6d3 
+22:33:53 [IN] 8/1p6/p1k1p3/1b6/1P2P3/1P1r3P/2K5/B7 w - - 3 39
+22:33:59 [OUT] bestmove h3h4 
+22:33:59 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6  c3a1  d6d3  h3h4 
+22:33:59 [IN] 8/1p6/p1k1p3/1b6/1P2P2P/1P1r4/2K5/B7 b - - 0 39
+22:34:05 [OUT] bestmove d3d6 
+22:34:05 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6  c3a1  d6d3  h3h4  d3d6 
+22:34:05 [IN] 8/1p6/p1krp3/1b6/1P2P2P/1P6/2K5/B7 w - - 1 40
+22:34:10 [OUT] bestmove c2c1 
+22:34:10 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6  c3a1  d6d3  h3h4  d3d6  c2c1 
+22:34:10 [IN] 8/1p6/p1krp3/1b6/1P2P2P/1P6/8/B1K5 b - - 2 40
+22:34:15 [OUT] bestmove d6d3 
+22:34:15 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6  c3a1  d6d3  h3h4  d3d6  c2c1  d6d3 
+22:34:15 [IN] 8/1p6/p1k1p3/1b6/1P2P2P/1P1r4/8/B1K5 w - - 3 41
+22:34:21 [OUT] bestmove c1c2 
+22:34:21 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6  c3a1  d6d3  h3h4  d3d6  c2c1  d6d3  c1c2 
+22:34:21 [IN] 8/1p6/p1k1p3/1b6/1P2P2P/1P1r4/2K5/B7 b - - 4 41
+22:34:27 [OUT] bestmove d3d6 
+22:34:27 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6  c3a1  d6d3  h3h4  d3d6  c2c1  d6d3  c1c2  d3d6 
+22:34:27 [IN] 8/1p6/p1krp3/1b6/1P2P2P/1P6/2K5/B7 w - - 5 42
+22:34:33 [OUT] bestmove c2c1 
+22:34:33 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6  c3a1  d6d3  h3h4  d3d6  c2c1  d6d3  c1c2  d3d6  c2c1 
+22:34:33 [IN] 8/1p6/p1krp3/1b6/1P2P2P/1P6/8/B1K5 b - - 6 42
+22:34:37 [OUT] bestmove d6d3 
+22:34:37 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6  c3a1  d6d3  h3h4  d3d6  c2c1  d6d3  c1c2  d3d6  c2c1  d6d3 
+22:34:37 [IN] 8/1p6/p1k1p3/1b6/1P2P2P/1P1r4/8/B1K5 w - - 7 43
+22:35:00 [IN] ############ HoneyB Program Started ############
+22:35:00 [IN] Starting SelfPlay()
+22:35:00 [IN] position startpos
+22:35:00 [IN] 
+[r][n][b][q][k][b][n][r] 8
+[p][p][p][p][p][p][p][p] 7
+[ ][ ][ ][ ][ ][ ][ ][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][ ][ ][ ][ ][ ][ ] 4
+[ ][ ][ ][ ][ ][ ][ ][ ] 3
+[P][P][P][P][P][P][P][P] 2
+[R][N][B][Q][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:35:00 [IN] rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 0
+22:35:01 [OUT] bestmove e2e3 
+22:35:01 [IN] position startpos moves e2e3 
+22:35:01 [IN] 
+[r][n][b][q][k][b][n][r] 8
+[p][p][p][p][p][p][p][p] 7
+[ ][ ][ ][ ][ ][ ][ ][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][ ][ ][ ][ ][ ][ ] 4
+[ ][ ][ ][ ][P][ ][ ][ ] 3
+[P][P][P][P][ ][P][P][P] 2
+[R][N][B][Q][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:35:01 [IN] rnbqkbnr/pppppppp/8/8/8/4P3/PPPP1PPP/RNBQKBNR b KQkq - 0 0
+22:35:02 [OUT] bestmove e7e6 
+22:35:02 [IN] position startpos moves e2e3  e7e6 
+22:35:02 [IN] 
+[r][n][b][q][k][b][n][r] 8
+[p][p][p][p][ ][p][p][p] 7
+[ ][ ][ ][ ][p][ ][ ][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][ ][ ][ ][ ][ ][ ] 4
+[ ][ ][ ][ ][P][ ][ ][ ] 3
+[P][P][P][P][ ][P][P][P] 2
+[R][N][B][Q][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:35:02 [IN] rnbqkbnr/pppp1ppp/4p3/8/8/4P3/PPPP1PPP/RNBQKBNR w KQkq - 0 1
+22:35:05 [OUT] bestmove d1f3 
+22:35:05 [IN] position startpos moves e2e3  e7e6  d1f3 
+22:35:05 [IN] 
+[r][n][b][q][k][b][n][r] 8
+[p][p][p][p][ ][p][p][p] 7
+[ ][ ][ ][ ][p][ ][ ][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][ ][ ][ ][ ][ ][ ] 4
+[ ][ ][ ][ ][P][Q][ ][ ] 3
+[P][P][P][P][ ][P][P][P] 2
+[R][N][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:35:05 [IN] rnbqkbnr/pppp1ppp/4p3/8/8/4PQ2/PPPP1PPP/RNB1KBNR b KQkq - 1 1
+22:35:08 [OUT] bestmove d8f6 
+22:35:08 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6 
+22:35:08 [IN] 
+[r][n][b][ ][k][b][n][r] 8
+[p][p][p][p][ ][p][p][p] 7
+[ ][ ][ ][ ][p][q][ ][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][ ][ ][ ][ ][ ][ ] 4
+[ ][ ][ ][ ][P][Q][ ][ ] 3
+[P][P][P][P][ ][P][P][P] 2
+[R][N][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:35:08 [IN] rnb1kbnr/pppp1ppp/4pq2/8/8/4PQ2/PPPP1PPP/RNB1KBNR w KQkq - 2 2
+22:35:13 [OUT] bestmove b1c3 
+22:35:13 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3 
+22:35:13 [IN] 
+[r][n][b][ ][k][b][n][r] 8
+[p][p][p][p][ ][p][p][p] 7
+[ ][ ][ ][ ][p][q][ ][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][ ][ ][ ][ ][ ][ ] 4
+[ ][ ][N][ ][P][Q][ ][ ] 3
+[P][P][P][P][ ][P][P][P] 2
+[R][ ][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:35:13 [IN] rnb1kbnr/pppp1ppp/4pq2/8/8/2N1PQ2/PPPP1PPP/R1B1KBNR b KQkq - 3 2
+22:35:18 [OUT] bestmove b8c6 
+22:35:18 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6 
+22:35:18 [IN] 
+[r][ ][b][ ][k][b][n][r] 8
+[p][p][p][p][ ][p][p][p] 7
+[ ][ ][n][ ][p][q][ ][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][ ][ ][ ][ ][ ][ ] 4
+[ ][ ][N][ ][P][Q][ ][ ] 3
+[P][P][P][P][ ][P][P][P] 2
+[R][ ][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:35:18 [IN] r1b1kbnr/pppp1ppp/2n1pq2/8/8/2N1PQ2/PPPP1PPP/R1B1KBNR w KQkq - 4 3
+22:35:23 [OUT] bestmove h2h3 
+22:35:23 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3 
+22:35:23 [IN] 
+[r][ ][b][ ][k][b][n][r] 8
+[p][p][p][p][ ][p][p][p] 7
+[ ][ ][n][ ][p][q][ ][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][ ][ ][ ][ ][ ][ ] 4
+[ ][ ][N][ ][P][Q][ ][P] 3
+[P][P][P][P][ ][P][P][ ] 2
+[R][ ][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:35:23 [IN] r1b1kbnr/pppp1ppp/2n1pq2/8/8/2N1PQ1P/PPPP1PP1/R1B1KBNR b KQkq - 0 3
+22:35:29 [OUT] bestmove g7g6 
+22:35:29 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6 
+22:35:29 [IN] 
+[r][ ][b][ ][k][b][n][r] 8
+[p][p][p][p][ ][p][ ][p] 7
+[ ][ ][n][ ][p][q][p][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][ ][ ][ ][ ][ ][ ] 4
+[ ][ ][N][ ][P][Q][ ][P] 3
+[P][P][P][P][ ][P][P][ ] 2
+[R][ ][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:35:29 [IN] r1b1kbnr/pppp1p1p/2n1pqp1/8/8/2N1PQ1P/PPPP1PP1/R1B1KBNR w KQkq - 0 4
+22:35:34 [OUT] bestmove b2b3 
+22:35:34 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3 
+22:35:34 [IN] 
+[r][ ][b][ ][k][b][n][r] 8
+[p][p][p][p][ ][p][ ][p] 7
+[ ][ ][n][ ][p][q][p][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][ ][ ][ ][ ][ ][ ] 4
+[ ][P][N][ ][P][Q][ ][P] 3
+[P][ ][P][P][ ][P][P][ ] 2
+[R][ ][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:35:34 [IN] r1b1kbnr/pppp1p1p/2n1pqp1/8/8/1PN1PQ1P/P1PP1PP1/R1B1KBNR b KQkq - 0 4
+22:35:40 [OUT] bestmove a7a6 
+22:35:40 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6 
+22:35:40 [IN] 
+[r][ ][b][ ][k][b][n][r] 8
+[ ][p][p][p][ ][p][ ][p] 7
+[p][ ][n][ ][p][q][p][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][ ][ ][ ][ ][ ][ ] 4
+[ ][P][N][ ][P][Q][ ][P] 3
+[P][ ][P][P][ ][P][P][ ] 2
+[R][ ][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:35:40 [IN] r1b1kbnr/1ppp1p1p/p1n1pqp1/8/8/1PN1PQ1P/P1PP1PP1/R1B1KBNR w KQkq - 0 5
+22:35:46 [OUT] bestmove a1b1 
+22:35:46 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1 
+22:35:46 [IN] 
+[r][ ][b][ ][k][b][n][r] 8
+[ ][p][p][p][ ][p][ ][p] 7
+[p][ ][n][ ][p][q][p][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][ ][ ][ ][ ][ ][ ] 4
+[ ][P][N][ ][P][Q][ ][P] 3
+[P][ ][P][P][ ][P][P][ ] 2
+[ ][R][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:35:46 [IN] r1b1kbnr/1ppp1p1p/p1n1pqp1/8/8/1PN1PQ1P/P1PP1PP1/1RB1KBNR b Kkq - 1 5
+22:35:52 [OUT] bestmove f8e7 
+22:35:52 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7 
+22:35:52 [IN] 
+[r][ ][b][ ][k][ ][n][r] 8
+[ ][p][p][p][b][p][ ][p] 7
+[p][ ][n][ ][p][q][p][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][ ][ ][ ][ ][ ][ ] 4
+[ ][P][N][ ][P][Q][ ][P] 3
+[P][ ][P][P][ ][P][P][ ] 2
+[ ][R][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:35:52 [IN] r1b1k1nr/1pppbp1p/p1n1pqp1/8/8/1PN1PQ1P/P1PP1PP1/1RB1KBNR w Kkq - 2 6
+22:35:57 [OUT] bestmove f3g4 
+22:35:57 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4 
+22:35:57 [IN] 
+[r][ ][b][ ][k][ ][n][r] 8
+[ ][p][p][p][b][p][ ][p] 7
+[p][ ][n][ ][p][q][p][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][ ][ ][ ][ ][Q][ ] 4
+[ ][P][N][ ][P][ ][ ][P] 3
+[P][ ][P][P][ ][P][P][ ] 2
+[ ][R][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:35:57 [IN] r1b1k1nr/1pppbp1p/p1n1pqp1/8/6Q1/1PN1P2P/P1PP1PP1/1RB1KBNR b Kkq - 3 6
+22:36:05 [OUT] bestmove e7b4 
+22:36:05 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4 
+22:36:05 [IN] 
+[r][ ][b][ ][k][ ][n][r] 8
+[ ][p][p][p][ ][p][ ][p] 7
+[p][ ][n][ ][p][q][p][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][b][ ][ ][ ][ ][Q][ ] 4
+[ ][P][N][ ][P][ ][ ][P] 3
+[P][ ][P][P][ ][P][P][ ] 2
+[ ][R][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:36:05 [IN] r1b1k1nr/1ppp1p1p/p1n1pqp1/8/1b4Q1/1PN1P2P/P1PP1PP1/1RB1KBNR w Kkq - 4 7
+22:36:12 [OUT] bestmove g4f3 
+22:36:12 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3 
+22:36:12 [IN] 
+[r][ ][b][ ][k][ ][n][r] 8
+[ ][p][p][p][ ][p][ ][p] 7
+[p][ ][n][ ][p][q][p][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][b][ ][ ][ ][ ][ ][ ] 4
+[ ][P][N][ ][P][Q][ ][P] 3
+[P][ ][P][P][ ][P][P][ ] 2
+[ ][R][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:36:12 [IN] r1b1k1nr/1ppp1p1p/p1n1pqp1/8/1b6/1PN1PQ1P/P1PP1PP1/1RB1KBNR b Kkq - 5 7
+22:36:20 [OUT] bestmove b4c3 
+22:36:20 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3 
+22:36:20 [IN] 
+[r][ ][b][ ][k][ ][n][r] 8
+[ ][p][p][p][ ][p][ ][p] 7
+[p][ ][n][ ][p][q][p][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][ ][ ][ ][ ][ ][ ] 4
+[ ][P][b][ ][P][Q][ ][P] 3
+[P][ ][P][P][ ][P][P][ ] 2
+[ ][R][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:36:20 [IN] r1b1k1nr/1ppp1p1p/p1n1pqp1/8/8/1Pb1PQ1P/P1PP1PP1/1RB1KBNR w Kkq - 0 8
+22:36:24 [OUT] bestmove d2c3 
+22:36:24 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3 
+22:36:24 [IN] 
+[r][ ][b][ ][k][ ][n][r] 8
+[ ][p][p][p][ ][p][ ][p] 7
+[p][ ][n][ ][p][q][p][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][ ][ ][ ][ ][ ][ ] 4
+[ ][P][P][ ][P][Q][ ][P] 3
+[P][ ][P][ ][ ][P][P][ ] 2
+[ ][R][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:36:24 [IN] r1b1k1nr/1ppp1p1p/p1n1pqp1/8/8/1PP1PQ1P/P1P2PP1/1RB1KBNR b Kkq - 0 8
+22:36:28 [OUT] bestmove a8b8 
+22:36:28 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8 
+22:36:28 [IN] 
+[ ][r][b][ ][k][ ][n][r] 8
+[ ][p][p][p][ ][p][ ][p] 7
+[p][ ][n][ ][p][q][p][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][ ][ ][ ][ ][ ][ ][ ] 4
+[ ][P][P][ ][P][Q][ ][P] 3
+[P][ ][P][ ][ ][P][P][ ] 2
+[ ][R][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:36:28 [IN] 1rb1k1nr/1ppp1p1p/p1n1pqp1/8/8/1PP1PQ1P/P1P2PP1/1RB1KBNR w Kk - 1 9
+22:36:31 [OUT] bestmove b3b4 
+22:36:31 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4 
+22:36:31 [IN] 
+[ ][r][b][ ][k][ ][n][r] 8
+[ ][p][p][p][ ][p][ ][p] 7
+[p][ ][n][ ][p][q][p][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][ ] 5
+[ ][P][ ][ ][ ][ ][ ][ ] 4
+[ ][ ][P][ ][P][Q][ ][P] 3
+[P][ ][P][ ][ ][P][P][ ] 2
+[ ][R][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:36:31 [IN] 1rb1k1nr/1ppp1p1p/p1n1pqp1/8/1P6/2P1PQ1P/P1P2PP1/1RB1KBNR b Kk - 0 9
+22:36:35 [OUT] bestmove h7h5 
+22:36:35 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5 
+22:36:35 [IN] 
+[ ][r][b][ ][k][ ][n][r] 8
+[ ][p][p][p][ ][p][ ][ ] 7
+[p][ ][n][ ][p][q][p][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][ ][ ][ ][ ] 4
+[ ][ ][P][ ][P][Q][ ][P] 3
+[P][ ][P][ ][ ][P][P][ ] 2
+[ ][R][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:36:35 [IN] 1rb1k1nr/1ppp1p2/p1n1pqp1/7p/1P6/2P1PQ1P/P1P2PP1/1RB1KBNR w Kk h6 0 10
+22:36:39 [OUT] bestmove b1b3 
+22:36:39 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3 
+22:36:39 [IN] 
+[ ][r][b][ ][k][ ][n][r] 8
+[ ][p][p][p][ ][p][ ][ ] 7
+[p][ ][n][ ][p][q][p][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][ ][ ][ ][ ] 4
+[ ][R][P][ ][P][Q][ ][P] 3
+[P][ ][P][ ][ ][P][P][ ] 2
+[ ][ ][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:36:39 [IN] 1rb1k1nr/1ppp1p2/p1n1pqp1/7p/1P6/1RP1PQ1P/P1P2PP1/2B1KBNR b Kk - 1 10
+22:36:43 [OUT] bestmove b8a8 
+22:36:43 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8 
+22:36:43 [IN] 
+[r][ ][b][ ][k][ ][n][r] 8
+[ ][p][p][p][ ][p][ ][ ] 7
+[p][ ][n][ ][p][q][p][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][ ][ ][ ][ ] 4
+[ ][R][P][ ][P][Q][ ][P] 3
+[P][ ][P][ ][ ][P][P][ ] 2
+[ ][ ][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:36:43 [IN] r1b1k1nr/1ppp1p2/p1n1pqp1/7p/1P6/1RP1PQ1P/P1P2PP1/2B1KBNR w Kk - 2 11
+22:36:46 [OUT] bestmove f3e4 
+22:36:46 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4 
+22:36:46 [IN] 
+[r][ ][b][ ][k][ ][n][r] 8
+[ ][p][p][p][ ][p][ ][ ] 7
+[p][ ][n][ ][p][q][p][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][Q][ ][ ][ ] 4
+[ ][R][P][ ][P][ ][ ][P] 3
+[P][ ][P][ ][ ][P][P][ ] 2
+[ ][ ][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:36:46 [IN] r1b1k1nr/1ppp1p2/p1n1pqp1/7p/1P2Q3/1RP1P2P/P1P2PP1/2B1KBNR b Kk - 3 11
+22:36:51 [OUT] bestmove c6e7 
+22:36:51 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7 
+22:36:51 [IN] 
+[r][ ][b][ ][k][ ][n][r] 8
+[ ][p][p][p][n][p][ ][ ] 7
+[p][ ][ ][ ][p][q][p][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][Q][ ][ ][ ] 4
+[ ][R][P][ ][P][ ][ ][P] 3
+[P][ ][P][ ][ ][P][P][ ] 2
+[ ][ ][B][ ][K][B][N][R] 1
+ a  b  c  d  e  f  g  h
+
+22:36:51 [IN] r1b1k1nr/1pppnp2/p3pqp1/7p/1P2Q3/1RP1P2P/P1P2PP1/2B1KBNR w Kk - 4 12
+22:36:55 [OUT] bestmove g1f3 
+22:36:55 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3 
+22:36:55 [IN] 
+[r][ ][b][ ][k][ ][n][r] 8
+[ ][p][p][p][n][p][ ][ ] 7
+[p][ ][ ][ ][p][q][p][ ] 6
+[ ][ ][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][Q][ ][ ][ ] 4
+[ ][R][P][ ][P][N][ ][P] 3
+[P][ ][P][ ][ ][P][P][ ] 2
+[ ][ ][B][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+22:36:55 [IN] r1b1k1nr/1pppnp2/p3pqp1/7p/1P2Q3/1RP1PN1P/P1P2PP1/2B1KB1R b Kk - 5 12
+22:36:59 [OUT] bestmove g8h6 
+22:36:59 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6 
+22:36:59 [IN] 
+[r][ ][b][ ][k][ ][ ][r] 8
+[ ][p][p][p][n][p][ ][ ] 7
+[p][ ][ ][ ][p][q][p][n] 6
+[ ][ ][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][Q][ ][ ][ ] 4
+[ ][R][P][ ][P][N][ ][P] 3
+[P][ ][P][ ][ ][P][P][ ] 2
+[ ][ ][B][ ][K][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+22:36:59 [IN] r1b1k2r/1pppnp2/p3pqpn/7p/1P2Q3/1RP1PN1P/P1P2PP1/2B1KB1R w Kk - 6 13
+22:37:04 [OUT] bestmove e1d2 
+22:37:04 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2 
+22:37:04 [IN] 
+[r][ ][b][ ][k][ ][ ][r] 8
+[ ][p][p][p][n][p][ ][ ] 7
+[p][ ][ ][ ][p][q][p][n] 6
+[ ][ ][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][Q][ ][ ][ ] 4
+[ ][R][P][ ][P][N][ ][P] 3
+[P][ ][P][K][ ][P][P][ ] 2
+[ ][ ][B][ ][ ][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+22:37:04 [IN] r1b1k2r/1pppnp2/p3pqpn/7p/1P2Q3/1RP1PN1P/P1PK1PP1/2B2B1R b k - 7 13
+22:37:09 [OUT] bestmove c7c5 
+22:37:09 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5 
+22:37:09 [IN] 
+[r][ ][b][ ][k][ ][ ][r] 8
+[ ][p][ ][p][n][p][ ][ ] 7
+[p][ ][ ][ ][p][q][p][n] 6
+[ ][ ][p][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][Q][ ][ ][ ] 4
+[ ][R][P][ ][P][N][ ][P] 3
+[P][ ][P][K][ ][P][P][ ] 2
+[ ][ ][B][ ][ ][B][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+22:37:09 [IN] r1b1k2r/1p1pnp2/p3pqpn/2p4p/1P2Q3/1RP1PN1P/P1PK1PP1/2B2B1R w k c6 0 14
+22:37:17 [OUT] bestmove f1d3 
+22:37:17 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3 
+22:37:17 [IN] 
+[r][ ][b][ ][k][ ][ ][r] 8
+[ ][p][ ][p][n][p][ ][ ] 7
+[p][ ][ ][ ][p][q][p][n] 6
+[ ][ ][p][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][Q][ ][ ][ ] 4
+[ ][R][P][B][P][N][ ][P] 3
+[P][ ][P][K][ ][P][P][ ] 2
+[ ][ ][B][ ][ ][ ][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+22:37:17 [IN] r1b1k2r/1p1pnp2/p3pqpn/2p4p/1P2Q3/1RPBPN1P/P1PK1PP1/2B4R b k - 1 14
+22:37:25 [OUT] bestmove d7d5 
+22:37:25 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5 
+22:37:25 [IN] 
+[r][ ][b][ ][k][ ][ ][r] 8
+[ ][p][ ][ ][n][p][ ][ ] 7
+[p][ ][ ][ ][p][q][p][n] 6
+[ ][ ][p][p][ ][ ][ ][p] 5
+[ ][P][ ][ ][Q][ ][ ][ ] 4
+[ ][R][P][B][P][N][ ][P] 3
+[P][ ][P][K][ ][P][P][ ] 2
+[ ][ ][B][ ][ ][ ][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+22:37:25 [IN] r1b1k2r/1p2np2/p3pqpn/2pp3p/1P2Q3/1RPBPN1P/P1PK1PP1/2B4R w k d6 0 15
+22:37:32 [OUT] bestmove e4e5 
+22:37:32 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5 
+22:37:32 [IN] 
+[r][ ][b][ ][k][ ][ ][r] 8
+[ ][p][ ][ ][n][p][ ][ ] 7
+[p][ ][ ][ ][p][q][p][n] 6
+[ ][ ][p][p][Q][ ][ ][p] 5
+[ ][P][ ][ ][ ][ ][ ][ ] 4
+[ ][R][P][B][P][N][ ][P] 3
+[P][ ][P][K][ ][P][P][ ] 2
+[ ][ ][B][ ][ ][ ][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+22:37:32 [IN] r1b1k2r/1p2np2/p3pqpn/2ppQ2p/1P6/1RPBPN1P/P1PK1PP1/2B4R b k - 1 15
+22:37:37 [OUT] bestmove f6e5 
+22:37:37 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5 
+22:37:37 [IN] 
+[r][ ][b][ ][k][ ][ ][r] 8
+[ ][p][ ][ ][n][p][ ][ ] 7
+[p][ ][ ][ ][p][ ][p][n] 6
+[ ][ ][p][p][q][ ][ ][p] 5
+[ ][P][ ][ ][ ][ ][ ][ ] 4
+[ ][R][P][B][P][N][ ][P] 3
+[P][ ][P][K][ ][P][P][ ] 2
+[ ][ ][B][ ][ ][ ][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+22:37:37 [IN] r1b1k2r/1p2np2/p3p1pn/2ppq2p/1P6/1RPBPN1P/P1PK1PP1/2B4R w k - 0 16
+22:37:42 [OUT] bestmove f3e5 
+22:37:42 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5 
+22:37:42 [IN] 
+[r][ ][b][ ][k][ ][ ][r] 8
+[ ][p][ ][ ][n][p][ ][ ] 7
+[p][ ][ ][ ][p][ ][p][n] 6
+[ ][ ][p][p][N][ ][ ][p] 5
+[ ][P][ ][ ][ ][ ][ ][ ] 4
+[ ][R][P][B][P][ ][ ][P] 3
+[P][ ][P][K][ ][P][P][ ] 2
+[ ][ ][B][ ][ ][ ][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+22:37:42 [IN] r1b1k2r/1p2np2/p3p1pn/2ppN2p/1P6/1RPBP2P/P1PK1PP1/2B4R b k - 0 16
+22:37:44 [OUT] bestmove c5c4 
+22:37:44 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4 
+22:37:44 [IN] 
+[r][ ][b][ ][k][ ][ ][r] 8
+[ ][p][ ][ ][n][p][ ][ ] 7
+[p][ ][ ][ ][p][ ][p][n] 6
+[ ][ ][ ][p][N][ ][ ][p] 5
+[ ][P][p][ ][ ][ ][ ][ ] 4
+[ ][R][P][B][P][ ][ ][P] 3
+[P][ ][P][K][ ][P][P][ ] 2
+[ ][ ][B][ ][ ][ ][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+22:37:44 [IN] r1b1k2r/1p2np2/p3p1pn/3pN2p/1Pp5/1RPBP2P/P1PK1PP1/2B4R w k - 0 17
+22:37:47 [OUT] bestmove e5g6 
+22:37:47 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6 
+22:37:47 [IN] 
+[r][ ][b][ ][k][ ][ ][r] 8
+[ ][p][ ][ ][n][p][ ][ ] 7
+[p][ ][ ][ ][p][ ][N][n] 6
+[ ][ ][ ][p][ ][ ][ ][p] 5
+[ ][P][p][ ][ ][ ][ ][ ] 4
+[ ][R][P][B][P][ ][ ][P] 3
+[P][ ][P][K][ ][P][P][ ] 2
+[ ][ ][B][ ][ ][ ][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+22:37:47 [IN] r1b1k2r/1p2np2/p3p1Nn/3p3p/1Pp5/1RPBP2P/P1PK1PP1/2B4R b k - 0 17
+22:37:49 [OUT] bestmove e7g6 
+22:37:49 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6 
+22:37:49 [IN] 
+[r][ ][b][ ][k][ ][ ][r] 8
+[ ][p][ ][ ][ ][p][ ][ ] 7
+[p][ ][ ][ ][p][ ][n][n] 6
+[ ][ ][ ][p][ ][ ][ ][p] 5
+[ ][P][p][ ][ ][ ][ ][ ] 4
+[ ][R][P][B][P][ ][ ][P] 3
+[P][ ][P][K][ ][P][P][ ] 2
+[ ][ ][B][ ][ ][ ][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+22:37:49 [IN] r1b1k2r/1p3p2/p3p1nn/3p3p/1Pp5/1RPBP2P/P1PK1PP1/2B4R w k - 0 18
+22:37:51 [OUT] bestmove d3g6 
+22:37:51 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6 
+22:37:51 [IN] 
+[r][ ][b][ ][k][ ][ ][r] 8
+[ ][p][ ][ ][ ][p][ ][ ] 7
+[p][ ][ ][ ][p][ ][B][n] 6
+[ ][ ][ ][p][ ][ ][ ][p] 5
+[ ][P][p][ ][ ][ ][ ][ ] 4
+[ ][R][P][ ][P][ ][ ][P] 3
+[P][ ][P][K][ ][P][P][ ] 2
+[ ][ ][B][ ][ ][ ][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+22:37:51 [IN] r1b1k2r/1p3p2/p3p1Bn/3p3p/1Pp5/1RP1P2P/P1PK1PP1/2B4R b k - 0 18
+22:37:52 [OUT] bestmove f7g6 
+22:37:52 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6 
+22:37:52 [IN] 
+[r][ ][b][ ][k][ ][ ][r] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][p][n] 6
+[ ][ ][ ][p][ ][ ][ ][p] 5
+[ ][P][p][ ][ ][ ][ ][ ] 4
+[ ][R][P][ ][P][ ][ ][P] 3
+[P][ ][P][K][ ][P][P][ ] 2
+[ ][ ][B][ ][ ][ ][ ][R] 1
+ a  b  c  d  e  f  g  h
+
+22:37:52 [IN] r1b1k2r/1p6/p3p1pn/3p3p/1Pp5/1RP1P2P/P1PK1PP1/2B4R w k - 0 19
+22:37:53 [OUT] bestmove h1e1 
+22:37:53 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1 
+22:37:53 [IN] 
+[r][ ][b][ ][k][ ][ ][r] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][p][n] 6
+[ ][ ][ ][p][ ][ ][ ][p] 5
+[ ][P][p][ ][ ][ ][ ][ ] 4
+[ ][R][P][ ][P][ ][ ][P] 3
+[P][ ][P][K][ ][P][P][ ] 2
+[ ][ ][B][ ][R][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:37:53 [IN] r1b1k2r/1p6/p3p1pn/3p3p/1Pp5/1RP1P2P/P1PK1PP1/2B1R3 b k - 1 19
+22:37:54 [OUT] bestmove c4b3 
+22:37:54 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3 
+22:37:55 [IN] 
+[r][ ][b][ ][k][ ][ ][r] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][p][n] 6
+[ ][ ][ ][p][ ][ ][ ][p] 5
+[ ][P][ ][ ][ ][ ][ ][ ] 4
+[ ][p][P][ ][P][ ][ ][P] 3
+[P][ ][P][K][ ][P][P][ ] 2
+[ ][ ][B][ ][R][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:37:55 [IN] r1b1k2r/1p6/p3p1pn/3p3p/1P6/1pP1P2P/P1PK1PP1/2B1R3 w k - 0 20
+22:37:55 [OUT] bestmove a2b3 
+22:37:55 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3 
+22:37:55 [IN] 
+[r][ ][b][ ][k][ ][ ][r] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][p][n] 6
+[ ][ ][ ][p][ ][ ][ ][p] 5
+[ ][P][ ][ ][ ][ ][ ][ ] 4
+[ ][P][P][ ][P][ ][ ][P] 3
+[ ][ ][P][K][ ][P][P][ ] 2
+[ ][ ][B][ ][R][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:37:55 [IN] r1b1k2r/1p6/p3p1pn/3p3p/1P6/1PP1P2P/2PK1PP1/2B1R3 b k - 0 20
+22:37:56 [OUT] bestmove c8d7 
+22:37:56 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7 
+22:37:56 [IN] 
+[r][ ][ ][ ][k][ ][ ][r] 8
+[ ][p][ ][b][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][p][n] 6
+[ ][ ][ ][p][ ][ ][ ][p] 5
+[ ][P][ ][ ][ ][ ][ ][ ] 4
+[ ][P][P][ ][P][ ][ ][P] 3
+[ ][ ][P][K][ ][P][P][ ] 2
+[ ][ ][B][ ][R][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:37:56 [IN] r3k2r/1p1b4/p3p1pn/3p3p/1P6/1PP1P2P/2PK1PP1/2B1R3 w k - 1 21
+22:37:57 [OUT] bestmove g2g4 
+22:37:57 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4 
+22:37:57 [IN] 
+[r][ ][ ][ ][k][ ][ ][r] 8
+[ ][p][ ][b][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][p][n] 6
+[ ][ ][ ][p][ ][ ][ ][p] 5
+[ ][P][ ][ ][ ][ ][P][ ] 4
+[ ][P][P][ ][P][ ][ ][P] 3
+[ ][ ][P][K][ ][P][ ][ ] 2
+[ ][ ][B][ ][R][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:37:57 [IN] r3k2r/1p1b4/p3p1pn/3p3p/1P4P1/1PP1P2P/2PK1P2/2B1R3 b k g3 0 21
+22:37:58 [OUT] bestmove a8c8 
+22:37:58 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8 
+22:37:58 [IN] 
+[ ][ ][r][ ][k][ ][ ][r] 8
+[ ][p][ ][b][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][p][n] 6
+[ ][ ][ ][p][ ][ ][ ][p] 5
+[ ][P][ ][ ][ ][ ][P][ ] 4
+[ ][P][P][ ][P][ ][ ][P] 3
+[ ][ ][P][K][ ][P][ ][ ] 2
+[ ][ ][B][ ][R][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:37:58 [IN] 2r1k2r/1p1b4/p3p1pn/3p3p/1P4P1/1PP1P2P/2PK1P2/2B1R3 w k - 1 22
+22:37:59 [OUT] bestmove g4h5 
+22:37:59 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5 
+22:37:59 [IN] 
+[ ][ ][r][ ][k][ ][ ][r] 8
+[ ][p][ ][b][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][p][n] 6
+[ ][ ][ ][p][ ][ ][ ][P] 5
+[ ][P][ ][ ][ ][ ][ ][ ] 4
+[ ][P][P][ ][P][ ][ ][P] 3
+[ ][ ][P][K][ ][P][ ][ ] 2
+[ ][ ][B][ ][R][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:37:59 [IN] 2r1k2r/1p1b4/p3p1pn/3p3P/1P6/1PP1P2P/2PK1P2/2B1R3 b k - 0 22
+22:38:00 [OUT] bestmove g6h5 
+22:38:00 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5 
+22:38:00 [IN] 
+[ ][ ][r][ ][k][ ][ ][r] 8
+[ ][p][ ][b][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][n] 6
+[ ][ ][ ][p][ ][ ][ ][p] 5
+[ ][P][ ][ ][ ][ ][ ][ ] 4
+[ ][P][P][ ][P][ ][ ][P] 3
+[ ][ ][P][K][ ][P][ ][ ] 2
+[ ][ ][B][ ][R][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:00 [IN] 2r1k2r/1p1b4/p3p2n/3p3p/1P6/1PP1P2P/2PK1P2/2B1R3 w k - 0 23
+22:38:01 [OUT] bestmove c1b2 
+22:38:01 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2 
+22:38:01 [IN] 
+[ ][ ][r][ ][k][ ][ ][r] 8
+[ ][p][ ][b][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][n] 6
+[ ][ ][ ][p][ ][ ][ ][p] 5
+[ ][P][ ][ ][ ][ ][ ][ ] 4
+[ ][P][P][ ][P][ ][ ][P] 3
+[ ][B][P][K][ ][P][ ][ ] 2
+[ ][ ][ ][ ][R][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:01 [IN] 2r1k2r/1p1b4/p3p2n/3p3p/1P6/1PP1P2P/1BPK1P2/4R3 b k - 1 23
+22:38:02 [OUT] bestmove h8f8 
+22:38:02 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8 
+22:38:02 [IN] 
+[ ][ ][r][ ][k][r][ ][ ] 8
+[ ][p][ ][b][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][n] 6
+[ ][ ][ ][p][ ][ ][ ][p] 5
+[ ][P][ ][ ][ ][ ][ ][ ] 4
+[ ][P][P][ ][P][ ][ ][P] 3
+[ ][B][P][K][ ][P][ ][ ] 2
+[ ][ ][ ][ ][R][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:02 [IN] 2r1kr2/1p1b4/p3p2n/3p3p/1P6/1PP1P2P/1BPK1P2/4R3 w - - 2 24
+22:38:03 [OUT] bestmove c3c4 
+22:38:03 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4 
+22:38:03 [IN] 
+[ ][ ][r][ ][k][r][ ][ ] 8
+[ ][p][ ][b][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][n] 6
+[ ][ ][ ][p][ ][ ][ ][p] 5
+[ ][P][P][ ][ ][ ][ ][ ] 4
+[ ][P][ ][ ][P][ ][ ][P] 3
+[ ][B][P][K][ ][P][ ][ ] 2
+[ ][ ][ ][ ][R][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:03 [IN] 2r1kr2/1p1b4/p3p2n/3p3p/1PP5/1P2P2P/1BPK1P2/4R3 b - - 0 24
+22:38:06 [OUT] bestmove f8f2 
+22:38:06 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2 
+22:38:06 [IN] 
+[ ][ ][r][ ][k][ ][ ][ ] 8
+[ ][p][ ][b][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][n] 6
+[ ][ ][ ][p][ ][ ][ ][p] 5
+[ ][P][P][ ][ ][ ][ ][ ] 4
+[ ][P][ ][ ][P][ ][ ][P] 3
+[ ][B][P][K][ ][r][ ][ ] 2
+[ ][ ][ ][ ][R][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:06 [IN] 2r1k3/1p1b4/p3p2n/3p3p/1PP5/1P2P2P/1BPK1r2/4R3 w - - 0 25
+22:38:06 [OUT] bestmove d2d3 
+22:38:06 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3 
+22:38:06 [IN] 
+[ ][ ][r][ ][k][ ][ ][ ] 8
+[ ][p][ ][b][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][n] 6
+[ ][ ][ ][p][ ][ ][ ][p] 5
+[ ][P][P][ ][ ][ ][ ][ ] 4
+[ ][P][ ][K][P][ ][ ][P] 3
+[ ][B][P][ ][ ][r][ ][ ] 2
+[ ][ ][ ][ ][R][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:06 [IN] 2r1k3/1p1b4/p3p2n/3p3p/1PP5/1P1KP2P/1BP2r2/4R3 b - - 1 25
+22:38:09 [OUT] bestmove f2c2 
+22:38:09 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2 
+22:38:09 [IN] 
+[ ][ ][r][ ][k][ ][ ][ ] 8
+[ ][p][ ][b][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][n] 6
+[ ][ ][ ][p][ ][ ][ ][p] 5
+[ ][P][P][ ][ ][ ][ ][ ] 4
+[ ][P][ ][K][P][ ][ ][P] 3
+[ ][B][r][ ][ ][ ][ ][ ] 2
+[ ][ ][ ][ ][R][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:09 [IN] 2r1k3/1p1b4/p3p2n/3p3p/1PP5/1P1KP2P/1Br5/4R3 w - - 0 26
+22:38:11 [OUT] bestmove d3c2 
+22:38:11 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2 
+22:38:11 [IN] 
+[ ][ ][r][ ][k][ ][ ][ ] 8
+[ ][p][ ][b][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][n] 6
+[ ][ ][ ][p][ ][ ][ ][p] 5
+[ ][P][P][ ][ ][ ][ ][ ] 4
+[ ][P][ ][ ][P][ ][ ][P] 3
+[ ][B][K][ ][ ][ ][ ][ ] 2
+[ ][ ][ ][ ][R][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:11 [IN] 2r1k3/1p1b4/p3p2n/3p3p/1PP5/1P2P2P/1BK5/4R3 b - - 0 26
+22:38:12 [OUT] bestmove d5c4 
+22:38:12 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4 
+22:38:12 [IN] 
+[ ][ ][r][ ][k][ ][ ][ ] 8
+[ ][p][ ][b][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][n] 6
+[ ][ ][ ][ ][ ][ ][ ][p] 5
+[ ][P][p][ ][ ][ ][ ][ ] 4
+[ ][P][ ][ ][P][ ][ ][P] 3
+[ ][B][K][ ][ ][ ][ ][ ] 2
+[ ][ ][ ][ ][R][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:12 [IN] 2r1k3/1p1b4/p3p2n/7p/1Pp5/1P2P2P/1BK5/4R3 w - - 0 27
+22:38:13 [OUT] bestmove e1d1 
+22:38:13 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1 
+22:38:13 [IN] 
+[ ][ ][r][ ][k][ ][ ][ ] 8
+[ ][p][ ][b][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][n] 6
+[ ][ ][ ][ ][ ][ ][ ][p] 5
+[ ][P][p][ ][ ][ ][ ][ ] 4
+[ ][P][ ][ ][P][ ][ ][P] 3
+[ ][B][K][ ][ ][ ][ ][ ] 2
+[ ][ ][ ][R][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:13 [IN] 2r1k3/1p1b4/p3p2n/7p/1Pp5/1P2P2P/1BK5/3R4 b - - 1 27
+22:38:15 [OUT] bestmove c4c3 
+22:38:15 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3 
+22:38:15 [IN] 
+[ ][ ][r][ ][k][ ][ ][ ] 8
+[ ][p][ ][b][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][n] 6
+[ ][ ][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][ ][ ][ ][ ] 4
+[ ][P][p][ ][P][ ][ ][P] 3
+[ ][B][K][ ][ ][ ][ ][ ] 2
+[ ][ ][ ][R][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:15 [IN] 2r1k3/1p1b4/p3p2n/7p/1P6/1Pp1P2P/1BK5/3R4 w - - 0 28
+22:38:16 [OUT] bestmove b2c1 
+22:38:16 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1 
+22:38:16 [IN] 
+[ ][ ][r][ ][k][ ][ ][ ] 8
+[ ][p][ ][b][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][n] 6
+[ ][ ][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][ ][ ][ ][ ] 4
+[ ][P][p][ ][P][ ][ ][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[ ][ ][B][R][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:16 [IN] 2r1k3/1p1b4/p3p2n/7p/1P6/1Pp1P2P/2K5/2BR4 b - - 1 28
+22:38:17 [OUT] bestmove d7b5 
+22:38:17 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5 
+22:38:17 [IN] 
+[ ][ ][r][ ][k][ ][ ][ ] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][n] 6
+[ ][b][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][ ][ ][ ][ ] 4
+[ ][P][p][ ][P][ ][ ][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[ ][ ][B][R][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:17 [IN] 2r1k3/1p6/p3p2n/1b5p/1P6/1Pp1P2P/2K5/2BR4 w - - 2 29
+22:38:18 [OUT] bestmove e3e4 
+22:38:18 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4 
+22:38:18 [IN] 
+[ ][ ][r][ ][k][ ][ ][ ] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][n] 6
+[ ][b][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][P][ ][ ][ ] 4
+[ ][P][p][ ][ ][ ][ ][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[ ][ ][B][R][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:18 [IN] 2r1k3/1p6/p3p2n/1b5p/1P2P3/1Pp4P/2K5/2BR4 b - - 0 29
+22:38:19 [OUT] bestmove h6g8 
+22:38:19 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8 
+22:38:19 [IN] 
+[ ][ ][r][ ][k][ ][n][ ] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][P][ ][ ][ ] 4
+[ ][P][p][ ][ ][ ][ ][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[ ][ ][B][R][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:19 [IN] 2r1k1n1/1p6/p3p3/1b5p/1P2P3/1Pp4P/2K5/2BR4 w - - 1 30
+22:38:20 [OUT] bestmove d1g1 
+22:38:20 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1 
+22:38:20 [IN] 
+[ ][ ][r][ ][k][ ][n][ ] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][P][ ][ ][ ] 4
+[ ][P][p][ ][ ][ ][ ][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[ ][ ][B][ ][ ][ ][R][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:20 [IN] 2r1k1n1/1p6/p3p3/1b5p/1P2P3/1Pp4P/2K5/2B3R1 b - - 2 30
+22:38:21 [OUT] bestmove e8d7 
+22:38:21 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7 
+22:38:21 [IN] 
+[ ][ ][r][ ][ ][ ][n][ ] 8
+[ ][p][ ][k][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][P][ ][ ][ ] 4
+[ ][P][p][ ][ ][ ][ ][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[ ][ ][B][ ][ ][ ][R][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:21 [IN] 2r3n1/1p1k4/p3p3/1b5p/1P2P3/1Pp4P/2K5/2B3R1 w - - 3 31
+22:38:22 [OUT] bestmove g1g8 
+22:38:22 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8 
+22:38:22 [IN] 
+[ ][ ][r][ ][ ][ ][R][ ] 8
+[ ][p][ ][k][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][P][ ][ ][ ] 4
+[ ][P][p][ ][ ][ ][ ][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[ ][ ][B][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:22 [IN] 2r3R1/1p1k4/p3p3/1b5p/1P2P3/1Pp4P/2K5/2B5 b - - 0 31
+22:38:23 [OUT] bestmove c8g8 
+22:38:23 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8 
+22:38:23 [IN] 
+[ ][ ][ ][ ][ ][ ][r][ ] 8
+[ ][p][ ][k][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][P][ ][ ][ ] 4
+[ ][P][p][ ][ ][ ][ ][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[ ][ ][B][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:23 [IN] 6r1/1p1k4/p3p3/1b5p/1P2P3/1Pp4P/2K5/2B5 w - - 0 32
+22:38:34 [OUT] bestmove c1e3 
+22:38:34 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3 
+22:38:34 [IN] 
+[ ][ ][ ][ ][ ][ ][r][ ] 8
+[ ][p][ ][k][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][P][ ][ ][ ] 4
+[ ][P][p][ ][B][ ][ ][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[ ][ ][ ][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:34 [IN] 6r1/1p1k4/p3p3/1b5p/1P2P3/1Pp1B2P/2K5/8 b - - 1 32
+22:38:50 [OUT] bestmove g8c8 
+22:38:50 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8 
+22:38:50 [IN] 
+[ ][ ][r][ ][ ][ ][ ][ ] 8
+[ ][p][ ][k][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][P][ ][ ][ ] 4
+[ ][P][p][ ][B][ ][ ][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[ ][ ][ ][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:38:50 [IN] 2r5/1p1k4/p3p3/1b5p/1P2P3/1Pp1B2P/2K5/8 w - - 2 33
+22:39:02 [OUT] bestmove e3f2 
+22:39:02 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2 
+22:39:02 [IN] 
+[ ][ ][r][ ][ ][ ][ ][ ] 8
+[ ][p][ ][k][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][p] 5
+[ ][P][ ][ ][P][ ][ ][ ] 4
+[ ][P][p][ ][ ][ ][ ][P] 3
+[ ][ ][K][ ][ ][B][ ][ ] 2
+[ ][ ][ ][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:39:02 [IN] 2r5/1p1k4/p3p3/1b5p/1P2P3/1Pp4P/2K2B2/8 b - - 3 33
+22:39:13 [OUT] bestmove h5h4 
+22:39:13 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4 
+22:39:13 [IN] 
+[ ][ ][r][ ][ ][ ][ ][ ] 8
+[ ][p][ ][k][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][ ] 5
+[ ][P][ ][ ][P][ ][ ][p] 4
+[ ][P][p][ ][ ][ ][ ][P] 3
+[ ][ ][K][ ][ ][B][ ][ ] 2
+[ ][ ][ ][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:39:13 [IN] 2r5/1p1k4/p3p3/1b6/1P2P2p/1Pp4P/2K2B2/8 w - - 0 34
+22:39:21 [OUT] bestmove f2h4 
+22:39:21 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4 
+22:39:21 [IN] 
+[ ][ ][r][ ][ ][ ][ ][ ] 8
+[ ][p][ ][k][ ][ ][ ][ ] 7
+[p][ ][ ][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][ ] 5
+[ ][P][ ][ ][P][ ][ ][B] 4
+[ ][P][p][ ][ ][ ][ ][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[ ][ ][ ][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:39:21 [IN] 2r5/1p1k4/p3p3/1b6/1P2P2B/1Pp4P/2K5/8 b - - 0 34
+22:39:29 [OUT] bestmove d7c6 
+22:39:29 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6 
+22:39:29 [IN] 
+[ ][ ][r][ ][ ][ ][ ][ ] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][k][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][ ] 5
+[ ][P][ ][ ][P][ ][ ][B] 4
+[ ][P][p][ ][ ][ ][ ][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[ ][ ][ ][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:39:29 [IN] 2r5/1p6/p1k1p3/1b6/1P2P2B/1Pp4P/2K5/8 w - - 1 35
+22:39:35 [OUT] bestmove h4g3 
+22:39:35 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3 
+22:39:35 [IN] 
+[ ][ ][r][ ][ ][ ][ ][ ] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][k][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][ ] 5
+[ ][P][ ][ ][P][ ][ ][ ] 4
+[ ][P][p][ ][ ][ ][B][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[ ][ ][ ][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:39:35 [IN] 2r5/1p6/p1k1p3/1b6/1P2P3/1Pp3BP/2K5/8 b - - 2 35
+22:39:42 [OUT] bestmove c8d8 
+22:39:42 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8 
+22:39:42 [IN] 
+[ ][ ][ ][r][ ][ ][ ][ ] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][k][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][ ] 5
+[ ][P][ ][ ][P][ ][ ][ ] 4
+[ ][P][p][ ][ ][ ][B][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[ ][ ][ ][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:39:42 [IN] 3r4/1p6/p1k1p3/1b6/1P2P3/1Pp3BP/2K5/8 w - - 3 36
+22:39:52 [OUT] bestmove g3e1 
+22:39:52 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1 
+22:39:52 [IN] 
+[ ][ ][ ][r][ ][ ][ ][ ] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][k][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][ ] 5
+[ ][P][ ][ ][P][ ][ ][ ] 4
+[ ][P][p][ ][ ][ ][ ][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[ ][ ][ ][ ][B][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:39:52 [IN] 3r4/1p6/p1k1p3/1b6/1P2P3/1Pp4P/2K5/4B3 b - - 4 36
+22:39:59 [OUT] bestmove d8d3 
+22:39:59 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3 
+22:39:59 [IN] 
+[ ][ ][ ][ ][ ][ ][ ][ ] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][k][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][ ] 5
+[ ][P][ ][ ][P][ ][ ][ ] 4
+[ ][P][p][r][ ][ ][ ][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[ ][ ][ ][ ][B][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:39:59 [IN] 8/1p6/p1k1p3/1b6/1P2P3/1Ppr3P/2K5/4B3 w - - 5 37
+22:40:03 [OUT] bestmove e1c3 
+22:40:03 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3 
+22:40:03 [IN] 
+[ ][ ][ ][ ][ ][ ][ ][ ] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][k][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][ ] 5
+[ ][P][ ][ ][P][ ][ ][ ] 4
+[ ][P][B][r][ ][ ][ ][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[ ][ ][ ][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:40:03 [IN] 8/1p6/p1k1p3/1b6/1P2P3/1PBr3P/2K5/8 b - - 0 37
+22:40:13 [OUT] bestmove d3d6 
+22:40:13 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6 
+22:40:13 [IN] 
+[ ][ ][ ][ ][ ][ ][ ][ ] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][k][r][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][ ] 5
+[ ][P][ ][ ][P][ ][ ][ ] 4
+[ ][P][B][ ][ ][ ][ ][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[ ][ ][ ][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:40:13 [IN] 8/1p6/p1krp3/1b6/1P2P3/1PB4P/2K5/8 w - - 1 38
+22:40:21 [OUT] bestmove c3a1 
+22:40:21 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6  c3a1 
+22:40:21 [IN] 
+[ ][ ][ ][ ][ ][ ][ ][ ] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][k][r][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][ ] 5
+[ ][P][ ][ ][P][ ][ ][ ] 4
+[ ][P][ ][ ][ ][ ][ ][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[B][ ][ ][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:40:21 [IN] 8/1p6/p1krp3/1b6/1P2P3/1P5P/2K5/B7 b - - 2 38
+22:40:26 [OUT] bestmove d6d3 
+22:40:26 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6  c3a1  d6d3 
+22:40:26 [IN] 
+[ ][ ][ ][ ][ ][ ][ ][ ] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][k][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][ ] 5
+[ ][P][ ][ ][P][ ][ ][ ] 4
+[ ][P][ ][r][ ][ ][ ][P] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[B][ ][ ][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:40:26 [IN] 8/1p6/p1k1p3/1b6/1P2P3/1P1r3P/2K5/B7 w - - 3 39
+22:40:34 [OUT] bestmove h3h4 
+22:40:34 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6  c3a1  d6d3  h3h4 
+22:40:34 [IN] 
+[ ][ ][ ][ ][ ][ ][ ][ ] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][k][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][ ] 5
+[ ][P][ ][ ][P][ ][ ][P] 4
+[ ][P][ ][r][ ][ ][ ][ ] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[B][ ][ ][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:40:34 [IN] 8/1p6/p1k1p3/1b6/1P2P2P/1P1r4/2K5/B7 b - - 0 39
+22:40:41 [OUT] bestmove d3d6 
+22:40:41 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6  c3a1  d6d3  h3h4  d3d6 
+22:40:41 [IN] 
+[ ][ ][ ][ ][ ][ ][ ][ ] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][k][r][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][ ] 5
+[ ][P][ ][ ][P][ ][ ][P] 4
+[ ][P][ ][ ][ ][ ][ ][ ] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[B][ ][ ][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:40:41 [IN] 8/1p6/p1krp3/1b6/1P2P2P/1P6/2K5/B7 w - - 1 40
+22:40:46 [OUT] bestmove c2c1 
+22:40:46 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6  c3a1  d6d3  h3h4  d3d6  c2c1 
+22:40:46 [IN] 
+[ ][ ][ ][ ][ ][ ][ ][ ] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][k][r][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][ ] 5
+[ ][P][ ][ ][P][ ][ ][P] 4
+[ ][P][ ][ ][ ][ ][ ][ ] 3
+[ ][ ][ ][ ][ ][ ][ ][ ] 2
+[B][ ][K][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:40:46 [IN] 8/1p6/p1krp3/1b6/1P2P2P/1P6/8/B1K5 b - - 2 40
+22:40:51 [OUT] bestmove d6d3 
+22:40:51 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6  c3a1  d6d3  h3h4  d3d6  c2c1  d6d3 
+22:40:51 [IN] 
+[ ][ ][ ][ ][ ][ ][ ][ ] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][k][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][ ] 5
+[ ][P][ ][ ][P][ ][ ][P] 4
+[ ][P][ ][r][ ][ ][ ][ ] 3
+[ ][ ][ ][ ][ ][ ][ ][ ] 2
+[B][ ][K][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:40:51 [IN] 8/1p6/p1k1p3/1b6/1P2P2P/1P1r4/8/B1K5 w - - 3 41
+22:40:57 [OUT] bestmove c1c2 
+22:40:57 [IN] position startpos moves e2e3  e7e6  d1f3  d8f6  b1c3  b8c6  h2h3  g7g6  b2b3  a7a6  a1b1  f8e7  f3g4  e7b4  g4f3  b4c3  d2c3  a8b8  b3b4  h7h5  b1b3  b8a8  f3e4  c6e7  g1f3  g8h6  e1d2  c7c5  f1d3  d7d5  e4e5  f6e5  f3e5  c5c4  e5g6  e7g6  d3g6  f7g6  h1e1  c4b3  a2b3  c8d7  g2g4  a8c8  g4h5  g6h5  c1b2  h8f8  c3c4  f8f2  d2d3  f2c2  d3c2  d5c4  e1d1  c4c3  b2c1  d7b5  e3e4  h6g8  d1g1  e8d7  g1g8  c8g8  c1e3  g8c8  e3f2  h5h4  f2h4  d7c6  h4g3  c8d8  g3e1  d8d3  e1c3  d3d6  c3a1  d6d3  h3h4  d3d6  c2c1  d6d3  c1c2 
+22:40:57 [IN] 
+[ ][ ][ ][ ][ ][ ][ ][ ] 8
+[ ][p][ ][ ][ ][ ][ ][ ] 7
+[p][ ][k][ ][p][ ][ ][ ] 6
+[ ][b][ ][ ][ ][ ][ ][ ] 5
+[ ][P][ ][ ][P][ ][ ][P] 4
+[ ][P][ ][r][ ][ ][ ][ ] 3
+[ ][ ][K][ ][ ][ ][ ][ ] 2
+[B][ ][ ][ ][ ][ ][ ][ ] 1
+ a  b  c  d  e  f  g  h
+
+22:40:57 [IN] 8/1p6/p1k1p3/1b6/1P2P2P/1P1r4/2K5/B7 b - - 4 41

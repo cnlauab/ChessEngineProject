@@ -3362,12 +3362,13 @@ CMakeFiles/ChessEngineProject.dir/UCI.cpp.o: ../UCI.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bit_reference \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/vector \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/__split_buffer \
   ../Debug.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/stack \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/deque \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/__split_buffer \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip \
   ../BoardRenderer.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/unordered_map \
@@ -3377,11 +3378,15 @@ CMakeFiles/ChessEngineProject.dir/UCI.cpp.o: ../UCI.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/optional \
   ../ChessUtil.h \
   ../SquareControl.h \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/vector \
   ../Position.h \
   ../Parser.h \
   ../Move.h \
-  ../State.h
+  ../State.h \
+  ../Evaluation.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/queue \
+  ../Node.h \
+  ../MoveGenerator.h \
+  ../LegalChecker.h
 
 CMakeFiles/ChessEngineProject.dir/Validator.cpp.o: ../Validator.cpp \
   ../Validator.h \
