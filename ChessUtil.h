@@ -15,12 +15,15 @@ public:
 	static char file[8];
 	static char rank[8];
 	static short offsets[8];
-	static std::unordered_map <std::string, short> squareToIndexMapping;
-
-	static SquareControl squareControlMap[64];
 	static short midGameScoreMap[64];
 	static short endGameScoreMap[64];
 	static short checkScore;
+
+	static std::unordered_map <std::string, short> squareToIndexMapping;
+
+	static SquareControl squareControlMap[64];
+
+	static std::unordered_map<unsigned long long, short> bitToSquareMap;
 
 	static short GetRank(short square);
 	static short GetFile(short square);
@@ -43,4 +46,6 @@ public:
 	static bool IsRook(short piece);
 
 	static bool IsLightSquare(short square);
+
+	static std::string bitboardToString(unsigned long long bitboard);
 };

@@ -18,6 +18,10 @@ public :
     short fullmove = 0;
 	short position[64];
 
+    //Bitboard
+    unsigned long long whiteBitboard[6];
+    unsigned long long blackBitboard[6];
+
     //Perft
     char checkedBy[2] = {99,99};
     bool ep;
@@ -70,5 +74,6 @@ public :
     //Evaluation
     short CalculateScore();
 private:
+    //TODO Change it to 4 bit int
     std::unordered_map<char, bool> castlingQuota = { {'K',true}, {'Q',true}, {'k',true}, {'q',true} };
 };

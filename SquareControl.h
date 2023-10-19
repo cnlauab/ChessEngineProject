@@ -18,6 +18,10 @@ public:
     short whitePawnPushTwoSquare;
     short blackPawnPushTwoSquare;
 
+    //Bitboards
+    unsigned long long kingControlBits;
+
+
     //Constructor
     SquareControl(short square);
     //Member

@@ -125,13 +125,45 @@ void Turn() {
 	cout << endl;
 }
 
-int main()
-{	
-	Debug::UCILog("############ HoneyB Program Started ############", true);
-	// Seed
-	unsigned seed = time(0);
-	srand(seed);
+//Testing
+void TestBitboard(){
+	//Testing bitboard
+	cout << ChessUtil::bitboardToString(1ULL) << endl;
+	cout << ChessUtil::bitboardToString(9223372036854775808ULL) << endl;
+}
 
+void TestUCI(){
+	//Testing uci
+	currentPosition = UCI::ParsePosition("position startpos moves d2d4 e7e5");
+	currentPosition = UCI::ParsePosition("position fen 8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - moves b4b1");
+	cout << BoardRenderer::positionToString(currentPosition) << endl;
+	cout << currentPosition.PositionToFen() << endl;
+
+	UCI::SelfPlay();
+}
+
+void TestPerft(){
+	//Testing Perft
+	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+	
+	Node* root = new Node(&currentPosition);
+	Evaluation::ConstructTree(root, 4);
+	Evaluation::BFS(root);
+	
+	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+	std::cout << "Time elapsed = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[Milliseconds]" << std::endl;
+}
+
+void TestEvaluation(){
+	//Testing Evaluation
+	cout << BoardRenderer::positionToString(currentPosition) << endl;
+	Move chosenMove = Evaluation::Evaluate(currentPosition);
+	cout << "Move chosen: " << chosenMove.toString() << endl;
+}
+
+//Mode
+void ConsoleMode(){
+	//Example
 	//currentPosition = Position("8/6P1/7k/4B3/4B2K/8/8/8 w - - 0 1");
 	//currentPosition = Position("2b2rk1/2q2ppn/2p5/p1n1p1B1/p3P3/2P2QNP/Br3PP1/R3R1K1");
 	//currentPosition = Position("rnbqkb1r/ppp2ppp/4pn2/3p4/8/5NP1/PPPPPPBP/RNBQK2R w KQkq - 0 4");
@@ -146,17 +178,11 @@ int main()
 	//currentPosition = Position("r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2B1P1b1/P1NP1N2/1PP1QPPP/R4RK1 w - - 0 10");//position 6
 
 	//Original
-	/*
 	currentPosition = Position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 0");
 	int moveCounter = 0;
-
-	cout << currentPosition.PositionToFen() << endl;
-	cout << "Score: " << currentPosition.CalculateScore() << endl;
-	*/
-
+	cout << "Starting Position: " + currentPosition.PositionToFen() << endl;
+	
 	//Game
-	/*
-	Debug::ClearLog();
 	while (!gameState.Ended() && moveCounter < 500) {
 		PrintMoveMade();
 		cout << BoardRenderer::positionToString(currentPosition) << endl;
@@ -171,37 +197,25 @@ int main()
 		Debug::GameLog(currentPosition);
 		moveCounter++;
 	}
-	*/
-	//Evaluation Test
-	/*
-	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-	
-	Node* root = new Node(&currentPosition);
-	Evaluation::ConstructTree(root, 4);
-	Evaluation::BFS(root);
-
-	//cout << BoardRenderer::positionToString(currentPosition) << endl;
-	//Move chosenMove = Evaluation::Evaluate(currentPosition);
-	//cout << "Move chosen: " << chosenMove.toString() << endl;
-	
-	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-	std::cout << "Time elapsed = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[Milliseconds]" << std::endl;
-    */
 	//End
-	//cout << gameState.EndMessage() << endl;
+	cout << gameState.EndMessage() << endl;
+}
 
-	//UCI Mode
-
-	//test uci
-	//currentPosition = UCI::ParsePosition("position startpos moves d2d4 e7e5");
-	//currentPosition = UCI::ParsePosition("position fen 8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - moves b4b1");
-	//cout << BoardRenderer::positionToString(currentPosition) << endl;
-	//cout << currentPosition.PositionToFen() << endl;
-
-	//UCI::SelfPlay();
+void UCIMode(){
     Debug::UCILog("Starting Main()", true);
 	UCI::UCILoop();
-	
+}
+
+//Main
+int main()
+{	
+	Debug::ClearLog();
+	Debug::UCILog("############ HoneyB Program Started ############", true);
+
+	//Play in console
+	ConsoleMode();
+	//Play in UCI
+	//UCIMode();
 
 	return 0;
 }

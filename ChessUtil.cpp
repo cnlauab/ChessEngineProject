@@ -455,6 +455,73 @@ SquareControl ChessUtil::squareControlMap[64] = {
     SquareControl(63)
 };
 
+std::unordered_map<unsigned long long, short> ChessUtil::bitToSquareMap = {
+    //{1<<0,0},
+    //{1<<1,1},
+    //{1<<2,2},
+    //{1<<3,3},
+    //{1<<4,4},
+    //{1<<5,5},
+    //{1<<6,6},
+    //{1<<7,7},
+    //{1<<8,8},
+    //{1<<9,9},
+    //{1<<10,10},
+    //{1<<11,11},
+    //{1<<12,12},
+    //{1<<13,13},
+    //{1<<14,14},
+    //{1<<15,15},
+    //{1<<16,16},
+    //{1<<17,17},
+    //{1<<18,18},
+    //{1<<19,19},
+    //{1<<20,20},
+    //{1<<21,21},
+    //{1<<22,22},
+    //{1<<23,23},
+    //{1<<24,24},
+    //{1<<25,25},
+    //{1<<26,26},
+    //{1<<27,27},
+    //{1<<28,28},
+    //{1<<29,29},
+    //{1<<30,30},
+    //{1<<31,31},
+    //{1<<32,32},
+    //{1<<33,33},
+    //{1<<34,34},
+    //{1<<35,35},
+    //{1<<36,36},
+    //{1<<37,37},
+    //{1<<38,38},
+    //{1<<39,39},
+    //{1<<40,40},
+    //{1<<41,41},
+    //{1<<42,42},
+    //{1<<43,43},
+    //{1<<44,44},
+    //{1<<45,45},
+    //{1<<46,46},
+    //{1<<47,47},
+    //{1<<48,48},
+    //{1<<49,49},
+    //{1<<50,50},
+    //{1<<51,51},
+    //{1<<52,52},
+    //{1<<53,53},
+    //{1<<54,54},
+    //{1<<55,55},
+    //{1<<56,56},
+    //{1<<57,57},
+    //{1<<58,58},
+    //{1<<59,59},
+    //{1<<60,60},
+    //{1<<61,61},
+    //{1<<62,62},
+    //{1<<63,63}
+};
+
 char ChessUtil::GetPieceType(short piece) {
     return pieceMapping[piece];
 };
@@ -557,5 +624,28 @@ bool ChessUtil::IsRook(short piece)
 
 bool ChessUtil::IsLightSquare(short square){
     return square == 1 || square == 3 || square == 5 || square == 7 || square == 8 || square == 10 || square == 12 || square == 14 || square == 17 || square == 19 || square == 21 || square == 23 || square == 24 || square == 26 || square == 28 || square == 30 || square == 33 || square == 35 || square == 37 || square == 39 || square == 40 || square == 42 || square == 44 || square == 46 || square == 49 || square == 51 || square == 53 || square == 55 || square == 56 || square == 58 || square == 60 || square == 62;
+}
+
+std::string ChessUtil::bitboardToString(unsigned long long bitboard){
+    std::cout << "printing bitboard..." << std::endl;
+    //i;
+    short index = 0;
+    std::string result = "";
+    std::string row = "";
+    unsigned long long number = 1ULL;
+    for(int i = 1; i <= 64; i++){
+        if((bitboard & number) != 0){
+            row = row + "[1]";
+        }else{
+            row = row + "[0]";
+        }
+        if(i % 8 == 0){
+            result = row + std::to_string(i/8) + "\n" + result;
+            row = "";
+        }
+        number = number << 1;
+    }
+    result = result + " a  b  c  d  e  f  g  h ";
+    return result;
 }
 
