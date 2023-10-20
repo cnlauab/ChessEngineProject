@@ -213,9 +213,36 @@ int main()
 	Debug::UCILog("############ HoneyB Program Started ############", true);
 
 	//Play in console
-	ConsoleMode();
+	//ConsoleMode();
 	//Play in UCI
 	//UCIMode();
+
+	Bitboards bitboards = Bitboards("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
+	cout << "White Pawn" << endl;
+	cout << ChessUtil::bitboardToString(bitboards.whiteBitboards[0]) << endl;
+	cout << "White Queen" << endl;
+	cout << ChessUtil::bitboardToString(bitboards.whiteBitboards[1]) << endl;
+	cout << "White Knight" << endl;
+	cout << ChessUtil::bitboardToString(bitboards.whiteBitboards[2]) << endl;
+	cout << "White Bishop" << endl;
+	cout << ChessUtil::bitboardToString(bitboards.whiteBitboards[3]) << endl;
+	cout << "White Rook" << endl;
+	cout << ChessUtil::bitboardToString(bitboards.whiteBitboards[4]) << endl;
+	cout << "White King" << endl;
+	cout << ChessUtil::bitboardToString(bitboards.whiteBitboards[5]) << endl;
+
+	cout << "Black Pawn" << endl;
+	cout << ChessUtil::bitboardToString(bitboards.blackBitboards[0]) << endl;
+	cout << "Black Queen" << endl;
+	cout << ChessUtil::bitboardToString(bitboards.blackBitboards[1]) << endl;
+	cout << "Black Knight" << endl;
+	cout << ChessUtil::bitboardToString(bitboards.blackBitboards[2]) << endl;
+	cout << "Black Bishop" << endl;
+	cout << ChessUtil::bitboardToString(bitboards.blackBitboards[3]) << endl;
+	cout << "Black Rook" << endl;
+	cout << ChessUtil::bitboardToString(bitboards.blackBitboards[4]) << endl;
+	cout << "Black King" << endl;
+	cout << ChessUtil::bitboardToString(bitboards.blackBitboards[5]) << endl;
 
 	return 0;
 }

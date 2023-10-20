@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Bitboards.cpp" "CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.o.d"
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BoardRenderer.cpp" "CMakeFiles/ChessEngineProject.dir/BoardRenderer.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/BoardRenderer.cpp.o.d"
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessEngineProject.cpp" "CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o.d"
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.cpp" "CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.o.d"

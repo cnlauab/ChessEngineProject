@@ -14,5 +14,6 @@
 #include "Move.h"
 #include "Position.h"
 #include "UCI.h"
+#include "Bitboards.h"
 
 // TODO: Reference additional headers your program requires here.

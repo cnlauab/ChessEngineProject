@@ -238,4 +238,5 @@ CMakeFiles/ChessEngineProject.dir/BoardRenderer.cpp.o: \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Position.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Parser.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Move.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Bitboards.h

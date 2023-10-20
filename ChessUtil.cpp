@@ -296,6 +296,7 @@ std::unordered_map<short, int> ChessUtil::pieceValueMapping = {
         {95,-3},
         {99,0}
 };
+std::unordered_map<char, int> ChessUtil::pieceBitboardIndexMapping = {{'p',0}, {'q',1}, {'n',2}, {'b',3}, {'r',4}, {'k',5}};
 char ChessUtil::file[8] = { 'a','b','c','d','e','f','g','h' };
 char ChessUtil::rank[8] = { '1','2','3','4','5','6','7','8' };
 short ChessUtil::offsets[8] = { -1,1,-8,8,-9,-7,7,9 };
@@ -627,7 +628,7 @@ bool ChessUtil::IsLightSquare(short square){
 }
 
 std::string ChessUtil::bitboardToString(unsigned long long bitboard){
-    std::cout << "printing bitboard..." << std::endl;
+    std::cout << "Printing bitboard (Value: " << bitboard << ")" << std::endl;
     //i;
     short index = 0;
     std::string result = "";

@@ -10,6 +10,7 @@ public:
     static std::unordered_map<short, char> pieceMapping;
     static std::unordered_map<short, short> pieceScoreMapping;
 	static std::unordered_map<short, int> pieceValueMapping;
+	static std::unordered_map<char, int> pieceBitboardIndexMapping;
     static char GetPieceType(short piece);
 
 	static char file[8];

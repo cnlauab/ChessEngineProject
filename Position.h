@@ -8,6 +8,7 @@
 #include "Move.h"
 #include "State.h"
 #include "ChessUtil.h"
+#include "Bitboards.h"
 
 class Position {
 public :

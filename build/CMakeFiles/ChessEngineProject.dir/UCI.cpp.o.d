@@ -246,6 +246,7 @@ CMakeFiles/ChessEngineProject.dir/UCI.cpp.o: \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Parser.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Move.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Bitboards.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Evaluation.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/queue \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Node.h \
