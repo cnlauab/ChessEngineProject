@@ -27,10 +27,7 @@ Bitboards::Bitboards(std::string fen){
             }else{
                 switch(rows[i][charIdx]){
                     case 'P':
-                        //std::cout << "White Pawn " << (1ULL << counter) << " counter=" << counter << std::endl;
                         whiteBitRows[0] |= 1ULL << counter;
-                        //std::cout << whiteBitRows[0] << std::endl;
-                        //std::cout << ChessUtil::bitboardToString(whiteBitRows[0]) << std::endl;
                         break;
                     case 'Q':
                         whiteBitRows[1] |= 1ULL << counter;
@@ -65,19 +62,16 @@ Bitboards::Bitboards(std::string fen){
                     case 'k':
                         blackBitRows[5] |= 1ULL << counter;
                         break;
+                    default:
+                        break;
                 }
                 counter++;
                 charIdx++;
             }
         }
-                        //std::cout << "##########" << whiteBitRows[0] << std::endl;
-                        //std::cout << ChessUtil::bitboardToString(whiteBitRows[0]) << std::endl;
         for(int j = 0; j < 6; j++){
-            //if(j==0){
-            //    std::cout << "White Pawn Board: " << ChessUtil::bitboardToString(whiteBitboards[j]) << " to " << ChessUtil::bitboardToString((whiteBitRows[j] << (i * 8))) << " shifted " << i * 8 << std::endl;
-            //}
-            whiteBitboards[j] |= whiteBitRows[j] << (i * 8);
-            blackBitboards[j] |= blackBitRows[j] << (i * 8);
+            whiteBitboards[j] |= whiteBitRows[j] << ((7-i) * 8);
+            blackBitboards[j] |= blackBitRows[j] << ((7-i) * 8);
         }
     }
 }
