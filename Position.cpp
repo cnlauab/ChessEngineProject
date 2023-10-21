@@ -36,6 +36,9 @@ Position::Position(std::string fen)
 		}
 	}
 
+	//Bitboards
+	bitboards = Bitboards(parameters[0]);
+
 	//Turn
 	if(parameters[1] == "w"){
 		whiteTurn = true;
@@ -73,6 +76,8 @@ Position::Position(Position& currPosition, Move& move){
 	whiteKingLocation = currPosition.whiteKingLocation;
 	blackKingLocation = currPosition.blackKingLocation;
 
+	bitboards = Bitboards(currPosition.bitboards);
+
 	MovePiece(move);
 
 	prevMove = move;
@@ -91,6 +96,8 @@ Position::Position(Position& position, std::vector<Move>& moveList){
 	blackPieceOnBoard = position.blackPieceOnBoard;
 	whiteKingLocation = position.whiteKingLocation;
 	blackKingLocation = position.blackKingLocation;
+
+	bitboards = Bitboards(position.bitboards);
 
 	for(Move move : moveList){
 		MovePiece(move);

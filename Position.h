@@ -20,8 +20,7 @@ public :
 	short position[64];
 
     //Bitboard
-    unsigned long long whiteBitboard[6];
-    unsigned long long blackBitboard[6];
+    Bitboards bitboards;
 
     //Perft
     char checkedBy[2] = {99,99};

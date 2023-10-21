@@ -2186,6 +2186,7 @@ CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o: ../MoveGenerator.cpp \
   ../ChessUtil.h \
   ../SquareControl.h \
   ../State.h \
+  ../Bitboards.h \
   ../LegalChecker.h
 
 CMakeFiles/ChessEngineProject.dir/Node.cpp.o: ../Node.cpp \

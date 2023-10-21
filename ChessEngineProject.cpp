@@ -243,6 +243,8 @@ int main()
 	cout << ChessUtil::bitboardToString(bitboards.blackBitboards[4]) << endl;
 	cout << "Black King" << endl;
 	cout << ChessUtil::bitboardToString(bitboards.blackBitboards[5]) << endl;
+	cout << "All" << endl;
+	cout << bitboards.BitboardsToString() << endl;
 
 	return 0;
 }
