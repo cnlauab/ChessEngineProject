@@ -3,15 +3,18 @@
 Move MoveGenerator::ExtractMove(char pieceType, short target, short file, short rank, bool white, char promotionType, std::vector<Move>& moves)
 {
 	std::vector<Move> tmpMoves = ExtractMovesByPieceType(pieceType, white, moves);
+	for(Move move :tmpMoves) std::cout << move.toString() << std::endl;
 	if (tmpMoves.size() < 1) return Move();
 	std::vector<Move> tmpMoves1 = ExtractMovesByTargetSquare(target, tmpMoves);
+	for(Move move :tmpMoves1) std::cout << move.toString() << std::endl;
 	if (tmpMoves1.size() == 1) return tmpMoves1[0];
 	if (tmpMoves1.size() < 1) return Move();
 	std::vector<Move> tmpMoves2 = ExtractMovesByAmbiguity(file, rank, tmpMoves1);
-	//std::cout << "tmpMoves2: " << tmpMoves2.size() << std::endl;
+	for(Move move :tmpMoves2) std::cout << move.toString() << std::endl;
 	if (tmpMoves2.size() == 1) return tmpMoves2[0];
 	if (tmpMoves1.size() < 1) return Move();
 	std::vector<Move> tmpMoves3 = ExtractMovesByPromotionType(promotionType, tmpMoves2);
+	for(Move move :tmpMoves3) std::cout << move.toString() << std::endl;
 	if (tmpMoves3.size() == 1) return tmpMoves3[0];
 	return Move();
 }
@@ -82,11 +85,8 @@ std::vector<Move> MoveGenerator::GenerateAllPossibleMoves(Position& position)
 		std::vector<short> pieceOnBoard = position.whiteTurn ? position.whitePieceOnBoard : position.blackPieceOnBoard;
 		for(int i = 0; i < pieceOnBoard.size(); i++){
 			short piece = pieceOnBoard[i];
-			//std::cout << "Generating move for " << piece << std::endl;
-			if(PieceMatchTurn(piece, position)){
-				std::vector<Move> pieceResult = GeneratePossibleMoves(piece,position);
-				result.insert(result.end(), pieceResult.begin(), pieceResult.end());
-			}
+			std::vector<Move> pieceResult = GeneratePossibleMoves(piece,position);
+			result.insert(result.end(), pieceResult.begin(), pieceResult.end());
 		}
 		return result;
 	}else{
@@ -96,8 +96,11 @@ std::vector<Move> MoveGenerator::GenerateAllPossibleMoves(Position& position)
 
 std::vector<Move> MoveGenerator::GeneratePossibleMoves(short& piece, Position& position)
 {
-	char pieceType = ChessUtil::GetPieceType(piece);
+	char pieceType = tolower(ChessUtil::GetPieceType(piece));
+	short typeIndex = BitUtil::pieceBitboardIndexMapping[pieceType];
+	return MoveGenerationByType[typeIndex](piece, position);
 	//std::cout << "Generating move for " << piece << std::endl;
+	/*
 	if (pieceType == 'r' || pieceType == 'R' || pieceType == 'b' || pieceType == 'B' || pieceType == 'q' || pieceType == 'Q') {
 		return GenerateSlidingMoves(piece, position);
 	}
@@ -112,7 +115,7 @@ std::vector<Move> MoveGenerator::GeneratePossibleMoves(short& piece, Position& p
 	}
 	else {
 		return std::vector<Move>();
-	}
+	}*/
 }
 
 std::vector<Move> MoveGenerator::GenerateSlidingMoves(short& piece, Position& position)
@@ -125,7 +128,6 @@ std::vector<Move> MoveGenerator::GenerateSlidingMoves(short& piece, Position& po
 	short endingDirection = 7;
 	if (pieceType == 'r' || pieceType == 'R') { startingDirection = 0; endingDirection = 3; }
 	if (pieceType == 'b' || pieceType == 'B') { startingDirection = 4; endingDirection = 7; }
-	if (pieceType == 'q' || pieceType == 'Q') { startingDirection = 0; endingDirection = 7; }
 	for (int i = startingDirection; i <= endingDirection; ++i) {
 		std::vector<short> slidingSquare = ChessUtil::squareControlMap[starting].GetSlidingSquare(i);
 		for(int j = 0; j < slidingSquare.size(); j++){
@@ -263,7 +265,9 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(short& piece, Position& posit
 			bool pathNotChecked = !position.OpponentCanReach(4, true) && !position.OpponentCanReach(5, true) && !position.OpponentCanReach(6, true);
 			if(kingNotMoved&&rookExists&&emptyPath&&pathNotChecked) {
 				//std::cout << "White Castling King side is legal" << std::endl;
-				result.push_back(Move(4, 6));
+				Move move = Move(4, 6);
+				move.piece = position.ReadPosition(4);
+				result.push_back(move);
 			}else{
 				//std::cout << "White Castling King side is illegal" << std::endl;
 			}
@@ -279,7 +283,9 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(short& piece, Position& posit
 			bool pathNotChecked = !position.OpponentCanReach(60, false) && !position.OpponentCanReach(61, false) && !position.OpponentCanReach(62, false);
 			if(kingNotMoved&&rookExists&&emptyPath&&pathNotChecked) {
 				//std::cout << "Black Castling King side is legal" << std::endl;
-				result.push_back(Move(60, 62));
+				Move move = Move(60, 62);
+				move.piece = position.ReadPosition(60);
+				result.push_back(move);
 			}else{
 				//std::cout << "Black Castling King side is illegal" << std::endl;
 			}
@@ -298,7 +304,9 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(short& piece, Position& posit
 			bool pathNotChecked = !position.OpponentCanReach(2, true) && !position.OpponentCanReach(3, true) && !position.OpponentCanReach(4, true);
 			if(kingNotMoved&&rookExists&&emptyPath&&pathNotChecked) {
 				//std::cout << "White Castling Queen side is legal" << std::endl;
-				result.push_back(Move(4, 2));
+				Move move = Move(4, 2);
+				move.piece = position.ReadPosition(4);
+				result.push_back(move);
 			}else{
 				//std::cout << "White Castling Queen side is illegal" << std::endl;
 			}
@@ -314,7 +322,9 @@ std::vector<Move> MoveGenerator::GenerateKingMoves(short& piece, Position& posit
 			bool pathNotChecked = !position.OpponentCanReach(58, false) && !position.OpponentCanReach(59, false) && !position.OpponentCanReach(60, false);
 			if(kingNotMoved&&rookExists&&emptyPath&&pathNotChecked) {
 				//std::cout << "Black Castling Queen side is legal" << std::endl;
-				result.push_back(Move(60, 58));
+				Move move = Move(60, 58);
+				move.piece = position.ReadPosition(60);
+				result.push_back(move);
 			}else{
 				//std::cout << "Black Castling Queen side is illegal" << std::endl;
 			}
@@ -473,3 +483,5 @@ bool MoveGenerator::PieceMatchTurn(short piece, Position& position)
 {
 	return ChessUtil::IsWhite(piece) == position.whiteTurn;
 }
+
+std::vector<Move> (*MoveGenerator::MoveGenerationByType[6]) (short&, Position&) = {GeneratePawnMoves, GenerateSlidingMoves, GenerateKnightMoves, GenerateSlidingMoves, GenerateSlidingMoves, GenerateKingMoves};

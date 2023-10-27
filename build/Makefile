@@ -129,6 +129,30 @@ ChessEngineProject/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/build
 .PHONY : ChessEngineProject/fast
 
+BitUtil.o: BitUtil.cpp.o
+.PHONY : BitUtil.o
+
+# target to build an object file
+BitUtil.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/BitUtil.cpp.o
+.PHONY : BitUtil.cpp.o
+
+BitUtil.i: BitUtil.cpp.i
+.PHONY : BitUtil.i
+
+# target to preprocess a source file
+BitUtil.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/BitUtil.cpp.i
+.PHONY : BitUtil.cpp.i
+
+BitUtil.s: BitUtil.cpp.s
+.PHONY : BitUtil.s
+
+# target to generate assembly for a file
+BitUtil.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/BitUtil.cpp.s
+.PHONY : BitUtil.cpp.s
+
 Bitboards.o: Bitboards.cpp.o
 .PHONY : Bitboards.o
 
@@ -522,6 +546,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... ChessEngineProject"
+	@echo "... BitUtil.o"
+	@echo "... BitUtil.i"
+	@echo "... BitUtil.s"
 	@echo "... Bitboards.o"
 	@echo "... Bitboards.i"
 	@echo "... Bitboards.s"

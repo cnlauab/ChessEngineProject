@@ -95,7 +95,7 @@ unsigned long long Bitboards::allBlackBitboard(){
 }
 
 unsigned long long Bitboards::allEmptySquareBitboard(){
-    return !(allWhiteBitboard() | allBlackBitboard());
+    return ~(allWhiteBitboard() | allBlackBitboard());
 }
 
 bool Bitboards::isEmpty(short square){
@@ -122,24 +122,55 @@ void Bitboards::MoveBit(short from, short to, bool whiteTurn){
         for(int i = 0; i < 6; i++){
             //Move Piece
             if(whiteBitboards[i] & fromBit) {
-                whiteBitboards[i] = (whiteBitboards[i] & !fromBit) | toBit;
+                whiteBitboards[i] = (whiteBitboards[i] & ~fromBit) | toBit;
             }
             //Capture Piece
             if(blackBitboards[i] & toBit) {
-                blackBitboards[i] = blackBitboards[i] & !toBit;
+                blackBitboards[i] = blackBitboards[i] & ~toBit;
             }
         }
     }else{
         for(int i = 0; i < 6; i++){
             //Move Piece
             if(blackBitboards[i] & fromBit) {
-                blackBitboards[i] = (blackBitboards[i] & !fromBit) | toBit;
+                blackBitboards[i] = (blackBitboards[i] & ~fromBit) | toBit;
             }
             //Capture Piece
             if(whiteBitboards[i] & toBit) {
-                whiteBitboards[i] = whiteBitboards[i] & !toBit;
+                whiteBitboards[i] = whiteBitboards[i] & ~toBit;
             }
         }
+    }
+}
+
+void Bitboards::EnpassantMoveBit(short to, bool whiteTurn){
+    short pawnSquare = whiteTurn ? to - 8 : to + 8;
+    if(whiteTurn){
+        whiteBitboards[0] &= ~(1ULL << pawnSquare);
+    }else{
+        blackBitboards[0] &= ~(1ULL << pawnSquare);
+    }
+}
+
+void Bitboards::CastlingMoveBit(short to){
+    if(to == 2){
+        whiteBitboards[4] = whiteBitboards[4] & ~(1ULL << 0) | (1ULL << 3);
+    }else if(to == 6){
+        whiteBitboards[4] = whiteBitboards[4] & ~(1ULL << 7) | (1ULL << 5);
+    }else if(to == 58){
+        blackBitboards[4] = blackBitboards[4] & ~(1ULL << 56) | (1ULL << 59);
+    }else if(to == 62){
+        blackBitboards[4] = blackBitboards[4] & ~(1ULL << 63) | (1ULL << 61);
+    }
+}
+
+void Bitboards::PromotionMoveBit(short to, short promotionType, bool whiteTurn){
+    if(whiteTurn){
+        whiteBitboards[0] &= ~(1ULL << to);
+        whiteBitboards[promotionType] |= 1ULL << to;
+    }else{
+        blackBitboards[0] &= ~(1ULL << to);
+        blackBitboards[promotionType] |= 1ULL << to;
     }
 }
 
@@ -152,7 +183,7 @@ std::string Bitboards::BitboardsToString(){
 		auto pieceIdx = GetPieceTypeFromSquare(i);
         char piece = ' ';
         if(pieceIdx != -1){
-            piece = hasWhitePiece(i) ? toupper(ChessUtil::bitboardIndexPieceMapping[pieceIdx]) : tolower(ChessUtil::bitboardIndexPieceMapping[pieceIdx]);
+            piece = hasWhitePiece(i) ? toupper(BitUtil::bitboardIndexPieceMapping[pieceIdx]) : tolower(BitUtil::bitboardIndexPieceMapping[pieceIdx]);
         }
 		if (i % 8 == 7) {
 			row.push_back('['); 

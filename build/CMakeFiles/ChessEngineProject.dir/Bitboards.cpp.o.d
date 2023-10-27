@@ -234,4 +234,5 @@ CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.o: \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cmath \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__node_handle \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/optional \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.h
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.h \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BitUtil.h

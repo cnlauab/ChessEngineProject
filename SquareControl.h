@@ -19,8 +19,15 @@ public:
     short blackPawnPushTwoSquare;
 
     //Bitboards
-    unsigned long long kingControlBits;
-
+    unsigned long long pawnControlUpBitboard = 0ULL;
+    unsigned long long pawnControlDownBitboard = 0ULL;
+    unsigned long long bishopControlBitboard = 0ULL;
+    unsigned long long knightControlBitboard = 0ULL;
+    unsigned long long queenControlBitboard = 0ULL;
+    unsigned long long rookControlBitboard = 0ULL;
+    unsigned long long kingControlBitboard = 0ULL;
+    unsigned long long pawnShiftUpBitboard = 0ULL;
+    unsigned long long pawnShiftDownBitboard = 0ULL;
 
     //Constructor
     SquareControl(short square);

@@ -49,7 +49,8 @@ Position::Position(std::string fen)
 	//Castling
 	for(char c : parameters[2]){
 		//std::cout<<c<<std::endl;
-		castlingQuota[c] = true;
+		//castlingQuota[c] = true;
+		SetCastlingQuota(c, true);
 	}
 
 	//Enpassant move
@@ -129,12 +130,44 @@ short Position::GetPieceLocation(short piece)
 
 bool Position::GetCastlingQuota(short piece, bool kingSide) 
 {
+	int k = 0;
 	if(ChessUtil::IsWhite(piece)){
-		return (kingSide) ? castlingQuota['K'] : castlingQuota['Q'];
+		if(kingSide){
+			k = 0;
+		}else{
+			k = 1;
+		}
+		//return (kingSide) ? castlingQuota['K'] : castlingQuota['Q'];
 	}else{
-		return (kingSide) ? castlingQuota['k'] : castlingQuota['q'];
+		if(kingSide){
+			k = 2;
+		}else{
+			k = 3;
+		}
+		//return (kingSide) ? castlingQuota['k'] : castlingQuota['q'];
 	}
-	return false;
+	//return false;
+	return (castlingQuota & (1 << k)) > 0;
+}
+
+bool Position::GetCastlingQuota(char type) 
+{
+	int k = 0;
+	switch(type){
+		case 'K':
+			k = 0;
+			break;
+		case 'Q':
+			k = 1;
+			break;
+		case 'k':
+			k = 2;
+			break;
+		case 'q':
+			k = 3;
+			break;
+	}
+	return (castlingQuota & (1 << k)) > 0;
 }
 
 bool Position::TargetIsEmpty(short target) const
@@ -196,19 +229,19 @@ std::string Position::PositionToFen()
 	result += ' ';
 	//Castling
 	bool noQuota = true;
-	if(castlingQuota['K']){
+	if(GetCastlingQuota('K')){
 		result += 'K';
 		noQuota = false;
 	}
-	if(castlingQuota['Q']){
+	if(GetCastlingQuota('Q')){
 		result += 'Q';
 		noQuota = false;
 	}
-	if(castlingQuota['k']){
+	if(GetCastlingQuota('k')){
 		result += 'k';
 		noQuota = false;
 	}
-	if(castlingQuota['q']){
+	if(GetCastlingQuota('q')){
 		result += 'q';
 		noQuota = false;
 	}
@@ -237,17 +270,22 @@ bool Position::OpponentCanReach(short target, bool white){//white is defending
 
 std::vector<short> Position::GetOpponentCanReach(short target, bool white){//white is defending
     std::vector<short> result;
+	unsigned long long kingBit = (white) ? bitboards.whiteBitboards[5] : bitboards.blackBitboards[5];
+
     //Knight squares
-    std::vector<short> knightSquare = ChessUtil::squareControlMap[target].GetKnightSquare();
-    for(int i = 0; i < knightSquare.size(); i++){
-        short piece = ReadPosition(knightSquare[i]);
-        bool oppositeColor = white != ChessUtil::IsWhite(piece);
-        bool isKnight = ChessUtil::IsKnight(piece);
-        if(isKnight && oppositeColor){
-            //std::cout << "Knight Check " << targets[i] << std::endl;
-            result.push_back(piece);
-        }
-    }
+	unsigned long long knightBits = white ? bitboards.blackBitboards[2] : bitboards.whiteBitboards[2];
+	//if((kingBit & BitUtil::knightControlBits(knightBits)) > 0ULL){
+		std::vector<short> knightSquare = ChessUtil::squareControlMap[target].GetKnightSquare();
+		for(int i = 0; i < knightSquare.size(); i++){
+			short piece = ReadPosition(knightSquare[i]);
+			bool oppositeColor = white != ChessUtil::IsWhite(piece);
+			bool isKnight = ChessUtil::IsKnight(piece);
+			if(isKnight && oppositeColor){
+				//std::cout << "Knight Check " << targets[i] << std::endl;
+				result.push_back(piece);
+			}
+		}
+	//}
 
     //Sliding squares
     for(int i = 0; i < 8; ++i){
@@ -281,16 +319,19 @@ std::vector<short> Position::GetOpponentCanReach(short target, bool white){//whi
     }
 
     //Pawn squares
-    std::vector<short> pawnSquare = ChessUtil::squareControlMap[target].GetPawnSquare(white);
-    for(int i = 0; i < pawnSquare.size(); i++){
-        short piece = ReadPosition(pawnSquare[i]);
-        bool oppositeColor = white != ChessUtil::IsWhite(piece);
-        bool isPawn = ChessUtil::IsPawn(piece);
-        if(oppositeColor && isPawn){
-            //std::cout << "Pawn Check " << square1 << std::endl;
-            result.push_back(piece);
-        }
-    }
+	unsigned long long pawnBits = white ? bitboards.blackBitboards[0] : bitboards.whiteBitboards[0];
+	//if((kingBit & BitUtil::pawnControlBits(pawnBits, white)) > 0ULL){
+		std::vector<short> pawnSquare = ChessUtil::squareControlMap[target].GetPawnSquare(white);
+		for(int i = 0; i < pawnSquare.size(); i++){
+			short piece = ReadPosition(pawnSquare[i]);
+			bool oppositeColor = white != ChessUtil::IsWhite(piece);
+			bool isPawn = ChessUtil::IsPawn(piece);
+			if(oppositeColor && isPawn){
+				//std::cout << "Pawn Check " << square1 << std::endl;
+				result.push_back(piece);
+			}
+		}
+	//}
 
     return result;
 }
@@ -397,16 +438,11 @@ std::vector<short> Position::GetFriendlyCanReach(short target, bool attacking){
 }
 
 std::vector<short> Position::GetCheckedBy(bool white){
-	//int king = position.whiteTurn ? 4: 60;
-	//int kingsLocation = position.GetPieceLocation(king);
     short kingsLocation = white ? whiteKingLocation : blackKingLocation;
     return GetOpponentCanReach(kingsLocation, white);
 }
 
 bool Position::IsChecked(bool white){
-	//int king = white ? 4: 60;
-	//int kingsLocation = position.GetPieceLocation(king);
-    short kingsLocation = white ? whiteKingLocation : blackKingLocation;
     return GetCheckedBy(white).size() > 0;
 }
 
@@ -467,6 +503,29 @@ bool Position::SufficientMaterial(){
 	return false;
 }
 
+void Position::SetCastlingQuota(char type, bool on){
+	int k = 0;
+	switch(type){
+		case 'K':
+			k = 0;
+			break;
+		case 'Q':
+			k = 1;
+			break;
+		case 'k':
+			k = 2;
+			break;
+		case 'q':
+			k = 3;
+			break;
+	}
+	if(on){
+		castlingQuota |= (1 << k);
+	}else{
+		castlingQuota &= ~(1 << k);
+	}
+}
+
 void Position::MovePiece(Move& move)
 {
 	move.piece = position[move.from];
@@ -498,10 +557,15 @@ void Position::MovePiece(Move& move)
 		halfmove = 0;
 		capture = true;
 	}
+	//Update Bitboard
+	bitboards.MoveBit(move.from, move.to, whiteTurn);
 	//Piece Specific Update
 	if (ChessUtil::IsPawn(move.piece)) {
 		//std::cout << "Is Pawn " << move.piece << std::endl;
 		halfmove = 0;
+		if(move.to == enPassantSquare){
+			bitboards.EnpassantMoveBit(move.to, whiteTurn);
+		}
 		if (whiteTurn) {
 			if (move.to == enPassantSquare) {
 				move.takenPiece = position[move.to - 8];
@@ -533,6 +597,7 @@ void Position::MovePiece(Move& move)
 		//std::cout << "Pawn " << position[move.to] << " promote to ";
 		if(move.promotionType != ' '){
 			promotion = true;
+			bitboards.PromotionMoveBit(move.to, BitUtil::pieceBitboardIndexMapping[tolower(move.promotionType)], whiteTurn);
 			if(whiteTurn){
 				remove(whitePieceOnBoard.begin(),whitePieceOnBoard.end(),position[move.to]);
 				whitePieceOnBoard.pop_back();
@@ -583,19 +648,26 @@ void Position::MovePiece(Move& move)
 			blackKingLocation = move.to;
 		}
 		//Update castling quota
-		if (whiteTurn && castlingQuota['K']) {
-			castlingQuota['K'] = false;
+		if (whiteTurn && GetCastlingQuota('K')) {
+			SetCastlingQuota('K', false);
+			//castlingQuota['K'] = false;
 		}
-		else if(!whiteTurn && castlingQuota['k']) {
-			castlingQuota['k'] = false;
+		else if(!whiteTurn && GetCastlingQuota('k')) {
+			SetCastlingQuota('k', false);
+			//castlingQuota['k'] = false;
 		}
-		if (whiteTurn && castlingQuota['Q']) {
-			castlingQuota['Q'] = false;
+		if (whiteTurn && GetCastlingQuota('Q')) {
+			SetCastlingQuota('Q', false);
+			//castlingQuota['Q'] = false;
 		}
-		else if(!whiteTurn && castlingQuota['q']) {
-			castlingQuota['q'] = false;
+		else if(!whiteTurn && GetCastlingQuota('q')) {
+			SetCastlingQuota('q', false);
+			//castlingQuota['q'] = false;
 		}
 		//Move rook if castling
+		if(move.to == 2 || move.to == 6 || move.to == 58 || move.to == 62){
+			bitboards.CastlingMoveBit(move.to);
+		}
 		if (move.to - move.from == 2) {
 			castle = true;
 			if(whiteTurn){
@@ -619,14 +691,18 @@ void Position::MovePiece(Move& move)
 	}
 	if (ChessUtil::IsRook(move.piece)) {
 		//Update castling quota
-		if(move.piece == 0 && castlingQuota['Q']){
-			castlingQuota['Q'] = false;
-		}else if(move.piece == 7 && castlingQuota['K']){
-			castlingQuota['K'] = false;
-		}else if(move.piece == 56 && castlingQuota['q']){
-			castlingQuota['q'] = false;
-		}else if(move.piece == 63 && castlingQuota['k']){
-			castlingQuota['k'] = false;
+		if(move.piece == 0 && GetCastlingQuota('Q')){
+			SetCastlingQuota('Q', false);
+			//castlingQuota['Q'] = false;
+		}else if(move.piece == 7 && GetCastlingQuota('K')){
+			SetCastlingQuota('K', false);
+			//castlingQuota['K'] = false;
+		}else if(move.piece == 56 && GetCastlingQuota('q')){
+			SetCastlingQuota('q', false);
+			//castlingQuota['q'] = false;
+		}else if(move.piece == 63 && GetCastlingQuota('k')){
+			SetCastlingQuota('k', false);
+			//castlingQuota['k'] = false;
 		}
 	}
 	//Update Opposite Turn
@@ -662,21 +738,6 @@ short Position::CalculateScore(){
 	}else if(checkmate && !whiteTurn){
 		return 4000;
 	}
-	//Castle
-	/*
-	if(castlingQuota['k']){
-		blackScore += 30;
-	}
-	if(castlingQuota['q']){
-		blackScore += 30;
-	}
-	if(castlingQuota['Q']){
-		whiteScore += 30;
-	}
-	if(castlingQuota['K']){
-		whiteScore += 30;
-	}
-	*/
 	//std::cout << "W: " << whiteScore << ", B: " << blackScore << std::endl;
 	for(short piece : whitePieceOnBoard){
 		short square = GetPieceLocation(piece);

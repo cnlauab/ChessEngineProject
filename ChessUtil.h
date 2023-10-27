@@ -10,8 +10,6 @@ public:
     static std::unordered_map<short, char> pieceMapping;
     static std::unordered_map<short, short> pieceScoreMapping;
 	static std::unordered_map<short, int> pieceValueMapping;
-	static std::unordered_map<char, int> pieceBitboardIndexMapping;
-	static char bitboardIndexPieceMapping[6];
     static char GetPieceType(short piece);
 
 	static char file[8];
@@ -25,7 +23,6 @@ public:
 
 	static SquareControl squareControlMap[64];
 
-	static std::unordered_map<unsigned long long, short> bitToSquareMap;
 
 	static short GetRank(short square);
 	static short GetFile(short square);
@@ -49,5 +46,4 @@ public:
 
 	static bool IsLightSquare(short square);
 
-	static std::string bitboardToString(unsigned long long bitboard);
 };

@@ -239,5 +239,6 @@ CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o: \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BitUtil.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Bitboards.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/LegalChecker.h

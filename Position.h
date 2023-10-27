@@ -8,6 +8,7 @@
 #include "Move.h"
 #include "State.h"
 #include "ChessUtil.h"
+#include "BitUtil.h"
 #include "Bitboards.h"
 
 class Position {
@@ -42,6 +43,9 @@ public :
     short whiteKingLocation;
     short blackKingLocation;
 
+    //Pinned piece
+    std::unordered_map<short,short> pinnedPiece;//piece,direction
+
 	//Constructor
 	Position();
     Position(std::string fen);
@@ -52,6 +56,7 @@ public :
     short ReadPosition(short location);
     short GetPieceLocation(short piece);
     bool GetCastlingQuota(short piece, bool kingSide);
+    bool GetCastlingQuota(char type);
     bool TargetIsEmpty(short target) const;
     bool TargetIsOppositeColor(short piece, short target) const;
     bool EnpassantSquareIsOppositeColor(short piece) const;
@@ -68,12 +73,12 @@ public :
     bool SufficientMaterial();
 
 	//Mutator
+    void SetCastlingQuota(char type, bool on);
 	void MovePiece(Move& move);
     void prevMoveLeadToCheck(Move& move);
 
     //Evaluation
     short CalculateScore();
 private:
-    //TODO Change it to 4 bit int
-    std::unordered_map<char, bool> castlingQuota = { {'K',true}, {'Q',true}, {'k',true}, {'q',true} };
+    char castlingQuota = 15;
 };

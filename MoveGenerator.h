@@ -28,4 +28,6 @@ public:
 	static std::vector<Move> GenerateMovesByBlocking(Position& position);
 
 	static bool PieceMatchTurn(short piece, Position& position);
+
+	static std::vector<Move> (*MoveGenerationByType[6]) (short&, Position&);
 };

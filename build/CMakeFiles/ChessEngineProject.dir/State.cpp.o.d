@@ -238,4 +238,5 @@ CMakeFiles/ChessEngineProject.dir/State.cpp.o: \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/bitset \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.h \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BitUtil.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Bitboards.h

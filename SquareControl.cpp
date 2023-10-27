@@ -22,6 +22,7 @@ SquareControl::SquareControl(short square){
 			if (lefter && lower) {
                 //std::cout << "Knight square (" << square << "): " << knight[i] << std::endl;
                 knightSquare.push_back(knight[i]);
+                knightControlBitboard |= 1ULL << knight[i];
             }
 		}
 		else if (i == 2 || i == 3) {
@@ -30,6 +31,7 @@ SquareControl::SquareControl(short square){
 			if (righter && lower) {
                 //std::cout << "Knight square (" << square << "): " << knight[i] << std::endl;
                 knightSquare.push_back(knight[i]);
+                knightControlBitboard |= 1ULL << knight[i];
             }
 		}
 		else if (i == 4 || i == 5) {
@@ -38,6 +40,7 @@ SquareControl::SquareControl(short square){
 			if (lefter && higher) {
                 //std::cout << "Knight square (" << square << "): " << knight[i] << std::endl;
                 knightSquare.push_back(knight[i]);
+                knightControlBitboard |= 1ULL << knight[i];
             }
 		}
 		else if (i == 6 || i == 7) {
@@ -46,6 +49,7 @@ SquareControl::SquareControl(short square){
 			if (righter && higher) {
                 //std::cout << "Knight square (" << square << "): " << knight[i] << std::endl;
                 knightSquare.push_back(knight[i]);
+                knightControlBitboard |= 1ULL << knight[i];
             }
 		}
     }
@@ -59,24 +63,41 @@ SquareControl::SquareControl(short square){
         if(!outOfBound) {
             //King
             kingSquare.push_back(target);
+            kingControlBitboard |= 1ULL << target;
             //Pawn
             if(i == 6 || i == 7){
+                pawnControlUpBitboard |= 1ULL << target;
                 pawnSquareAbove.push_back(target);
             }
             if(i == 4 || i == 5){
+                pawnControlDownBitboard |= 1ULL << target;
                 pawnSquareBelow.push_back(target);
+            }
+            if(i == 3){
+                pawnShiftUpBitboard |= 1ULL << target;
+            }
+            if(i == 2){
+                pawnShiftDownBitboard |= 1ULL << target;
             }
         }
         //Sliding
 		while (!outOfBound) {
             slidingSquare[i].push_back(target);
+            queenControlBitboard |= 1ULL << target;
+            if(i < 4) {
+                rookControlBitboard |= 1ULL << target;
+            }else{
+                bishopControlBitboard |= 1ULL << target;
+            }
 			target += offset;
 			outOfBound = SquareControl::SquareOutbound(square, target, i);
 		}
     }
     //Pawn push squares
     whitePawnPushTwoSquare = (square > 7 && square < 16) ? square + 16 : 99;
+    if(square > 7 && square < 16) pawnShiftUpBitboard |= 1ULL << (square + 16);
     blackPawnPushTwoSquare = (square > 47 && square < 56) ? square - 16 : 99;
+    if(square > 47 && square < 56) pawnShiftDownBitboard |= 1ULL << (square - 16);
     whitePawnPushOneSquare = (square <= 55) ? square + 8 : 99;
     blackPawnPushOneSquare = (square >= 8) ? square - 8 : 99;
 }

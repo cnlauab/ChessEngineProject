@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ChessEngineProject.dir/BitUtil.cpp.o"
+  "CMakeFiles/ChessEngineProject.dir/BitUtil.cpp.o.d"
   "CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.o"
   "CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.o.d"
   "CMakeFiles/ChessEngineProject.dir/BoardRenderer.cpp.o"

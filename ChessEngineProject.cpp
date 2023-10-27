@@ -44,19 +44,6 @@ bool IsEnded(int noOfLegalMoves){
 }
 
 void ComputerTurn(){
-	//std::vector<Move> currLegalMoves = MoveGenerator::GenerateAllPossibleMoves(currentPosition);
-	//cout << "No. of Legal Moves: " << currLegalMoves.size() << endl;
-	//for(Move move : currLegalMoves){
-	//	cout << move.toSimpleString() << endl;
-	//}
-	//
-	//Debug::MoveSelectionLog(currLegalMoves);
-//
-	//if(IsEnded(currLegalMoves)) return;
-//
-	//short randomNum = rand() % currLegalMoves.size();
-	//cout << "Random number: " << randomNum << endl;
-	//Move extractedMove = currLegalMoves[randomNum];
 
 	Move extractedMove = Evaluation::Evaluate(currentPosition);
 
@@ -77,6 +64,7 @@ void Turn() {
 	std::string input;
 	std::vector<Move> currLegalMoves = MoveGenerator::GenerateAllPossibleMoves(currentPosition);
 	cout << "No. of Legal Moves: " << currLegalMoves.size() << endl;
+	//for(Move move : currLegalMoves) cout << move.toString() << endl;
 	
 	if(IsEnded(currLegalMoves.size())) return;
 
@@ -128,8 +116,18 @@ void Turn() {
 //Testing
 void TestBitboard(){
 	//Testing bitboard
-	cout << ChessUtil::bitboardToString(1ULL) << endl;
-	cout << ChessUtil::bitboardToString(9223372036854775808ULL) << endl;
+	Bitboards bitboards = Bitboards("r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1");
+	cout << "All" << endl;
+	cout << bitboards.BitboardsToString() << endl;
+
+	cout << "Bishop at 32" << endl;
+	cout << BitUtil::bitboardToString(ChessUtil::squareControlMap[32].bishopControlBitboard) << endl;
+	cout << "Rook at 32" << endl;
+	cout << BitUtil::bitboardToString(ChessUtil::squareControlMap[32].rookControlBitboard) << endl;
+	cout << "Queen at 32" << endl;
+	cout << BitUtil::bitboardToString(ChessUtil::squareControlMap[32].queenControlBitboard) << endl;
+	//std::vector<short> positions = ChessUtil::getBitPositions(bitboards.allBlackBitboard());
+	//for(auto position : positions) cout << position << endl;
 }
 
 void TestUCI(){
@@ -143,11 +141,13 @@ void TestUCI(){
 }
 
 void TestPerft(){
+	currentPosition = Position("r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq -");
+	
 	//Testing Perft
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 	
 	Node* root = new Node(&currentPosition);
-	Evaluation::ConstructTree(root, 4);
+	Evaluation::ConstructTree(root, 3);
 	Evaluation::BFS(root);
 	
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
@@ -187,6 +187,7 @@ void ConsoleMode(){
 		PrintMoveMade();
 		cout << BoardRenderer::positionToString(currentPosition) << endl;
 		cout << currentPosition.PositionToFen() << endl;
+		cout << currentPosition.bitboards.BitboardsToString() << endl;
 		if(currentPosition.whiteTurn && whiteIsComp || !currentPosition.whiteTurn && !whiteIsComp){
 			ComputerTurn();
 			//Turn();
@@ -212,39 +213,15 @@ int main()
 	Debug::ClearLog();
 	Debug::UCILog("############ HoneyB Program Started ############", true);
 
+
 	//Play in console
 	//ConsoleMode();
 	//Play in UCI
-	//UCIMode();
-
-	Bitboards bitboards = Bitboards("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
-	cout << "White Pawn" << endl;
-	cout << ChessUtil::bitboardToString(bitboards.whiteBitboards[0]) << endl;
-	cout << "White Queen" << endl;
-	cout << ChessUtil::bitboardToString(bitboards.whiteBitboards[1]) << endl;
-	cout << "White Knight" << endl;
-	cout << ChessUtil::bitboardToString(bitboards.whiteBitboards[2]) << endl;
-	cout << "White Bishop" << endl;
-	cout << ChessUtil::bitboardToString(bitboards.whiteBitboards[3]) << endl;
-	cout << "White Rook" << endl;
-	cout << ChessUtil::bitboardToString(bitboards.whiteBitboards[4]) << endl;
-	cout << "White King" << endl;
-	cout << ChessUtil::bitboardToString(bitboards.whiteBitboards[5]) << endl;
-
-	cout << "Black Pawn" << endl;
-	cout << ChessUtil::bitboardToString(bitboards.blackBitboards[0]) << endl;
-	cout << "Black Queen" << endl;
-	cout << ChessUtil::bitboardToString(bitboards.blackBitboards[1]) << endl;
-	cout << "Black Knight" << endl;
-	cout << ChessUtil::bitboardToString(bitboards.blackBitboards[2]) << endl;
-	cout << "Black Bishop" << endl;
-	cout << ChessUtil::bitboardToString(bitboards.blackBitboards[3]) << endl;
-	cout << "Black Rook" << endl;
-	cout << ChessUtil::bitboardToString(bitboards.blackBitboards[4]) << endl;
-	cout << "Black King" << endl;
-	cout << ChessUtil::bitboardToString(bitboards.blackBitboards[5]) << endl;
-	cout << "All" << endl;
-	cout << bitboards.BitboardsToString() << endl;
+	UCIMode();
+	//Test Bitboard
+	//TestBitboard();
+	//Test Perft
+	//TestPerft();
 
 	return 0;
 }
