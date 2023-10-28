@@ -264,17 +264,60 @@ std::string Position::PositionToFen()
 }
 
 bool Position::OpponentCanReach(short target, bool white){//white is defending
-    std::vector<short> result = GetOpponentCanReach(target, white);
-    return result.size() > 0;
+    //std::vector<short> result = GetOpponentCanReach(target, white);
+    //return result.size() > 0;
+
+    unsigned long long targetBit = 1ULL << target;
+	unsigned long long knightBits = white ? bitboards.blackBitboards[2] : bitboards.whiteBitboards[2];
+	if((targetBit & BitUtil::knightControlBits(knightBits)) > 0ULL) return true;
+	unsigned long long pawnBits = white ? bitboards.blackBitboards[0] : bitboards.whiteBitboards[0];
+	if((targetBit & BitUtil::pawnControlBits(pawnBits, !white)) > 0ULL) return true;
+
+	unsigned long long queenBits = white ? bitboards.blackBitboards[1] : bitboards.whiteBitboards[1];
+	unsigned long long bishopBits = white ? bitboards.blackBitboards[3] : bitboards.whiteBitboards[3];
+	unsigned long long targetDiagonalBit = ChessUtil::squareControlMap[target].bishopControlBitboard;
+	if((targetDiagonalBit & (queenBits | bishopBits)) > 0ULL){
+		for(int i = 4; i <= 7; ++i){
+			std::vector<short> slidingSquare = ChessUtil::squareControlMap[target].GetSlidingSquare(i);
+			for(short square : slidingSquare){
+				short piece = ReadPosition(square);
+				if(!ChessUtil::IsEmpty(piece)) {
+					if((ChessUtil::IsWhite(piece) != white) && (ChessUtil::IsQueen(piece) || ChessUtil::IsBishop(piece))){
+						return true;
+					}else{
+						break;
+					}
+				}
+			}
+		}
+	}
+	unsigned long long rookBits = white ? bitboards.blackBitboards[4] : bitboards.whiteBitboards[4];
+	unsigned long long targetNonDiagonalBit = ChessUtil::squareControlMap[target].rookControlBitboard;
+	if((targetNonDiagonalBit & (queenBits | rookBits)) > 0ULL){
+		for(int i = 0; i <= 3; ++i){
+			std::vector<short> slidingSquare = ChessUtil::squareControlMap[target].GetSlidingSquare(i);
+			for(short square : slidingSquare){
+				short piece = ReadPosition(square);
+				if(!ChessUtil::IsEmpty(piece)) {
+					if((ChessUtil::IsWhite(piece) != white) && (ChessUtil::IsQueen(piece) || ChessUtil::IsRook(piece))){
+						return true;
+					}else{
+						break;
+					}
+				}
+			}
+		}
+	}
+	return false;
 }
 
 std::vector<short> Position::GetOpponentCanReach(short target, bool white){//white is defending
     std::vector<short> result;
-	unsigned long long kingBit = (white) ? bitboards.whiteBitboards[5] : bitboards.blackBitboards[5];
+	unsigned long long targetBit = 1ULL << target;
 
     //Knight squares
 	unsigned long long knightBits = white ? bitboards.blackBitboards[2] : bitboards.whiteBitboards[2];
-	//if((kingBit & BitUtil::knightControlBits(knightBits)) > 0ULL){
+	if((targetBit & BitUtil::knightControlBits(knightBits)) > 0ULL){
 		std::vector<short> knightSquare = ChessUtil::squareControlMap[target].GetKnightSquare();
 		for(int i = 0; i < knightSquare.size(); i++){
 			short piece = ReadPosition(knightSquare[i]);
@@ -285,7 +328,7 @@ std::vector<short> Position::GetOpponentCanReach(short target, bool white){//whi
 				result.push_back(piece);
 			}
 		}
-	//}
+	}
 
     //Sliding squares
     for(int i = 0; i < 8; ++i){
@@ -320,7 +363,7 @@ std::vector<short> Position::GetOpponentCanReach(short target, bool white){//whi
 
     //Pawn squares
 	unsigned long long pawnBits = white ? bitboards.blackBitboards[0] : bitboards.whiteBitboards[0];
-	//if((kingBit & BitUtil::pawnControlBits(pawnBits, white)) > 0ULL){
+	if((targetBit & BitUtil::pawnControlBits(pawnBits, !white)) > 0ULL){
 		std::vector<short> pawnSquare = ChessUtil::squareControlMap[target].GetPawnSquare(white);
 		for(int i = 0; i < pawnSquare.size(); i++){
 			short piece = ReadPosition(pawnSquare[i]);
@@ -331,7 +374,7 @@ std::vector<short> Position::GetOpponentCanReach(short target, bool white){//whi
 				result.push_back(piece);
 			}
 		}
-	//}
+	}
 
     return result;
 }
@@ -443,7 +486,9 @@ std::vector<short> Position::GetCheckedBy(bool white){
 }
 
 bool Position::IsChecked(bool white){
-    return GetCheckedBy(white).size() > 0;
+    //return GetCheckedBy(white).size() > 0;
+    short kingsLocation = white ? whiteKingLocation : blackKingLocation;
+	return OpponentCanReach(kingsLocation, white);
 }
 
 bool Position::IsEndgame(){
