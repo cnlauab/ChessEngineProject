@@ -37,7 +37,7 @@ public :
     bool stalemate;
 
     //States
-    Move prevMove;
+    unsigned short prevMove;
     std::vector<short> whitePieceOnBoard;
     std::vector<short> blackPieceOnBoard;
     short whiteKingLocation;
@@ -49,8 +49,8 @@ public :
 	//Constructor
 	Position();
     Position(std::string fen);
-	Position(Position& position, Move& move);
-	Position(Position& position, std::vector<Move>& moveList);
+	Position(Position& position, unsigned short& move);
+	Position(Position& position, std::vector<unsigned short>& moveList);
 
     //Getter
     short ReadPosition(short location);
@@ -63,19 +63,20 @@ public :
     std::string PositionToFen();
 
     bool OpponentCanReach(short target, bool white);
-    std::vector<short> GetOpponentCanReach(short target, bool white);
     std::vector<short> GetFriendlyCanReach(short target, bool attacking);
-    std::vector<short> GetCheckedBy(bool white);
+    std::vector<short> GetCheckedByAndUpdatePin(bool white);
     bool IsChecked(bool white);
     
     bool IsEndgame();
     bool IsDraw();
     bool SufficientMaterial();
 
+    std::string MoveToUCIString(unsigned short move);
+    std::string MoveToString(unsigned short move);
+
 	//Mutator
     void SetCastlingQuota(char type, bool on);
-	void MovePiece(Move& move);
-    void prevMoveLeadToCheck(Move& move);
+	void MovePiece(unsigned short& move);
 
     //Evaluation
     short CalculateScore();

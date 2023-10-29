@@ -16,4 +16,5 @@
 #include "UCI.h"
 #include "Bitboards.h"
 
+#include "ChessUtil.h"
 // TODO: Reference additional headers your program requires here.

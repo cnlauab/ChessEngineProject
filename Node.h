@@ -12,7 +12,7 @@ class Node{
         Node* parentNode;
         std::vector<Node*> childrenNodes;
 
-        Move bestMove;
+        unsigned short bestMove;
 
         Node(Position* pos);
         Node(Node* parent, Position* pos);

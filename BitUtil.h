@@ -33,5 +33,5 @@ public:
     static unsigned long long kingControlBits(unsigned long long kingbit);
 
     private:
-        std::vector<short> possibleSlidingSquare(int typeIndex, short square);
+    
 };

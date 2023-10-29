@@ -23,7 +23,6 @@ void Debug::GameLog(Position& position){
     }
     outfile << BoardRenderer::positionToString(position) << std::endl;
     outfile << position.PositionToFen() << std::endl;
-    outfile << "Move made: " << position.prevMove.toString() << std::endl;
     outfile << "################" << std::endl;
     outfile.close();
 }

@@ -8,22 +8,8 @@ using namespace std;
 Validator validator;
 Position currentPosition;
 State gameState;
-std::vector<Move> moveMade;
+std::vector<unsigned short> moveMade;
 bool whiteIsComp = false;
-
-void PrintMoveMade(){//TODO move to State.cpp
-	if(moveMade.size() == 0) return;
-	int counter = 1;
-	for(int i = 0; i < moveMade.size(); i++){
-		if(i % 2 == 0){
-			cout << counter << ". " << moveMade[i].toSimpleString() << " ";
-		}else{
-			cout << moveMade[i].toSimpleString() << endl;
-			counter += 1;
-		}
-	}
-	cout << endl;
-}
 
 bool IsEnded(int noOfLegalMoves){
 	if(noOfLegalMoves == 0) {//Checkmate or Stalemate
@@ -34,7 +20,6 @@ bool IsEnded(int noOfLegalMoves){
 			}else{
 				gameState.whiteWon = true;
 			}
-			moveMade.back().UpdateCheck(false,true);
 		}else{
 			gameState.stalemate = true;
 		}
@@ -45,24 +30,21 @@ bool IsEnded(int noOfLegalMoves){
 
 void ComputerTurn(){
 
-	Move extractedMove = Evaluation::Evaluate(currentPosition);
+	unsigned short extractedMove = Evaluation::Evaluate(currentPosition);
 
-	if(IsEnded(!extractedMove.isEmpty())) return;
+	if(IsEnded(extractedMove)) return;
 	currentPosition.MovePiece(extractedMove);
 	moveMade.emplace_back(extractedMove);
 
 	bool isChecked = currentPosition.IsChecked(currentPosition.whiteTurn);
-	if(isChecked){
-		extractedMove.UpdateCheck(true,false);
-	}
-	cout << "Move made: " << extractedMove.toString() << endl;
+	cout << "Move made: " << currentPosition.MoveToUCIString(extractedMove) << endl;
 	cout << "#################" << endl;
 
 }
 
 void Turn() {
 	std::string input;
-	std::vector<Move> currLegalMoves = MoveGenerator::GenerateAllPossibleMoves(currentPosition);
+	std::vector<unsigned short> currLegalMoves = MoveGenerator::GenerateAllPossibleMoves(currentPosition);
 	cout << "No. of Legal Moves: " << currLegalMoves.size() << endl;
 	//for(Move move : currLegalMoves) cout << move.toString() << endl;
 	
@@ -70,7 +52,7 @@ void Turn() {
 
 	bool validMoveInput = false;
 	bool selectedMove = false;
-	Move extractedMove;
+	unsigned short extractedMove;
 
 	while (!validMoveInput || !selectedMove) {
 		cout << ((currentPosition.whiteTurn) ? "White" : "Black") << "'s next move: ";
@@ -93,9 +75,9 @@ void Turn() {
 			cout << "Promotion Type: " << promotionType << endl;
 
 			//cout << "No. of possible moves: " << currLegalMoves.size() << endl;
-			extractedMove = MoveGenerator::ExtractMove(pieceType, target, file, rank, currentPosition.whiteTurn, promotionType, currLegalMoves);
-			selectedMove = !extractedMove.isEmpty();
-			cout << "Selected Move: " << extractedMove.toString() << endl;
+			extractedMove = MoveGenerator::ExtractMove(pieceType, target, file, rank, currentPosition.whiteTurn, promotionType, currLegalMoves, currentPosition);
+			selectedMove = extractedMove != 0;
+			cout << "Selected Move: " << currentPosition.MoveToUCIString(extractedMove) << endl;
 		}
 		cout << "######## " << endl;
 	}
@@ -104,10 +86,7 @@ void Turn() {
 		moveMade.emplace_back(extractedMove);
 
 		bool isChecked = currentPosition.IsChecked(currentPosition.whiteTurn);
-		if(isChecked){
-			extractedMove.UpdateCheck(true,false);
-		}
-		cout << "Move made: " << extractedMove.toString() << endl;
+		cout << "Move made: " << currentPosition.MoveToUCIString(extractedMove) << endl;
 	}
 	cout << "######## " << endl;
 	cout << endl;
@@ -141,24 +120,26 @@ void TestUCI(){
 }
 
 void TestPerft(){
-	currentPosition = Position("r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq -");
+	currentPosition = Position("r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1");
+	//TODO: still need to fix en passant at 8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - depth=5
 	
 	//Testing Perft
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 	
 	Node* root = new Node(&currentPosition);
-	Evaluation::ConstructTree(root, 4);
+	Evaluation::ConstructTree(root, 5);
 	Evaluation::BFS(root);
 	
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-	std::cout << "Time elapsed = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[Milliseconds]" << std::endl;
+	auto timeElapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+	std::cout << "Time elapsed = " << timeElapsed << "[Milliseconds] that's " << timeElapsed / 60000  << "[Minutes]" << timeElapsed % 60000 / 1000 << "[Seconds]" << std::endl;
 }
 
 void TestEvaluation(){
 	//Testing Evaluation
 	cout << BoardRenderer::positionToString(currentPosition) << endl;
-	Move chosenMove = Evaluation::Evaluate(currentPosition);
-	cout << "Move chosen: " << chosenMove.toString() << endl;
+	unsigned short chosenMove = Evaluation::Evaluate(currentPosition);
+	cout << "Move chosen: " << currentPosition.MoveToUCIString(chosenMove) << endl;
 }
 
 //Mode
@@ -184,7 +165,6 @@ void ConsoleMode(){
 	
 	//Game
 	while (!gameState.Ended() && moveCounter < 500) {
-		PrintMoveMade();
 		cout << BoardRenderer::positionToString(currentPosition) << endl;
 		cout << currentPosition.PositionToFen() << endl;
 		cout << currentPosition.bitboards.BitboardsToString() << endl;
@@ -213,15 +193,20 @@ int main()
 	Debug::ClearLog();
 	Debug::UCILog("############ HoneyB Program Started ############", true);
 
+	//cout << sizeof('x') << endl;
+	//Move move = Move();
+	//cout << sizeof(move) << endl;
+	//cout << sizeof(currentPosition) << endl;
+	//cout << sizeof(1ULL) << endl;
 
 	//Play in console
 	//ConsoleMode();
 	//Play in UCI
-	UCIMode();
+	//UCIMode();
 	//Test Bitboard
 	//TestBitboard();
 	//Test Perft
-	//TestPerft();
+	TestPerft();
 
 	return 0;
 }

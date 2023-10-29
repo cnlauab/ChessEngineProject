@@ -199,20 +199,6 @@ unsigned long long BitUtil::kingControlBits(unsigned long long kingbit){
     return result;
 }
 
-std::vector<short> BitUtil::possibleSlidingSquare(int typeIndex, short square){
-    int startingDirection = 0;
-    int endingDirection = 7;
-    if(typeIndex == 3) startingDirection = 4;
-    if(typeIndex == 4) endingDirection = 3;
-    for(int i = startingDirection; i <= endingDirection; i++){
-        std::vector<short> squareLine = ChessUtil::squareControlMap[square].slidingSquare[i];
-        for(uint8_t bitLine = 0; bitLine <= squareLine.size(); bitLine++){
-            for(int j = 0; j < squareLine.size(); j++){
-                //bitLine
-            }
-        }
-    }
-}
 
 
 

@@ -6,6 +6,7 @@
 #include "Position.h"
 #include "Move.h"
 #include "Evaluation.h"
+#include "ChessUtil.h"
 
 using namespace std;
 class UCI {

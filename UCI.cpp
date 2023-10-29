@@ -10,10 +10,10 @@ void UCI::SelfPlay(){
     Debug::UCILog("\n" + BoardRenderer::positionToString(currPosition), true);
     Debug::UCILog(currPosition.PositionToFen(), true);
     while(!currPosition.checkmate || moves > 200){
-        Move bestMove = Evaluation::Evaluate(currPosition);
-        Debug::UCILog("bestmove " + bestMove.toSimpleString(), false);
-        if(bestMove.isEmpty()) break;
-        positionCommand += " " + bestMove.toSimpleString();
+        unsigned short bestMove = Evaluation::Evaluate(currPosition);
+        Debug::UCILog("bestmove " + currPosition.MoveToUCIString(bestMove), false);
+        if(bestMove == 0) break;
+        positionCommand += " " + currPosition.MoveToUCIString(bestMove);
         currPosition = Position(currPosition, bestMove);
         Debug::UCILog(positionCommand, true);
         Debug::UCILog("\n" + BoardRenderer::positionToString(currPosition), true);
@@ -61,9 +61,9 @@ void UCI::UCILoop(){
 			; // nothing to do
 
 		} else if ( Line.substr( 0, 3 ) == "go " ) {
-            Move bestMove = Evaluation::Evaluate(currPosition);
-            cout << "bestmove " << bestMove.toSimpleString() << endl;
-            Debug::UCILog("bestmove " + bestMove.toSimpleString(), false);
+            unsigned short bestMove = Evaluation::Evaluate(currPosition);
+            cout << "bestmove " << currPosition.MoveToUCIString(bestMove) << endl;
+            Debug::UCILog("bestmove " + currPosition.MoveToUCIString(bestMove), false);
 
             currPosition.MovePiece(bestMove);
             Debug::UCILog("\n" + BoardRenderer::positionToString(currPosition), true);
@@ -78,11 +78,11 @@ Position UCI::ParsePosition(std::string line){
         Position position = Position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 0");
         size_t charptr = line.find("moves");
         if(charptr != std::string::npos){
-            std::vector<Move> moveList;
+            std::vector<unsigned short> moveList;
             charptr += 6;
             while(charptr != std::string::npos && charptr < line.length()){
                 std::string moveStr = line.substr(charptr, 5);
-                if(moveStr.length() >= 4) moveList.push_back(Move(moveStr));
+                if(moveStr.length() >= 4) moveList.push_back(ChessUtil::UCIToMove(moveStr));
                 if(moveStr[4] == ' ') {
                     charptr += 5;
                 }else{
@@ -101,11 +101,11 @@ Position UCI::ParsePosition(std::string line){
             Position position = Position(fen);
             charptr = line.find("moves");
             if(charptr != std::string::npos){
-                std::vector<Move> moveList;
+                std::vector<unsigned short> moveList;
                 charptr += 6;
                 while(charptr != std::string::npos && charptr < line.length()){
                     std::string moveStr = line.substr(charptr, 5);
-                    if(moveStr.length() >= 4) moveList.push_back(Move(moveStr));
+                    if(moveStr.length() >= 4) moveList.push_back(ChessUtil::UCIToMove(moveStr));
                     if(moveStr[4] == ' ') {
                         charptr += 5;
                     }else{

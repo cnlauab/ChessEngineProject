@@ -22,7 +22,7 @@ public:
 	static std::unordered_map <std::string, short> squareToIndexMapping;
 
 	static SquareControl squareControlMap[64];
-
+	static std::unordered_map<char, unsigned short> promotionTypeMap;
 
 	static short GetRank(short square);
 	static short GetFile(short square);
@@ -46,4 +46,10 @@ public:
 
 	static bool IsLightSquare(short square);
 
+	static unsigned short SimpleMove(short from, short to, char promotionType = 'Q');
+	static short GetFrom(unsigned short move);
+	static short GetTo(unsigned short move);
+	static char GetPromotionType(unsigned short move);
+	static std::string SimpleMoveToString(unsigned short move);
+	static unsigned short UCIToMove(std::string uci);
 };

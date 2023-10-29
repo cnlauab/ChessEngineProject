@@ -60,10 +60,10 @@ Position::Position(std::string fen)
 	//Fullmove
 	if(parameters.size() >= 6) halfmove = std::stoi(parameters[5]);
 
-	prevMove = Move();
+	prevMove = 0;
 }
 
-Position::Position(Position& currPosition, Move& move){
+Position::Position(Position& currPosition, unsigned short& move){
 	whiteTurn = currPosition.whiteTurn;
 	enPassantSquare = currPosition.enPassantSquare;
 	halfmove = currPosition.halfmove;
@@ -84,7 +84,7 @@ Position::Position(Position& currPosition, Move& move){
 	prevMove = move;
 }
 
-Position::Position(Position& position, std::vector<Move>& moveList){
+Position::Position(Position& position, std::vector<unsigned short>& moveList){
 	whiteTurn = position.whiteTurn;
 	enPassantSquare = position.enPassantSquare;
 	halfmove = position.halfmove;
@@ -100,7 +100,7 @@ Position::Position(Position& position, std::vector<Move>& moveList){
 
 	bitboards = Bitboards(position.bitboards);
 
-	for(Move move : moveList){
+	for(auto move : moveList){
 		MovePiece(move);
 		prevMove = move;
 	}
@@ -311,74 +311,6 @@ bool Position::OpponentCanReach(short target, bool white){//white is defending
 	return false;
 }
 
-std::vector<short> Position::GetOpponentCanReach(short target, bool white){//white is defending
-    std::vector<short> result;
-	unsigned long long targetBit = 1ULL << target;
-
-    //Knight squares
-	unsigned long long knightBits = white ? bitboards.blackBitboards[2] : bitboards.whiteBitboards[2];
-	if((targetBit & BitUtil::knightControlBits(knightBits)) > 0ULL){
-		std::vector<short> knightSquare = ChessUtil::squareControlMap[target].GetKnightSquare();
-		for(int i = 0; i < knightSquare.size(); i++){
-			short piece = ReadPosition(knightSquare[i]);
-			bool oppositeColor = white != ChessUtil::IsWhite(piece);
-			bool isKnight = ChessUtil::IsKnight(piece);
-			if(isKnight && oppositeColor){
-				//std::cout << "Knight Check " << targets[i] << std::endl;
-				result.push_back(piece);
-			}
-		}
-	}
-
-    //Sliding squares
-    for(int i = 0; i < 8; ++i){
-        std::vector<short> slidingSquare = ChessUtil::squareControlMap[target].GetSlidingSquare(i);
-        if(slidingSquare.size() == 0) continue;
-        if(!TargetIsEmpty(slidingSquare[0]) && ChessUtil::IsKing(ReadPosition(slidingSquare[0])) && white != ChessUtil::IsWhite(ReadPosition(slidingSquare[0]))) {
-            //std::cout << "King at " << target << " King Check " << square << std::endl;
-            result.push_back(ReadPosition(slidingSquare[0]));
-        }
-        for(int j = 0; j < slidingSquare.size(); j++){
-            short piece = ReadPosition(slidingSquare[j]);
-            bool occupied = !TargetIsEmpty(slidingSquare[j]);
-            bool oppositeColor = white != ChessUtil::IsWhite(piece);
-            if(occupied && !oppositeColor) break;
-            if(occupied && oppositeColor){
-                if(i>=0 && i<=3){
-                    if((ChessUtil::IsRook(piece) || ChessUtil::IsQueen(piece))) {
-                        //std::cout << "Rook or Queen Check " << square << std::endl;
-                        result.push_back(piece);
-                    }
-                    break;
-                }else{
-                    if((ChessUtil::IsBishop(piece) || ChessUtil::IsQueen(piece))) {
-                        //std::cout << "Bishop or Queen Check " << square << std::endl;
-                        result.push_back(piece);
-                    }
-                    break;
-                }
-            }
-        }
-    }
-
-    //Pawn squares
-	unsigned long long pawnBits = white ? bitboards.blackBitboards[0] : bitboards.whiteBitboards[0];
-	if((targetBit & BitUtil::pawnControlBits(pawnBits, !white)) > 0ULL){
-		std::vector<short> pawnSquare = ChessUtil::squareControlMap[target].GetPawnSquare(white);
-		for(int i = 0; i < pawnSquare.size(); i++){
-			short piece = ReadPosition(pawnSquare[i]);
-			bool oppositeColor = white != ChessUtil::IsWhite(piece);
-			bool isPawn = ChessUtil::IsPawn(piece);
-			if(oppositeColor && isPawn){
-				//std::cout << "Pawn Check " << square1 << std::endl;
-				result.push_back(piece);
-			}
-		}
-	}
-
-    return result;
-}
-
 std::vector<short> Position::GetFriendlyCanReach(short target, bool attacking){
 	std::vector<short> result;
     //Knight squares
@@ -480,9 +412,140 @@ std::vector<short> Position::GetFriendlyCanReach(short target, bool attacking){
 	//return GetOpponentCanReach(target, !whiteTurn);
 }
 
-std::vector<short> Position::GetCheckedBy(bool white){
-    short kingsLocation = white ? whiteKingLocation : blackKingLocation;
-    return GetOpponentCanReach(kingsLocation, white);
+std::vector<short> Position::GetCheckedByAndUpdatePin(bool white){
+    short target = white ? whiteKingLocation : blackKingLocation;
+	std::vector<short> result;
+	unsigned long long targetBit = 1ULL << target;
+
+	//Clear pinned piece map
+	pinnedPiece.clear();
+
+    //Knight squares
+	unsigned long long knightBits = white ? bitboards.blackBitboards[2] : bitboards.whiteBitboards[2];
+	if((targetBit & BitUtil::knightControlBits(knightBits)) > 0ULL){
+		std::vector<short> knightSquare = ChessUtil::squareControlMap[target].GetKnightSquare();
+		for(int i = 0; i < knightSquare.size(); i++){
+			short piece = ReadPosition(knightSquare[i]);
+			bool oppositeColor = white != ChessUtil::IsWhite(piece);
+			bool isKnight = ChessUtil::IsKnight(piece);
+			if(isKnight && oppositeColor){
+				//std::cout << "Knight Check " << targets[i] << std::endl;
+				result.push_back(piece);
+			}
+		}
+	}
+
+    //Pawn squares
+	unsigned long long pawnBits = white ? bitboards.blackBitboards[0] : bitboards.whiteBitboards[0];
+	if((targetBit & BitUtil::pawnControlBits(pawnBits, !white)) > 0ULL){
+		std::vector<short> pawnSquare = ChessUtil::squareControlMap[target].GetPawnSquare(white);
+		for(int i = 0; i < pawnSquare.size(); i++){
+			short piece = ReadPosition(pawnSquare[i]);
+			bool oppositeColor = white != ChessUtil::IsWhite(piece);
+			bool isPawn = ChessUtil::IsPawn(piece);
+			if(oppositeColor && isPawn){
+				//std::cout << "Pawn Check " << square1 << std::endl;
+				result.push_back(piece);
+			}
+		}
+	}
+
+    //Sliding squares
+	unsigned long long queenBits = white ? bitboards.blackBitboards[1] : bitboards.whiteBitboards[1];
+	unsigned long long bishopBits = white ? bitboards.blackBitboards[3] : bitboards.whiteBitboards[3];
+	unsigned long long targetDiagonalBit = ChessUtil::squareControlMap[target].bishopControlBitboard;
+	if((targetDiagonalBit & (queenBits | bishopBits)) > 0ULL){
+		for(int i = 4; i <= 7; ++i){
+			std::vector<short> slidingSquare = ChessUtil::squareControlMap[target].GetSlidingSquare(i);
+			short pin = 99;
+			for(int j = 0; j < slidingSquare.size(); j++){
+				short piece = ReadPosition(slidingSquare[j]);
+				if(!ChessUtil::IsEmpty(piece)) {
+					if((ChessUtil::IsWhite(piece) != white) && (ChessUtil::IsQueen(piece) || ChessUtil::IsBishop(piece))){
+						if(pin == 99){
+							result.push_back(piece);
+						}
+						break;
+					}else if(ChessUtil::IsWhite(piece) == white){
+						if(pin == 99){
+							pin = piece;
+						}else{
+							pin = 99;
+							break;
+						}
+					}else{
+						pin = 99;
+						break;
+					}
+				}
+				if(j == slidingSquare.size()-1) pin = 99;
+			}
+			if(pin != 99) pinnedPiece.insert({pin, (short)i});
+		}
+	}
+	unsigned long long rookBits = white ? bitboards.blackBitboards[4] : bitboards.whiteBitboards[4];
+	unsigned long long targetNonDiagonalBit = ChessUtil::squareControlMap[target].rookControlBitboard;
+	if((targetNonDiagonalBit & (queenBits | rookBits)) > 0ULL){
+		for(int i = 0; i <= 3; ++i){
+			std::vector<short> slidingSquare = ChessUtil::squareControlMap[target].GetSlidingSquare(i);
+			short pin = 99;
+			for(int j = 0; j < slidingSquare.size(); j++){
+				short piece = ReadPosition(slidingSquare[j]);
+				if(!ChessUtil::IsEmpty(piece)) {
+					if((ChessUtil::IsWhite(piece) != white) && (ChessUtil::IsQueen(piece) || ChessUtil::IsRook(piece))){
+						if(pin == 99){
+							result.push_back(piece);
+						}
+						break;
+					}else if(ChessUtil::IsWhite(piece) == white){
+						if(pin == 99){
+							pin = piece;
+						}else{
+							pin = 99;
+							break;
+						}
+					}else{
+						pin = 99;
+						break;
+					}
+				}
+				if(j == slidingSquare.size()-1) pin = 99;
+			}
+			if(pin != 99) pinnedPiece.insert({pin, (short)i});
+		}
+	}
+	/*
+    for(int i = 0; i < 8; ++i){
+        std::vector<short> slidingSquare = ChessUtil::squareControlMap[target].GetSlidingSquare(i);
+        if(slidingSquare.size() == 0) continue;
+        if(!TargetIsEmpty(slidingSquare[0]) && ChessUtil::IsKing(ReadPosition(slidingSquare[0])) && white != ChessUtil::IsWhite(ReadPosition(slidingSquare[0]))) {
+            //std::cout << "King at " << target << " King Check " << square << std::endl;
+            result.push_back(ReadPosition(slidingSquare[0]));
+        }
+        for(int j = 0; j < slidingSquare.size(); j++){
+            short piece = ReadPosition(slidingSquare[j]);
+            bool occupied = !TargetIsEmpty(slidingSquare[j]);
+            bool oppositeColor = white != ChessUtil::IsWhite(piece);
+            if(occupied && !oppositeColor) break;
+            if(occupied && oppositeColor){
+                if(i>=0 && i<=3){
+                    if((ChessUtil::IsRook(piece) || ChessUtil::IsQueen(piece))) {
+                        //std::cout << "Rook or Queen Check " << square << std::endl;
+                        result.push_back(piece);
+                    }
+                    break;
+                }else{
+                    if((ChessUtil::IsBishop(piece) || ChessUtil::IsQueen(piece))) {
+                        //std::cout << "Bishop or Queen Check " << square << std::endl;
+                        result.push_back(piece);
+                    }
+                    break;
+                }
+            }
+        }
+    }
+	*/
+    return result;
 }
 
 bool Position::IsChecked(bool white){
@@ -548,6 +611,17 @@ bool Position::SufficientMaterial(){
 	return false;
 }
 
+std::string Position::MoveToUCIString(unsigned short move){
+	short to = ChessUtil::GetTo(move);
+	short from = ChessUtil::GetFrom(move);
+	short piece = position[from];
+	if(ChessUtil::IsPawn(piece) && (ChessUtil::GetRank(to) == 0 || ChessUtil::GetRank(to) == 7)){
+		return ChessUtil::SquareToString(from) + ChessUtil::SquareToString(to) + (char)tolower(ChessUtil::GetPromotionType(move));
+	}else{
+		return ChessUtil::SquareToString(from) + ChessUtil::SquareToString(to);
+	}
+}
+
 void Position::SetCastlingQuota(char type, bool on){
 	int k = 0;
 	switch(type){
@@ -571,9 +645,17 @@ void Position::SetCastlingQuota(char type, bool on){
 	}
 }
 
-void Position::MovePiece(Move& move)
+void Position::MovePiece(unsigned short& move)
 {
-	move.piece = position[move.from];
+	//short takenPiece = position[move.to];
+	//short movingPiece = position[move.from];
+	//char promotionType = move.promotionType;
+
+	short to = ChessUtil::GetTo(move);
+	short from = ChessUtil::GetFrom(move);
+	char promotionType = ChessUtil::GetPromotionType(move);
+	short takenPiece = position[to];
+	short movingPiece = position[from];
 	//Update Perft
 	ep = false;
 	castle = false;
@@ -588,95 +670,91 @@ void Position::MovePiece(Move& move)
 	halfmove++;
 	if(!whiteTurn)fullmove++;
 	//Update Board
-	move.takenPiece = position[move.to];
-	position[move.to] = position[move.from];
-	position[move.from] = 99;
-	if(move.takenPiece != 99) {
+	position[to] = position[from];
+	position[from] = 99;
+	if(takenPiece != 99) {
 		if(whiteTurn){
-			remove(blackPieceOnBoard.begin(),blackPieceOnBoard.end(),move.takenPiece);
+			remove(blackPieceOnBoard.begin(),blackPieceOnBoard.end(),takenPiece);
 			blackPieceOnBoard.pop_back();
 		}else{
-			remove(whitePieceOnBoard.begin(),whitePieceOnBoard.end(),move.takenPiece);
+			remove(whitePieceOnBoard.begin(),whitePieceOnBoard.end(),takenPiece);
 			whitePieceOnBoard.pop_back();
 		}
 		halfmove = 0;
 		capture = true;
 	}
 	//Update Bitboard
-	bitboards.MoveBit(move.from, move.to, whiteTurn);
+	bitboards.MoveBit(from, to, whiteTurn);
 	//Piece Specific Update
-	if (ChessUtil::IsPawn(move.piece)) {
-		//std::cout << "Is Pawn " << move.piece << std::endl;
+	if (ChessUtil::IsPawn(movingPiece)) {
 		halfmove = 0;
-		if(move.to == enPassantSquare){
-			bitboards.EnpassantMoveBit(move.to, whiteTurn);
+		if(to == enPassantSquare){
+			bitboards.EnpassantMoveBit(to, whiteTurn);
 		}
 		if (whiteTurn) {
-			if (move.to == enPassantSquare) {
-				move.takenPiece = position[move.to - 8];
-				remove(blackPieceOnBoard.begin(),blackPieceOnBoard.end(),position[move.to - 8]);
+			if (to == enPassantSquare) {
+				remove(blackPieceOnBoard.begin(),blackPieceOnBoard.end(),position[to - 8]);
 				blackPieceOnBoard.pop_back();
-				position[move.to - 8] = 99;
+				position[to - 8] = 99;
 				ep = true;
 				capture = true;
 			}
 			enPassantSquare = 99;
-			if (move.to - move.from == 16) {
-				enPassantSquare = move.from + 8;
+			if (to - from == 16) {
+				enPassantSquare = from + 8;
 			}
 		}
 		else {
-			if (move.to == enPassantSquare) {
-				move.takenPiece = position[move.to + 8];
-				remove(whitePieceOnBoard.begin(),whitePieceOnBoard.end(),position[move.to + 8]);
+			if (to == enPassantSquare) {
+				remove(whitePieceOnBoard.begin(),whitePieceOnBoard.end(),position[to + 8]);
 				whitePieceOnBoard.pop_back();
-				position[move.to + 8] = 99;
+				position[to + 8] = 99;
 				ep = true;
 				capture = true;
 			}
 			enPassantSquare = 99;
-			if (move.to - move.from == -16) {
-				enPassantSquare = move.from - 8;
+			if (to - from == -16) {
+				enPassantSquare = from - 8;
 			}
 		}
 		//std::cout << "Pawn " << position[move.to] << " promote to ";
-		if(move.promotionType != ' '){
+		if(ChessUtil::GetRank(to) == 0 || ChessUtil::GetRank(to) == 7){
 			promotion = true;
-			bitboards.PromotionMoveBit(move.to, BitUtil::pieceBitboardIndexMapping[tolower(move.promotionType)], whiteTurn);
+			bitboards.PromotionMoveBit(to, BitUtil::pieceBitboardIndexMapping[tolower(promotionType)], whiteTurn);
 			if(whiteTurn){
-				remove(whitePieceOnBoard.begin(),whitePieceOnBoard.end(),position[move.to]);
+				remove(whitePieceOnBoard.begin(),whitePieceOnBoard.end(),position[to]);
 				whitePieceOnBoard.pop_back();
 			}else{
-				remove(blackPieceOnBoard.begin(),blackPieceOnBoard.end(),position[move.to]);
+				remove(blackPieceOnBoard.begin(),blackPieceOnBoard.end(),position[to]);
 				blackPieceOnBoard.pop_back();
 			}
-			if(move.promotionType == 'Q'){//Promotion
-				position[move.to] +=  (whiteTurn) ? -16 : 16;
+			if(promotionType == 'Q'){//Promotion
+				position[to] +=  (whiteTurn) ? -16 : 16;
 				if(whiteTurn){
-					whitePieceOnBoard.push_back(position[move.to]);
+					whitePieceOnBoard.push_back(position[to]);
 				}else{
-					blackPieceOnBoard.push_back(position[move.to]);
+					blackPieceOnBoard.push_back(position[to]);
 				}
-			}else if(move.promotionType == 'B'){
-				position[move.to] +=  (whiteTurn) ? -24 : 24;
+			}else if(promotionType == 'B'){
+				position[to] +=  (whiteTurn) ? -24 : 24;
 				if(whiteTurn){
-					whitePieceOnBoard.push_back(position[move.to]);
+					whitePieceOnBoard.push_back(position[to]);
 				}else{
-					blackPieceOnBoard.push_back(position[move.to]);
+					blackPieceOnBoard.push_back(position[to]);
 				}
-			}else if(move.promotionType == 'R'){
-				position[move.to] +=  (whiteTurn) ? -32 : 32;
+			}else if(promotionType == 'R'){
+				position[to] +=  (whiteTurn) ? -32 : 32;
 				if(whiteTurn){
-					whitePieceOnBoard.push_back(position[move.to]);
+					whitePieceOnBoard.push_back(position[to]);
 				}else{
-					blackPieceOnBoard.push_back(position[move.to]);
+					blackPieceOnBoard.push_back(position[to]);
 				}
-			}else if(move.promotionType == 'N'){
-				position[move.to] +=  (whiteTurn) ? -40 : 40;
+			}else if(promotionType == 'N'){
+				position[to] +=  (whiteTurn) ? -40 : 40;
 				if(whiteTurn){
-					whitePieceOnBoard.push_back(position[move.to]);
+					whitePieceOnBoard.push_back(position[to]);
 				}else{
-					blackPieceOnBoard.push_back(position[move.to]);
+					blackPieceOnBoard.push_back(position[to]);
 				}
 			}
 			if(enPassantSquare != 99) enPassantSquare = 99;
@@ -685,12 +763,12 @@ void Position::MovePiece(Move& move)
 	}else{
 		if(enPassantSquare != 99) enPassantSquare = 99;
 	}
-	if (ChessUtil::IsKing(move.piece)) {
+	if (ChessUtil::IsKing(movingPiece)) {
 		//Update King loaction
 		if(whiteTurn){
-			whiteKingLocation = move.to;
+			whiteKingLocation = to;
 		}else{
-			blackKingLocation = move.to;
+			blackKingLocation = to;
 		}
 		//Update castling quota
 		if (whiteTurn && GetCastlingQuota('K')) {
@@ -710,10 +788,10 @@ void Position::MovePiece(Move& move)
 			//castlingQuota['q'] = false;
 		}
 		//Move rook if castling
-		if(move.to == 2 || move.to == 6 || move.to == 58 || move.to == 62){
-			bitboards.CastlingMoveBit(move.to);
+		if(to == 2 || to == 6 || to == 58 || to == 62){
+			bitboards.CastlingMoveBit(to);
 		}
-		if (move.to - move.from == 2) {
+		if (to - from == 2) {
 			castle = true;
 			if(whiteTurn){
 				position[5] = 7;
@@ -723,7 +801,7 @@ void Position::MovePiece(Move& move)
 				position[63] = 99;
 			}
 		}
-		else if (move.to - move.from == -2){
+		else if (to - from == -2){
 			castle = true;
 			if(whiteTurn){
 				position[3] = 0;
@@ -734,18 +812,18 @@ void Position::MovePiece(Move& move)
 			}
 		}
 	}
-	if (ChessUtil::IsRook(move.piece)) {
+	if (ChessUtil::IsRook(movingPiece)) {
 		//Update castling quota
-		if(move.piece == 0 && GetCastlingQuota('Q')){
+		if(movingPiece == 0 && GetCastlingQuota('Q')){
 			SetCastlingQuota('Q', false);
 			//castlingQuota['Q'] = false;
-		}else if(move.piece == 7 && GetCastlingQuota('K')){
+		}else if(movingPiece == 7 && GetCastlingQuota('K')){
 			SetCastlingQuota('K', false);
 			//castlingQuota['K'] = false;
-		}else if(move.piece == 56 && GetCastlingQuota('q')){
+		}else if(movingPiece == 56 && GetCastlingQuota('q')){
 			SetCastlingQuota('q', false);
 			//castlingQuota['q'] = false;
-		}else if(move.piece == 63 && GetCastlingQuota('k')){
+		}else if(movingPiece == 63 && GetCastlingQuota('k')){
 			SetCastlingQuota('k', false);
 			//castlingQuota['k'] = false;
 		}
@@ -754,7 +832,7 @@ void Position::MovePiece(Move& move)
 	whiteTurn = !whiteTurn;
 	prevMove = move;
 	//Update Checked
-	std::vector<short> cb = GetCheckedBy(whiteTurn);
+	std::vector<short> cb = GetCheckedByAndUpdatePin(whiteTurn);
 	for(int i = 0; i < 2; i++){
 		if(cb.size()< i+1) {
 			checkedBy[i] = 99;
@@ -764,7 +842,7 @@ void Position::MovePiece(Move& move)
 	}
 	if(cb.size() > 0) {
 		check = true;
-		if(cb.size() == 1 && move.piece != cb[0] && !promotion) {
+		if(cb.size() == 1 && movingPiece != cb[0] && !promotion) {
 			discoverCheck = true;
 		}
 		if(cb.size() > 1){

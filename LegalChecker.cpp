@@ -2,7 +2,7 @@
 
 
 
-bool LegalChecker::IsLegal(Position& position, Move& move){
+bool LegalChecker::IsLegal(Position& position, unsigned short& move){
     //if white move to a new position
     Position newPosition = Position(position, move);
     //return !newPosition.check;

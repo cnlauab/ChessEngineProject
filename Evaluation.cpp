@@ -1,18 +1,18 @@
 #include "Evaluation.h"
 
-Move Evaluation::Evaluate(Position& position){
+unsigned short Evaluation::Evaluate(Position& position){
     int depth = position.IsEndgame()? 4 : 3;
 	Node* root = new Node(&position);
 	Evaluation::ConstructTree(root, depth);
     minimax(root, 10, position.whiteTurn);
-    Move bestMove = root->bestMove;
+    unsigned short bestMove = root->bestMove;
     //Evaluation::DeleteTree(root);
     return bestMove;
 }
 
 Node* Evaluation::ConstructTree(Node* root, int level){
     Position* currPosition = root->position;
-    std::vector<Move> possibleMoves = MoveGenerator::GenerateAllPossibleMoves(*currPosition);
+    std::vector<unsigned short> possibleMoves = MoveGenerator::GenerateAllPossibleMoves(*currPosition);
     for(int i = 0; i < possibleMoves.size(); ++i){
         Position* newPosition = new Position(*currPosition, possibleMoves[i]);
         Node* childNode = new Node(root, newPosition);

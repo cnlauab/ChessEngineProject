@@ -455,6 +455,7 @@ SquareControl ChessUtil::squareControlMap[64] = {
     SquareControl(62),
     SquareControl(63)
 };
+std::unordered_map<char, unsigned short> ChessUtil::promotionTypeMap = {{'Q',0},{'N',1},{'R',2},{'B',3}};
 
 char ChessUtil::GetPieceType(short piece) {
     return pieceMapping[piece];
@@ -560,4 +561,47 @@ bool ChessUtil::IsLightSquare(short square){
     return square == 1 || square == 3 || square == 5 || square == 7 || square == 8 || square == 10 || square == 12 || square == 14 || square == 17 || square == 19 || square == 21 || square == 23 || square == 24 || square == 26 || square == 28 || square == 30 || square == 33 || square == 35 || square == 37 || square == 39 || square == 40 || square == 42 || square == 44 || square == 46 || square == 49 || square == 51 || square == 53 || square == 55 || square == 56 || square == 58 || square == 60 || square == 62;
 }
 
+unsigned short ChessUtil::SimpleMove(short from, short to, char promotionType){
+    return (unsigned short)from | ((unsigned short)to << 6) | (ChessUtil::promotionTypeMap[promotionType] << 12);
+}
+
+short ChessUtil::GetFrom(unsigned short move){
+    return move & 63;
+}
+
+short ChessUtil::GetTo(unsigned short move){
+    return (move >> 6) & 63;
+}
+
+char ChessUtil::GetPromotionType(unsigned short move){
+    unsigned short index = move >> 12;
+    switch(index){
+        case 0:
+            return 'Q';
+        case 1:
+            return 'N';
+        case 2:
+            return 'R';
+        case 3: 
+            return 'B';
+        default:
+            return ' ';
+    }
+}
+
+std::string ChessUtil::SimpleMoveToString(unsigned short move){
+    return ChessUtil::SquareToString(GetFrom(move)) + ChessUtil::SquareToString(GetTo(move)) + '=' + GetPromotionType(move);
+}
+
+unsigned short ChessUtil::UCIToMove(std::string uci){
+	short from  = ChessUtil::GetSquareFromFileRank(ChessUtil::GetFileFromChar(uci[0]),ChessUtil::GetRankFromChar(uci[1]));
+	short to = ChessUtil::GetSquareFromFileRank(ChessUtil::GetFileFromChar(uci[2]),ChessUtil::GetRankFromChar(uci[3]));
+	
+    if(uci.length() > 4 && uci[4] != ' ') {
+        char promotionType = (char)toupper(uci[4]);
+        return ChessUtil::SimpleMove(from, to, promotionType);
+    }else{
+        return ChessUtil::SimpleMove(from, to);
+    }
+}
 

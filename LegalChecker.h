@@ -5,5 +5,5 @@
 
 class LegalChecker {
 public :
-    static bool IsLegal(Position& position, Move& move);
+    static bool IsLegal(Position& position, unsigned short& move);
 };

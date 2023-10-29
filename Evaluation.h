@@ -10,7 +10,7 @@
 
 class Evaluation{
 public:
-    static Move Evaluate(Position& position);
+    static unsigned short Evaluate(Position& position);
     static Node* ConstructTree(Node* root, int level);
     static void DeleteTree(Node* root);
 
