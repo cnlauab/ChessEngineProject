@@ -147,6 +147,30 @@ std::vector<short> SquareControl::GetSlidingSquare(int offsetType){
     return slidingSquare[offsetType];
 }
 
+std::vector<short> SquareControl::GetQueenSquare(){
+    std::vector<short> result;
+    for(int i = 0; i < 8; i++){
+        result.insert(result.end(), slidingSquare[i].begin(), slidingSquare[i].end());
+    }
+    return result;
+}
+
+std::vector<short> SquareControl::GetBishopSquare(){
+    std::vector<short> result;
+    for(int i = 4; i < 8; i++){
+        result.insert(result.end(), slidingSquare[i].begin(), slidingSquare[i].end());
+    }
+    return result;
+}
+
+std::vector<short> SquareControl::GetRookSquare(){
+    std::vector<short> result;
+    for(int i = 0; i < 4; i++){
+        result.insert(result.end(), slidingSquare[i].begin(), slidingSquare[i].end());
+    }
+    return result;
+}
+
 std::vector<short> SquareControl::GetKingSquare(){
     return kingSquare;
 }

@@ -321,30 +321,6 @@ LegalChecker.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.s
 .PHONY : LegalChecker.cpp.s
 
-Move.o: Move.cpp.o
-.PHONY : Move.o
-
-# target to build an object file
-Move.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Move.cpp.o
-.PHONY : Move.cpp.o
-
-Move.i: Move.cpp.i
-.PHONY : Move.i
-
-# target to preprocess a source file
-Move.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Move.cpp.i
-.PHONY : Move.cpp.i
-
-Move.s: Move.cpp.s
-.PHONY : Move.s
-
-# target to generate assembly for a file
-Move.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Move.cpp.s
-.PHONY : Move.cpp.s
-
 MoveGenerator.o: MoveGenerator.cpp.o
 .PHONY : MoveGenerator.o
 
@@ -570,9 +546,6 @@ help:
 	@echo "... LegalChecker.o"
 	@echo "... LegalChecker.i"
 	@echo "... LegalChecker.s"
-	@echo "... Move.o"
-	@echo "... Move.i"
-	@echo "... Move.s"
 	@echo "... MoveGenerator.o"
 	@echo "... MoveGenerator.i"
 	@echo "... MoveGenerator.s"

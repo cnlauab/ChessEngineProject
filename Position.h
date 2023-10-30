@@ -5,7 +5,6 @@
 #include <string>
 #include <vector>
 #include "Parser.h"
-#include "Move.h"
 #include "State.h"
 #include "ChessUtil.h"
 #include "BitUtil.h"
@@ -72,7 +71,7 @@ public :
     bool SufficientMaterial();
 
     std::string MoveToUCIString(unsigned short move);
-    std::string MoveToString(unsigned short move);
+    std::string MoveToPNGString(unsigned short move);
 
 	//Mutator
     void SetCastlingQuota(char type, bool on);

@@ -6,12 +6,11 @@
 using namespace std;
 
 Validator validator;
-Position currentPosition;
 State gameState;
 std::vector<unsigned short> moveMade;
 bool whiteIsComp = false;
 
-bool IsEnded(int noOfLegalMoves){
+bool IsEnded(int noOfLegalMoves, Position& currentPosition){
 	if(noOfLegalMoves == 0) {//Checkmate or Stalemate
 		bool isChecked = currentPosition.IsChecked(currentPosition.whiteTurn);
 		if(isChecked){
@@ -28,27 +27,27 @@ bool IsEnded(int noOfLegalMoves){
 	return false;
 }
 
-void ComputerTurn(){
+void ComputerTurn(Position& currentPosition){
 
 	unsigned short extractedMove = Evaluation::Evaluate(currentPosition);
 
-	if(IsEnded(extractedMove)) return;
+	if(IsEnded(extractedMove,currentPosition)) return;
+	cout << "Move made: " << currentPosition.MoveToPNGString(extractedMove) << endl;
 	currentPosition.MovePiece(extractedMove);
 	moveMade.emplace_back(extractedMove);
 
 	bool isChecked = currentPosition.IsChecked(currentPosition.whiteTurn);
-	cout << "Move made: " << currentPosition.MoveToUCIString(extractedMove) << endl;
 	cout << "#################" << endl;
 
 }
 
-void Turn() {
+void Turn(Position& currentPosition) {
 	std::string input;
 	std::vector<unsigned short> currLegalMoves = MoveGenerator::GenerateAllPossibleMoves(currentPosition);
 	cout << "No. of Legal Moves: " << currLegalMoves.size() << endl;
 	//for(Move move : currLegalMoves) cout << move.toString() << endl;
 	
-	if(IsEnded(currLegalMoves.size())) return;
+	if(IsEnded(currLegalMoves.size(),currentPosition)) return;
 
 	bool validMoveInput = false;
 	bool selectedMove = false;
@@ -77,7 +76,7 @@ void Turn() {
 			//cout << "No. of possible moves: " << currLegalMoves.size() << endl;
 			extractedMove = MoveGenerator::ExtractMove(pieceType, target, file, rank, currentPosition.whiteTurn, promotionType, currLegalMoves, currentPosition);
 			selectedMove = extractedMove != 0;
-			cout << "Selected Move: " << currentPosition.MoveToUCIString(extractedMove) << endl;
+			cout << "Selected Move: " << currentPosition.MoveToPNGString(extractedMove) << endl;
 		}
 		cout << "######## " << endl;
 	}
@@ -86,7 +85,6 @@ void Turn() {
 		moveMade.emplace_back(extractedMove);
 
 		bool isChecked = currentPosition.IsChecked(currentPosition.whiteTurn);
-		cout << "Move made: " << currentPosition.MoveToUCIString(extractedMove) << endl;
 	}
 	cout << "######## " << endl;
 	cout << endl;
@@ -111,7 +109,7 @@ void TestBitboard(){
 
 void TestUCI(){
 	//Testing uci
-	currentPosition = UCI::ParsePosition("position startpos moves d2d4 e7e5");
+	Position currentPosition = UCI::ParsePosition("position startpos moves d2d4 e7e5");
 	currentPosition = UCI::ParsePosition("position fen 8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - moves b4b1");
 	cout << BoardRenderer::positionToString(currentPosition) << endl;
 	cout << currentPosition.PositionToFen() << endl;
@@ -120,15 +118,16 @@ void TestUCI(){
 }
 
 void TestPerft(){
-	currentPosition = Position("r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1");
+	//Position* currentPosition = new Position("r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1");
 	//TODO: still need to fix en passant at 8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - depth=5
 	
 	//Testing Perft
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 	
-	Node* root = new Node(&currentPosition);
-	Evaluation::ConstructTree(root, 5);
+	Node* root = new Node("r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq -");
+	Evaluation::ConstructTree(root, 4);
 	Evaluation::BFS(root);
+    Evaluation::DeleteTree(root);
 	
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 	auto timeElapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
@@ -137,6 +136,7 @@ void TestPerft(){
 
 void TestEvaluation(){
 	//Testing Evaluation
+	Position currentPosition = Position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 0");
 	cout << BoardRenderer::positionToString(currentPosition) << endl;
 	unsigned short chosenMove = Evaluation::Evaluate(currentPosition);
 	cout << "Move chosen: " << currentPosition.MoveToUCIString(chosenMove) << endl;
@@ -145,21 +145,21 @@ void TestEvaluation(){
 //Mode
 void ConsoleMode(){
 	//Example
-	//currentPosition = Position("8/6P1/7k/4B3/4B2K/8/8/8 w - - 0 1");
-	//currentPosition = Position("2b2rk1/2q2ppn/2p5/p1n1p1B1/p3P3/2P2QNP/Br3PP1/R3R1K1");
-	//currentPosition = Position("rnbqkb1r/ppp2ppp/4pn2/3p4/8/5NP1/PPPPPPBP/RNBQK2R w KQkq - 0 4");
-	//currentPosition = Position("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1");
+	//Position currentPosition = Position("8/6P1/7k/4B3/4B2K/8/8/8 w - - 0 1");
+	//Position currentPosition = Position("2b2rk1/2q2ppn/2p5/p1n1p1B1/p3P3/2P2QNP/Br3PP1/R3R1K1");
+	//Position currentPosition = Position("rnbqkb1r/ppp2ppp/4pn2/3p4/8/5NP1/PPPPPPBP/RNBQK2R w KQkq - 0 4");
+	//Position currentPosition = Position("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1");
 
 	//Perft
-	//currentPosition = Position("r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq -");
-	//currentPosition = Position("8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - -");
-	//currentPosition = Position("r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1"); //position 4 - 1
-	//currentPosition = Position("r2q1rk1/pP1p2pp/Q4n2/bbp1p3/Np6/1B3NBn/pPPP1PPP/R3K2R b KQ - 0 1"); //position 4 - 2
-	//currentPosition = Position("rnbq1k1r/pp1Pbppp/2p5/8/2B5/8/PPP1NnPP/RNBQK2R w KQ - 1 8"); //position 5
-	//currentPosition = Position("r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2B1P1b1/P1NP1N2/1PP1QPPP/R4RK1 w - - 0 10");//position 6
+	//Position currentPosition = Position("r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq -");
+	//Position currentPosition = Position("8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - -");
+	//Position currentPosition = Position("r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1"); //position 4 - 1
+	//Position currentPosition = Position("r2q1rk1/pP1p2pp/Q4n2/bbp1p3/Np6/1B3NBn/pPPP1PPP/R3K2R b KQ - 0 1"); //position 4 - 2
+	//Position currentPosition = Position("rnbq1k1r/pp1Pbppp/2p5/8/2B5/8/PPP1NnPP/RNBQK2R w KQ - 1 8"); //position 5
+	//Position currentPosition = Position("r4rk1/1pp1qppp/p1np1n2/2b1p1B1/2B1P1b1/P1NP1N2/1PP1QPPP/R4RK1 w - - 0 10");//position 6
 
 	//Original
-	currentPosition = Position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 0");
+	Position currentPosition = Position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 0");
 	int moveCounter = 0;
 	cout << "Starting Position: " + currentPosition.PositionToFen() << endl;
 	
@@ -168,12 +168,19 @@ void ConsoleMode(){
 		cout << BoardRenderer::positionToString(currentPosition) << endl;
 		cout << currentPosition.PositionToFen() << endl;
 		cout << currentPosition.bitboards.BitboardsToString() << endl;
+		
+		cout << "Pinned Pieces: ";
+		for(auto piece : currentPosition.pinnedPiece){
+			cout << "{" << ChessUtil::GetPieceType(piece.first) << "," << piece.second << "} ";
+		}
+		cout <<endl;
+
 		if(currentPosition.whiteTurn && whiteIsComp || !currentPosition.whiteTurn && !whiteIsComp){
-			ComputerTurn();
+			ComputerTurn(currentPosition);
 			//Turn();
 		}else{
 			//ComputerTurn();
-			Turn();
+			Turn(currentPosition);
 		}
 		Debug::GameLog(currentPosition);
 		moveCounter++;
@@ -202,11 +209,11 @@ int main()
 	//Play in console
 	//ConsoleMode();
 	//Play in UCI
-	//UCIMode();
+	UCIMode();
 	//Test Bitboard
 	//TestBitboard();
 	//Test Perft
-	TestPerft();
+	//TestPerft();
 
 	return 0;
 }

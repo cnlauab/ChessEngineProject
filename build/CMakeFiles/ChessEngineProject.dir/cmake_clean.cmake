@@ -15,8 +15,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o.d"
   "CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o"
   "CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o.d"
-  "CMakeFiles/ChessEngineProject.dir/Move.cpp.o"
-  "CMakeFiles/ChessEngineProject.dir/Move.cpp.o.d"
   "CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o"
   "CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o.d"
   "CMakeFiles/ChessEngineProject.dir/Node.cpp.o"

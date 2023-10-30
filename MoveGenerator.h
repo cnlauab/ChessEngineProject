@@ -3,7 +3,6 @@
 #include <cctype>
 
 #include "Position.h"
-#include "Move.h"
 #include "ChessUtil.h"
 #include "LegalChecker.h"
 
@@ -26,6 +25,10 @@ public:
 	static std::vector<unsigned short> GenerateMovesByEvading(Position& position);
 	static std::vector<unsigned short> GenerateMovesByCapturing(Position& position);
 	static std::vector<unsigned short> GenerateMovesByBlocking(Position& position);
+
+	static std::vector<unsigned short> GenerateMovesWhenPinned(short& piece, short& direction, Position& position);
+	static std::vector<unsigned short> GeneratePinnedPawnMoves(short& piece, short& direction, Position& position);
+	static std::vector<unsigned short> GenerateSlidingMoves(short& piece, short&& direction, Position& position);
 
 	static bool PieceMatchTurn(short piece, Position& position);
 

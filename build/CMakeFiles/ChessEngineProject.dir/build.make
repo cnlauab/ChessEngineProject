@@ -139,24 +139,10 @@ CMakeFiles/ChessEngineProject.dir/Parser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChessEngineProject.dir/Parser.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Parser.cpp -o CMakeFiles/ChessEngineProject.dir/Parser.cpp.s
 
-CMakeFiles/ChessEngineProject.dir/Move.cpp.o: CMakeFiles/ChessEngineProject.dir/flags.make
-CMakeFiles/ChessEngineProject.dir/Move.cpp.o: ../Move.cpp
-CMakeFiles/ChessEngineProject.dir/Move.cpp.o: CMakeFiles/ChessEngineProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ChessEngineProject.dir/Move.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ChessEngineProject.dir/Move.cpp.o -MF CMakeFiles/ChessEngineProject.dir/Move.cpp.o.d -o CMakeFiles/ChessEngineProject.dir/Move.cpp.o -c /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Move.cpp
-
-CMakeFiles/ChessEngineProject.dir/Move.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ChessEngineProject.dir/Move.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Move.cpp > CMakeFiles/ChessEngineProject.dir/Move.cpp.i
-
-CMakeFiles/ChessEngineProject.dir/Move.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ChessEngineProject.dir/Move.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Move.cpp -o CMakeFiles/ChessEngineProject.dir/Move.cpp.s
-
 CMakeFiles/ChessEngineProject.dir/Validator.cpp.o: CMakeFiles/ChessEngineProject.dir/flags.make
 CMakeFiles/ChessEngineProject.dir/Validator.cpp.o: ../Validator.cpp
 CMakeFiles/ChessEngineProject.dir/Validator.cpp.o: CMakeFiles/ChessEngineProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ChessEngineProject.dir/Validator.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ChessEngineProject.dir/Validator.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ChessEngineProject.dir/Validator.cpp.o -MF CMakeFiles/ChessEngineProject.dir/Validator.cpp.o.d -o CMakeFiles/ChessEngineProject.dir/Validator.cpp.o -c /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Validator.cpp
 
 CMakeFiles/ChessEngineProject.dir/Validator.cpp.i: cmake_force
@@ -170,7 +156,7 @@ CMakeFiles/ChessEngineProject.dir/Validator.cpp.s: cmake_force
 CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o: CMakeFiles/ChessEngineProject.dir/flags.make
 CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o: ../MoveGenerator.cpp
 CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o: CMakeFiles/ChessEngineProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o -MF CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o.d -o CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o -c /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MoveGenerator.cpp
 
 CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.i: cmake_force
@@ -184,7 +170,7 @@ CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.s: cmake_force
 CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.o: CMakeFiles/ChessEngineProject.dir/flags.make
 CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.o: ../ChessUtil.cpp
 CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.o: CMakeFiles/ChessEngineProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.o -MF CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.o.d -o CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.o -c /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.cpp
 
 CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.i: cmake_force
@@ -198,7 +184,7 @@ CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.s: cmake_force
 CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o: CMakeFiles/ChessEngineProject.dir/flags.make
 CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o: ../LegalChecker.cpp
 CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o: CMakeFiles/ChessEngineProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o -MF CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o.d -o CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o -c /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/LegalChecker.cpp
 
 CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.i: cmake_force
@@ -212,7 +198,7 @@ CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.s: cmake_force
 CMakeFiles/ChessEngineProject.dir/Debug.cpp.o: CMakeFiles/ChessEngineProject.dir/flags.make
 CMakeFiles/ChessEngineProject.dir/Debug.cpp.o: ../Debug.cpp
 CMakeFiles/ChessEngineProject.dir/Debug.cpp.o: CMakeFiles/ChessEngineProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/ChessEngineProject.dir/Debug.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/ChessEngineProject.dir/Debug.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ChessEngineProject.dir/Debug.cpp.o -MF CMakeFiles/ChessEngineProject.dir/Debug.cpp.o.d -o CMakeFiles/ChessEngineProject.dir/Debug.cpp.o -c /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Debug.cpp
 
 CMakeFiles/ChessEngineProject.dir/Debug.cpp.i: cmake_force
@@ -226,7 +212,7 @@ CMakeFiles/ChessEngineProject.dir/Debug.cpp.s: cmake_force
 CMakeFiles/ChessEngineProject.dir/Node.cpp.o: CMakeFiles/ChessEngineProject.dir/flags.make
 CMakeFiles/ChessEngineProject.dir/Node.cpp.o: ../Node.cpp
 CMakeFiles/ChessEngineProject.dir/Node.cpp.o: CMakeFiles/ChessEngineProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/ChessEngineProject.dir/Node.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/ChessEngineProject.dir/Node.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ChessEngineProject.dir/Node.cpp.o -MF CMakeFiles/ChessEngineProject.dir/Node.cpp.o.d -o CMakeFiles/ChessEngineProject.dir/Node.cpp.o -c /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Node.cpp
 
 CMakeFiles/ChessEngineProject.dir/Node.cpp.i: cmake_force
@@ -240,7 +226,7 @@ CMakeFiles/ChessEngineProject.dir/Node.cpp.s: cmake_force
 CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o: CMakeFiles/ChessEngineProject.dir/flags.make
 CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o: ../Evaluation.cpp
 CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o: CMakeFiles/ChessEngineProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o -MF CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o.d -o CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o -c /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Evaluation.cpp
 
 CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.i: cmake_force
@@ -254,7 +240,7 @@ CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.s: cmake_force
 CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o: CMakeFiles/ChessEngineProject.dir/flags.make
 CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o: ../SquareControl.cpp
 CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o: CMakeFiles/ChessEngineProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o -MF CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o.d -o CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o -c /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.cpp
 
 CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.i: cmake_force
@@ -268,7 +254,7 @@ CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.s: cmake_force
 CMakeFiles/ChessEngineProject.dir/UCI.cpp.o: CMakeFiles/ChessEngineProject.dir/flags.make
 CMakeFiles/ChessEngineProject.dir/UCI.cpp.o: ../UCI.cpp
 CMakeFiles/ChessEngineProject.dir/UCI.cpp.o: CMakeFiles/ChessEngineProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/ChessEngineProject.dir/UCI.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/ChessEngineProject.dir/UCI.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ChessEngineProject.dir/UCI.cpp.o -MF CMakeFiles/ChessEngineProject.dir/UCI.cpp.o.d -o CMakeFiles/ChessEngineProject.dir/UCI.cpp.o -c /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/UCI.cpp
 
 CMakeFiles/ChessEngineProject.dir/UCI.cpp.i: cmake_force
@@ -282,7 +268,7 @@ CMakeFiles/ChessEngineProject.dir/UCI.cpp.s: cmake_force
 CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.o: CMakeFiles/ChessEngineProject.dir/flags.make
 CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.o: ../Bitboards.cpp
 CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.o: CMakeFiles/ChessEngineProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.o -MF CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.o.d -o CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.o -c /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Bitboards.cpp
 
 CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.i: cmake_force
@@ -296,7 +282,7 @@ CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.s: cmake_force
 CMakeFiles/ChessEngineProject.dir/BitUtil.cpp.o: CMakeFiles/ChessEngineProject.dir/flags.make
 CMakeFiles/ChessEngineProject.dir/BitUtil.cpp.o: ../BitUtil.cpp
 CMakeFiles/ChessEngineProject.dir/BitUtil.cpp.o: CMakeFiles/ChessEngineProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/ChessEngineProject.dir/BitUtil.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/ChessEngineProject.dir/BitUtil.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ChessEngineProject.dir/BitUtil.cpp.o -MF CMakeFiles/ChessEngineProject.dir/BitUtil.cpp.o.d -o CMakeFiles/ChessEngineProject.dir/BitUtil.cpp.o -c /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BitUtil.cpp
 
 CMakeFiles/ChessEngineProject.dir/BitUtil.cpp.i: cmake_force
@@ -314,7 +300,6 @@ ChessEngineProject_OBJECTS = \
 "CMakeFiles/ChessEngineProject.dir/Position.cpp.o" \
 "CMakeFiles/ChessEngineProject.dir/State.cpp.o" \
 "CMakeFiles/ChessEngineProject.dir/Parser.cpp.o" \
-"CMakeFiles/ChessEngineProject.dir/Move.cpp.o" \
 "CMakeFiles/ChessEngineProject.dir/Validator.cpp.o" \
 "CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o" \
 "CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.o" \
@@ -335,7 +320,6 @@ ChessEngineProject: CMakeFiles/ChessEngineProject.dir/BoardRenderer.cpp.o
 ChessEngineProject: CMakeFiles/ChessEngineProject.dir/Position.cpp.o
 ChessEngineProject: CMakeFiles/ChessEngineProject.dir/State.cpp.o
 ChessEngineProject: CMakeFiles/ChessEngineProject.dir/Parser.cpp.o
-ChessEngineProject: CMakeFiles/ChessEngineProject.dir/Move.cpp.o
 ChessEngineProject: CMakeFiles/ChessEngineProject.dir/Validator.cpp.o
 ChessEngineProject: CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o
 ChessEngineProject: CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.o
@@ -349,7 +333,7 @@ ChessEngineProject: CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.o
 ChessEngineProject: CMakeFiles/ChessEngineProject.dir/BitUtil.cpp.o
 ChessEngineProject: CMakeFiles/ChessEngineProject.dir/build.make
 ChessEngineProject: CMakeFiles/ChessEngineProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable ChessEngineProject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable ChessEngineProject"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ChessEngineProject.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

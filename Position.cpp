@@ -7,7 +7,7 @@ Position::Position()
 
 Position::Position(std::string fen)
 {
-	std::cout << "Position created." << std::endl;
+	std::cout << "Position created: "  << fen << std::endl;
 	std::vector<std::string> parameters;
 	std::string delimiter = " ";
 
@@ -61,9 +61,26 @@ Position::Position(std::string fen)
 	if(parameters.size() >= 6) halfmove = std::stoi(parameters[5]);
 
 	prevMove = 0;
+
+	//Update Checked by
+	std::vector<short> cb = GetCheckedByAndUpdatePin(whiteTurn);
+	for(int i = 0; i < 2; i++){
+		if(cb.size()< i+1) {
+			checkedBy[i] = 99;
+		}else{
+			checkedBy[i] = cb[i];
+		}
+	}
+	if(cb.size() > 0) {
+		check = true;
+		if(cb.size() > 1){
+			doubleCheck = true;
+		}
+	}
 }
 
 Position::Position(Position& currPosition, unsigned short& move){
+	//std::cout << "Position created... " << currPosition.MoveToUCIString(move) << std::endl;
 	whiteTurn = currPosition.whiteTurn;
 	enPassantSquare = currPosition.enPassantSquare;
 	halfmove = currPosition.halfmove;
@@ -329,7 +346,7 @@ std::vector<short> Position::GetFriendlyCanReach(short target, bool attacking){
     for(int i = 0; i < 8; ++i){
         std::vector<short> slidingSquare = ChessUtil::squareControlMap[target].GetSlidingSquare(i);
         if(slidingSquare.size() == 0) continue;
-        if(!TargetIsEmpty(slidingSquare[0]) && ChessUtil::IsKing(ReadPosition(slidingSquare[0])) && whiteTurn == ChessUtil::IsWhite(ReadPosition(slidingSquare[0]))) {
+        if(attacking && !TargetIsEmpty(slidingSquare[0]) && ChessUtil::IsKing(ReadPosition(slidingSquare[0])) && whiteTurn == ChessUtil::IsWhite(ReadPosition(slidingSquare[0]))) {
             //std::cout << "King at " << target << " King Check " << square << std::endl;
             result.push_back(ReadPosition(slidingSquare[0]));
         }
@@ -620,6 +637,64 @@ std::string Position::MoveToUCIString(unsigned short move){
 	}else{
 		return ChessUtil::SquareToString(from) + ChessUtil::SquareToString(to);
 	}
+}
+
+std::string Position::MoveToPNGString(unsigned short move){
+    if (move == 0) return "EmptyMove";
+	short from = ChessUtil::GetFrom(move);
+	short to = ChessUtil::GetFrom(move);
+	short piece = ReadPosition(from);
+	short takenPiece = ReadPosition(to);
+	char promotionType = ChessUtil::GetPromotionType(move);
+	bool fileAmbiguity = false;
+	bool rankAmbiguity = false;
+
+	std::string result = "";
+	char type = (piece != 99) ? toupper(ChessUtil::GetPieceType(piece)) : ' ';
+
+	std::vector<short> canGetToSquares;
+	if(type == 'N'){
+		canGetToSquares = ChessUtil::squareControlMap[to].GetKnightSquare();
+	}else if(type == 'R'){
+		canGetToSquares = ChessUtil::squareControlMap[to].GetRookSquare();
+	}else if(type == 'B'){
+		canGetToSquares = ChessUtil::squareControlMap[to].GetBishopSquare();
+	}else if(type == 'Q'){
+		canGetToSquares = ChessUtil::squareControlMap[to].GetQueenSquare();
+	}
+	for(short square : canGetToSquares){
+		if(ChessUtil::GetPieceType(ReadPosition(square)) == type && square != from){
+			if(ChessUtil::GetFile(square) == ChessUtil::GetFile(from)) rankAmbiguity = true;
+			if(ChessUtil::GetRank(square) == ChessUtil::GetRank(from))	fileAmbiguity = true;
+			if(ChessUtil::GetRank(square) != ChessUtil::GetRank(from) && ChessUtil::GetFile(square) != ChessUtil::GetFile(from)){
+				rankAmbiguity = true;
+				fileAmbiguity = true;
+			}
+		}
+	}
+
+	if(type == 'K' && (to - from == 2)){
+		result += "O-O";
+	}else if(type == 'K' && (to - from == -2)){
+		result += "O-O-O";
+	}else{//e.g.: Ra1xe1+
+		if(type != 'P') result += type; 
+		if((type == 'P' && (takenPiece != 99 || to == enPassantSquare)) || fileAmbiguity) result += ChessUtil::GetFileChar(from);
+		if(rankAmbiguity) result += ChessUtil::GetRankChar(from);
+		if(takenPiece != 99) result += 'x';
+		result += ChessUtil::SquareToString(to);
+		if(type == 'P' && promotionType != ' ' && (ChessUtil::GetRank(to) == 0 || ChessUtil::GetRank(to) == 7)){
+			result += '=';
+			result += promotionType;
+		}
+	}
+	if(check) {
+		result += '+';
+	}else if(checkmate){
+		result += '#';
+	}
+
+	return result;
 }
 
 void Position::SetCastlingQuota(char type, bool on){

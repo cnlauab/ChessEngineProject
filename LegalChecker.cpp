@@ -4,6 +4,7 @@
 
 bool LegalChecker::IsLegal(Position& position, unsigned short& move){
     //if white move to a new position
+    //std::cout << "Legal checking" << std::endl;
     Position newPosition = Position(position, move);
     //return !newPosition.check;
 	//std::cout << newPosition.PositionToFen() << std::endl;

@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 #include "Position.h"
-#include "Move.h"
 
 //Game State
 class State {
@@ -16,7 +15,7 @@ public:
 	bool blackWon = false;
 
 	std::vector<std::string> prevPositionsFen;
-	std::vector<Move> moveList;
+	std::vector<unsigned short> moveList;
 
 	//Getter
 	bool ThreeTimesRepeated();

@@ -96,24 +96,11 @@ std::vector<unsigned short> MoveGenerator::GeneratePossibleMoves(short& piece, P
 {
 	char pieceType = tolower(ChessUtil::GetPieceType(piece));
 	short typeIndex = BitUtil::pieceBitboardIndexMapping[pieceType];
-	return MoveGenerationByType[typeIndex](piece, position);
-	//std::cout << "Generating move for " << piece << std::endl;
-	/*
-	if (pieceType == 'r' || pieceType == 'R' || pieceType == 'b' || pieceType == 'B' || pieceType == 'q' || pieceType == 'Q') {
-		return GenerateSlidingMoves(piece, position);
+	if (position.pinnedPiece.find(piece) == position.pinnedPiece.end()){
+        return MoveGenerationByType[typeIndex](piece, position);
+	}else{
+		return GenerateMovesWhenPinned(piece, position.pinnedPiece[piece], position);
 	}
-	else if (pieceType == 'n' || pieceType == 'N') {
-		return GenerateKnightMoves(piece, position);
-	}
-	else if(pieceType == 'p' || pieceType == 'P'){
-		return GeneratePawnMoves(piece,position);
-	}
-	else if (pieceType == 'k' || pieceType == 'K') {
-		return GenerateKingMoves(piece, position);
-	}
-	else {
-		return std::vector<Move>();
-	}*/
 }
 
 std::vector<unsigned short> MoveGenerator::GenerateSlidingMoves(short& piece, Position& position)
@@ -138,8 +125,6 @@ std::vector<unsigned short> MoveGenerator::GenerateSlidingMoves(short& piece, Po
 				if(LegalChecker::IsLegal(position, move)){
 					//std::cout << move.toSimpleString() << " is legal" << std::endl;
 					result.push_back(move);
-				}else{
-					//std::cout << move.toSimpleString() << " is illegal" << std::endl;
 				}
 				if(!empty) break;
 			}
@@ -163,8 +148,6 @@ std::vector<unsigned short> MoveGenerator::GenerateKnightMoves(short& piece, Pos
 			if(LegalChecker::IsLegal(position, move)){
 				//std::cout << move.toSimpleString() << " is legal" << std::endl;
 				result.push_back(move);
-			}else{
-				//std::cout << move.toSimpleString() << " is illegal" << std::endl;
 			}
         }
     }
@@ -218,8 +201,6 @@ std::vector<unsigned short> MoveGenerator::GeneratePawnMoves(short& piece, Posit
 				result.push_back(promoteKnight);
 				result.push_back(promoteBishop);
 				result.push_back(promoteRook);
-			}else{
-				//std::cout << promoteQueen.toSimpleString() << " is illegal" << std::endl;
 			}
 		}else{
 			//Move move = Move(starting, targetSquare[i]);
@@ -227,8 +208,6 @@ std::vector<unsigned short> MoveGenerator::GeneratePawnMoves(short& piece, Posit
 			if(LegalChecker::IsLegal(position, move)){
 				//std::cout << move.toSimpleString() << " is legal" << std::endl;
 				result.push_back(move);
-			}else{
-				//std::cout << move.toSimpleString() << " is illegal" << std::endl;
 			}
 		}
 	}
@@ -253,8 +232,6 @@ std::vector<unsigned short> MoveGenerator::GenerateKingMoves(short& piece, Posit
 			if(LegalChecker::IsLegal(position, move)){
 				//std::cout << move.toSimpleString() << " is legal" << std::endl;
 				result.push_back(move);
-			}else{
-				//std::cout << move.toSimpleString() << " is illegal" << std::endl;
 			}
 		}
 	}
@@ -274,8 +251,6 @@ std::vector<unsigned short> MoveGenerator::GenerateKingMoves(short& piece, Posit
 				//Move move = Move(4, 6);
 				unsigned short move = ChessUtil::SimpleMove(4, 6);
 				result.push_back(move);
-			}else{
-				//std::cout << "White Castling King side is illegal" << std::endl;
 			}
 			//std::cout << "rookExists: " << rookExists << " ,emptyPath: " <<emptyPath << " ,pathNotChecked: " << pathNotChecked << std::endl;
 		}else{
@@ -292,8 +267,6 @@ std::vector<unsigned short> MoveGenerator::GenerateKingMoves(short& piece, Posit
 				//Move move = Move(60, 62);
 				unsigned short move = ChessUtil::SimpleMove(60, 62);
 				result.push_back(move);
-			}else{
-				//std::cout << "Black Castling King side is illegal" << std::endl;
 			}
 			//std::cout << "rookExists: " << rookExists << " ,emptyPath: " <<emptyPath << " ,pathNotChecked: " << pathNotChecked << std::endl;
 		}
@@ -313,8 +286,6 @@ std::vector<unsigned short> MoveGenerator::GenerateKingMoves(short& piece, Posit
 				//Move move = Move(4, 2);
 				unsigned short move = ChessUtil::SimpleMove(4, 2);
 				result.push_back(move);
-			}else{
-				//std::cout << "White Castling Queen side is illegal" << std::endl;
 			}
 			//std::cout << "rookExists: " << rookExists << " ,emptyPath: " <<emptyPath << " ,pathNotChecked: " << pathNotChecked << std::endl;
 		}else{
@@ -331,8 +302,6 @@ std::vector<unsigned short> MoveGenerator::GenerateKingMoves(short& piece, Posit
 				//Move move = Move(60, 58);
 				unsigned short move = ChessUtil::SimpleMove(60, 58);
 				result.push_back(move);
-			}else{
-				//std::cout << "Black Castling Queen side is illegal" << std::endl;
 			}
 			//std::cout << "rookExists: " << rookExists << " ,emptyPath: " <<emptyPath << " ,pathNotChecked: " << pathNotChecked << std::endl;
 		}
@@ -488,6 +457,116 @@ std::vector<unsigned short> MoveGenerator::GenerateMovesByBlocking(Position& pos
 	//}
 	return result;
 }
+//Generate moves when Pinned
+std::vector<unsigned short> MoveGenerator::GenerateMovesWhenPinned(short& piece, short& direction, Position& position){
+	char pieceType = tolower(ChessUtil::GetPieceType(piece));
+	if(pieceType == 'n') return std::vector<unsigned short>();
+	if(pieceType == 'b' && direction < 4) return std::vector<unsigned short>();
+	if(pieceType == 'r' && direction >= 4) return std::vector<unsigned short>();
+	if(pieceType == 'p'){
+		return GeneratePinnedPawnMoves(piece, direction, position);
+	}
+	if(direction == 0 || direction == 1){
+		std::vector<unsigned short> moves0 = GenerateSlidingMoves(piece, 0, position);
+		std::vector<unsigned short> moves1 = GenerateSlidingMoves(piece, 1, position);
+		moves0.insert(moves0.end(), moves1.begin(), moves1.end());
+		return moves0;
+	}else if(direction == 2 || direction == 3){
+		std::vector<unsigned short> moves2 = GenerateSlidingMoves(piece, 2, position);
+		std::vector<unsigned short> moves3 = GenerateSlidingMoves(piece, 3, position);
+		moves2.insert(moves2.end(), moves3.begin(), moves3.end());
+		return moves2;
+	}else if(direction == 4 || direction == 7){
+		std::vector<unsigned short> moves4 = GenerateSlidingMoves(piece, 4, position);
+		std::vector<unsigned short> moves7 = GenerateSlidingMoves(piece, 7, position);
+		moves4.insert(moves4.end(), moves7.begin(), moves7.end());
+		return moves4;
+	}else if(direction == 5 || direction == 6){
+		std::vector<unsigned short> moves5 = GenerateSlidingMoves(piece, 5, position);
+		std::vector<unsigned short> moves6 = GenerateSlidingMoves(piece, 6, position);
+		moves5.insert(moves5.end(), moves6.begin(), moves6.end());
+		return moves5;
+	}
+	return std::vector<unsigned short>();
+}
+
+std::vector<unsigned short> MoveGenerator::GeneratePinnedPawnMoves(short& piece, short& direction, Position& position){
+
+	std::vector<unsigned short> result;
+	std::vector<short> targets;
+	bool white = ChessUtil::IsWhite(piece);
+	short starting = position.GetPieceLocation(piece);
+	if(direction < 2) return result;
+	
+	if(direction == 2 || direction == 3){
+		short pushOneTarget = white ? starting + 8 : starting - 8;
+		if(!ChessUtil::IsEmpty(position.ReadPosition(pushOneTarget))) {
+			return result;
+		}else{
+			targets.push_back(pushOneTarget);
+			if(ChessUtil::GetRank(starting) == 1){
+				short pushTwotarget = white ? starting + 16 : starting - 16;
+				if(ChessUtil::IsEmpty(position.ReadPosition(pushTwotarget))){
+					targets.push_back(pushTwotarget);
+				}
+			}
+		}
+	}else{
+		short captureTargetSquare = starting;
+		if(direction == 4 || direction == 7){
+			captureTargetSquare = white ? starting + 9 : starting - 9;
+		}else if(direction == 5 || direction == 6){
+			captureTargetSquare = white ? starting + 7 : starting - 7;
+		}
+		short target = position.ReadPosition(captureTargetSquare);
+		if((!ChessUtil::IsEmpty(target) && ChessUtil::IsWhite(target) != white) || captureTargetSquare == position.enPassantSquare){
+			targets.push_back(captureTargetSquare);
+		}
+	}
+	for(int i = 0; i < targets.size(); i++){
+		if(ChessUtil::GetRank(targets[i]) != 0 && ChessUtil::GetRank(targets[i]) != 7){
+			unsigned short move = ChessUtil::SimpleMove(starting, targets[i]);
+			if(LegalChecker::IsLegal(position, move)){
+				result.push_back(move);
+			}
+		}else{
+			unsigned short promoteQueen = ChessUtil::SimpleMove(starting, targets[i], 'Q');
+			unsigned short promoteKnight = ChessUtil::SimpleMove(starting, targets[i], 'N');
+			unsigned short promoteBishop = ChessUtil::SimpleMove(starting, targets[i], 'B');
+			unsigned short promoteRook = ChessUtil::SimpleMove(starting, targets[i], 'R');
+			if(LegalChecker::IsLegal(position, promoteQueen)){
+				result.push_back(promoteQueen);
+				result.push_back(promoteKnight);
+				result.push_back(promoteBishop);
+				result.push_back(promoteRook);
+			}
+		}
+	}
+	return result;
+}
+
+std::vector<unsigned short> MoveGenerator::GenerateSlidingMoves(short& piece, short&& direction, Position& position)
+{
+	std::vector<unsigned short> result;
+	short starting = position.GetPieceLocation(piece);
+	std::vector<short> slidingSquare = ChessUtil::squareControlMap[starting].GetSlidingSquare(direction);
+	for(int j = 0; j < slidingSquare.size(); j++){
+		bool empty = position.TargetIsEmpty(slidingSquare[j]);
+		bool oppositeColor = position.TargetIsOppositeColor(piece, slidingSquare[j]);
+		if(!empty && !oppositeColor) break;
+		if((!empty && oppositeColor) || empty){
+			//Move move = Move(starting, slidingSquare[j]);
+			unsigned short move = ChessUtil::SimpleMove(starting, slidingSquare[j]);
+			if(LegalChecker::IsLegal(position, move)){
+				result.push_back(move);
+			}
+			if(!empty) break;
+		}
+	}
+	return result;
+}
+
+
 //Util
 bool MoveGenerator::PieceMatchTurn(short piece, Position& position)
 {

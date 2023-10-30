@@ -2,7 +2,6 @@
 #include <vector>
 
 #include "Position.h"
-#include "Move.h"
 
 class Node{
     public:
@@ -12,10 +11,13 @@ class Node{
         Node* parentNode;
         std::vector<Node*> childrenNodes;
 
-        unsigned short bestMove;
+        unsigned short bestMove = 0;
 
         Node(Position* pos);
         Node(Node* parent, Position* pos);
+        
+        Node(std::string fen);
+        Node(Node* parent, unsigned short move);
 
         ~Node();
 

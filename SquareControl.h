@@ -35,6 +35,9 @@ public:
     std::string toString();
     std::vector<short> GetKnightSquare();
     std::vector<short> GetSlidingSquare(int offsetType);
+    std::vector<short> GetQueenSquare();
+    std::vector<short> GetBishopSquare();
+    std::vector<short> GetRookSquare();
     std::vector<short> GetKingSquare();
     std::vector<short> GetPawnSquare(bool upward);
 

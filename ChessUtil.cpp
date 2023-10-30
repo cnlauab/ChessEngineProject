@@ -604,4 +604,3 @@ unsigned short ChessUtil::UCIToMove(std::string uci){
         return ChessUtil::SimpleMove(from, to);
     }
 }
-
