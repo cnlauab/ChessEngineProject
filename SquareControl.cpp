@@ -2,6 +2,7 @@
 
 SquareControl::SquareControl(short square){
     //std::cout << "Square Control Constructed " << square << std::endl;
+    origin = square;
     //Knight squares
 	short starting1 = square - 10;
 	short starting2 = square - 17;
@@ -83,6 +84,7 @@ SquareControl::SquareControl(short square){
         //Sliding
 		while (!outOfBound) {
             slidingSquare[i].push_back(target);
+            allSlidingSquare.push_back(target);
             queenControlBitboard |= 1ULL << target;
             if(i < 4) {
                 rookControlBitboard |= 1ULL << target;

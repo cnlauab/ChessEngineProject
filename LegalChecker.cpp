@@ -4,13 +4,19 @@
 
 bool LegalChecker::IsLegal(Position& position, unsigned short& move){
     //if white move to a new position
-    //std::cout << "Legal checking" << std::endl;
     Position newPosition = Position(position, move);
-    //return !newPosition.check;
-	//std::cout << newPosition.PositionToFen() << std::endl;
-    //bool checked =  newPosition.IsChecked(position.whiteTurn);
-    //std::cout << "Checked: " << checked << std::endl;
 
     //white then being checked by black (during black's turn to move)
     return !newPosition.IsChecked(position.whiteTurn);
+}
+
+void LegalChecker::AddMoveToList(Position& position, std::vector<unsigned short>& result, unsigned short move, bool needLegalCheck){
+    if(!needLegalCheck){
+        result.push_back(move);
+    }else{
+        if(LegalChecker::IsLegal(position, move)){
+            result.push_back(move);
+        //std::cout << ChessUtil::SimpleMoveToString(move) << " is legal" << std::endl;
+        }
+    }
 }

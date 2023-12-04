@@ -46,10 +46,11 @@ public:
 
 	static bool IsLightSquare(short square);
 
-	static unsigned short SimpleMove(short from, short to, char promotionType = 'Q');
+	static unsigned short SimpleMove(short from, short to, bool capture = false, char promotionType = 'Q');
 	static short GetFrom(unsigned short move);
 	static short GetTo(unsigned short move);
 	static char GetPromotionType(unsigned short move);
+	static bool GetIsCapture(unsigned short move);
 	static std::string SimpleMoveToString(unsigned short move);
 	static unsigned short UCIToMove(std::string uci);
 };

@@ -110,8 +110,8 @@ void TestBitboard(){
 void TestUCI(){
 	//Testing uci
 	Position currentPosition = UCI::ParsePosition("position startpos moves d2d4 e7e5");
-	currentPosition = UCI::ParsePosition("position fen 8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - moves b4b1");
-	cout << BoardRenderer::positionToString(currentPosition) << endl;
+	//currentPosition = UCI::ParsePosition("position fen 8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - moves b4b1");
+	cout << currentPosition.PositionToString() << endl;
 	cout << currentPosition.PositionToFen() << endl;
 
 	UCI::SelfPlay();
@@ -120,24 +120,31 @@ void TestUCI(){
 void TestPerft(){
 	//Position* currentPosition = new Position("r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1");
 	//TODO: still need to fix en passant at 8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - depth=5
-	
+
 	//Testing Perft
-	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 	
-	Node* root = new Node("r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq -");
-	Evaluation::ConstructTree(root, 4);
-	Evaluation::BFS(root);
-    Evaluation::DeleteTree(root);
+	std::string fen = "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq -";
+	Position initialPosition = Position(fen);
+	int depth = 4;
+
+	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+
+	std::vector<Perft> perftData = {};
+	Evaluation::PerftSearch(initialPosition, depth, perftData);
+	for(Perft perft : perftData){
+		std::cout << perft.toString() << std::endl;
+	}
 	
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 	auto timeElapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
 	std::cout << "Time elapsed = " << timeElapsed << "[Milliseconds] that's " << timeElapsed / 60000  << "[Minutes]" << timeElapsed % 60000 / 1000 << "[Seconds]" << std::endl;
+
 }
 
 void TestEvaluation(){
 	//Testing Evaluation
-	Position currentPosition = Position("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 0");
-	cout << BoardRenderer::positionToString(currentPosition) << endl;
+	Position currentPosition = Position("rnbq1k1r/pp1Pbppp/2p5/8/2B5/8/PPP1NnPP/RNBQK2R w KQ - 1 8");
+	cout << currentPosition.PositionToString() << endl;
 	unsigned short chosenMove = Evaluation::Evaluate(currentPosition);
 	cout << "Move chosen: " << currentPosition.MoveToUCIString(chosenMove) << endl;
 }
@@ -165,7 +172,7 @@ void ConsoleMode(){
 	
 	//Game
 	while (!gameState.Ended() && moveCounter < 500) {
-		cout << BoardRenderer::positionToString(currentPosition) << endl;
+		cout << currentPosition.PositionToString() << endl;
 		cout << currentPosition.PositionToFen() << endl;
 		cout << currentPosition.bitboards.BitboardsToString() << endl;
 		
@@ -200,20 +207,19 @@ int main()
 	Debug::ClearLog();
 	Debug::UCILog("############ HoneyB Program Started ############", true);
 
-	//cout << sizeof('x') << endl;
-	//Move move = Move();
-	//cout << sizeof(move) << endl;
-	//cout << sizeof(currentPosition) << endl;
-	//cout << sizeof(1ULL) << endl;
-
 	//Play in console
 	//ConsoleMode();
 	//Play in UCI
-	UCIMode();
+	//UCIMode();
+
+	//Test UCI
+	//TestUCI();
 	//Test Bitboard
 	//TestBitboard();
 	//Test Perft
-	//TestPerft();
+	TestPerft();
+	//Test Magic Bitboard
+	//MagicUtil::ListAllMagicBits();
 
 	return 0;
 }

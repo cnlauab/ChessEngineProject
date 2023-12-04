@@ -199,6 +199,14 @@ unsigned long long BitUtil::kingControlBits(unsigned long long kingbit){
     return result;
 }
 
+unsigned long long BitUtil::GetFileBit(short file){
+    if(file > 7 || file < 0) return 0ULL;
+    return aFile << file;
+}
 
+unsigned long long BitUtil::GetRankBit(short rank){
+    if(rank > 7 || rank < 0) return 0ULL;
+    return firstRank << rank;
+}
 
 

@@ -561,8 +561,8 @@ bool ChessUtil::IsLightSquare(short square){
     return square == 1 || square == 3 || square == 5 || square == 7 || square == 8 || square == 10 || square == 12 || square == 14 || square == 17 || square == 19 || square == 21 || square == 23 || square == 24 || square == 26 || square == 28 || square == 30 || square == 33 || square == 35 || square == 37 || square == 39 || square == 40 || square == 42 || square == 44 || square == 46 || square == 49 || square == 51 || square == 53 || square == 55 || square == 56 || square == 58 || square == 60 || square == 62;
 }
 
-unsigned short ChessUtil::SimpleMove(short from, short to, char promotionType){
-    return (unsigned short)from | ((unsigned short)to << 6) | (ChessUtil::promotionTypeMap[promotionType] << 12);
+unsigned short ChessUtil::SimpleMove(short from, short to, bool capture, char promotionType){
+    return (unsigned short)from | ((unsigned short)to << 6) | (ChessUtil::promotionTypeMap[promotionType] << 12) | ((unsigned short)capture << 14);
 }
 
 short ChessUtil::GetFrom(unsigned short move){
@@ -574,19 +574,23 @@ short ChessUtil::GetTo(unsigned short move){
 }
 
 char ChessUtil::GetPromotionType(unsigned short move){
-    unsigned short index = move >> 12;
+    unsigned short index = (move >> 12) & 3;
     switch(index){
-        case 0:
+        case 0://0b0000
             return 'Q';
-        case 1:
+        case 1://0b0001
             return 'N';
-        case 2:
+        case 2://0b0010
             return 'R';
-        case 3: 
+        case 3://0b0011
             return 'B';
         default:
             return ' ';
     }
+}
+
+bool ChessUtil::GetIsCapture(unsigned short move){
+    return (move >> 14) & 1;
 }
 
 std::string ChessUtil::SimpleMoveToString(unsigned short move){

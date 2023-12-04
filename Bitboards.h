@@ -19,6 +19,7 @@ class Bitboards {
         unsigned long long allBlackBitboard();
 
         unsigned long long allEmptySquareBitboard();
+        unsigned long long GetPieceBitboard(bool white, short index);
 
         bool isEmpty(short square);
         bool hasWhitePiece(short square);

@@ -98,6 +98,10 @@ unsigned long long Bitboards::allEmptySquareBitboard(){
     return ~(allWhiteBitboard() | allBlackBitboard());
 }
 
+unsigned long long Bitboards::GetPieceBitboard(bool white, short index){
+    return white ? whiteBitboards[index] : blackBitboards[index];
+}
+
 bool Bitboards::isEmpty(short square){
     return allEmptySquareBitboard() & 1ULL << square;
 }
@@ -172,6 +176,27 @@ void Bitboards::PromotionMoveBit(short to, short promotionType, bool whiteTurn){
         blackBitboards[0] &= ~(1ULL << to);
         blackBitboards[promotionType] |= 1ULL << to;
     }
+}
+
+unsigned long long Bitboards::controlledBits(bool white){
+    unsigned long long result;
+    unsigned long long* bitboards = white ? whiteBitboards : blackBitboards;
+    for(int i = 0; i < 6; i++){
+        if(i==0){
+            result |= BitUtil::pawnControlBits(bitboards[i],white);
+        }else if(i==1){
+
+        }else if(i==2){
+            result |= BitUtil::knightControlBits(bitboards[i]);
+        }else if(i==3){
+
+        }else if(i==4){
+
+        }else if(i==5){
+            result |= BitUtil::kingControlBits(bitboards[i]);
+        }
+    }
+    return result;
 }
 
 std::string Bitboards::BitboardsToString(){

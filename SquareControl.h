@@ -5,6 +5,8 @@
 
 class SquareControl {
 public:
+    short origin;
+
     std::vector<short> knightSquare;
 
     std::vector<short> slidingSquare[8];
@@ -28,6 +30,9 @@ public:
     unsigned long long kingControlBitboard = 0ULL;
     unsigned long long pawnShiftUpBitboard = 0ULL;
     unsigned long long pawnShiftDownBitboard = 0ULL;
+
+    //Util
+    std::vector<short> allSlidingSquare;
 
     //Constructor
     SquareControl(short square);

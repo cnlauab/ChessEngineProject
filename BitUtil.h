@@ -32,6 +32,11 @@ public:
     static unsigned long long pawnControlBits(unsigned long long pawnbits, bool white);
     static unsigned long long kingControlBits(unsigned long long kingbit);
 
+    static unsigned long long GetFileBit(short file);
+    static unsigned long long GetRankBit(short rank);
+
+    static short countSetBits(unsigned long long bits);
+
     private:
     
 };

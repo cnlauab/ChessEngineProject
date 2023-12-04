@@ -2,7 +2,6 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
-#include "BoardRenderer.h"
 #include "Position.h"
 
 class Debug {

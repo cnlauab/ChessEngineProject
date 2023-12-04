@@ -31,6 +31,7 @@ public:
 	static std::vector<unsigned short> GenerateSlidingMoves(short& piece, short&& direction, Position& position);
 
 	static bool PieceMatchTurn(short piece, Position& position);
+	static void AddPawnMoves(Position& position, std::vector<unsigned short>& moves, short start, short target, bool capture);
 
 	static std::vector<unsigned short> (*MoveGenerationByType[6]) (short&, Position&);
 };

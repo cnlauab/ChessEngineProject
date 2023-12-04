@@ -177,30 +177,6 @@ Bitboards.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.s
 .PHONY : Bitboards.cpp.s
 
-BoardRenderer.o: BoardRenderer.cpp.o
-.PHONY : BoardRenderer.o
-
-# target to build an object file
-BoardRenderer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/BoardRenderer.cpp.o
-.PHONY : BoardRenderer.cpp.o
-
-BoardRenderer.i: BoardRenderer.cpp.i
-.PHONY : BoardRenderer.i
-
-# target to preprocess a source file
-BoardRenderer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/BoardRenderer.cpp.i
-.PHONY : BoardRenderer.cpp.i
-
-BoardRenderer.s: BoardRenderer.cpp.s
-.PHONY : BoardRenderer.s
-
-# target to generate assembly for a file
-BoardRenderer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/BoardRenderer.cpp.s
-.PHONY : BoardRenderer.cpp.s
-
 ChessEngineProject.o: ChessEngineProject.cpp.o
 .PHONY : ChessEngineProject.o
 
@@ -321,6 +297,54 @@ LegalChecker.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.s
 .PHONY : LegalChecker.cpp.s
 
+MagicBits.o: MagicBits.cpp.o
+.PHONY : MagicBits.o
+
+# target to build an object file
+MagicBits.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/MagicBits.cpp.o
+.PHONY : MagicBits.cpp.o
+
+MagicBits.i: MagicBits.cpp.i
+.PHONY : MagicBits.i
+
+# target to preprocess a source file
+MagicBits.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/MagicBits.cpp.i
+.PHONY : MagicBits.cpp.i
+
+MagicBits.s: MagicBits.cpp.s
+.PHONY : MagicBits.s
+
+# target to generate assembly for a file
+MagicBits.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/MagicBits.cpp.s
+.PHONY : MagicBits.cpp.s
+
+MagicUtil.o: MagicUtil.cpp.o
+.PHONY : MagicUtil.o
+
+# target to build an object file
+MagicUtil.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/MagicUtil.cpp.o
+.PHONY : MagicUtil.cpp.o
+
+MagicUtil.i: MagicUtil.cpp.i
+.PHONY : MagicUtil.i
+
+# target to preprocess a source file
+MagicUtil.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/MagicUtil.cpp.i
+.PHONY : MagicUtil.cpp.i
+
+MagicUtil.s: MagicUtil.cpp.s
+.PHONY : MagicUtil.s
+
+# target to generate assembly for a file
+MagicUtil.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/MagicUtil.cpp.s
+.PHONY : MagicUtil.cpp.s
+
 MoveGenerator.o: MoveGenerator.cpp.o
 .PHONY : MoveGenerator.o
 
@@ -345,30 +369,6 @@ MoveGenerator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.s
 .PHONY : MoveGenerator.cpp.s
 
-Node.o: Node.cpp.o
-.PHONY : Node.o
-
-# target to build an object file
-Node.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Node.cpp.o
-.PHONY : Node.cpp.o
-
-Node.i: Node.cpp.i
-.PHONY : Node.i
-
-# target to preprocess a source file
-Node.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Node.cpp.i
-.PHONY : Node.cpp.i
-
-Node.s: Node.cpp.s
-.PHONY : Node.s
-
-# target to generate assembly for a file
-Node.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Node.cpp.s
-.PHONY : Node.cpp.s
-
 Parser.o: Parser.cpp.o
 .PHONY : Parser.o
 
@@ -392,6 +392,30 @@ Parser.s: Parser.cpp.s
 Parser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Parser.cpp.s
 .PHONY : Parser.cpp.s
+
+Perft.o: Perft.cpp.o
+.PHONY : Perft.o
+
+# target to build an object file
+Perft.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Perft.cpp.o
+.PHONY : Perft.cpp.o
+
+Perft.i: Perft.cpp.i
+.PHONY : Perft.i
+
+# target to preprocess a source file
+Perft.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Perft.cpp.i
+.PHONY : Perft.cpp.i
+
+Perft.s: Perft.cpp.s
+.PHONY : Perft.s
+
+# target to generate assembly for a file
+Perft.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Perft.cpp.s
+.PHONY : Perft.cpp.s
 
 Position.o: Position.cpp.o
 .PHONY : Position.o
@@ -528,9 +552,6 @@ help:
 	@echo "... Bitboards.o"
 	@echo "... Bitboards.i"
 	@echo "... Bitboards.s"
-	@echo "... BoardRenderer.o"
-	@echo "... BoardRenderer.i"
-	@echo "... BoardRenderer.s"
 	@echo "... ChessEngineProject.o"
 	@echo "... ChessEngineProject.i"
 	@echo "... ChessEngineProject.s"
@@ -546,15 +567,21 @@ help:
 	@echo "... LegalChecker.o"
 	@echo "... LegalChecker.i"
 	@echo "... LegalChecker.s"
+	@echo "... MagicBits.o"
+	@echo "... MagicBits.i"
+	@echo "... MagicBits.s"
+	@echo "... MagicUtil.o"
+	@echo "... MagicUtil.i"
+	@echo "... MagicUtil.s"
 	@echo "... MoveGenerator.o"
 	@echo "... MoveGenerator.i"
 	@echo "... MoveGenerator.s"
-	@echo "... Node.o"
-	@echo "... Node.i"
-	@echo "... Node.s"
 	@echo "... Parser.o"
 	@echo "... Parser.i"
 	@echo "... Parser.s"
+	@echo "... Perft.o"
+	@echo "... Perft.i"
+	@echo "... Perft.s"
 	@echo "... Position.o"
 	@echo "... Position.i"
 	@echo "... Position.s"

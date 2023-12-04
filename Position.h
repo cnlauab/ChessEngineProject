@@ -15,6 +15,7 @@ public :
     //FEN
     bool whiteTurn = true;
     short enPassantSquare = 99;
+    short prevEnPassantSquare = 99;
     short halfmove = 0;
     short fullmove = 0;
 	short position[64];
@@ -37,10 +38,14 @@ public :
 
     //States
     unsigned short prevMove;
+    unsigned short bestMove;
     std::vector<short> whitePieceOnBoard;
     std::vector<short> blackPieceOnBoard;
     short whiteKingLocation;
     short blackKingLocation;
+    std::vector<short> takenPieceStack;
+    std::vector<unsigned short> prevMoveStack;
+    unsigned short prevMoveStack;
 
     //Pinned piece
     std::unordered_map<short,short> pinnedPiece;//piece,direction
@@ -60,6 +65,7 @@ public :
     bool TargetIsOppositeColor(short piece, short target) const;
     bool EnpassantSquareIsOppositeColor(short piece) const;
     std::string PositionToFen();
+    std::string PositionToString();
 
     bool OpponentCanReach(short target, bool white);
     std::vector<short> GetFriendlyCanReach(short target, bool attacking);
@@ -76,6 +82,7 @@ public :
 	//Mutator
     void SetCastlingQuota(char type, bool on);
 	void MovePiece(unsigned short& move);
+	void UnmovePiece(unsigned short& move);//Not Clean
 
     //Evaluation
     short CalculateScore();

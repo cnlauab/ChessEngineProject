@@ -21,7 +21,7 @@ void Debug::GameLog(Position& position){
     } else{
         outfile << "Black to move" << std::endl;
     }
-    outfile << BoardRenderer::positionToString(position) << std::endl;
+    outfile << position.PositionToString() << std::endl;
     outfile << position.PositionToFen() << std::endl;
     outfile << "################" << std::endl;
     outfile.close();

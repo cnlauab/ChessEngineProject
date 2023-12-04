@@ -7,16 +7,16 @@ void UCI::SelfPlay(){
     Debug::UCILog(positionCommand, true);
     Position currPosition = ParsePosition(positionCommand);
     positionCommand += " moves";
-    Debug::UCILog("\n" + BoardRenderer::positionToString(currPosition), true);
+    Debug::UCILog("\n" + currPosition.PositionToString(), true);
     Debug::UCILog(currPosition.PositionToFen(), true);
-    while(!currPosition.checkmate || moves > 200){
+    while(!currPosition.checkmate || moves < 200){
         unsigned short bestMove = Evaluation::Evaluate(currPosition);
         Debug::UCILog("bestmove " + currPosition.MoveToUCIString(bestMove), false);
         if(bestMove == 0) break;
         positionCommand += " " + currPosition.MoveToUCIString(bestMove);
         currPosition = Position(currPosition, bestMove);
         Debug::UCILog(positionCommand, true);
-        Debug::UCILog("\n" + BoardRenderer::positionToString(currPosition), true);
+        Debug::UCILog("\n" + currPosition.PositionToString(), true);
         Debug::UCILog(currPosition.PositionToFen(), true);
         moves++;
     }
@@ -54,7 +54,7 @@ void UCI::UCILoop(){
 
 		if ( Line.substr(0,8) == "position" ) {
             currPosition = ParsePosition(Line);
-            Debug::UCILog("\n" + BoardRenderer::positionToString(currPosition), true);
+            Debug::UCILog("\n" + currPosition.PositionToString(), true);
             Debug::UCILog(currPosition.PositionToFen(), true);
 
 		} else if ( Line == "stop" ) {
@@ -66,7 +66,7 @@ void UCI::UCILoop(){
             Debug::UCILog("bestmove " + currPosition.MoveToUCIString(bestMove), false);
 
             currPosition.MovePiece(bestMove);
-            Debug::UCILog("\n" + BoardRenderer::positionToString(currPosition), true);
+            Debug::UCILog("\n" + currPosition.PositionToString(), true);
             Debug::UCILog(currPosition.PositionToFen(), true);
 		}
 	}
