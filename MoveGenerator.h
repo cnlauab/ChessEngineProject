@@ -34,4 +34,8 @@ public:
 	static void AddPawnMoves(Position& position, std::vector<unsigned short>& moves, short start, short target, bool capture);
 
 	static std::vector<unsigned short> (*MoveGenerationByType[6]) (short&, Position&);
+
+	//New
+	static void KingMoves(std::vector<unsigned short>& moves, Position& position);
+	static void KnightMoves(std::vector<unsigned short>& moves, Position& position);
 };

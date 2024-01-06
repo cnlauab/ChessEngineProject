@@ -53,8 +53,6 @@ Position::Position(std::string fen)
 
 	//Castling
 	for(char c : parameters[2]){
-		//std::cout<<c<<std::endl;
-		//castlingQuota[c] = true;
 		SetCastlingQuota(c, true);
 	}
 
@@ -64,8 +62,6 @@ Position::Position(std::string fen)
 	if(parameters.size() >= 5) halfmove = std::stoi(parameters[4]);
 	//Fullmove
 	if(parameters.size() >= 6) halfmove = std::stoi(parameters[5]);
-
-	prevMove = 0;
 
 	//Update Checked by
 	std::vector<short> cb = GetCheckedByAndUpdatePin(whiteTurn);
@@ -186,7 +182,8 @@ bool Position::GetCastlingQuota(char type)
 			k = 3;
 			break;
 	}
-	return (castlingQuota & (1 << k)) > 0;
+	bool result = (castlingQuota & (1 << k)) > 0;
+	return result;
 }
 
 bool Position::TargetIsEmpty(short target) const
@@ -459,10 +456,12 @@ std::vector<short> Position::GetCheckedByAndUpdatePin(bool white){
     short target = white ? whiteKingLocation : blackKingLocation;
 	std::vector<short> result;
 	unsigned long long targetBit = 1ULL << target;
+	bitboards.pinnedBitboard = 0ULL;
+	bitboards.checkedBitboard = 0ULL;
 
 	//Clear pinned piece map
 	pinnedPiece.clear();
-
+	bitboards.pinnedRays.clear();
     //Knight squares
 	unsigned long long knightBits = white ? bitboards.blackBitboards[2] : bitboards.whiteBitboards[2];
 	if((targetBit & BitUtil::knightControlBits(knightBits)) > 0ULL){
@@ -474,6 +473,7 @@ std::vector<short> Position::GetCheckedByAndUpdatePin(bool white){
 			if(isKnight && oppositeColor){
 				//std::cout << "Knight Check " << targets[i] << std::endl;
 				result.push_back(piece);
+				bitboards.checkedBitboard |= 1ULL << knightSquare[i];
 			}
 		}
 	}
@@ -489,6 +489,7 @@ std::vector<short> Position::GetCheckedByAndUpdatePin(bool white){
 			if(oppositeColor && isPawn){
 				//std::cout << "Pawn Check " << square1 << std::endl;
 				result.push_back(piece);
+				bitboards.checkedBitboard |= 1ULL << pawnSquare[i];
 			}
 		}
 	}
@@ -501,12 +502,15 @@ std::vector<short> Position::GetCheckedByAndUpdatePin(bool white){
 		for(int i = 4; i <= 7; ++i){
 			std::vector<short> slidingSquare = ChessUtil::squareControlMap[target].GetSlidingSquare(i);
 			short pin = 99;
+			unsigned long long rayBits = 0ULL;
 			for(int j = 0; j < slidingSquare.size(); j++){
 				short piece = ReadPosition(slidingSquare[j]);
+				rayBits |= 1ULL << slidingSquare[j];
 				if(!ChessUtil::IsEmpty(piece)) {
 					if((ChessUtil::IsWhite(piece) != white) && (ChessUtil::IsQueen(piece) || ChessUtil::IsBishop(piece))){
 						if(pin == 99){
 							result.push_back(piece);
+							bitboards.checkedBitboard |= rayBits;
 						}
 						break;
 					}else if(ChessUtil::IsWhite(piece) == white){
@@ -523,7 +527,12 @@ std::vector<short> Position::GetCheckedByAndUpdatePin(bool white){
 				}
 				if(j == slidingSquare.size()-1) pin = 99;
 			}
-			if(pin != 99) pinnedPiece.insert({pin, (short)i});
+			if(pin != 99){
+				pinnedPiece.insert({pin, (short)i});
+				short pinnedSquare = GetPieceLocation(pin);
+				bitboards.pinnedBitboard |= 1ULL << pinnedSquare;
+				bitboards.pinnedRays.insert({pinnedSquare, rayBits});
+			} 
 		}
 	}
 	unsigned long long rookBits = white ? bitboards.blackBitboards[4] : bitboards.whiteBitboards[4];
@@ -532,12 +541,15 @@ std::vector<short> Position::GetCheckedByAndUpdatePin(bool white){
 		for(int i = 0; i <= 3; ++i){
 			std::vector<short> slidingSquare = ChessUtil::squareControlMap[target].GetSlidingSquare(i);
 			short pin = 99;
+			unsigned long long rayBits = 0ULL;
 			for(int j = 0; j < slidingSquare.size(); j++){
 				short piece = ReadPosition(slidingSquare[j]);
+				rayBits |= 1ULL << slidingSquare[j];
 				if(!ChessUtil::IsEmpty(piece)) {
 					if((ChessUtil::IsWhite(piece) != white) && (ChessUtil::IsQueen(piece) || ChessUtil::IsRook(piece))){
 						if(pin == 99){
 							result.push_back(piece);
+							bitboards.checkedBitboard |= rayBits;
 						}
 						break;
 					}else if(ChessUtil::IsWhite(piece) == white){
@@ -554,40 +566,15 @@ std::vector<short> Position::GetCheckedByAndUpdatePin(bool white){
 				}
 				if(j == slidingSquare.size()-1) pin = 99;
 			}
-			if(pin != 99) pinnedPiece.insert({pin, (short)i});
+			if(pin != 99){
+				pinnedPiece.insert({pin, (short)i});
+				short pinnedSquare = GetPieceLocation(pin);
+				bitboards.pinnedBitboard |= 1ULL << pinnedSquare;
+				bitboards.pinnedRays.insert({pinnedSquare, rayBits});
+			} 
 		}
 	}
-	/*
-    for(int i = 0; i < 8; ++i){
-        std::vector<short> slidingSquare = ChessUtil::squareControlMap[target].GetSlidingSquare(i);
-        if(slidingSquare.size() == 0) continue;
-        if(!TargetIsEmpty(slidingSquare[0]) && ChessUtil::IsKing(ReadPosition(slidingSquare[0])) && white != ChessUtil::IsWhite(ReadPosition(slidingSquare[0]))) {
-            //std::cout << "King at " << target << " King Check " << square << std::endl;
-            result.push_back(ReadPosition(slidingSquare[0]));
-        }
-        for(int j = 0; j < slidingSquare.size(); j++){
-            short piece = ReadPosition(slidingSquare[j]);
-            bool occupied = !TargetIsEmpty(slidingSquare[j]);
-            bool oppositeColor = white != ChessUtil::IsWhite(piece);
-            if(occupied && !oppositeColor) break;
-            if(occupied && oppositeColor){
-                if(i>=0 && i<=3){
-                    if((ChessUtil::IsRook(piece) || ChessUtil::IsQueen(piece))) {
-                        //std::cout << "Rook or Queen Check " << square << std::endl;
-                        result.push_back(piece);
-                    }
-                    break;
-                }else{
-                    if((ChessUtil::IsBishop(piece) || ChessUtil::IsQueen(piece))) {
-                        //std::cout << "Bishop or Queen Check " << square << std::endl;
-                        result.push_back(piece);
-                    }
-                    break;
-                }
-            }
-        }
-    }
-	*/
+	if(result.size() == 0) bitboards.checkedBitboard = ~0ULL;
     return result;
 }
 
@@ -723,6 +710,26 @@ std::string Position::MoveToPNGString(unsigned short move){
 	return result;
 }
 
+void Position::UpdateCheck(short attackingPiece){
+	std::vector<short> cb = GetCheckedByAndUpdatePin(whiteTurn);
+	for(int i = 0; i < 2; i++){
+		if(cb.size()< i+1) {
+			checkedBy[i] = 99;
+		}else{
+			checkedBy[i] = cb[i];
+		}
+	}
+	if(cb.size() > 0) {
+		check = true;
+		if(cb.size() == 1 && attackingPiece != cb[0] && !promotion) {
+			discoverCheck = true;
+		}
+		if(cb.size() > 1){
+			doubleCheck = true;
+		}
+	}
+}
+
 void Position::SetCastlingQuota(char type, bool on){
 	int k = 0;
 	switch(type){
@@ -748,15 +755,13 @@ void Position::SetCastlingQuota(char type, bool on){
 
 void Position::MovePiece(unsigned short& move)
 {
-	//short takenPiece = position[move.to];
-	//short movingPiece = position[move.from];
-	//char promotionType = move.promotionType;
 
 	short to = ChessUtil::GetTo(move);
 	short from = ChessUtil::GetFrom(move);
 	char promotionType = ChessUtil::GetPromotionType(move);
 	short takenPiece = position[to];
 	short movingPiece = position[from];
+	PositionState state;
 	//Update Perft
 	ep = false;
 	castle = false;
@@ -773,7 +778,7 @@ void Position::MovePiece(unsigned short& move)
 	//Update Board
 	position[to] = position[from];
 	position[from] = 99;
-	prevEnPassantSquare = enPassantSquare;
+	state.prevEnPassantSquare = enPassantSquare;
 	if(takenPiece != 99) {
 		if(whiteTurn){
 			remove(blackPieceOnBoard.begin(),blackPieceOnBoard.end(),takenPiece);
@@ -782,7 +787,6 @@ void Position::MovePiece(unsigned short& move)
 			remove(whitePieceOnBoard.begin(),whitePieceOnBoard.end(),takenPiece);
 			whitePieceOnBoard.pop_back();
 		}
-		takenPieceStack.push_back(takenPiece);
 		halfmove = 0;
 	}
 	//Update Bitboard
@@ -790,36 +794,30 @@ void Position::MovePiece(unsigned short& move)
 	//Piece Specific Update
 	if (ChessUtil::IsPawn(movingPiece)) {
 		halfmove = 0;
+		//En Passant Take
 		if(to == enPassantSquare){
+			int pawnSquare = (whiteTurn) ? (to - 8) : (to + 8);
+			short pawn = position[pawnSquare];
 			bitboards.EnpassantMoveBit(to, whiteTurn);
-		}
-		if (whiteTurn) {
-			if (to == enPassantSquare) {
-				remove(blackPieceOnBoard.begin(),blackPieceOnBoard.end(),position[to - 8]);
+
+			if(whiteTurn){
+				remove(blackPieceOnBoard.begin(),blackPieceOnBoard.end(),pawn);
 				blackPieceOnBoard.pop_back();
-				takenPieceStack.push_back(position[to - 8]);
-				position[to - 8] = 99;
-				ep = true;
-			}
-			enPassantSquare = 99;
-			if (to - from == 16) {
-				enPassantSquare = from + 8;
-			}
-		}
-		else {
-			if (to == enPassantSquare) {
-				remove(whitePieceOnBoard.begin(),whitePieceOnBoard.end(),position[to + 8]);
+			}else{
+				remove(whitePieceOnBoard.begin(),whitePieceOnBoard.end(),pawn);
 				whitePieceOnBoard.pop_back();
-				takenPieceStack.push_back(position[to + 8]);
-				position[to + 8] = 99;
-				ep = true;
 			}
-			enPassantSquare = 99;
-			if (to - from == -16) {
-				enPassantSquare = from - 8;
-			}
+			takenPiece = pawn;
+			position[pawnSquare] = 99;
+			ep = true;
 		}
-		//std::cout << "Pawn " << position[move.to] << " promote to ";
+		//Set En Passant square
+		if (whiteTurn) {
+			enPassantSquare = (to - from == 16) ? (from + 8) : 99;
+		}else{
+			enPassantSquare = (to - from == -16) ? (from - 8) : 99;
+		}
+		//Promotion
 		if(ChessUtil::GetRank(to) == 0 || ChessUtil::GetRank(to) == 7){
 			promotion = true;
 			bitboards.PromotionMoveBit(to, BitUtil::pieceBitboardIndexMapping[tolower(promotionType)], whiteTurn);
@@ -859,9 +857,7 @@ void Position::MovePiece(unsigned short& move)
 					blackPieceOnBoard.push_back(position[to]);
 				}
 			}
-			if(enPassantSquare != 99) enPassantSquare = 99;
 		}
-		//std::cout << position[move.to] << std::endl;
 	}else{
 		if(enPassantSquare != 99) enPassantSquare = 99;
 	}
@@ -873,21 +869,24 @@ void Position::MovePiece(unsigned short& move)
 			blackKingLocation = to;
 		}
 		//Update castling quota
-		if (whiteTurn && GetCastlingQuota('K')) {
-			SetCastlingQuota('K', false);
-			//castlingQuota['K'] = false;
-		}
-		else if(!whiteTurn && GetCastlingQuota('k')) {
-			SetCastlingQuota('k', false);
-			//castlingQuota['k'] = false;
-		}
-		if (whiteTurn && GetCastlingQuota('Q')) {
-			SetCastlingQuota('Q', false);
-			//castlingQuota['Q'] = false;
-		}
-		else if(!whiteTurn && GetCastlingQuota('q')) {
-			SetCastlingQuota('q', false);
-			//castlingQuota['q'] = false;
+		if(whiteTurn){
+			if (GetCastlingQuota('K')) {
+				SetCastlingQuota('K', false);
+				state.castlingQuota1 = 'K';
+			}
+			if (GetCastlingQuota('Q')) {
+				SetCastlingQuota('Q', false);
+				state.castlingQuota2 = 'Q';
+			}
+		}else{
+			if(GetCastlingQuota('k')) {
+				SetCastlingQuota('k', false);
+				state.castlingQuota1 = 'k';
+			}
+			if(GetCastlingQuota('q')) {
+				SetCastlingQuota('q', false);
+				state.castlingQuota2 = 'q';
+			}
 		}
 		//Move rook if castling
 		if(to == 2 || to == 6 || to == 58 || to == 62){
@@ -918,116 +917,118 @@ void Position::MovePiece(unsigned short& move)
 		//Update castling quota
 		if(movingPiece == 0 && GetCastlingQuota('Q')){
 			SetCastlingQuota('Q', false);
-			//castlingQuota['Q'] = false;
+			state.castlingQuota1 = 'Q';
 		}else if(movingPiece == 7 && GetCastlingQuota('K')){
 			SetCastlingQuota('K', false);
-			//castlingQuota['K'] = false;
+			state.castlingQuota1 = 'K';
 		}else if(movingPiece == 56 && GetCastlingQuota('q')){
 			SetCastlingQuota('q', false);
-			//castlingQuota['q'] = false;
+			state.castlingQuota1 = 'q';
 		}else if(movingPiece == 63 && GetCastlingQuota('k')){
 			SetCastlingQuota('k', false);
-			//castlingQuota['k'] = false;
+			state.castlingQuota1 = 'k';
+		}
+	}else if(ChessUtil::IsRook(takenPiece)){
+		//Update castling quota
+		if(takenPiece == 0 && GetCastlingQuota('Q')){
+			SetCastlingQuota('Q', false);
+			state.castlingQuota1 = 'Q';
+		}else if(takenPiece == 7 && GetCastlingQuota('K')){
+			SetCastlingQuota('K', false);
+			state.castlingQuota1 = 'K';
+		}else if(takenPiece == 56 && GetCastlingQuota('q')){
+			SetCastlingQuota('q', false);
+			state.castlingQuota1 = 'q';
+		}else if(takenPiece == 63 && GetCastlingQuota('k')){
+			SetCastlingQuota('k', false);
+			state.castlingQuota1 = 'k';
 		}
 	}
 	//Update Opposite Turn
 	whiteTurn = !whiteTurn;
-	prevMove = move;
+	//Push new state
+	state.prevMove = move;
+	state.takenPiece = takenPiece;
+	state.enPassantSquare = enPassantSquare;
+	state.halfMove = halfmove;
+	stateStack.push(std::move(state));
 	//Update Checked
-	std::vector<short> cb = GetCheckedByAndUpdatePin(whiteTurn);
-	for(int i = 0; i < 2; i++){
-		if(cb.size()< i+1) {
-			checkedBy[i] = 99;
-		}else{
-			checkedBy[i] = cb[i];
-		}
-	}
-	if(cb.size() > 0) {
-		check = true;
-		if(cb.size() == 1 && movingPiece != cb[0] && !promotion) {
-			discoverCheck = true;
-		}
-		if(cb.size() > 1){
-			doubleCheck = true;
-		}
-	}
+	UpdateCheck(movingPiece);
 }
 
-void Position::UnmovePiece(unsigned short& move){
+void Position::UnmovePiece(){
+	if(stateStack.size() == 0) return;
+	short direction = (whiteTurn) ? 1 : -1;
+	PositionState prevState = stateStack.top();
+	unsigned short move = prevState.prevMove;
+	//Initialize Move
 	short to = ChessUtil::GetTo(move);
 	short from = ChessUtil::GetFrom(move);
-	char promotionType = ChessUtil::GetPromotionType(move);
-
-	short takenPiece = capture ? takenPieceStack[-1] : 99;
 	short movingPiece = position[to];
+	char movingPieceType = ChessUtil::GetPieceType(movingPiece);
+	//Initialize Capture
+	capture = ChessUtil::GetIsCapture(move);
+	short takenPiece = prevState.takenPiece;
+	//Initialize En Passant
+	enPassantSquare = prevState.enPassantSquare;
+	ep = (ChessUtil::IsPawn(movingPiece) && to == prevState.prevEnPassantSquare);
+	//Initialize Promotion
+	char promotionType = ChessUtil::GetPromotionType(move);
+	promotion = ChessUtil::GetIsPromotion(move);
+	//Initialize Castling
+	castle = (ChessUtil::IsKing(movingPiece) && ((to - from == 2) || (to - from == -2)));
 
 	//Update Clock
-	if(halfmove > 0) halfmove--;
+	halfmove = prevState.halfMove;
 	if(!whiteTurn)fullmove--;
 	//Update Board
 	whiteTurn = !whiteTurn;
 	position[from] = position[to];
-	position[to] = takenPiece;
-	enPassantSquare = prevEnPassantSquare;
+	position[to] = 99;
+	bitboards.MoveBit(to, from, whiteTurn);
 	if(capture) {
 		if(whiteTurn){
 			blackPieceOnBoard.push_back(takenPiece);
 		}else{
 			whitePieceOnBoard.push_back(takenPiece);
 		}
-		takenPieceStack.pop_back();
+		if(!ep){
+			position[to] = takenPiece;
+			bitboards.PutBackTakenPiece(to, takenPiece, whiteTurn);
+		}
 	}
-	//Update Bitboard
-	bitboards.MoveBit(to, from, whiteTurn);
-	//TODO: add back taken piece to bitboards
+
 
 	//Piece Specific Update
 	if (ChessUtil::IsPawn(movingPiece)) {
-		//TODO: add back en passant pawn to bitboards
-		if (whiteTurn) {
-			if (ep) {
-				position[to - 8] = takenPiece;
-			}
+		if (ep) {
+			position[to + (8 * -direction)] = takenPiece;
+			bitboards.ReverseEnpassantMoveBit(to, whiteTurn);
 		}
-		else {
-			if (ep) {
-				position[to + 8] = takenPiece;
-			}
-		}
-		//std::cout << "Pawn " << position[move.to] << " promote to ";
 		if(promotion){
-			//TODO: turn promoted piece back to pawn on bitboards
+			bitboards.PromotionMoveBit(to, BitUtil::pieceBitboardIndexMapping[tolower(promotionType)], whiteTurn);
+			if(whiteTurn){
+				remove(whitePieceOnBoard.begin(),whitePieceOnBoard.end(),position[from]);
+				whitePieceOnBoard.pop_back();
+			}else{
+				remove(blackPieceOnBoard.begin(),blackPieceOnBoard.end(),position[from]);
+				blackPieceOnBoard.pop_back();
+			}
 			if(promotionType == 'Q'){//Promotion
 				position[from] -= (whiteTurn) ? -16 : 16;
-				if(whiteTurn){
-					whitePieceOnBoard.push_back(position[from]);
-				}else{
-					blackPieceOnBoard.push_back(position[from]);
-				}
 			}else if(promotionType == 'B'){
 				position[from] -= (whiteTurn) ? -24 : 24;
-				if(whiteTurn){
-					whitePieceOnBoard.push_back(position[from]);
-				}else{
-					blackPieceOnBoard.push_back(position[from]);
-				}
 			}else if(promotionType == 'R'){
 				position[from] -= (whiteTurn) ? -32 : 32;
-				if(whiteTurn){
-					whitePieceOnBoard.push_back(position[from]);
-				}else{
-					blackPieceOnBoard.push_back(position[from]);
-				}
 			}else if(promotionType == 'N'){
 				position[from] -= (whiteTurn) ? -40 : 40;
-				if(whiteTurn){
-					whitePieceOnBoard.push_back(position[from]);
-				}else{
-					blackPieceOnBoard.push_back(position[from]);
-				}
+			}
+			if(whiteTurn){
+				whitePieceOnBoard.push_back(position[from]);
+			}else{
+				blackPieceOnBoard.push_back(position[from]);
 			}
 		}
-		//std::cout << position[move.to] << std::endl;
 	}
 	if (ChessUtil::IsKing(movingPiece)) {
 		//Update King loaction
@@ -1037,73 +1038,46 @@ void Position::UnmovePiece(unsigned short& move){
 			blackKingLocation = from;
 		}
 		//Update castling quota
-		if (whiteTurn && to == 6) {
-			SetCastlingQuota('K', true);
+		if(prevState.castlingQuota1 != ' '){
+			SetCastlingQuota(prevState.castlingQuota1, true);
 		}
-		else if(!whiteTurn && to == 62) {
-			SetCastlingQuota('k', true);
-		}
-		if (whiteTurn && to == 2) {
-			SetCastlingQuota('Q', true);
-		}
-		else if(!whiteTurn && to == 58) {
-			SetCastlingQuota('q', true);
+		if(prevState.castlingQuota2 != ' '){
+			SetCastlingQuota(prevState.castlingQuota2, true);
 		}
 		//Move rook if castling
-		//TODO: move rook back on bitboard
-		if (to - from == 2) {
-			if(whiteTurn){
-				position[7] = 7;
-				position[5] = 99;
-			}else{
-				position[63] = 63;
-				position[61] = 99;
+		if(castle){
+			bitboards.ReverseCastlingMoveBit(to);
+			if (to - from == 2) {
+				if(whiteTurn){
+					position[7] = 7;
+					position[5] = 99;
+				}else{
+					position[63] = 63;
+					position[61] = 99;
+				}
 			}
-		}
-		else if (to - from == -2){
-			if(whiteTurn){
-				position[0] = 0;
-				position[3] = 99;
-			}else{
-				position[56] = 56;
-				position[59] = 99;
+			else if (to - from == -2){
+				if(whiteTurn){
+					position[0] = 0;
+					position[3] = 99;
+				}else{
+					position[56] = 56;
+					position[59] = 99;
+				}
 			}
 		}
 	}
 	if (ChessUtil::IsRook(movingPiece)) {
-		//TODO: put back castling quota if rook move for the first time
-		//Update castling quota
-		if(movingPiece == 0 && GetCastlingQuota('Q')){
-			SetCastlingQuota('Q', false);
-			//castlingQuota['Q'] = false;
-		}else if(movingPiece == 7 && GetCastlingQuota('K')){
-			SetCastlingQuota('K', false);
-			//castlingQuota['K'] = false;
-		}else if(movingPiece == 56 && GetCastlingQuota('q')){
-			SetCastlingQuota('q', false);
-			//castlingQuota['q'] = false;
-		}else if(movingPiece == 63 && GetCastlingQuota('k')){
-			SetCastlingQuota('k', false);
-			//castlingQuota['k'] = false;
+		if(prevState.castlingQuota1 != ' '){
+			SetCastlingQuota(prevState.castlingQuota1, true);
 		}
 	}
+	//Pop prev state
+	stateStack.pop();
 	//Update Checked
-	std::vector<short> cb = GetCheckedByAndUpdatePin(whiteTurn);
-	for(int i = 0; i < 2; i++){
-		if(cb.size()< i+1) {
-			checkedBy[i] = 99;
-		}else{
-			checkedBy[i] = cb[i];
-		}
-	}
-	if(cb.size() > 0) {
-		check = true;
-		if(cb.size() == 1 && movingPiece != cb[0] && !promotion) {
-			discoverCheck = true;
-		}
-		if(cb.size() > 1){
-			doubleCheck = true;
-		}
+	if(stateStack.size() > 0){
+		short prevMovingPiece = position[ChessUtil::GetTo(stateStack.top().prevMove)];
+		UpdateCheck(prevMovingPiece);
 	}
 }
 

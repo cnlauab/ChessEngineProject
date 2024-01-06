@@ -296,6 +296,7 @@ std::unordered_map<short, int> ChessUtil::pieceValueMapping = {
         {95,-3},
         {99,0}
 };
+std::unordered_map<char, short> ChessUtil::castlingTargetMapping = {{'K',6},{'Q',2},{'k',62},{'q',58}}; 
 
 char ChessUtil::file[8] = { 'a','b','c','d','e','f','g','h' };
 char ChessUtil::rank[8] = { '1','2','3','4','5','6','7','8' };
@@ -455,7 +456,7 @@ SquareControl ChessUtil::squareControlMap[64] = {
     SquareControl(62),
     SquareControl(63)
 };
-std::unordered_map<char, unsigned short> ChessUtil::promotionTypeMap = {{'Q',0},{'N',1},{'R',2},{'B',3}};
+std::unordered_map<char, unsigned short> ChessUtil::promotionTypeMap = {{'Q',0},{'N',1},{'R',2},{'B',3},{' ',0}};
 
 char ChessUtil::GetPieceType(short piece) {
     return pieceMapping[piece];
@@ -562,7 +563,7 @@ bool ChessUtil::IsLightSquare(short square){
 }
 
 unsigned short ChessUtil::SimpleMove(short from, short to, bool capture, char promotionType){
-    return (unsigned short)from | ((unsigned short)to << 6) | (ChessUtil::promotionTypeMap[promotionType] << 12) | ((unsigned short)capture << 14);
+    return (unsigned short)from | ((unsigned short)to << 6) | (ChessUtil::promotionTypeMap[promotionType] << 12) | ((unsigned short)capture << 14) | ((unsigned short)(promotionType != ' ') << 15);
 }
 
 short ChessUtil::GetFrom(unsigned short move){
@@ -591,6 +592,10 @@ char ChessUtil::GetPromotionType(unsigned short move){
 
 bool ChessUtil::GetIsCapture(unsigned short move){
     return (move >> 14) & 1;
+}
+
+bool ChessUtil::GetIsPromotion(unsigned short move){
+    return (move >> 15) & 1;
 }
 
 std::string ChessUtil::SimpleMoveToString(unsigned short move){

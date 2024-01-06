@@ -102,6 +102,29 @@ SquareControl::SquareControl(short square){
     if(square > 47 && square < 56) pawnShiftDownBitboard |= 1ULL << (square - 16);
     whitePawnPushOneSquare = (square <= 55) ? square + 8 : 99;
     blackPawnPushOneSquare = (square >= 8) ? square - 8 : 99;
+
+    rookMagicBitMask = rookControlBitboard;
+    bishopMagicBitMask = bishopControlBitboard;
+    bool onAFile = (1ULL << square & 72340172838076673ULL) > 0ULL;
+    bool onHFile = (1ULL << square & 9259542123273814144ULL) > 0ULL;
+    bool on1stRank = (1ULL << square & 255ULL) > 0ULL;
+    bool on8thRank = (1ULL << square & 18374686479671623680ULL) > 0ULL;
+    if(!onAFile){
+        rookMagicBitMask &= ~72340172838076673ULL;
+        bishopMagicBitMask &= ~72340172838076673ULL;
+    }
+    if(!onHFile){
+        rookMagicBitMask &= ~9259542123273814144ULL;
+        bishopMagicBitMask &= ~9259542123273814144ULL;
+    }
+    if(!on1stRank){
+        rookMagicBitMask &= ~255ULL;
+        bishopMagicBitMask &= ~255ULL;
+    }
+    if(!on8thRank){
+        rookMagicBitMask &= ~18374686479671623680ULL;
+        bishopMagicBitMask &= ~18374686479671623680ULL;
+    }
 }
 
 std::string SquareControl::toString()

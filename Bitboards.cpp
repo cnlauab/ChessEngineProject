@@ -150,9 +150,9 @@ void Bitboards::MoveBit(short from, short to, bool whiteTurn){
 void Bitboards::EnpassantMoveBit(short to, bool whiteTurn){
     short pawnSquare = whiteTurn ? to - 8 : to + 8;
     if(whiteTurn){
-        whiteBitboards[0] &= ~(1ULL << pawnSquare);
-    }else{
         blackBitboards[0] &= ~(1ULL << pawnSquare);
+    }else{
+        whiteBitboards[0] &= ~(1ULL << pawnSquare);
     }
 }
 
@@ -178,8 +178,49 @@ void Bitboards::PromotionMoveBit(short to, short promotionType, bool whiteTurn){
     }
 }
 
+void Bitboards::PutBackTakenPiece(short to, short piece, bool whiteTurn){
+    char type = tolower(ChessUtil::GetPieceType(piece));
+    int typeIndex = BitUtil::pieceBitboardIndexMapping[type];
+    if(whiteTurn){
+        blackBitboards[typeIndex] |= 1ULL << to;
+    }else{
+        whiteBitboards[typeIndex] |= 1ULL << to;
+    }
+}
+
+void Bitboards::ReverseEnpassantMoveBit(short to, bool whiteTurn){
+    short pawnSquare = whiteTurn ? to - 8 : to + 8;
+    if(whiteTurn){
+        blackBitboards[0] |= (1ULL << pawnSquare);
+    }else{
+        whiteBitboards[0] |= (1ULL << pawnSquare);
+    }
+}
+
+void Bitboards::ReverseCastlingMoveBit(short to){
+    if(to == 2){
+        whiteBitboards[4] = whiteBitboards[4] & ~(1ULL << 3) | (1ULL << 0);
+    }else if(to == 6){
+        whiteBitboards[4] = whiteBitboards[4] & ~(1ULL << 5) | (1ULL << 7);
+    }else if(to == 58){
+        blackBitboards[4] = blackBitboards[4] & ~(1ULL << 59) | (1ULL << 56);
+    }else if(to == 62){
+        blackBitboards[4] = blackBitboards[4] & ~(1ULL << 61) | (1ULL << 63);
+    }
+}
+
+void Bitboards::ReversePromotionMoveBit(short to, short promotionType, bool whiteTurn){
+    if(whiteTurn){
+        whiteBitboards[0] |= (1ULL << to);
+        whiteBitboards[promotionType] &= ~(1ULL << to);
+    }else{
+        blackBitboards[0] |= (1ULL << to);
+        blackBitboards[promotionType] &= ~(1ULL << to);
+    }
+}
+
 unsigned long long Bitboards::controlledBits(bool white){
-    unsigned long long result;
+    unsigned long long result = 0ULL;
     unsigned long long* bitboards = white ? whiteBitboards : blackBitboards;
     for(int i = 0; i < 6; i++){
         if(i==0){
@@ -196,6 +237,7 @@ unsigned long long Bitboards::controlledBits(bool white){
             result |= BitUtil::kingControlBits(bitboards[i]);
         }
     }
+    std::cout << result << std::endl;
     return result;
 }
 

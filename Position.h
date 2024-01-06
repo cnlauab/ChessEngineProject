@@ -4,18 +4,28 @@
 #include <unordered_map>
 #include <string>
 #include <vector>
+#include <stack>
 #include "Parser.h"
 #include "State.h"
 #include "ChessUtil.h"
 #include "BitUtil.h"
 #include "Bitboards.h"
 
+struct PositionState{
+    unsigned short prevMove;
+    short takenPiece = 99;
+    short enPassantSquare = 99;
+    short prevEnPassantSquare = 99;
+    char castlingQuota1 = ' ';
+    char castlingQuota2 = ' ';
+    short halfMove = 0;
+};
+
 class Position {
 public :
     //FEN
     bool whiteTurn = true;
     short enPassantSquare = 99;
-    short prevEnPassantSquare = 99;
     short halfmove = 0;
     short fullmove = 0;
 	short position[64];
@@ -37,15 +47,13 @@ public :
     bool stalemate;
 
     //States
-    unsigned short prevMove;
     unsigned short bestMove;
     std::vector<short> whitePieceOnBoard;
     std::vector<short> blackPieceOnBoard;
     short whiteKingLocation;
     short blackKingLocation;
-    std::vector<short> takenPieceStack;
-    std::vector<unsigned short> prevMoveStack;
-    unsigned short prevMoveStack;
+
+    std::stack<PositionState> stateStack;
 
     //Pinned piece
     std::unordered_map<short,short> pinnedPiece;//piece,direction
@@ -80,9 +88,10 @@ public :
     std::string MoveToPNGString(unsigned short move);
 
 	//Mutator
+    void UpdateCheck(short attackingPiece);
     void SetCastlingQuota(char type, bool on);
 	void MovePiece(unsigned short& move);
-	void UnmovePiece(unsigned short& move);//Not Clean
+	void UnmovePiece();
 
     //Evaluation
     short CalculateScore();

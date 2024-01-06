@@ -69,6 +69,7 @@ std::unordered_map<unsigned long long, short> BitUtil::bitToSquareMap = {
     {1ULL<<62,62},
     {1ULL<<63,63}
 };
+std::unordered_map<char, unsigned long long> BitUtil::castleBlockingBits = {{'K',112ULL},{'Q',28ULL},{'k',8070450532247928832ULL},{'q',2017612633061982208ULL}};
 
 std::string BitUtil::bitboardToString(unsigned long long bitboard){
     std::cout << "Printing bitboard (Value: " << bitboard << ")" << std::endl;
@@ -96,19 +97,25 @@ std::string BitUtil::bitboardToString(unsigned long long bitboard){
 std::vector<short> BitUtil::getBitPositions(unsigned long long bitboard){
     std::vector<short> result;
     unsigned long long tmpBitboard = bitboard;
-    short count = 0;
-    
-    if(tmpBitboard && (!(tmpBitboard & (tmpBitboard - 1)))){
-        result.push_back(bitToSquareMap[tmpBitboard]);
-        return result;
-    }
 
     while(tmpBitboard > 0ULL){
-        if(tmpBitboard % 2 == 1) result.push_back(count);
-        tmpBitboard = tmpBitboard >> 1;
-        count++;
+        int leadingZeros = __builtin_clzll(tmpBitboard);
+        short leftMostIndex = 63 - leadingZeros;
+        result.push_back(leftMostIndex);
+        tmpBitboard &= ~(1ULL << leftMostIndex);
+    }
+    return result;
+}
 
-        //std::cout << tmpBitboard << std::endl;
+short BitUtil::getNumberOnBits(unsigned long long bitboard){
+    short result;
+    unsigned long long tmpBitboard = bitboard;
+
+    while(tmpBitboard > 0ULL){
+        int leadingZeros = __builtin_clzll(tmpBitboard);
+        short leftMostIndex = 63 - leadingZeros;
+        result+=1;
+        tmpBitboard &= ~(1ULL << leftMostIndex);
     }
     return result;
 }
@@ -209,4 +216,11 @@ unsigned long long BitUtil::GetRankBit(short rank){
     return firstRank << rank;
 }
 
+unsigned long long BitUtil::GetMagicKey(unsigned long long allPieces, short square, bool diagonal){
+    if(diagonal){
+        return allPieces & ChessUtil::squareControlMap[square].bishopMagicBitMask;
+    }else{
+        return allPieces & ChessUtil::squareControlMap[square].rookMagicBitMask;
+    }
 
+}

@@ -162,6 +162,7 @@ CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o: \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/wctype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/wctype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_types/_wctrans_t.h \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/stack \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Parser.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.h \

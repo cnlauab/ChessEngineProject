@@ -97,14 +97,21 @@ void TestBitboard(){
 	cout << "All" << endl;
 	cout << bitboards.BitboardsToString() << endl;
 
-	cout << "Bishop at 32" << endl;
-	cout << BitUtil::bitboardToString(ChessUtil::squareControlMap[32].bishopControlBitboard) << endl;
-	cout << "Rook at 32" << endl;
-	cout << BitUtil::bitboardToString(ChessUtil::squareControlMap[32].rookControlBitboard) << endl;
-	cout << "Queen at 32" << endl;
-	cout << BitUtil::bitboardToString(ChessUtil::squareControlMap[32].queenControlBitboard) << endl;
-	//std::vector<short> positions = ChessUtil::getBitPositions(bitboards.allBlackBitboard());
-	//for(auto position : positions) cout << position << endl;
+	//cout << "Bishop at 32" << endl;
+	//cout << BitUtil::bitboardToString(ChessUtil::squareControlMap[32].bishopControlBitboard) << endl;
+	
+	std::vector<short> positions = BitUtil::getBitPositions(bitboards.blackBitboards[0]);
+	for(auto position : positions) cout << " Pawn: " << position << endl;
+	positions = BitUtil::getBitPositions(bitboards.blackBitboards[1]);
+	for(auto position : positions) cout << " Queen: " << position << endl;
+	positions = BitUtil::getBitPositions(bitboards.blackBitboards[2]);
+	for(auto position : positions) cout << " Knight: " << position << endl;
+	positions = BitUtil::getBitPositions(bitboards.blackBitboards[3]);
+	for(auto position : positions) cout << " Bishop: " << position << endl;
+	positions = BitUtil::getBitPositions(bitboards.blackBitboards[4]);
+	for(auto position : positions) cout << " Rook: " << position << endl;
+	positions = BitUtil::getBitPositions(bitboards.blackBitboards[5]);
+	for(auto position : positions) cout << " King: " << position << endl;
 }
 
 void TestUCI(){
@@ -125,7 +132,7 @@ void TestPerft(){
 	
 	std::string fen = "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq -";
 	Position initialPosition = Position(fen);
-	int depth = 4;
+	int depth = 1;
 
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
@@ -147,6 +154,31 @@ void TestEvaluation(){
 	cout << currentPosition.PositionToString() << endl;
 	unsigned short chosenMove = Evaluation::Evaluate(currentPosition);
 	cout << "Move chosen: " << currentPosition.MoveToUCIString(chosenMove) << endl;
+}
+
+void TestMagic(){
+	MagicBits magicBits;
+	std::string fen = "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq -";
+	Position initialPosition = Position(fen);
+	unsigned long long allPieces = ~initialPosition.bitboards.allEmptySquareBitboard();
+	short queenSquare = BitUtil::getBitPositions(initialPosition.bitboards.whiteBitboards[1])[0];
+	short bishopSquare = BitUtil::getBitPositions(initialPosition.bitboards.whiteBitboards[3])[0];
+	short rookSquare = BitUtil::getBitPositions(initialPosition.bitboards.whiteBitboards[4])[0];
+
+	unsigned long long bishopKey = BitUtil::GetMagicKey(allPieces, bishopSquare, true);
+	unsigned long long rookKey = BitUtil::GetMagicKey(allPieces, rookSquare, false);
+
+	unsigned long long queenMoves = magicBits.GetQueenMagic(queenSquare, BitUtil::GetMagicKey(allPieces, queenSquare, false), BitUtil::GetMagicKey(allPieces, queenSquare, true));
+	unsigned long long bishopMoves = magicBits.GetBishopMagic(bishopSquare, bishopKey);
+	unsigned long long rookMoves = magicBits.GetRookMagic(rookSquare, rookKey);
+
+	cout << initialPosition.PositionToString() << endl;
+	cout << "Queen moves at " << ChessUtil::SquareToString(queenSquare) << endl;
+	cout << BitUtil::bitboardToString(queenMoves) << endl;
+	cout << "Bishop moves at " << ChessUtil::SquareToString(bishopSquare) << endl;
+	cout << BitUtil::bitboardToString(bishopMoves) << endl;
+	cout << "Rook moves at " << ChessUtil::SquareToString(rookSquare) << endl;
+	cout << BitUtil::bitboardToString(rookMoves) << endl;
 }
 
 //Mode
@@ -207,6 +239,9 @@ int main()
 	Debug::ClearLog();
 	Debug::UCILog("############ HoneyB Program Started ############", true);
 
+	//int k = __builtin_clzll(1ULL);
+	//cout << k << endl;
+
 	//Play in console
 	//ConsoleMode();
 	//Play in UCI
@@ -217,9 +252,10 @@ int main()
 	//Test Bitboard
 	//TestBitboard();
 	//Test Perft
-	TestPerft();
+	//TestPerft();
 	//Test Magic Bitboard
-	//MagicUtil::ListAllMagicBits();
+	TestMagic();
+
 
 	return 0;
 }

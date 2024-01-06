@@ -10,7 +10,10 @@ class Bitboards {
     public:
         unsigned long long whiteBitboards[6] = {0ULL,0ULL,0ULL,0ULL,0ULL,0ULL};
         unsigned long long blackBitboards[6] = {0ULL,0ULL,0ULL,0ULL,0ULL,0ULL};
-
+        unsigned long long pinnedBitboard = 0ULL;
+        unsigned long long checkedBitboard = 0Ull;
+        std::unordered_map<short,unsigned long long> pinnedRays;//square,ray
+        
         Bitboards();
         Bitboards(std::string fen);
         Bitboards(const Bitboards& other);
@@ -29,6 +32,11 @@ class Bitboards {
         void EnpassantMoveBit(short to, bool whiteTurn);
         void CastlingMoveBit(short to);
         void PromotionMoveBit(short to, short promotionType, bool whiteTurn);
+
+        void PutBackTakenPiece(short to, short piece, bool whiteTurn);
+        void ReverseEnpassantMoveBit(short to, bool whiteTurn);
+        void ReverseCastlingMoveBit(short to);
+        void ReversePromotionMoveBit(short to, short promotionType, bool whiteTurn);
 
         unsigned long long controlledBits(bool white);
 

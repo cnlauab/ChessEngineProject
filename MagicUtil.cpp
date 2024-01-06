@@ -2,18 +2,19 @@
 #include "MagicUtil.h"
 
 void MagicUtil::ListAllMagicBits(){
-    MagicBits magicBits = MagicBits();
-    std::cout << "Important Squares" << std::endl;
-    //std::cout << magicBits.importantSquares.size() << std::endl;
-    
-    for(auto it=magicBits.importantBits.begin();it!=magicBits.importantBits.end();it++) {
-        std::cout << it->first << "," <<it->second << std::endl;
-        std::string s;
-        s += std::to_string(it->first) + "," + std::to_string(it->second);
-        Output(s);
-        //BitUtil::bitboardToString(it->first);//Testing
-    }
-    
+    std::cout << "Start creating Magic bit boards" << std::endl;
+    MagicBits magicBits;
+    //std::cout << "Rook" << std::endl;
+    //std::cout << magicBits.magicBishop[0].size() << std::endl;
+    //for(int i = 0; i < 64; i++){
+    //    std::cout << magicBits.magicRook[i].size() << std::endl;
+    //}
+    //
+    //std::cout << "Bishop" << std::endl;
+    //for(int i = 0; i < 64; i++){
+    //    std::cout << magicBits.magicBishop[i].size() << std::endl;
+    //}
+    std::cout << "Done" << std::endl;
 }
 
 void MagicUtil::Output(std::string s){

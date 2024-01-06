@@ -714,6 +714,7 @@ CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o: ../ChessEngineProjec
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__node_handle \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/optional \
   ../Position.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/stack \
   ../Parser.h \
   ../ChessUtil.h \
   ../SquareControl.h \
@@ -726,7 +727,6 @@ CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o: ../ChessEngineProjec
   ../Debug.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/stack \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip \
   ../Validator.h \
   ../UCI.h \
@@ -1379,6 +1379,7 @@ CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o: ../Evaluation.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/wctype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/wctype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_types/_wctrans_t.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/stack \
   ../Parser.h \
   ../ChessUtil.h \
   ../SquareControl.h \
@@ -1698,6 +1699,8 @@ CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o: ../LegalChecker.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/optional \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/vector \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__split_buffer \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/stack \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/deque \
   ../Parser.h \
   ../ChessUtil.h \
   ../SquareControl.h \
@@ -2345,6 +2348,8 @@ CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o: ../MoveGenerator.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/wctype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/wctype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_types/_wctrans_t.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/stack \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/deque \
   ../Parser.h \
   ../ChessUtil.h \
   ../SquareControl.h \
@@ -3059,6 +3064,8 @@ CMakeFiles/ChessEngineProject.dir/Position.cpp.o: ../Position.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/i386/_limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/syslimits.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__split_buffer \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/stack \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/deque \
   ../Parser.h \
   ../ChessUtil.h \
   ../SquareControl.h \
@@ -3531,6 +3538,8 @@ CMakeFiles/ChessEngineProject.dir/State.cpp.o: ../State.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/cmath \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__node_handle \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/optional \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/stack \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/deque \
   ../Parser.h \
   ../ChessUtil.h \
   ../SquareControl.h \

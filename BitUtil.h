@@ -24,9 +24,11 @@ public:
 	static std::unordered_map<char, int> pieceBitboardIndexMapping;
 	static char bitboardIndexPieceMapping[6];
 	static std::unordered_map<unsigned long long, short> bitToSquareMap;
+    static std::unordered_map<char, unsigned long long> castleBlockingBits;
 
 	static std::string bitboardToString(unsigned long long bitboard);
 	static std::vector<short> getBitPositions(unsigned long long bitboard);
+    static short getNumberOnBits(unsigned long long bitboard);
 
     static unsigned long long knightControlBits(unsigned long long knightbits);
     static unsigned long long pawnControlBits(unsigned long long pawnbits, bool white);
@@ -35,7 +37,7 @@ public:
     static unsigned long long GetFileBit(short file);
     static unsigned long long GetRankBit(short rank);
 
-    static short countSetBits(unsigned long long bits);
+    static unsigned long long GetMagicKey(unsigned long long allPieces, short square, bool diagonal);
 
     private:
     

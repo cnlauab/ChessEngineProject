@@ -31,6 +31,8 @@ public:
     unsigned long long pawnShiftUpBitboard = 0ULL;
     unsigned long long pawnShiftDownBitboard = 0ULL;
 
+    unsigned long long rookMagicBitMask = 0ULL;
+    unsigned long long bishopMagicBitMask = 0ULL;
     //Util
     std::vector<short> allSlidingSquare;
 

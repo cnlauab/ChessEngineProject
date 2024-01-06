@@ -93,18 +93,23 @@ std::vector<unsigned short> MoveGenerator::GenerateAllPossibleMoves(Position& po
 	//	}
 	//}
 	//return result;
+	std::vector<unsigned short> result;
 
 	if(!position.check){
-		std::vector<unsigned short> result;
 		std::vector<short> pieceOnBoard = position.whiteTurn ? position.whitePieceOnBoard : position.blackPieceOnBoard;
 		for(int i = 0; i < pieceOnBoard.size(); i++){
 			short piece = pieceOnBoard[i];
 			std::vector<unsigned short> pieceResult = GeneratePossibleMoves(piece,position);
 			result.insert(result.end(), pieceResult.begin(), pieceResult.end());
 		}
+		KingMoves(result, position);
+		KnightMoves(result, position);
 		return result;
 	}else{
-		return GenerateMovesWhenChecked(position);
+		result = GenerateMovesWhenChecked(position);
+		KingMoves(result, position);
+		KnightMoves(result, position);
+		return result;
 	}
 }
 
@@ -112,6 +117,7 @@ std::vector<unsigned short> MoveGenerator::GeneratePossibleMoves(short& piece, P
 {
 	//std::cout << "Generating " << ChessUtil::SquareToString(position.GetPieceLocation(piece)) << std::endl;
 	char pieceType = tolower(ChessUtil::GetPieceType(piece));
+	if(pieceType == 'n' || pieceType == 'k') return std::vector<unsigned short>();
 	short typeIndex = BitUtil::pieceBitboardIndexMapping[pieceType];
 	if (position.pinnedPiece.find(piece) == position.pinnedPiece.end()){
         return MoveGenerationByType[typeIndex](piece, position);
@@ -212,19 +218,6 @@ std::vector<unsigned short> MoveGenerator::GenerateKingMoves(short& piece, Posit
 
 	std::vector<short> kingSquare = ChessUtil::squareControlMap[starting].GetKingSquare();
 
-	unsigned long long friendlyBit = position.whiteTurn ? position.bitboards.allWhiteBitboard() : position.bitboards.allBlackBitboard();
-	unsigned long long legalBits = ~(position.bitboards.controlledBits(!position.whiteTurn) | friendlyBit);
-	unsigned long long kingControlBits = ChessUtil::squareControlMap[starting].kingControlBitboard;
-	unsigned long long targetBits = kingControlBits & legalBits;
-
-	//std::vector<short> legalSquares = BitUtil::getBitPositions(targetBits);
-	//for(short target : legalSquares){
-	//	unsigned short move = ChessUtil::SimpleMove(starting, target);
-	//	if(LegalChecker::IsLegal(position, move)){
-	//		result.push_back(move);
-	//	}
-	//}
-
 	//std::cout << "GenerateKingMoves for K" << ChessUtil::SquareToString(starting) << std::endl;
 	//Normal move
 	for (int i = 0; i < kingSquare.size(); i++)
@@ -320,18 +313,18 @@ std::vector<unsigned short> MoveGenerator::GenerateMovesWhenChecked(Position& po
 	}else{
 		if(ChessUtil::IsKnight(position.checkedBy[0]) || ChessUtil::IsPawn(position.checkedBy[0])){
 			std::vector<unsigned short> result1 = GenerateMovesByCapturing(position);
-			std::vector<unsigned short> result2 = GenerateMovesByEvading(position);
+			//std::vector<unsigned short> result2 = GenerateMovesByEvading(position);
 			result.insert(result.end(), result1.begin(), result1.end());
-			result.insert(result.end(), result2.begin(), result2.end());
+			//result.insert(result.end(), result2.begin(), result2.end());
 			//std::cout << "Check evasion move by " << ChessUtil::SquareToString(position.GetPieceLocation(position.checkedBy[0])) << ": ";
 			//for(Move move : result1) std::cout << move.toString() << ", ";
 			//std::cout << std::endl;
 		}else{
 			std::vector<unsigned short> result1 = GenerateMovesByCapturing(position);
-			std::vector<unsigned short> result2 = GenerateMovesByEvading(position);
+			//std::vector<unsigned short> result2 = GenerateMovesByEvading(position);
 			std::vector<unsigned short> result3 = GenerateMovesByBlocking(position);
 			result.insert(result.end(), result1.begin(), result1.end());
-			result.insert(result.end(), result2.begin(), result2.end());
+			//result.insert(result.end(), result2.begin(), result2.end());
 			result.insert(result.end(), result3.begin(), result3.end());
 			//if(result1.size() == 0 && result2.size() == 0 && result3.size() != 0){
 			//	std::cout << position.PositionToFen();
@@ -362,7 +355,7 @@ std::vector<unsigned short> MoveGenerator::GenerateMovesByCapturing(Position& po
 	std::vector<short> pieces = position.GetFriendlyCanReach(target, true);
 	std::vector<unsigned short> result;
 	for(short piece : pieces){
-		if(ChessUtil::IsKing(piece)) continue;
+		if(ChessUtil::IsKing(piece) || ChessUtil::IsKnight(piece)) continue;
 		if(position.pinnedPiece.find(piece) != position.pinnedPiece.end()) continue;
 		unsigned short move = ChessUtil::SimpleMove(position.GetPieceLocation(piece), target, true);
 		
@@ -423,6 +416,7 @@ std::vector<unsigned short> MoveGenerator::GenerateMovesByBlocking(Position& pos
 	for(short target : targetSquare){
 		std::vector<short> pieces = position.GetFriendlyCanReach(target, false);
 		for(short piece : pieces){
+			if(ChessUtil::IsKnight(piece)) continue;
 			if(position.pinnedPiece.find(piece) != position.pinnedPiece.end()) continue;
 			unsigned short move = ChessUtil::SimpleMove(position.GetPieceLocation(piece), target);
 			
@@ -556,3 +550,62 @@ void MoveGenerator::AddPawnMoves(Position& position, std::vector<unsigned short>
 }
 
 std::vector<unsigned short> (*MoveGenerator::MoveGenerationByType[6]) (short&, Position&) = {GeneratePawnMoves, GenerateSlidingMoves, GenerateKnightMoves, GenerateSlidingMoves, GenerateSlidingMoves, GenerateKingMoves};
+
+void MoveGenerator::KingMoves(std::vector<unsigned short>& moves, Position& position){
+	//King moves
+	short starting = position.whiteTurn ? position.whiteKingLocation : position.blackKingLocation;
+	unsigned long long friendlyBit = position.whiteTurn ? position.bitboards.allWhiteBitboard() : position.bitboards.allBlackBitboard();
+	unsigned long long enemyBits = position.whiteTurn ? position.bitboards.allBlackBitboard() : position.bitboards.allWhiteBitboard();
+	unsigned long long enemyControlBits = position.bitboards.controlledBits(!position.whiteTurn); 
+	unsigned long long targetBits = ChessUtil::squareControlMap[starting].kingControlBitboard & ~(enemyControlBits | friendlyBit);
+	//Castling moves
+	char kingColor = position.whiteTurn ? 'K' : 'k';
+	char queenColor = position.whiteTurn ? 'Q' : 'q';
+	unsigned long long kingSideBlockingBits = BitUtil::castleBlockingBits[kingColor];
+	unsigned long long queenSideBlockingBits = BitUtil::castleBlockingBits[queenColor];
+	std::cout << position.PositionToString() << std::endl;
+	std::cout << BitUtil::bitboardToString(enemyControlBits) << std::endl;
+	if(position.GetCastlingQuota(kingColor)){
+		unsigned long long blockingBit = enemyControlBits & kingSideBlockingBits;
+		short target = ChessUtil::castlingTargetMapping[kingColor];
+		if(blockingBit == 0ULL) {
+			unsigned short&& move = ChessUtil::SimpleMove(starting, target);
+			moves.push_back(move);
+		}
+	}
+	if(position.GetCastlingQuota(queenColor)){
+		unsigned long long blockingBit = enemyControlBits & queenSideBlockingBits;
+		short target = ChessUtil::castlingTargetMapping[queenColor];
+		if(blockingBit == 0ULL) {
+			unsigned short&& move = ChessUtil::SimpleMove(starting, target);
+			moves.push_back(move);
+		}
+	}
+
+	std::vector<short> legalSquares = BitUtil::getBitPositions(targetBits);
+	for(short target : legalSquares){
+		bool capture = (enemyBits & (1ULL << target)) > 0ULL;
+		unsigned short&& move = ChessUtil::SimpleMove(starting, target, capture);
+		moves.push_back(move);
+	}
+}
+
+void MoveGenerator::KnightMoves(std::vector<unsigned short>& moves, Position& position){
+	unsigned long long knightBits = position.whiteTurn ? position.bitboards.whiteBitboards[2] : position.bitboards.blackBitboards[2];
+	unsigned long long enemyBits = position.whiteTurn ? position.bitboards.allBlackBitboard() : position.bitboards.allWhiteBitboard();
+	unsigned long long emptyEnemyAndCheckedBy = (position.bitboards.allEmptySquareBitboard() | enemyBits) & position.bitboards.checkedBitboard;
+	knightBits &= ~position.bitboards.pinnedBitboard;
+
+	std::vector<short> knightSquare = BitUtil::getBitPositions(knightBits);
+	for(short starting : knightSquare){
+		unsigned long long targetBits = ChessUtil::squareControlMap[starting].knightControlBitboard;
+		targetBits &= emptyEnemyAndCheckedBy;
+		std::vector<short> targetSquare = BitUtil::getBitPositions(targetBits);
+		for(short target :targetSquare){
+			bool capture = (enemyBits & (1ULL << target)) > 0ULL;
+			unsigned short&& move = ChessUtil::SimpleMove(starting, target, capture);
+			moves.push_back(move);
+			//std::cout << ChessUtil::SimpleMoveToString(move) << std::endl;
+		}
+	}
+}

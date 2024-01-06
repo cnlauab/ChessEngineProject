@@ -10,7 +10,8 @@ public:
     static std::unordered_map<short, char> pieceMapping;
     static std::unordered_map<short, short> pieceScoreMapping;
 	static std::unordered_map<short, int> pieceValueMapping;
-    static char GetPieceType(short piece);
+    static std::unordered_map<char, short> castlingTargetMapping;
+	static char GetPieceType(short piece);
 
 	static char file[8];
 	static char rank[8];
@@ -46,11 +47,12 @@ public:
 
 	static bool IsLightSquare(short square);
 
-	static unsigned short SimpleMove(short from, short to, bool capture = false, char promotionType = 'Q');
+	static unsigned short SimpleMove(short from, short to, bool capture = false, char promotionType = ' ');
 	static short GetFrom(unsigned short move);
 	static short GetTo(unsigned short move);
 	static char GetPromotionType(unsigned short move);
 	static bool GetIsCapture(unsigned short move);
+	static bool GetIsPromotion(unsigned short move);
 	static std::string SimpleMoveToString(unsigned short move);
 	static unsigned short UCIToMove(std::string uci);
 };

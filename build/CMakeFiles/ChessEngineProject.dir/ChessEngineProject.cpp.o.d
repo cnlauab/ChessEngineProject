@@ -237,6 +237,7 @@ CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o: \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__node_handle \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/optional \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Position.h \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/stack \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Parser.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.h \
@@ -249,7 +250,6 @@ CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o: \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Debug.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/fstream \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/filesystem \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/stack \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iomanip \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Validator.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/UCI.h \

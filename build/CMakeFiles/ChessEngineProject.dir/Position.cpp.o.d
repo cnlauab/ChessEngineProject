@@ -156,6 +156,8 @@ CMakeFiles/ChessEngineProject.dir/Position.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/i386/_limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/syslimits.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__split_buffer \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/stack \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/deque \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Parser.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.h \

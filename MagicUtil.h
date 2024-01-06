@@ -6,7 +6,9 @@
 
 class MagicUtil{
     public :
-        //MagicBits magicBits;
+        static MagicBits magicBits;
+
         static void ListAllMagicBits();
         static void Output(std::string s);
+
 };
