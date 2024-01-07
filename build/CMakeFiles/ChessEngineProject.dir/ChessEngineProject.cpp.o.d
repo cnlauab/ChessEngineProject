@@ -244,14 +244,14 @@ CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o: \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BitUtil.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Bitboards.h \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicUtil.h \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicBits.h \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/fstream \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/filesystem \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iomanip \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MoveGenerator.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/LegalChecker.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Perft.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Debug.h \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/fstream \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/filesystem \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iomanip \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Validator.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/UCI.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicBits.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicUtil.h
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/UCI.h

@@ -225,20 +225,40 @@ unsigned long long Bitboards::controlledBits(bool white){
     for(int i = 0; i < 6; i++){
         if(i==0){
             result |= BitUtil::pawnControlBits(bitboards[i],white);
-        }else if(i==1){
-
         }else if(i==2){
             result |= BitUtil::knightControlBits(bitboards[i]);
-        }else if(i==3){
-
-        }else if(i==4){
-
         }else if(i==5){
             result |= BitUtil::kingControlBits(bitboards[i]);
+        }else{
+            std::vector<short> squares = BitUtil::getBitPositions(bitboards[i]);
+            for(short square : squares){
+                //unsigned long long sildingBits = slidingControlBits(white, square, i);
+                //if(i==1)std::cout << i << BitUtil::bitboardToString(sildingBits) << std::endl;
+                result |= slidingControlBits(white, square, i);
+            }
         }
     }
-    std::cout << result << std::endl;
+    //std::cout << result << std::endl;
     return result;
+}
+
+unsigned long long Bitboards::slidingControlBits(bool white, short square, short typeIndex){
+
+	unsigned long long allPieces = ~allEmptySquareBitboard();
+	unsigned long long friendlyPieces = white ? allWhiteBitboard() : allBlackBitboard();
+    if(typeIndex == 1){
+        unsigned long long bishopKey = BitUtil::GetMagicKey(allPieces, square, true);
+	    unsigned long long rookKey = BitUtil::GetMagicKey(allPieces, square, false);
+        return MagicUtil::magicBits.GetQueenMagic(square, rookKey, bishopKey) & ~friendlyPieces;
+    }else if(typeIndex == 3){
+        unsigned long long bishopKey = BitUtil::GetMagicKey(allPieces, square, true);
+        return MagicUtil::magicBits.GetBishopMagic(square, bishopKey) & ~friendlyPieces;
+    }else if(typeIndex == 4){
+	    unsigned long long rookKey = BitUtil::GetMagicKey(allPieces, square, false);
+        return MagicUtil::magicBits.GetRookMagic(square, rookKey) & ~friendlyPieces;
+    }else{
+        return 0ULL;
+    }
 }
 
 std::string Bitboards::BitboardsToString(){

@@ -11,6 +11,7 @@ void Evaluation::PerftSearch(Position& currPosition, int level, std::vector<Perf
     //std::vector<unsigned short> possibleMoves;
     //Old
     for(int i = 0; i < possibleMoves.size(); ++i){
+        //if(currPosition.whiteTurn)std::cout << "White: " << ChessUtil::SimpleMoveToString(possibleMoves[i]) << std::endl;
         Position newPosition = Position(currPosition, possibleMoves[i]);
         if(level > 1){
             PerftSearch(newPosition, level-1, perftData);

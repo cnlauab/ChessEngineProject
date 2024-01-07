@@ -474,7 +474,14 @@ CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.o: ../Bitboards.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__node_handle \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/optional \
   ../SquareControl.h \
-  ../BitUtil.h
+  ../BitUtil.h \
+  ../MagicUtil.h \
+  ../MagicBits.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/stack \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/deque \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip
 
 CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o: ../ChessEngineProject.cpp \
   ../ChessEngineProject.h \
@@ -721,17 +728,17 @@ CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o: ../ChessEngineProjec
   ../State.h \
   ../BitUtil.h \
   ../Bitboards.h \
+  ../MagicUtil.h \
+  ../MagicBits.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip \
   ../MoveGenerator.h \
   ../LegalChecker.h \
   ../Perft.h \
   ../Debug.h \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip \
   ../Validator.h \
-  ../UCI.h \
-  ../MagicBits.h \
-  ../MagicUtil.h
+  ../UCI.h
 
 CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.o: ../ChessUtil.cpp \
   ../ChessUtil.h \
@@ -1214,7 +1221,9 @@ CMakeFiles/ChessEngineProject.dir/Debug.cpp.o: ../Debug.cpp \
   ../SquareControl.h \
   ../State.h \
   ../BitUtil.h \
-  ../Bitboards.h
+  ../Bitboards.h \
+  ../MagicUtil.h \
+  ../MagicBits.h
 
 CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o: ../Evaluation.cpp \
   ../Evaluation.h \
@@ -1460,6 +1469,11 @@ CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o: ../Evaluation.cpp \
   ../State.h \
   ../BitUtil.h \
   ../Bitboards.h \
+  ../MagicUtil.h \
+  ../MagicBits.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip \
   ../MoveGenerator.h \
   ../LegalChecker.h \
   ../Perft.h
@@ -1706,7 +1720,12 @@ CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o: ../LegalChecker.cpp \
   ../SquareControl.h \
   ../State.h \
   ../BitUtil.h \
-  ../Bitboards.h
+  ../Bitboards.h \
+  ../MagicUtil.h \
+  ../MagicBits.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip
 
 CMakeFiles/ChessEngineProject.dir/MagicBits.cpp.o: ../MagicBits.cpp \
   ../MagicBits.h \
@@ -2433,6 +2452,11 @@ CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o: ../MoveGenerator.cpp \
   ../State.h \
   ../BitUtil.h \
   ../Bitboards.h \
+  ../MagicUtil.h \
+  ../MagicBits.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip \
   ../LegalChecker.h
 
 CMakeFiles/ChessEngineProject.dir/Parser.cpp.o: ../Parser.cpp \
@@ -3148,7 +3172,12 @@ CMakeFiles/ChessEngineProject.dir/Position.cpp.o: ../Position.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   ../State.h \
   ../BitUtil.h \
-  ../Bitboards.h
+  ../Bitboards.h \
+  ../MagicUtil.h \
+  ../MagicBits.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip
 
 CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o: ../SquareControl.cpp \
   ../SquareControl.h \
@@ -3621,7 +3650,12 @@ CMakeFiles/ChessEngineProject.dir/State.cpp.o: ../State.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   ../BitUtil.h \
-  ../Bitboards.h
+  ../Bitboards.h \
+  ../MagicUtil.h \
+  ../MagicBits.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip
 
 CMakeFiles/ChessEngineProject.dir/UCI.cpp.o: ../UCI.cpp \
   ../UCI.h \
@@ -3870,6 +3904,8 @@ CMakeFiles/ChessEngineProject.dir/UCI.cpp.o: ../UCI.cpp \
   ../State.h \
   ../BitUtil.h \
   ../Bitboards.h \
+  ../MagicUtil.h \
+  ../MagicBits.h \
   ../Evaluation.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/queue \
   ../MoveGenerator.h \
@@ -4130,15 +4166,15 @@ CMakeFiles/ChessEngineProject.dir/Validator.cpp.o: ../Validator.cpp \
 
 ../ChessUtil.cpp:
 
-/Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip:
-
-/Library/Developer/CommandLineTools/usr/include/c++/v1/fstream:
-
 ../Perft.h:
 
 /Library/Developer/CommandLineTools/usr/include/c++/v1/queue:
 
 ../ChessEngineProject.cpp:
+
+/Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip:
+
+/Library/Developer/CommandLineTools/usr/include/c++/v1/fstream:
 
 ../Perft.cpp:
 

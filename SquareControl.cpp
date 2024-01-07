@@ -97,9 +97,9 @@ SquareControl::SquareControl(short square){
     }
     //Pawn push squares
     whitePawnPushTwoSquare = (square > 7 && square < 16) ? square + 16 : 99;
-    if(square > 7 && square < 16) pawnShiftUpBitboard |= 1ULL << (square + 16);
+    if(square > 7 && square < 16) pawnShiftTwoUpBitboard |= 1ULL << (square + 16);
     blackPawnPushTwoSquare = (square > 47 && square < 56) ? square - 16 : 99;
-    if(square > 47 && square < 56) pawnShiftDownBitboard |= 1ULL << (square - 16);
+    if(square > 47 && square < 56) pawnShiftTwoDownBitboard |= 1ULL << (square - 16);
     whitePawnPushOneSquare = (square <= 55) ? square + 8 : 99;
     blackPawnPushOneSquare = (square >= 8) ? square - 8 : 99;
 

@@ -477,6 +477,13 @@ CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.o
  /Library/Developer/CommandLineTools/usr/include/c++/v1/optional
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BitUtil.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicUtil.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicBits.h
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/stack
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/deque
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip
 
 CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessEngineProject.cpp
@@ -724,17 +731,17 @@ CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BitUtil.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Bitboards.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicUtil.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicBits.h
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MoveGenerator.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/LegalChecker.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Perft.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Debug.h
- /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream
- /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem
- /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Validator.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/UCI.h
- /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicBits.h
- /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicUtil.h
 
 CMakeFiles/ChessEngineProject.dir/ChessUtil.cpp.o
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.cpp
@@ -1220,6 +1227,8 @@ CMakeFiles/ChessEngineProject.dir/Debug.cpp.o
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BitUtil.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Bitboards.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicUtil.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicBits.h
 
 CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Evaluation.cpp
@@ -1466,6 +1475,11 @@ CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BitUtil.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Bitboards.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicUtil.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicBits.h
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MoveGenerator.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/LegalChecker.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Perft.h
@@ -1714,6 +1728,11 @@ CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BitUtil.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Bitboards.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicUtil.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicBits.h
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip
 
 CMakeFiles/ChessEngineProject.dir/MagicBits.cpp.o
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicBits.cpp
@@ -2443,6 +2462,11 @@ CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BitUtil.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Bitboards.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicUtil.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicBits.h
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/LegalChecker.h
 
 CMakeFiles/ChessEngineProject.dir/Parser.cpp.o
@@ -3162,6 +3186,11 @@ CMakeFiles/ChessEngineProject.dir/Position.cpp.o
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BitUtil.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Bitboards.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicUtil.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicBits.h
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip
 
 CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.cpp
@@ -3637,6 +3666,11 @@ CMakeFiles/ChessEngineProject.dir/State.cpp.o
  /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BitUtil.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Bitboards.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicUtil.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicBits.h
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem
+ /Library/Developer/CommandLineTools/usr/include/c++/v1/iomanip
 
 CMakeFiles/ChessEngineProject.dir/UCI.cpp.o
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/UCI.cpp
@@ -3886,6 +3920,8 @@ CMakeFiles/ChessEngineProject.dir/UCI.cpp.o
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BitUtil.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Bitboards.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicUtil.h
+ /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicBits.h
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Evaluation.h
  /Library/Developer/CommandLineTools/usr/include/c++/v1/queue
  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MoveGenerator.h

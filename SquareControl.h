@@ -30,6 +30,8 @@ public:
     unsigned long long kingControlBitboard = 0ULL;
     unsigned long long pawnShiftUpBitboard = 0ULL;
     unsigned long long pawnShiftDownBitboard = 0ULL;
+    unsigned long long pawnShiftTwoUpBitboard = 0ULL;
+    unsigned long long pawnShiftTwoDownBitboard = 0ULL;
 
     unsigned long long rookMagicBitMask = 0ULL;
     unsigned long long bishopMagicBitMask = 0ULL;

@@ -58,6 +58,8 @@ public :
     //Pinned piece
     std::unordered_map<short,short> pinnedPiece;//piece,direction
 
+    char castlingQuota = 0;
+
 	//Constructor
 	Position();
     Position(std::string fen);
@@ -96,5 +98,4 @@ public :
     //Evaluation
     short CalculateScore();
 private:
-    char castlingQuota = 15;
 };

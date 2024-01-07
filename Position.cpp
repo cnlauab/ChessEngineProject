@@ -53,6 +53,7 @@ Position::Position(std::string fen)
 
 	//Castling
 	for(char c : parameters[2]){
+		//std::cout << c << std::endl;
 		SetCastlingQuota(c, true);
 	}
 
@@ -745,12 +746,18 @@ void Position::SetCastlingQuota(char type, bool on){
 		case 'q':
 			k = 3;
 			break;
+		case '-':
+			castlingQuota = 0;
+			return;
+		default:
+			return;
 	}
 	if(on){
 		castlingQuota |= (1 << k);
 	}else{
 		castlingQuota &= ~(1 << k);
 	}
+	//std::cout << (int)castlingQuota << std::endl;
 }
 
 void Position::MovePiece(unsigned short& move)

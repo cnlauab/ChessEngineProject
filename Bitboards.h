@@ -5,6 +5,7 @@
 #include <iostream>
 #include "ChessUtil.h"
 #include "BitUtil.h"
+#include "MagicUtil.h"
 
 class Bitboards {
     public:
@@ -39,6 +40,7 @@ class Bitboards {
         void ReversePromotionMoveBit(short to, short promotionType, bool whiteTurn);
 
         unsigned long long controlledBits(bool white);
+        unsigned long long slidingControlBits(bool white, short square, short typeIndex);
 
         std::string BitboardsToString();
 };

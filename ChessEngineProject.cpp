@@ -130,9 +130,9 @@ void TestPerft(){
 
 	//Testing Perft
 	
-	std::string fen = "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq -";
+	std::string fen = "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - -";
 	Position initialPosition = Position(fen);
-	int depth = 1;
+	int depth = 5;
 
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
@@ -161,6 +161,7 @@ void TestMagic(){
 	std::string fen = "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq -";
 	Position initialPosition = Position(fen);
 	unsigned long long allPieces = ~initialPosition.bitboards.allEmptySquareBitboard();
+	unsigned long long friendlyPieces = initialPosition.bitboards.allWhiteBitboard();
 	short queenSquare = BitUtil::getBitPositions(initialPosition.bitboards.whiteBitboards[1])[0];
 	short bishopSquare = BitUtil::getBitPositions(initialPosition.bitboards.whiteBitboards[3])[0];
 	short rookSquare = BitUtil::getBitPositions(initialPosition.bitboards.whiteBitboards[4])[0];
@@ -168,9 +169,9 @@ void TestMagic(){
 	unsigned long long bishopKey = BitUtil::GetMagicKey(allPieces, bishopSquare, true);
 	unsigned long long rookKey = BitUtil::GetMagicKey(allPieces, rookSquare, false);
 
-	unsigned long long queenMoves = magicBits.GetQueenMagic(queenSquare, BitUtil::GetMagicKey(allPieces, queenSquare, false), BitUtil::GetMagicKey(allPieces, queenSquare, true));
-	unsigned long long bishopMoves = magicBits.GetBishopMagic(bishopSquare, bishopKey);
-	unsigned long long rookMoves = magicBits.GetRookMagic(rookSquare, rookKey);
+	unsigned long long queenMoves = magicBits.GetQueenMagic(queenSquare, BitUtil::GetMagicKey(allPieces, queenSquare, false), BitUtil::GetMagicKey(allPieces, queenSquare, true)) & ~friendlyPieces;
+	unsigned long long bishopMoves = magicBits.GetBishopMagic(bishopSquare, bishopKey) & ~friendlyPieces;
+	unsigned long long rookMoves = magicBits.GetRookMagic(rookSquare, rookKey) & ~friendlyPieces;
 
 	cout << initialPosition.PositionToString() << endl;
 	cout << "Queen moves at " << ChessUtil::SquareToString(queenSquare) << endl;
@@ -252,9 +253,9 @@ int main()
 	//Test Bitboard
 	//TestBitboard();
 	//Test Perft
-	//TestPerft();
+	TestPerft();
 	//Test Magic Bitboard
-	TestMagic();
+	//TestMagic();
 
 
 	return 0;

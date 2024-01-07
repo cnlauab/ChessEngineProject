@@ -563,6 +563,7 @@ bool ChessUtil::IsLightSquare(short square){
 }
 
 unsigned short ChessUtil::SimpleMove(short from, short to, bool capture, char promotionType){
+    //if(capture) std::cout << ChessUtil::SquareToString(from) << "," << ChessUtil::SquareToString(to) << std::endl;
     return (unsigned short)from | ((unsigned short)to << 6) | (ChessUtil::promotionTypeMap[promotionType] << 12) | ((unsigned short)capture << 14) | ((unsigned short)(promotionType != ' ') << 15);
 }
 
@@ -599,7 +600,14 @@ bool ChessUtil::GetIsPromotion(unsigned short move){
 }
 
 std::string ChessUtil::SimpleMoveToString(unsigned short move){
-    return ChessUtil::SquareToString(GetFrom(move)) + ChessUtil::SquareToString(GetTo(move)) + '=' + GetPromotionType(move);
+    bool promotion = GetIsPromotion(move);
+    bool capture = GetIsCapture(move);
+    std::string result = ChessUtil::SquareToString(GetFrom(move));
+    if(capture) result += 'x';
+    result += ChessUtil::SquareToString(GetTo(move));
+    if(promotion) result += '=' + GetPromotionType(move);
+    return result;
+    //return ChessUtil::SquareToString(GetFrom(move)) + ChessUtil::SquareToString(GetTo(move)) + '=' + GetPromotionType(move);
 }
 
 unsigned short ChessUtil::UCIToMove(std::string uci){

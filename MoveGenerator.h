@@ -38,4 +38,6 @@ public:
 	//New
 	static void KingMoves(std::vector<unsigned short>& moves, Position& position);
 	static void KnightMoves(std::vector<unsigned short>& moves, Position& position);
+	static void SlidingMoves(std::vector<unsigned short>& moves, Position& position);
+	static void PawnMoves(std::vector<unsigned short>& moves, Position& position);
 };
