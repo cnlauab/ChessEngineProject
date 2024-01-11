@@ -130,9 +130,9 @@ void TestPerft(){
 
 	//Testing Perft
 	
-	std::string fen = "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - -";
+	std::string fen = "8/8/2k5/5q2/5n2/8/5K2/8 b - - 0 1";
 	Position initialPosition = Position(fen);
-	int depth = 5;
+	int depth = 4;
 
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 

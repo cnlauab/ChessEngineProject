@@ -25,6 +25,7 @@ public:
 	static char bitboardIndexPieceMapping[6];
 	static std::unordered_map<unsigned long long, short> bitToSquareMap;
     static std::unordered_map<char, unsigned long long> castleBlockingBits;
+    static std::unordered_map<char, unsigned long long> friendlyCastleBlockingBits;
 
 	static std::string bitboardToString(unsigned long long bitboard);
 	static std::vector<short> getBitPositions(unsigned long long bitboard);

@@ -70,6 +70,8 @@ std::unordered_map<unsigned long long, short> BitUtil::bitToSquareMap = {
     {1ULL<<63,63}
 };
 std::unordered_map<char, unsigned long long> BitUtil::castleBlockingBits = {{'K',112ULL},{'Q',28ULL},{'k',8070450532247928832ULL},{'q',2017612633061982208ULL}};
+std::unordered_map<char, unsigned long long> BitUtil::friendlyCastleBlockingBits = {{'K',96ULL},{'Q',14ULL},{'k',1729382256910270464ULL},{'q',1008806316530991104ULL}};
+
 
 std::string BitUtil::bitboardToString(unsigned long long bitboard){
     //std::cout << "Printing bitboard (Value: " << bitboard << ")" << std::endl;

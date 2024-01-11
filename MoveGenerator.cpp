@@ -584,14 +584,13 @@ void MoveGenerator::KingMoves(std::vector<unsigned short>& moves, Position& posi
 	//Castling moves
 	char kingColor = position.whiteTurn ? 'K' : 'k';
 	char queenColor = position.whiteTurn ? 'Q' : 'q';
-	unsigned long long kingSideBlockingBits = BitUtil::castleBlockingBits[kingColor];
-	unsigned long long queenSideBlockingBits = BitUtil::castleBlockingBits[queenColor];
 	//std::cout << position.PositionToString() << std::endl;
 	//std::cout << BitUtil::bitboardToString(enemyControlBits) << std::endl;
 	//std::cout << "Castling Quota: " << (position.whiteTurn ? "w " : "b ") << (int)position.castlingQuota << std::endl;
 	if(position.GetCastlingQuota(kingColor)){
-		unsigned long long blockingBit = enemyControlBits & kingSideBlockingBits;
+		unsigned long long blockingBit = (enemyControlBits & BitUtil::castleBlockingBits[kingColor]) | (friendlyBit & BitUtil::friendlyCastleBlockingBits[kingColor]);
 		short target = ChessUtil::castlingTargetMapping[kingColor];
+		//std::cout << BitUtil::bitboardToString(blockingBit) << std::endl;
 		if(blockingBit == 0ULL) {
 			unsigned short&& move = ChessUtil::SimpleMove(starting, target);
 			moves.push_back(move);
@@ -599,8 +598,9 @@ void MoveGenerator::KingMoves(std::vector<unsigned short>& moves, Position& posi
 		}
 	}
 	if(position.GetCastlingQuota(queenColor)){
-		unsigned long long blockingBit = enemyControlBits & queenSideBlockingBits;
+		unsigned long long blockingBit = (enemyControlBits & BitUtil::castleBlockingBits[queenColor]) | (friendlyBit & BitUtil::friendlyCastleBlockingBits[queenColor]);
 		short target = ChessUtil::castlingTargetMapping[queenColor];
+		//std::cout << BitUtil::bitboardToString(blockingBit) << std::endl;
 		if(blockingBit == 0ULL) {
 			unsigned short&& move = ChessUtil::SimpleMove(starting, target);
 			moves.push_back(move);
