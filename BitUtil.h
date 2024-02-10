@@ -20,6 +20,8 @@ public:
     static const unsigned long long gFile = 4629771061636907072ULL;
     static const unsigned long long hFile = 9259542123273814144ULL;
 
+    static const unsigned long long darkSquares = 12273903644374837845ULL;
+    static const unsigned long long lightSquares = 6172840429334713770ULL;
 
 	static std::unordered_map<char, int> pieceBitboardIndexMapping;
 	static char bitboardIndexPieceMapping[6];
@@ -39,6 +41,9 @@ public:
     static unsigned long long GetRankBit(short rank);
 
     static unsigned long long GetMagicKey(unsigned long long allPieces, short square, bool diagonal);
+
+    static bool AllBitsOnSameRank(unsigned long long bits);
+    static bool AllBitsOnSameFile(unsigned long long bits);
 
     private:
     

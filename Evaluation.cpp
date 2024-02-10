@@ -6,7 +6,7 @@ unsigned short Evaluation::Evaluate(Position& position){
     return position.bestMove;
 }
 
-void Evaluation::PerftSearch(Position& currPosition, int level, std::vector<Perft>& perftData){
+void Evaluation::PerftSearch(Position& currPosition, int level, std::vector<Perft>& perftData, int initialDepth){
     std::vector<unsigned short> possibleMoves = MoveGenerator::GenerateAllPossibleMoves(currPosition);
     //std::vector<unsigned short> possibleMoves;
     //Old
@@ -14,9 +14,9 @@ void Evaluation::PerftSearch(Position& currPosition, int level, std::vector<Perf
         //if(currPosition.whiteTurn)std::cout << "White: " << ChessUtil::SimpleMoveToString(possibleMoves[i]) << std::endl;
         Position newPosition = Position(currPosition, possibleMoves[i]);
         if(level > 1){
-            PerftSearch(newPosition, level-1, perftData);
+            PerftSearch(newPosition, level-1, perftData, initialDepth);
         }else if(level == 1 && newPosition.check){
-            PerftSearch(newPosition, level-1, perftData);
+            PerftSearch(newPosition, level-1, perftData, initialDepth);
         }
     
         if(perftData.size() < level && level > 0){
@@ -42,6 +42,35 @@ void Evaluation::PerftSearch(Position& currPosition, int level, std::vector<Perf
     //    if(level > 0) perftData[level-1].Add(currPosition.capture, currPosition.ep, currPosition.castle, currPosition.promotion, currPosition.check, currPosition.discoverCheck, currPosition.doubleCheck, currPosition.checkmate);
     //    currPosition.UnmovePiece();
     //}
+}
+
+void Evaluation::PerftSearch2(Position& currPosition, int level, int initialDepth){
+    std::vector<unsigned short> possibleMoves = MoveGenerator::GenerateAllPossibleMoves(currPosition);
+    //std::vector<unsigned short> possibleMoves;
+    //Old
+    for(int i = 0; i < possibleMoves.size(); ++i){
+        //if(currPosition.whiteTurn)std::cout << "White: " << ChessUtil::SimpleMoveToString(possibleMoves[i]) << std::endl;
+        Position newPosition = Position(currPosition, possibleMoves[i]);
+        std::vector<Perft> perftData = {};
+        int nodes = 0;
+        if(level > 1){
+            PerftSearch(newPosition, level-1, perftData, initialDepth);
+        }else if(level == 1 && newPosition.check){
+            PerftSearch(newPosition, level-1, perftData, initialDepth);
+        }
+    
+        //if(perftData.size() < level && level > 0){
+        //    Perft perft = Perft(level);
+        //    perftData.push_back(std::move(perft));
+        //}
+        //if(level > 0) perftData[level-1].Add(newPosition.capture, newPosition.ep, newPosition.castle, newPosition.promotion, newPosition.check, newPosition.discoverCheck, newPosition.doubleCheck, newPosition.checkmate);
+        
+        for(Perft perft : perftData){
+            nodes += perft.nodes;
+        }
+        std::cout << ChessUtil::SimpleMoveToString(possibleMoves[i]) << ": " << nodes << std::endl;
+    }
+
 }
 
 short Evaluation::BestMoveSearch(Position& position, int depth, bool maxingPlayer){

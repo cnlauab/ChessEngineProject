@@ -130,17 +130,21 @@ void TestPerft(){
 
 	//Testing Perft
 	
-	std::string fen = "8/8/2k5/5q2/5n2/8/5K2/8 b - - 0 1";
+	std::string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 	Position initialPosition = Position(fen);
-	int depth = 4;
+	int depth = 3;
 
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
-	std::vector<Perft> perftData = {};
-	Evaluation::PerftSearch(initialPosition, depth, perftData);
-	for(Perft perft : perftData){
-		std::cout << perft.toString() << std::endl;
-	}
+	//Perft1
+	//std::vector<Perft> perftData = {};
+	//Evaluation::PerftSearch(initialPosition, depth, perftData, depth);
+	//for(Perft perft : perftData){
+	//	std::cout << perft.toString() << std::endl;
+	//}
+
+	//Perft2
+	Evaluation::PerftSearch2(initialPosition, depth, depth);
 	
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 	auto timeElapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
@@ -208,12 +212,6 @@ void ConsoleMode(){
 		cout << currentPosition.PositionToString() << endl;
 		cout << currentPosition.PositionToFen() << endl;
 		cout << currentPosition.bitboards.BitboardsToString() << endl;
-		
-		cout << "Pinned Pieces: ";
-		for(auto piece : currentPosition.pinnedPiece){
-			cout << "{" << ChessUtil::GetPieceType(piece.first) << "," << piece.second << "} ";
-		}
-		cout <<endl;
 
 		if(currentPosition.whiteTurn && whiteIsComp || !currentPosition.whiteTurn && !whiteIsComp){
 			ComputerTurn(currentPosition);

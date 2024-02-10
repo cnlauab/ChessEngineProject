@@ -6,6 +6,8 @@
 class SquareControl {
 public:
     short origin;
+    short rank;
+    short file;
 
     std::vector<short> knightSquare;
 

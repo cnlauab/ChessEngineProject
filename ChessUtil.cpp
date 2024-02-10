@@ -197,105 +197,7 @@ std::unordered_map<short, short> ChessUtil::pieceScoreMapping = {
         {95,90},
         {99,0}
 };
-std::unordered_map<short, int> ChessUtil::pieceValueMapping = {
-        {-32,3},
-        {-31,3},
-        {-30,3},
-        {-29,3},
-        {-28,3},
-        {-27,3},
-        {-26,3},
-        {-25,3},
-        {-24,5},
-        {-23,5},
-        {-22,5},
-        {-21,5},
-        {-20,5},
-        {-19,5},
-        {-18,5},
-        {-17,5},
-        {-16,3},
-        {-15,3},
-        {-14,3},
-        {-13,3},
-        {-12,3},
-        {-11,3},
-        {-10,3},
-        {-9,3},
-        {-8,9},
-        {-7,9},
-        {-6,9},
-        {-5,9},
-        {-4,9},
-        {-3,9},
-        {-2,9},
-        {-1,9},
-        {0,5},
-        {1,3},
-        {2,3},
-        {3,9},
-        {4,99},
-        {5,3},
-        {6,3},
-        {7,5},
-        {8,1},
-        {9,1},
-        {10,1},
-        {11,1},
-        {12,1},
-        {13,1},
-        {14,1},
-        {15,1},
-        {48,-1},
-        {49,-1},
-        {50,-1},
-        {51,-1},
-        {52,-1},
-        {53,-1},
-        {54,-1},
-        {55,-1},
-        {56,-5},
-        {57,-3},
-        {58,-3},
-        {59,-9},
-        {60,-99},
-        {61,-3},
-        {62,-3},
-        {63,-5},
-        {64,-9},
-        {65,-9},
-        {66,-9},
-        {67,-9},
-        {68,-9},
-        {69,-9},
-        {70,-9},
-        {71,-9},
-        {72,-3},
-        {73,-3},
-        {74,-3},
-        {75,-3},
-        {76,-3},
-        {77,-3},
-        {78,-3},
-        {79,-3},
-        {80,-5},
-        {81,-5},
-        {82,-5},
-        {83,-5},
-        {84,-5},
-        {85,-5},
-        {86,-5},
-        {87,-5},
-        {88,-3},
-        {89,-3},
-        {90,-3},
-        {91,-3},
-        {92,-3},
-        {93,-3},
-        {94,-3},
-        {95,-3},
-        {99,0}
-};
+short ChessUtil::pieceTypeScoreMapping[6] = {10, 90, 30, 30, 50, 1000};
 std::unordered_map<char, short> ChessUtil::castlingTargetMapping = {{'K',6},{'Q',2},{'k',62},{'q',58}}; 
 
 char ChessUtil::file[8] = { 'a','b','c','d','e','f','g','h' };
@@ -464,12 +366,12 @@ char ChessUtil::GetPieceType(short piece) {
 
 short ChessUtil::GetRank(short square)
 {
-    return SquareControl::GetRank(square);
+    return squareControlMap[square].rank;
 }
 
 short ChessUtil::GetFile(short square)
 {
-    return SquareControl::GetFile(square);
+    return squareControlMap[square].file;
 }
 
 char ChessUtil::GetRankChar(short square)
@@ -619,5 +521,12 @@ unsigned short ChessUtil::UCIToMove(std::string uci){
         return ChessUtil::SimpleMove(from, to, promotionType);
     }else{
         return ChessUtil::SimpleMove(from, to);
+    }
+}
+
+void ChessUtil::PrintMoveList(std::vector<unsigned short>& moves){
+    if(moves.size() == 0) std::cout << "Empty Move List" << std::endl;
+    for(int i = 0; i < moves.size(); i++){
+        std::cout << SimpleMoveToString(moves[i]) << std::endl;
     }
 }

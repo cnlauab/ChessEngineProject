@@ -3,6 +3,8 @@
 SquareControl::SquareControl(short square){
     //std::cout << "Square Control Constructed " << square << std::endl;
     origin = square;
+    rank = square / 8;
+    file = square % 8;
     //Knight squares
 	short starting1 = square - 10;
 	short starting2 = square - 17;

@@ -9,7 +9,7 @@ class ChessUtil {
 public:
     static std::unordered_map<short, char> pieceMapping;
     static std::unordered_map<short, short> pieceScoreMapping;
-	static std::unordered_map<short, int> pieceValueMapping;
+    static short pieceTypeScoreMapping[6];
     static std::unordered_map<char, short> castlingTargetMapping;
 	static char GetPieceType(short piece);
 
@@ -55,4 +55,6 @@ public:
 	static bool GetIsPromotion(unsigned short move);
 	static std::string SimpleMoveToString(unsigned short move);
 	static unsigned short UCIToMove(std::string uci);
+
+	static void PrintMoveList(std::vector<unsigned short>& moves);
 };

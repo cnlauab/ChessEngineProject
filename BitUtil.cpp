@@ -110,16 +110,18 @@ std::vector<short> BitUtil::getBitPositions(unsigned long long bitboard){
 }
 
 short BitUtil::getNumberOnBits(unsigned long long bitboard){
-    short result;
-    unsigned long long tmpBitboard = bitboard;
-
-    while(tmpBitboard > 0ULL){
-        int leadingZeros = __builtin_clzll(tmpBitboard);
-        short leftMostIndex = 63 - leadingZeros;
-        result+=1;
-        tmpBitboard &= ~(1ULL << leftMostIndex);
-    }
-    return result;
+    //short result;
+    //unsigned long long tmpBitboard = bitboard;
+    //
+    //while(tmpBitboard > 0ULL){
+    //    int leadingZeros = __builtin_clzll(tmpBitboard);
+    //    short leftMostIndex = 63 - leadingZeros;
+    //    result+=1;
+    //    tmpBitboard &= ~(1ULL << leftMostIndex);
+    //}
+    //return result;
+    std::vector<short> bits = getBitPositions(bitboard);
+    return bits.size();
 }
 
 unsigned long long BitUtil::knightControlBits(unsigned long long knightbits){
@@ -225,4 +227,30 @@ unsigned long long BitUtil::GetMagicKey(unsigned long long allPieces, short squa
         return allPieces & ChessUtil::squareControlMap[square].rookMagicBitMask;
     }
 
+}
+
+bool BitUtil::AllBitsOnSameRank(unsigned long long bits){
+    std::vector<short> squares = getBitPositions(bits);
+    short rank = 0;
+    for(int i = 0; i < squares.size(); i++){
+        short newRank = ChessUtil::GetRank(squares[i]);
+        if(i > 0){
+            if(rank != newRank) return false;
+        }
+        rank = newRank;
+    }
+    return true;
+}
+
+bool BitUtil::AllBitsOnSameFile(unsigned long long bits){
+    std::vector<short> squares = getBitPositions(bits);
+    short file = 0;
+    for(int i = 0; i < squares.size(); i++){
+        short newFile = ChessUtil::GetFile(squares[i]);
+        if(i > 0){
+            if(file != newFile) return false;
+        }
+        file = newFile;
+    }
+    return true;
 }

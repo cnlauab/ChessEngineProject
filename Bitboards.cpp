@@ -94,12 +94,24 @@ unsigned long long Bitboards::allBlackBitboard(){
     return blackBitboards[0] | blackBitboards[1] | blackBitboards[2] | blackBitboards[3] | blackBitboards[4] | blackBitboards[5];
 }
 
+unsigned long long Bitboards::getBitboard(bool white){
+    if(white){
+        return allWhiteBitboard();
+    }else{
+        return allBlackBitboard();
+    }
+}
+
 unsigned long long Bitboards::allEmptySquareBitboard(){
     return ~(allWhiteBitboard() | allBlackBitboard());
 }
 
 unsigned long long Bitboards::GetPieceBitboard(bool white, short index){
     return white ? whiteBitboards[index] : blackBitboards[index];
+}
+
+short Bitboards::KingLocation(bool white){
+    return white ? BitUtil::bitToSquareMap[whiteBitboards[5]] : BitUtil::bitToSquareMap[blackBitboards[5]];
 }
 
 bool Bitboards::isEmpty(short square){
@@ -117,6 +129,12 @@ int Bitboards::GetPieceTypeFromSquare(short square){
         if(blackBitboards[i] & squareBit) return i;
     }
     return -1;
+}
+
+bool Bitboards::hasBothColorBishop(bool white){
+    unsigned long long darkSquareBishop = BitUtil::darkSquares & GetPieceBitboard(white, 3);
+    unsigned long long lightSquareBishop = BitUtil::lightSquares & GetPieceBitboard(white, 3);
+    return darkSquareBishop > 0ULL && lightSquareBishop > 0ULL;
 }
 
 void Bitboards::MoveBit(short from, short to, bool whiteTurn){
@@ -178,13 +196,11 @@ void Bitboards::PromotionMoveBit(short to, short promotionType, bool whiteTurn){
     }
 }
 
-void Bitboards::PutBackTakenPiece(short to, short piece, bool whiteTurn){
-    char type = tolower(ChessUtil::GetPieceType(piece));
-    int typeIndex = BitUtil::pieceBitboardIndexMapping[type];
+void Bitboards::PutBackTakenPiece(short to, int type, bool whiteTurn){
     if(whiteTurn){
-        blackBitboards[typeIndex] |= 1ULL << to;
+        blackBitboards[type] |= 1ULL << to;
     }else{
-        whiteBitboards[typeIndex] |= 1ULL << to;
+        whiteBitboards[type] |= 1ULL << to;
     }
 }
 
@@ -261,6 +277,22 @@ unsigned long long Bitboards::slidingControlBits(bool white, short square, short
     }
 }
 
+std::vector<short> Bitboards::checkedAt(bool white){
+    short kingLocation = KingLocation(white);
+    unsigned long long pawnControl = white ? ChessUtil::squareControlMap[kingLocation].pawnControlUpBitboard : ChessUtil::squareControlMap[kingLocation].pawnControlDownBitboard;
+    unsigned long long knightControl = ChessUtil::squareControlMap[kingLocation].knightControlBitboard;
+    unsigned long long diagonalControl = slidingControlBits(white, kingLocation, 3);
+    unsigned long long nonDiagonalControl = slidingControlBits(white, kingLocation, 4);
+
+    pawnControl &= white ? blackBitboards[0] : whiteBitboards[0];
+    knightControl &= white ? blackBitboards[2] : whiteBitboards[2];
+    diagonalControl &= white ? blackBitboards[1] | blackBitboards[3] : whiteBitboards[1] | whiteBitboards[3];
+    nonDiagonalControl &= white ? blackBitboards[1] | blackBitboards[4] : whiteBitboards[1] | whiteBitboards[4];
+
+    unsigned long long checkedByBits = pawnControl | knightControl | diagonalControl | nonDiagonalControl;
+    return BitUtil::getBitPositions(checkedByBits);
+}
+
 std::string Bitboards::BitboardsToString(){
 
 	std::string result;
@@ -287,5 +319,42 @@ std::string Bitboards::BitboardsToString(){
 		}
 	}
 	result += " a  b  c  d  e  f  g  h\n";
+	return result;
+}
+
+std::string Bitboards::ToFen(){
+	std::string result;
+	std::string temp = "";
+	std::vector<std::string> ranks;
+	
+	int spaceCounter = 0;
+	for(int i = 0; i < 64; ++i){
+		auto pieceIdx = GetPieceTypeFromSquare(i);
+        char piece = ' ';
+        if(pieceIdx != -1){
+            piece = hasWhitePiece(i) ? toupper(BitUtil::bitboardIndexPieceMapping[pieceIdx]) : tolower(BitUtil::bitboardIndexPieceMapping[pieceIdx]);
+            if(spaceCounter > 0){
+                temp += (48 + spaceCounter);
+                spaceCounter = 0;
+            }
+            temp += piece;
+        }else{
+            spaceCounter += 1;
+        }
+		if((i + 1) % 8 == 0){
+			if(spaceCounter > 0){
+				temp += (48 + spaceCounter);
+				spaceCounter = 0;
+			}
+			//if(i != 63) result += '/';
+			ranks.push_back(temp);
+			temp = "";
+		}
+	}
+	for(int i = ranks.size() - 1; i >= 0; i--){
+		result += ranks[i];
+		if(i!=0)result += '/';
+	}
+
 	return result;
 }

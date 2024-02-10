@@ -13,7 +13,7 @@
 
 struct PositionState{
     unsigned short prevMove;
-    short takenPiece = 99;
+    int takenPieceType = 99;
     short enPassantSquare = 99;
     short prevEnPassantSquare = 99;
     char castlingQuota1 = ' ';
@@ -28,13 +28,12 @@ public :
     short enPassantSquare = 99;
     short halfmove = 0;
     short fullmove = 0;
-	short position[64];
 
     //Bitboard
     Bitboards bitboards;
 
     //Perft
-    char checkedBy[2] = {99,99};
+    short checkedAt[2] = {99,99};
     bool ep;
     bool castle;
     bool promotion;
@@ -48,15 +47,11 @@ public :
 
     //States
     unsigned short bestMove;
-    std::vector<short> whitePieceOnBoard;
-    std::vector<short> blackPieceOnBoard;
-    short whiteKingLocation;
-    short blackKingLocation;
 
     std::stack<PositionState> stateStack;
 
     //Pinned piece
-    std::unordered_map<short,short> pinnedPiece;//piece,direction
+    //std::unordered_map<short,short> pinnedPiece;//piece,direction
 
     char castlingQuota = 0;
 
@@ -67,18 +62,11 @@ public :
 	Position(Position& position, std::vector<unsigned short>& moveList);
 
     //Getter
-    short ReadPosition(short location);
-    short GetPieceLocation(short piece);
     bool GetCastlingQuota(short piece, bool kingSide);
     bool GetCastlingQuota(char type);
-    bool TargetIsEmpty(short target) const;
-    bool TargetIsOppositeColor(short piece, short target) const;
-    bool EnpassantSquareIsOppositeColor(short piece) const;
     std::string PositionToFen();
     std::string PositionToString();
 
-    bool OpponentCanReach(short target, bool white);
-    std::vector<short> GetFriendlyCanReach(short target, bool attacking);
     std::vector<short> GetCheckedByAndUpdatePin(bool white);
     bool IsChecked(bool white);
     
@@ -90,7 +78,7 @@ public :
     std::string MoveToPNGString(unsigned short move);
 
 	//Mutator
-    void UpdateCheck(short attackingPiece);
+    void UpdateCheck(short attackingFrom);
     void SetCastlingQuota(char type, bool on);
 	void MovePiece(unsigned short& move);
 	void UnmovePiece();
