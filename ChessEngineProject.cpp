@@ -130,8 +130,11 @@ void TestPerft(){
 
 	//Testing Perft
 	
-	std::string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-	Position initialPosition = Position(fen);
+	std::string fen = "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq -";
+	//Position initialPosition = Position(fen);
+	Position initialPosition = UCI::ParsePosition("position startpos");
+	//Position initialPosition = UCI::ParsePosition("position startpos moves d2d4 a7a6 a2a3");
+	//Position initialPosition = UCI::ParsePosition("position fen 8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - -");
 	int depth = 3;
 
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
@@ -144,8 +147,10 @@ void TestPerft(){
 	//}
 
 	//Perft2
-	Evaluation::PerftSearch2(initialPosition, depth, depth);
-	
+	//std::cout << initialPosition.PositionToFullReport() << std::endl;
+	Evaluation::PerftSearch2(initialPosition, depth, depth, {"d2d4","a7a6","a2a3"});
+	//Evaluation::PerftSearch2(initialPosition, depth, depth);
+
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 	auto timeElapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
 	std::cout << "Time elapsed = " << timeElapsed << "[Milliseconds] that's " << timeElapsed / 60000  << "[Minutes]" << timeElapsed % 60000 / 1000 << "[Seconds]" << std::endl;

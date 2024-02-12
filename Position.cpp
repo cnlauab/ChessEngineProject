@@ -8,7 +8,7 @@ Position::Position()
 
 Position::Position(std::string fen)
 {
-	std::cout << "Position created: "  << fen << std::endl;
+	//std::cout << "Position created: "  << fen << std::endl;
 	std::vector<std::string> parameters;
 	std::string delimiter = " ";
 
@@ -190,6 +190,46 @@ std::string Position::PositionToString(){
 		}
 	}
 	result += " a  b  c  d  e  f  g  h\n";
+	return result;
+}
+
+std::string Position::PositionToFullReport(){
+	std::string result = "";
+	result += PositionToString();
+	result += PositionToFen();
+	result += " \nFEN \n";
+	result += "Whiteturn: " + std::to_string(whiteTurn) + '\n';
+	result += "EnPassantSquare: " + std::to_string(enPassantSquare) + '\n';
+	result += "Halfmove: " + std::to_string(halfmove) + '\n';
+	result += "Fullmove: " + std::to_string(fullmove) + '\n';
+	result += " \nPerft \n";
+	result += "CheckedAt: " + std::to_string(checkedAt[0]) + ',' + std::to_string(checkedAt[1]) + '\n';
+	result += "Ep: " + std::to_string(ep) + '\n';
+	result += "Castle: " + std::to_string(castle) + '\n';
+	result += "Promotion: " + std::to_string(fullmove) + '\n';
+	result += "Check: " + std::to_string(check) + '\n';
+	result += "DoubleCheck: " + std::to_string(doubleCheck) + '\n';
+	result += "DiscoverCheck: " + std::to_string(discoverCheck) + '\n';
+	result += "Checkmate: " + std::to_string(checkmate) + '\n';
+	result += "Stalemate: " + std::to_string(stalemate) + '\n';
+	result += " \nState \n";
+	result += "PrevMove: " + ChessUtil::SimpleMoveToString(stateStack.top().prevMove) + '\n'; 
+	result += "TakenPieceType: " + std::to_string(stateStack.top().takenPieceType) + '\n';
+	result += "EnPassantSquare: " + std::to_string(stateStack.top().enPassantSquare) + '\n';
+	result += "PrevEnPassantSquare: " + std::to_string(stateStack.top().prevEnPassantSquare) + '\n';
+	result += "CastlingQuota1: " + std::to_string(stateStack.top().castlingQuota1) + '\n';
+	result += "CastlingQuota2: " + std::to_string(stateStack.top().castlingQuota2) + '\n';
+	result += "HalfMove: " + std::to_string(stateStack.top().halfMove) + '\n';
+	result += " \nBitboards \n";
+	result += "PinnedBitboard: \n" + BitUtil::bitboardToString(bitboards.pinnedBitboard) + '\n';
+	result += "CheckedBitboard: \n" + BitUtil::bitboardToString(bitboards.checkedBitboard) + '\n';
+	result += "AllWhiteBitboard: \n" + BitUtil::bitboardToString(bitboards.allWhiteBitboard()) + '\n';
+	result += "AllBlackBitboard: \n" + BitUtil::bitboardToString(bitboards.allBlackBitboard()) + '\n';
+	result += "PinnedRays: \n";
+	for(auto ray : bitboards.pinnedRays){
+		result += std::to_string(ray.first) + '\n' + BitUtil::bitboardToString(ray.second) + '\n';
+	}
+
 	return result;
 }
 

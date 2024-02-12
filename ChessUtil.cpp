@@ -505,7 +505,7 @@ std::string ChessUtil::SimpleMoveToString(unsigned short move){
     bool promotion = GetIsPromotion(move);
     bool capture = GetIsCapture(move);
     std::string result = ChessUtil::SquareToString(GetFrom(move));
-    if(capture) result += 'x';
+    //if(capture) result += 'x';
     result += ChessUtil::SquareToString(GetTo(move));
     if(promotion) result += '=' + GetPromotionType(move);
     return result;

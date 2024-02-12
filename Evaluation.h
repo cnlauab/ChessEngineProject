@@ -12,7 +12,7 @@
 class Evaluation{
 public:
     static unsigned short Evaluate(Position& position);
-    static void PerftSearch(Position& currPosition, int level, std::vector<Perft>& perftData, int initialDepth);
-    static void PerftSearch2(Position& currPosition, int level, int initialDepth);
+    static void PerftSearch(Position& currPosition, int level, std::vector<Perft>& perftData, int initialDepth, std::vector<std::string> trackMoves = {});
+    static void PerftSearch2(Position& currPosition, int level, int initialDepth, std::vector<std::string> trackMoves = {});
     static short BestMoveSearch(Position& position, int depth, bool maxingPlayer);
 };

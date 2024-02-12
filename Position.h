@@ -66,6 +66,7 @@ public :
     bool GetCastlingQuota(char type);
     std::string PositionToFen();
     std::string PositionToString();
+    std::string PositionToFullReport();
 
     std::vector<short> GetCheckedByAndUpdatePin(bool white);
     bool IsChecked(bool white);
