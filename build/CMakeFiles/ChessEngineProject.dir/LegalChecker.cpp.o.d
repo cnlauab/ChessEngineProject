@@ -236,10 +236,9 @@ CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o: \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__split_buffer \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/stack \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/deque \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Parser.h \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BitUtil.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Bitboards.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicUtil.h \

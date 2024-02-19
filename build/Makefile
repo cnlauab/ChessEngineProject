@@ -369,30 +369,6 @@ MoveGenerator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.s
 .PHONY : MoveGenerator.cpp.s
 
-Parser.o: Parser.cpp.o
-.PHONY : Parser.o
-
-# target to build an object file
-Parser.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Parser.cpp.o
-.PHONY : Parser.cpp.o
-
-Parser.i: Parser.cpp.i
-.PHONY : Parser.i
-
-# target to preprocess a source file
-Parser.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Parser.cpp.i
-.PHONY : Parser.cpp.i
-
-Parser.s: Parser.cpp.s
-.PHONY : Parser.s
-
-# target to generate assembly for a file
-Parser.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Parser.cpp.s
-.PHONY : Parser.cpp.s
-
 Perft.o: Perft.cpp.o
 .PHONY : Perft.o
 
@@ -576,9 +552,6 @@ help:
 	@echo "... MoveGenerator.o"
 	@echo "... MoveGenerator.i"
 	@echo "... MoveGenerator.s"
-	@echo "... Parser.o"
-	@echo "... Parser.i"
-	@echo "... Parser.s"
 	@echo "... Perft.o"
 	@echo "... Perft.i"
 	@echo "... Perft.s"

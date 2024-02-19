@@ -132,30 +132,33 @@ void MoveGenerator::KingMoves(std::vector<unsigned short>& moves, Position& posi
 	unsigned long long enemyBits = position.whiteTurn ? position.bitboards.allBlackBitboard() : position.bitboards.allWhiteBitboard();
 	unsigned long long enemyControlBits = position.bitboards.controlledBits(!position.whiteTurn); 
 	unsigned long long targetBits = ChessUtil::squareControlMap[starting].kingControlBitboard & ~(enemyControlBits | friendlyBit);
+	friendlyBit &= ~position.bitboards.GetPieceBitboard(position.whiteTurn, 5);
 	//std::cout << "friendlyBit\n" << BitUtil::bitboardToString(friendlyBit) << std::endl;
-	//std::cout << "enemyControlBits\n" << BitUtil::bitboardToString(enemyControlBits) << std::endl;
-	//std::cout << "targetBits\n" << BitUtil::bitboardToString(targetBits) << std::endl;
+	//if(starting == 6) std::cout << "enemyControlBits\n" << BitUtil::bitboardToString(enemyControlBits) << std::endl;
+	//if(starting == 6) std::cout << "targetBits\n" << BitUtil::bitboardToString(targetBits) << std::endl;
 	//Castling moves
 	char kingColor = position.whiteTurn ? 'K' : 'k';
 	char queenColor = position.whiteTurn ? 'Q' : 'q';
 	if(position.GetCastlingQuota(kingColor)){
 		//std::cout << "GetCastlingQuota: " << kingColor << std::endl;
-		unsigned long long blockingBit = (enemyControlBits & BitUtil::castleBlockingBits[kingColor]) | (friendlyBit & BitUtil::friendlyCastleBlockingBits[kingColor]);
+		unsigned long long blockingBit = (enemyControlBits & BitUtil::castleBlockingBits[kingColor]) | ((friendlyBit | enemyBits) & BitUtil::friendlyCastleBlockingBits[kingColor]);
 		short target = ChessUtil::castlingTargetMapping[kingColor];
-		//std::cout << BitUtil::bitboardToString(blockingBit) << std::endl;
+		//if(kingColor == 'k')std::cout << BitUtil::bitboardToString(blockingBit) << std::endl;
 		if(blockingBit == 0ULL) {
 			unsigned short&& move = ChessUtil::SimpleMove(starting, target);
+			//std::cout << ChessUtil::SimpleMoveToString(move) << std::endl;
 			moves.push_back(move);
 			//if(!position.whiteTurn) std::cout << ChessUtil::SimpleMoveToString(move) << std::endl;
 		}
 	}
 	if(position.GetCastlingQuota(queenColor)){
 		//std::cout << "GetCastlingQuota: " << queenColor << std::endl;
-		unsigned long long blockingBit = (enemyControlBits & BitUtil::castleBlockingBits[queenColor]) | (friendlyBit & BitUtil::friendlyCastleBlockingBits[queenColor]);
+		unsigned long long blockingBit = (enemyControlBits & BitUtil::castleBlockingBits[queenColor]) | ((friendlyBit | enemyBits) & BitUtil::friendlyCastleBlockingBits[queenColor]);
 		short target = ChessUtil::castlingTargetMapping[queenColor];
-		//std::cout << BitUtil::bitboardToString(blockingBit) << std::endl;
+		//if(queenColor == 'q')std::cout << BitUtil::bitboardToString(blockingBit) << std::endl;
 		if(blockingBit == 0ULL) {
 			unsigned short&& move = ChessUtil::SimpleMove(starting, target);
+			//std::cout << ChessUtil::SimpleMoveToString(move) << std::endl;
 			moves.push_back(move);
 			//if(!position.whiteTurn) std::cout << ChessUtil::SimpleMoveToString(move) << std::endl;
 		}
@@ -180,15 +183,17 @@ void MoveGenerator::KnightMoves(std::vector<unsigned short>& moves, Position& po
 	knightBits &= ~position.bitboards.pinnedBitboard;
 
 	std::vector<short> knightSquare = BitUtil::getBitPositions(knightBits);
+	//std::cout << BitUtil::bitboardToString(knightBits) << std::endl;
 	for(short starting : knightSquare){
 		unsigned long long targetBits = ChessUtil::squareControlMap[starting].knightControlBitboard;
+		//std::cout << BitUtil::bitboardToString(targetBits) << std::endl;
 		targetBits &= emptyEnemyAndCheckedBy;
 		std::vector<short> targetSquare = BitUtil::getBitPositions(targetBits);
 		for(short target :targetSquare){
 			bool capture = (enemyBits & (1ULL << target)) > 0ULL;
 			unsigned short&& move = ChessUtil::SimpleMove(starting, target, capture);
 			moves.push_back(move);
-			//std::cout << ChessUtil::SimpleMoveToString(move) << std::endl;
+			//std::cout << "Knight Moves: " << ChessUtil::SimpleMoveToString(move) << std::endl;
 		}
 	}
 }

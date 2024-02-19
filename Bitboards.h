@@ -12,7 +12,7 @@ class Bitboards {
         unsigned long long whiteBitboards[6] = {0ULL,0ULL,0ULL,0ULL,0ULL,0ULL};
         unsigned long long blackBitboards[6] = {0ULL,0ULL,0ULL,0ULL,0ULL,0ULL};
         unsigned long long pinnedBitboard = 0ULL;
-        unsigned long long checkedBitboard = 0Ull;
+        unsigned long long checkedBitboard = ~0Ull;
         std::unordered_map<short,unsigned long long> pinnedRays;//square,ray
         
         Bitboards();
@@ -44,7 +44,7 @@ class Bitboards {
         void ReversePromotionMoveBit(short to, short promotionType, bool whiteTurn);
 
         unsigned long long controlledBits(bool white);
-        unsigned long long slidingControlBits(bool white, short square, short typeIndex);
+        unsigned long long slidingControlBits(bool white, short square, short typeIndex, bool includeKing = true, bool includeFriendly = false);
         std::vector<short> checkedAt(bool white);
 
         std::string BitboardsToString();

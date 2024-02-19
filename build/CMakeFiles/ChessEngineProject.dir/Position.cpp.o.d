@@ -158,7 +158,7 @@ CMakeFiles/ChessEngineProject.dir/Position.cpp.o: \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__split_buffer \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/stack \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/deque \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Parser.h \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iostream \
@@ -238,7 +238,6 @@ CMakeFiles/ChessEngineProject.dir/Position.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_types/_nl_item.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/bitset \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BitUtil.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Bitboards.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicUtil.h \

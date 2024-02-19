@@ -130,12 +130,14 @@ void TestPerft(){
 
 	//Testing Perft
 	
-	std::string fen = "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq -";
-	//Position initialPosition = Position(fen);
-	Position initialPosition = UCI::ParsePosition("position startpos");
+	std::string fen = "n1n5/PPPk4/8/8/8/8/4Kppp/5N1N b - - 0 1";
+	Position initialPosition = Position(fen);
+	//Position initialPosition = UCI::ParsePosition("position startpos");
 	//Position initialPosition = UCI::ParsePosition("position startpos moves d2d4 a7a6 a2a3");
-	//Position initialPosition = UCI::ParsePosition("position fen 8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - -");
-	int depth = 3;
+	//Position initialPosition = UCI::ParsePosition("position fen 8/k1P5/8/1K6/8/8/8/8 w - - 0 1 moves e1d1 b7h1");
+	int depth = 5;
+
+	std::cout << initialPosition.PositionToFullReport() << std::endl;
 
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
@@ -148,8 +150,9 @@ void TestPerft(){
 
 	//Perft2
 	//std::cout << initialPosition.PositionToFullReport() << std::endl;
-	Evaluation::PerftSearch2(initialPosition, depth, depth, {"d2d4","a7a6","a2a3"});
-	//Evaluation::PerftSearch2(initialPosition, depth, depth);
+	//Evaluation::PerftSearch2(initialPosition, depth, depth, {"d2d4","a7a6","a2a3"});
+	//Evaluation::PerftSearch2(initialPosition, depth, depth, {"e1d1", "b7h1", "d1c1"});
+	Evaluation::PerftSearch2(initialPosition, depth, depth);
 
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 	auto timeElapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();

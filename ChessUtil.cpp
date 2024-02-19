@@ -507,7 +507,7 @@ std::string ChessUtil::SimpleMoveToString(unsigned short move){
     std::string result = ChessUtil::SquareToString(GetFrom(move));
     //if(capture) result += 'x';
     result += ChessUtil::SquareToString(GetTo(move));
-    if(promotion) result += '=' + GetPromotionType(move);
+    if(promotion) result += tolower(GetPromotionType(move));
     return result;
     //return ChessUtil::SquareToString(GetFrom(move)) + ChessUtil::SquareToString(GetTo(move)) + '=' + GetPromotionType(move);
 }

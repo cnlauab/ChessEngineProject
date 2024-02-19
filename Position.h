@@ -5,7 +5,6 @@
 #include <string>
 #include <vector>
 #include <stack>
-#include "Parser.h"
 #include "State.h"
 #include "ChessUtil.h"
 #include "BitUtil.h"

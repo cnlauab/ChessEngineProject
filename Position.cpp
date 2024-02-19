@@ -202,6 +202,13 @@ std::string Position::PositionToFullReport(){
 	result += "EnPassantSquare: " + std::to_string(enPassantSquare) + '\n';
 	result += "Halfmove: " + std::to_string(halfmove) + '\n';
 	result += "Fullmove: " + std::to_string(fullmove) + '\n';
+	result += "Castling: " ;
+	if(GetCastlingQuota('K')) result += "K" ;
+	if(GetCastlingQuota('Q')) result += "Q" ;
+	if(GetCastlingQuota('k')) result += "k" ;
+	if(GetCastlingQuota('q')) result += "q" ;
+	result += '\n';
+
 	result += " \nPerft \n";
 	result += "CheckedAt: " + std::to_string(checkedAt[0]) + ',' + std::to_string(checkedAt[1]) + '\n';
 	result += "Ep: " + std::to_string(ep) + '\n';
@@ -213,13 +220,15 @@ std::string Position::PositionToFullReport(){
 	result += "Checkmate: " + std::to_string(checkmate) + '\n';
 	result += "Stalemate: " + std::to_string(stalemate) + '\n';
 	result += " \nState \n";
-	result += "PrevMove: " + ChessUtil::SimpleMoveToString(stateStack.top().prevMove) + '\n'; 
-	result += "TakenPieceType: " + std::to_string(stateStack.top().takenPieceType) + '\n';
-	result += "EnPassantSquare: " + std::to_string(stateStack.top().enPassantSquare) + '\n';
-	result += "PrevEnPassantSquare: " + std::to_string(stateStack.top().prevEnPassantSquare) + '\n';
-	result += "CastlingQuota1: " + std::to_string(stateStack.top().castlingQuota1) + '\n';
-	result += "CastlingQuota2: " + std::to_string(stateStack.top().castlingQuota2) + '\n';
-	result += "HalfMove: " + std::to_string(stateStack.top().halfMove) + '\n';
+	if(stateStack.size() > 0){
+		result += "PrevMove: " + ChessUtil::SimpleMoveToString(stateStack.top().prevMove) + '\n'; 
+		result += "TakenPieceType: " + std::to_string(stateStack.top().takenPieceType) + '\n';
+		result += "EnPassantSquare: " + std::to_string(stateStack.top().enPassantSquare) + '\n';
+		result += "PrevEnPassantSquare: " + std::to_string(stateStack.top().prevEnPassantSquare) + '\n';
+		result += "CastlingQuota1: " + std::to_string(stateStack.top().castlingQuota1) + '\n';
+		result += "CastlingQuota2: " + std::to_string(stateStack.top().castlingQuota2) + '\n';
+		result += "HalfMove: " + std::to_string(stateStack.top().halfMove) + '\n';
+	}
 	result += " \nBitboards \n";
 	result += "PinnedBitboard: \n" + BitUtil::bitboardToString(bitboards.pinnedBitboard) + '\n';
 	result += "CheckedBitboard: \n" + BitUtil::bitboardToString(bitboards.checkedBitboard) + '\n';
@@ -542,12 +551,12 @@ void Position::MovePiece(unsigned short& move)
 				state.castlingQuota2 = 'q';
 			}
 		}
-		//Move rook if castling
-		if(to == 2 || to == 6 || to == 58 || to == 62){
-			bitboards.CastlingMoveBit(to);
-		}
 		if (to - from == 2 || to - from == -2) {
 			castle = true;
+			//Move rook if castling
+			if(to == 2 || to == 6 || to == 58 || to == 62){
+				bitboards.CastlingMoveBit(to);
+			}
 		}
 	}
 	if (pieceType == 4) {

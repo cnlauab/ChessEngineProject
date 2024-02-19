@@ -67,6 +67,7 @@ void Evaluation::PerftSearch(Position& currPosition, int level, std::vector<Perf
 void Evaluation::PerftSearch2(Position& currPosition, int level, int initialDepth, std::vector<std::string> trackMoves){
     std::vector<unsigned short> possibleMoves = MoveGenerator::GenerateAllPossibleMoves(currPosition);
     int nodes = 0;
+    std::cout << possibleMoves.size() << std::endl;
     //std::vector<unsigned short> possibleMoves;
     //Old
     for(int i = 0; i < possibleMoves.size(); ++i){
@@ -109,9 +110,12 @@ void Evaluation::PerftSearch2(Position& currPosition, int level, int initialDept
         //for(Perft perft : perftData){
         //    nodes += perft.nodes;
         //}
-        nodes += perftData.front().nodes;
-        std::cout << ChessUtil::SimpleMoveToString(possibleMoves[i]) << ": " << perftData.front().nodes << std::endl;
-
+        if(perftData.size() > 0){
+            nodes += perftData.front().nodes;
+            std::cout << ChessUtil::SimpleMoveToString(possibleMoves[i]) << ": " << perftData.front().nodes << std::endl;
+        }else{
+            std::cout << ChessUtil::SimpleMoveToString(possibleMoves[i]) << ": 0" << std::endl;
+        }
     }
     std::cout << "Nodes searched: " << nodes << std::endl;
 }

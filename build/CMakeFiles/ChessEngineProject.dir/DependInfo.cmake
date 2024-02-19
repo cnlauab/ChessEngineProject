@@ -18,7 +18,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicBits.cpp" "CMakeFiles/ChessEngineProject.dir/MagicBits.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/MagicBits.cpp.o.d"
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicUtil.cpp" "CMakeFiles/ChessEngineProject.dir/MagicUtil.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/MagicUtil.cpp.o.d"
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MoveGenerator.cpp" "CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o.d"
-  "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Parser.cpp" "CMakeFiles/ChessEngineProject.dir/Parser.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/Parser.cpp.o.d"
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Perft.cpp" "CMakeFiles/ChessEngineProject.dir/Perft.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/Perft.cpp.o.d"
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Position.cpp" "CMakeFiles/ChessEngineProject.dir/Position.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/Position.cpp.o.d"
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.cpp" "CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o.d"

@@ -248,9 +248,7 @@ unsigned long long Bitboards::controlledBits(bool white){
         }else{
             std::vector<short> squares = BitUtil::getBitPositions(bitboards[i]);
             for(short square : squares){
-                //unsigned long long sildingBits = slidingControlBits(white, square, i);
-                //if(i==1)std::cout << i << BitUtil::bitboardToString(sildingBits) << std::endl;
-                result |= slidingControlBits(white, square, i);
+                result |= slidingControlBits(white, square, i, false, true);
             }
         }
     }
@@ -258,23 +256,32 @@ unsigned long long Bitboards::controlledBits(bool white){
     return result;
 }
 
-unsigned long long Bitboards::slidingControlBits(bool white, short square, short typeIndex){
+unsigned long long Bitboards::slidingControlBits(bool white, short square, short typeIndex, bool includeKing, bool includeFriendly){
 
 	unsigned long long allPieces = ~allEmptySquareBitboard();
 	unsigned long long friendlyPieces = white ? allWhiteBitboard() : allBlackBitboard();
+    unsigned long long result = 0ULL;
+    if(!includeKing){
+        allPieces &= ~GetPieceBitboard(!white,5);
+    }
     if(typeIndex == 1){
         unsigned long long bishopKey = BitUtil::GetMagicKey(allPieces, square, true);
 	    unsigned long long rookKey = BitUtil::GetMagicKey(allPieces, square, false);
-        return MagicUtil::magicBits.GetQueenMagic(square, rookKey, bishopKey) & ~friendlyPieces;
+        result = MagicUtil::magicBits.GetQueenMagic(square, rookKey, bishopKey);
+        //return MagicUtil::magicBits.GetQueenMagic(square, rookKey, bishopKey) & ~friendlyPieces;
     }else if(typeIndex == 3){
         unsigned long long bishopKey = BitUtil::GetMagicKey(allPieces, square, true);
-        return MagicUtil::magicBits.GetBishopMagic(square, bishopKey) & ~friendlyPieces;
+        result = MagicUtil::magicBits.GetBishopMagic(square, bishopKey);
+        //return MagicUtil::magicBits.GetBishopMagic(square, bishopKey) & ~friendlyPieces;
     }else if(typeIndex == 4){
 	    unsigned long long rookKey = BitUtil::GetMagicKey(allPieces, square, false);
-        return MagicUtil::magicBits.GetRookMagic(square, rookKey) & ~friendlyPieces;
-    }else{
-        return 0ULL;
+        result = MagicUtil::magicBits.GetRookMagic(square, rookKey);
+        //return MagicUtil::magicBits.GetRookMagic(square, rookKey) & ~friendlyPieces;
     }
+    if(!includeFriendly){
+        result &= ~friendlyPieces;
+    }
+    return result;
 }
 
 std::vector<short> Bitboards::checkedAt(bool white){

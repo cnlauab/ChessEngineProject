@@ -19,8 +19,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/ChessEngineProject.dir/MagicUtil.cpp.o.d"
   "CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o"
   "CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o.d"
-  "CMakeFiles/ChessEngineProject.dir/Parser.cpp.o"
-  "CMakeFiles/ChessEngineProject.dir/Parser.cpp.o.d"
   "CMakeFiles/ChessEngineProject.dir/Perft.cpp.o"
   "CMakeFiles/ChessEngineProject.dir/Perft.cpp.o.d"
   "CMakeFiles/ChessEngineProject.dir/Position.cpp.o"
