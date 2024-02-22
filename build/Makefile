@@ -417,6 +417,30 @@ Position.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Position.cpp.s
 .PHONY : Position.cpp.s
 
+Score.o: Score.cpp.o
+.PHONY : Score.o
+
+# target to build an object file
+Score.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Score.cpp.o
+.PHONY : Score.cpp.o
+
+Score.i: Score.cpp.i
+.PHONY : Score.i
+
+# target to preprocess a source file
+Score.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Score.cpp.i
+.PHONY : Score.cpp.i
+
+Score.s: Score.cpp.s
+.PHONY : Score.s
+
+# target to generate assembly for a file
+Score.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ChessEngineProject.dir/build.make CMakeFiles/ChessEngineProject.dir/Score.cpp.s
+.PHONY : Score.cpp.s
+
 SquareControl.o: SquareControl.cpp.o
 .PHONY : SquareControl.o
 
@@ -558,6 +582,9 @@ help:
 	@echo "... Position.o"
 	@echo "... Position.i"
 	@echo "... Position.s"
+	@echo "... Score.o"
+	@echo "... Score.i"
+	@echo "... Score.s"
 	@echo "... SquareControl.o"
 	@echo "... SquareControl.i"
 	@echo "... SquareControl.s"

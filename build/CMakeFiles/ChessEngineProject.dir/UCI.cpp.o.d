@@ -251,4 +251,5 @@ CMakeFiles/ChessEngineProject.dir/UCI.cpp.o: \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/queue \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MoveGenerator.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/LegalChecker.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Perft.h
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Perft.h \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Score.h

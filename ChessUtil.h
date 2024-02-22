@@ -18,6 +18,7 @@ public:
 	static short offsets[8];
 	static short midGameScoreMap[64];
 	static short endGameScoreMap[64];
+	static short kingSafetyScoreMap[64];
 	static short checkScore;
 
 	static std::unordered_map <std::string, short> squareToIndexMapping;

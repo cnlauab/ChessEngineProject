@@ -23,6 +23,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ChessEngineProject.dir/Perft.cpp.o.d"
   "CMakeFiles/ChessEngineProject.dir/Position.cpp.o"
   "CMakeFiles/ChessEngineProject.dir/Position.cpp.o.d"
+  "CMakeFiles/ChessEngineProject.dir/Score.cpp.o"
+  "CMakeFiles/ChessEngineProject.dir/Score.cpp.o.d"
   "CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o"
   "CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o.d"
   "CMakeFiles/ChessEngineProject.dir/State.cpp.o"

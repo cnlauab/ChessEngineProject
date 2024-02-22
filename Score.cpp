@@ -1,6 +1,8 @@
 #include "Score.h"
 
-//Score::Score(Position& position);
+Score::Score(Position& position){
+    CalculateScore(position);
+}
 
 void Score::CalculateScore(Position& position){
     calculateMaterialScore(position);
@@ -12,7 +14,7 @@ void Score::CalculateScore(Position& position){
     calculateCheckScore(position);
 }
 
-int Score::FinalEvaluation(){
+short Score::FinalEvaluation(){
     return (materialScore[0] - materialScore[1]) + (pawnStructureScore[0] - pawnStructureScore[1]) + (pieceCordinationScore[0] - pieceCordinationScore[1]) + (pieceActivityScore[0] - pieceActivityScore[1]) + (kingSafetyScore[0] - kingSafetyScore[1]);// + (kingActivityScore[0] - kingActivityScore[1]) + (checkScore[0] - checkScore[1]);
 }
 
@@ -38,7 +40,7 @@ std::string Score::ScoreToString(){
     result += "Black:" + std::to_string(kingActivityScore[1]) + "\n";
     result += "Checkmate/Stalemate/Checked:\n";
     result += "White:" + std::to_string(checkScore[0]) + "\n";
-    result += "Black:" + std::to_string(checkScore[1]) + "\n";
+    result += "Black:" + std::to_string(checkScore[1]) + "\n"; 
     return result;
 }
 
@@ -81,7 +83,7 @@ void Score::calculatePawnStructureScore(Position& position){
         pawnStructureScore[0] = numOfPassedPawn * 100 + numOfChainedPawn * 50 - numOfDoubledPawn * 50 - numOfIsolatedPawn * 25 - numOfBackwardPawn * 25;
     }
     //Black
-    std::vector<short> pawns = BitUtil::getBitPositions(position.bitboards.GetPieceBitboard(false,0));
+    pawns = BitUtil::getBitPositions(position.bitboards.GetPieceBitboard(false,0));
     for(short square : pawns){
 
         short file = ChessUtil::GetFile(square);
@@ -104,27 +106,41 @@ void Score::calculatePawnStructureScore(Position& position){
 }
 
 void Score::calculatePieceCoordinationScore(Position& position){
-    //std::vector<short> pieceOnBoard = white? position.whitePieceOnBoard : position.blackPieceOnBoard;
-    //for(short piece : pieceOnBoard){
-	//	short square = position.GetPieceLocation(piece);
-    //    materialScore[white] += ChessUtil::pieceScoreMapping[piece];
-    //}
+    unsigned long long controlMap = position.bitboards.controlledBits(true);
+    unsigned long long knightMap = position.bitboards.GetPieceBitboard(true, 2) & controlMap;//4x
+    unsigned long long bishopMap = position.bitboards.GetPieceBitboard(true, 3) & controlMap;//4x
+    unsigned long long rookMap = position.bitboards.GetPieceBitboard(true, 4) & controlMap;//1x
+    unsigned long long pawnMap = position.bitboards.GetPieceBitboard(true, 0) & controlMap;//1x
+    pieceCordinationScore[0] += BitUtil::getNumberOnBits(knightMap) * 40 + BitUtil::getNumberOnBits(bishopMap) * 40 + BitUtil::getNumberOnBits(rookMap) * 10 + BitUtil::getNumberOnBits(pawnMap) * 10;
+
+    controlMap = position.bitboards.controlledBits(false);
+    knightMap = position.bitboards.GetPieceBitboard(false, 2) & controlMap;//4x
+    bishopMap = position.bitboards.GetPieceBitboard(false, 3) & controlMap;//4x
+    rookMap = position.bitboards.GetPieceBitboard(false, 4) & controlMap;//1x
+    pawnMap = position.bitboards.GetPieceBitboard(false, 0) & controlMap;//1x
+    pieceCordinationScore[1] += BitUtil::getNumberOnBits(knightMap) * 40 + BitUtil::getNumberOnBits(bishopMap) * 40 + BitUtil::getNumberOnBits(rookMap) * 10 + BitUtil::getNumberOnBits(pawnMap) * 10;
 }
 
 void Score::calculatePieceActivityScore(Position& position){
-    //std::vector<short> pieceOnBoard = white? position.whitePieceOnBoard : position.blackPieceOnBoard;
-    //for(short piece : pieceOnBoard){
-	//	short square = position.GetPieceLocation(piece);
-    //    materialScore[white] += ChessUtil::pieceScoreMapping[piece];
-    //}
+    unsigned long long controlBits = position.bitboards.controlledBits(true);
+    int numofBits = BitUtil::getNumberOnBits(controlBits);
+    pieceActivityScore[0] += numofBits * 20;
+    
+    controlBits = position.bitboards.controlledBits(false);
+    numofBits = BitUtil::getNumberOnBits(controlBits);
+    pieceActivityScore[1] += numofBits * 20;
 }
 
 void Score::calculateKingSafetyScore(Position& position){
-    //std::vector<short> pieceOnBoard = white? position.whitePieceOnBoard : position.blackPieceOnBoard;
-    //for(short piece : pieceOnBoard){
-	//	short square = position.GetPieceLocation(piece);
-    //    materialScore[white] += ChessUtil::pieceScoreMapping[piece];
-    //}
+    short kingLocation = position.bitboards.KingLocation(true);
+    unsigned long long kingControlBits = ChessUtil::squareControlMap[kingLocation].kingControlBitboard;
+    short kingLocationScore = ChessUtil::kingSafetyScoreMap[kingLocation] * 10;
+    kingSafetyScore[0] += BitUtil::getNumberOnBits(kingControlBits & position.bitboards.allWhiteBitboard()) * 10 + kingLocationScore;
+
+    kingLocation = position.bitboards.KingLocation(false);
+    kingControlBits = ChessUtil::squareControlMap[kingLocation].kingControlBitboard;
+    kingLocationScore = ChessUtil::kingSafetyScoreMap[kingLocation] * 10;
+    kingSafetyScore[0] += BitUtil::getNumberOnBits(kingControlBits & position.bitboards.allBlackBitboard()) * 10 + kingLocationScore;
 }
 
 void Score::calculateKingActivityScore(Position& position){

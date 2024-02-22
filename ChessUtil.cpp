@@ -223,6 +223,16 @@ short ChessUtil::endGameScoreMap[64] = {
         3,3,3,3,3,3,3,3,
         5,5,5,5,5,5,5,5,
     };
+short ChessUtil::kingSafetyScoreMap[64] = {
+        4,8,8,4,4,6,8,4,
+        2,2,2,1,1,2,2,2,
+        1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,
+        2,2,2,1,1,2,2,2,
+        4,8,8,4,4,6,8,4,
+    };
 short ChessUtil::checkScore = 100;
 
 std::unordered_map <std::string, short> ChessUtil::squareToIndexMapping = {

@@ -1,19 +1,19 @@
-CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o: \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Evaluation.cpp \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Evaluation.h \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/queue \
+CMakeFiles/ChessEngineProject.dir/Score.cpp.o: \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Score.cpp \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Score.h \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/string \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/pthread.h \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/deque \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__split_buffer \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/type_traits \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/string_view \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__string \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/algorithm \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/initializer_list \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cstddef \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__cxx_version \
   /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include/stddef.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include/__stddef_max_align_t.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__nullptr \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/algorithm \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/initializer_list \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/type_traits \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cstring \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/string.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/string.h \
@@ -133,6 +133,13 @@ CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/assert.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/functional \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/bit \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cstdio \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cwchar \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cwctype \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cctype \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/wctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/wctype.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_types/_wctrans_t.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/vector \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__bit_reference \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/climits \
@@ -143,34 +150,22 @@ CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/i386/limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/i386/_limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/sys/syslimits.h \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__split_buffer \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/unordered_map \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__hash_table \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cmath \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__node_handle \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/optional \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/chrono \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/ctime \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/ratio \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Position.h \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/string \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/string_view \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__string \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cstdio \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cwchar \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cwctype \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cctype \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/wctype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/wctype.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk/usr/include/_types/_wctrans_t.h \
-  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/stack \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/ios \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__locale \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/mutex \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__mutex_base \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/chrono \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/ctime \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/ratio \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/system_error \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/__errc \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/cerrno \
@@ -246,8 +241,8 @@ CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o: \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MagicBits.h \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/fstream \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/filesystem \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/stack \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/deque \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/iomanip \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MoveGenerator.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/LegalChecker.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Perft.h \
-  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Score.h
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Position.h \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.h

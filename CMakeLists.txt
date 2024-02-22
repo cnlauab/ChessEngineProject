@@ -14,7 +14,7 @@ endif()
 project ("ChessEngineProject")
 
 # Add source to this project's executable.
-add_executable (ChessEngineProject "ChessEngineProject.cpp" "ChessEngineProject.h" "Position.h" "Position.cpp" "State.cpp" "State.h" "Validator.cpp" "Validator.h" "MoveGenerator.cpp" "MoveGenerator.h" "ChessUtil.h" "ChessUtil.cpp" "LegalChecker.cpp" "LegalChecker.h" "Debug.cpp" "Debug.h" "Evaluation.cpp" "Evaluation.h" "SquareControl.cpp" "SquareControl.h" "UCI.cpp" "UCI.h" "Bitboards.cpp" "Bitboards.h" "BitUtil.cpp" "BitUtil.h" "MagicBits.cpp" "MagicBits.h" "MagicUtil.cpp" "MagicUtil.h" "Perft.cpp" "Perft.h")
+add_executable (ChessEngineProject "ChessEngineProject.cpp" "ChessEngineProject.h" "Position.h" "Position.cpp" "State.cpp" "State.h" "Validator.cpp" "Validator.h" "MoveGenerator.cpp" "MoveGenerator.h" "ChessUtil.h" "ChessUtil.cpp" "LegalChecker.cpp" "LegalChecker.h" "Debug.cpp" "Debug.h" "Evaluation.cpp" "Evaluation.h" "SquareControl.cpp" "SquareControl.h" "UCI.cpp" "UCI.h" "Bitboards.cpp" "Bitboards.h" "BitUtil.cpp" "BitUtil.h" "MagicBits.cpp" "MagicBits.h" "MagicUtil.cpp" "MagicUtil.h" "Perft.cpp" "Perft.h" "Score.cpp" "Score.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET ChessEngineProject PROPERTY CXX_STANDARD 20)

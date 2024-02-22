@@ -130,12 +130,12 @@ void TestPerft(){
 
 	//Testing Perft
 	
-	std::string fen = "n1n5/PPPk4/8/8/8/8/4Kppp/5N1N b - - 0 1";
+	std::string fen = "rnbq1k1r/pp1Pbppp/2p5/8/2B5/8/PPP1NnPP/RNBQK2R w KQ - 1 8";
 	Position initialPosition = Position(fen);
 	//Position initialPosition = UCI::ParsePosition("position startpos");
 	//Position initialPosition = UCI::ParsePosition("position startpos moves d2d4 a7a6 a2a3");
 	//Position initialPosition = UCI::ParsePosition("position fen 8/k1P5/8/1K6/8/8/8/8 w - - 0 1 moves e1d1 b7h1");
-	int depth = 5;
+	int depth = 4;
 
 	std::cout << initialPosition.PositionToFullReport() << std::endl;
 
@@ -162,10 +162,19 @@ void TestPerft(){
 
 void TestEvaluation(){
 	//Testing Evaluation
-	Position currentPosition = Position("rnbq1k1r/pp1Pbppp/2p5/8/2B5/8/PPP1NnPP/RNBQK2R w KQ - 1 8");
+	Position currentPosition = Position("r4rk1/p1p1ppbp/1p1p1nb1/6N1/q2PPB1Q/5P2/PPPN2P1/1K1R1B2 b - - 2 15");
 	cout << currentPosition.PositionToString() << endl;
+	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+	
 	unsigned short chosenMove = Evaluation::Evaluate(currentPosition);
 	cout << "Move chosen: " << currentPosition.MoveToUCIString(chosenMove) << endl;
+	
+	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+	auto timeElapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
+	std::cout << "Time elapsed = " << timeElapsed << "[Milliseconds] that's " << timeElapsed / 60000  << "[Minutes]" << timeElapsed % 60000 / 1000 << "[Seconds]" << std::endl;
+
+	Score score = Score(currentPosition);
+	std::cout << "\nScore: \n" << score.ScoreToString() << std::endl;
 }
 
 void TestMagic(){
@@ -259,9 +268,11 @@ int main()
 	//Test Bitboard
 	//TestBitboard();
 	//Test Perft
-	TestPerft();
+	//TestPerft();
 	//Test Magic Bitboard
 	//TestMagic();
+	//Test Evaluation
+	TestEvaluation();
 
 
 	return 0;

@@ -9,19 +9,19 @@
 
 class Score{
     public:
-        int materialScore[2] = {0,0};
-        int pawnStructureScore[2] = {0,0};
-        int pieceCordinationScore[2] = {0,0};
-        int pieceActivityScore[2] = {0,0};
-        int kingSafetyScore[2] = {0,0};
-        int kingActivityScore[2] = {0,0};
-        int checkScore[2] = {0,0};
+        short materialScore[2] = {0,0};
+        short pawnStructureScore[2] = {0,0};
+        short pieceCordinationScore[2] = {0,0};
+        short pieceActivityScore[2] = {0,0};
+        short kingSafetyScore[2] = {0,0};
+        short kingActivityScore[2] = {0,0};
+        short checkScore[2] = {0,0};
 
         Score(Position& position);
         Score(Score& whiteScore, Score& blackScore);
 
         void CalculateScore(Position& position);
-        int FinalEvaluation();
+        short FinalEvaluation();
         std::string ScoreToString();
     private:
         void calculateMaterialScore(Position& position);

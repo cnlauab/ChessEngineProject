@@ -1,8 +1,10 @@
 #include "Evaluation.h"
 
 unsigned short Evaluation::Evaluate(Position& position){
-    int depth = position.IsEndgame()? 5 : 4;
-    BestMoveSearch(position, depth, position.whiteTurn);
+    int depth = position.IsEndgame()? 4 : 3;
+    Score score = Score(position);
+    std::cout << "Search Depth: " << depth << std::endl;
+    BestMoveSearch(position, score, depth, position.whiteTurn);
     return position.bestMove;
 }
 
@@ -120,7 +122,7 @@ void Evaluation::PerftSearch2(Position& currPosition, int level, int initialDept
     std::cout << "Nodes searched: " << nodes << std::endl;
 }
 
-short Evaluation::BestMoveSearch(Position& position, int depth, bool maxingPlayer){
+short Evaluation::BestMoveSearch(Position& position, Score& score, int depth, bool maxingPlayer){
     if(depth < 0) return position.CalculateScore();
     if(depth == 0 && !position.check) return position.CalculateScore();
     std::vector<unsigned short> possibleMoves = MoveGenerator::GenerateAllPossibleMoves(position);
@@ -130,7 +132,7 @@ short Evaluation::BestMoveSearch(Position& position, int depth, bool maxingPlaye
         short maxEval = -27001;
         for(unsigned short move : possibleMoves){
             Position newPosition = Position(position, move);
-            short eval = BestMoveSearch(newPosition, depth - 1, false);
+            short eval = BestMoveSearch(newPosition, score, depth - 1, false);
             //position.MovePiece(move);
             //short eval = BestMoveSearch(position, depth - 1, false);
             //position.UnmovePiece();
@@ -144,7 +146,7 @@ short Evaluation::BestMoveSearch(Position& position, int depth, bool maxingPlaye
         short minEval = 27001;
         for(unsigned short move : possibleMoves){
             Position newPosition = Position(position, move);
-            short eval = BestMoveSearch(newPosition, depth - 1, true);
+            short eval = BestMoveSearch(newPosition, score, depth - 1, true);
             //position.MovePiece(move);
             //short eval = BestMoveSearch(position, depth - 1, true);
             //position.UnmovePiece();
@@ -155,4 +157,10 @@ short Evaluation::BestMoveSearch(Position& position, int depth, bool maxingPlaye
         }
         return minEval;
     }
+}
+
+short Evaluation::GetScore(Position& position, Score& score){
+    score.CalculateScore(position);
+    //std::cout << score.ScoreToString() << std::endl;
+    return score.FinalEvaluation();
 }

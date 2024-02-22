@@ -329,12 +329,13 @@ bool Position::IsChecked(bool white){
 
 bool Position::IsEndgame(){
 	short score = 0;
-	for(int i = 0; i < 5; i++){
+	for(int i = 0; i < 4; i++){
 		unsigned long long pieces = bitboards.whiteBitboards[i] | bitboards.blackBitboards[i];
 		short numberOfPieces = BitUtil::getNumberOnBits(pieces);
-		score += numberOfPieces * ChessUtil::pieceTypeScoreMapping[BitUtil::bitboardIndexPieceMapping[i]];
+		score += numberOfPieces * ChessUtil::pieceTypeScoreMapping[i];
 	}
-	return score < 150;
+	//std::cout << "Material: " << score << std::endl;
+	return score < 100;
 }
 
 bool Position::IsDraw(){

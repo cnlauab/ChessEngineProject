@@ -251,6 +251,7 @@ CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o: \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MoveGenerator.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/LegalChecker.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Perft.h \
+  /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Score.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Debug.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Validator.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/UCI.h

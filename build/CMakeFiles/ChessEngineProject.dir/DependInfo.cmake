@@ -20,6 +20,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/MoveGenerator.cpp" "CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o.d"
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Perft.cpp" "CMakeFiles/ChessEngineProject.dir/Perft.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/Perft.cpp.o.d"
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Position.cpp" "CMakeFiles/ChessEngineProject.dir/Position.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/Position.cpp.o.d"
+  "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/Score.cpp" "CMakeFiles/ChessEngineProject.dir/Score.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/Score.cpp.o.d"
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.cpp" "CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/SquareControl.cpp.o.d"
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/State.cpp" "CMakeFiles/ChessEngineProject.dir/State.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/State.cpp.o.d"
   "/Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/UCI.cpp" "CMakeFiles/ChessEngineProject.dir/UCI.cpp.o" "gcc" "CMakeFiles/ChessEngineProject.dir/UCI.cpp.o.d"
