@@ -97,21 +97,6 @@ void TestBitboard(){
 	cout << "All" << endl;
 	cout << bitboards.BitboardsToString() << endl;
 
-	//cout << "Bishop at 32" << endl;
-	//cout << BitUtil::bitboardToString(ChessUtil::squareControlMap[32].bishopControlBitboard) << endl;
-	
-	std::vector<short> positions = BitUtil::getBitPositions(bitboards.blackBitboards[0]);
-	for(auto position : positions) cout << " Pawn: " << position << endl;
-	positions = BitUtil::getBitPositions(bitboards.blackBitboards[1]);
-	for(auto position : positions) cout << " Queen: " << position << endl;
-	positions = BitUtil::getBitPositions(bitboards.blackBitboards[2]);
-	for(auto position : positions) cout << " Knight: " << position << endl;
-	positions = BitUtil::getBitPositions(bitboards.blackBitboards[3]);
-	for(auto position : positions) cout << " Bishop: " << position << endl;
-	positions = BitUtil::getBitPositions(bitboards.blackBitboards[4]);
-	for(auto position : positions) cout << " Rook: " << position << endl;
-	positions = BitUtil::getBitPositions(bitboards.blackBitboards[5]);
-	for(auto position : positions) cout << " King: " << position << endl;
 }
 
 void TestUCI(){
@@ -125,19 +110,42 @@ void TestUCI(){
 }
 
 void TestPerft(){
-	//Position* currentPosition = new Position("r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1 w kq - 0 1");
-	//TODO: still need to fix en passant at 8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - depth=5
+	//--Illegal ep move #1
+	//std::string fen = "3k4/3p4/8/K1P4r/8/8/8/8 b - - 0 1"; int depth = 6; //perft 6 = 1134888
+	//--Illegal ep move #2
+	//std::string fen = "8/8/4k3/8/2p5/8/B2P2K1/8 w - - 0 1"; int depth = 6; //perft 6 = 1015133
+	//--EP Capture Checks Opponent
+	//std::string fen = "8/8/1k6/2b5/2pP4/8/5K2/8 b - d3 0 1"; int depth = 6; //perft 6 = 1440467
+	//--Short Castling Gives Check
+	//std::string fen = "5k2/8/8/8/8/8/8/4K2R w K - 0 1"; int depth = 6; //perft 6 = 661072
+	//--Long Castling Gives Check
+	//std::string fen = "3k4/8/8/8/8/8/8/R3K3 w Q - 0 1"; int depth = 6; //perft 6 = 803711
+	//--Castle Rights
+	//std::string fen = "r3k2r/1b4bq/8/8/8/8/7B/R3K2R w KQkq - 0 1"; int depth = 4; //perft 4 = 1274206
+	//--Castling Prevented
+	//std::string fen = "r3k2r/8/3Q4/8/8/5q2/8/R3K2R b KQkq - 0 1"; int depth = 4; //perft 4 = 1720476
+	//--Promote out of Check
+	//std::string fen = "2K2r2/4P3/8/8/8/8/8/3k4 w - - 0 1"; int depth = 6; //perft 6 = 3821001
+	//--Discovered Check
+	//std::string fen = "8/8/1P2K3/8/2n5/1q6/8/5k2 b - - 0 1"; int depth = 5; //perft 5 = 1004658
+	//--Promote to give check
+	//std::string fen = "4k3/1P6/8/8/8/8/K7/8 w - - 0 1"; int depth = 6; //perft 6 = 217342
+	//--Under Promote to give check
+	//std::string fen = "8/P1k5/K7/8/8/8/8/8 w - - 0 1"; int depth = 6; //perft 6 = 92683
+	//--Self Stalemate
+	//std::string fen = "K1k5/8/P7/8/8/8/8/8 w - - 0 1"; int depth = 6; //perft 6 = 2217
+	//--Stalemate & Checkmate
+	//std::string fen = "8/k1P5/8/1K6/8/8/8/8 w - - 0 1"; int depth = 7; //perft 7 = 567584
+	//--Stalemate & Checkmate
+	std::string fen = "8/8/2k5/5q2/5n2/8/5K2/8 b - - 0 1"; int depth = 4; //perft 4 = 23527
+	//int depth = 6;
 
-	//Testing Perft
-	
-	std::string fen = "rnbq1k1r/pp1Pbppp/2p5/8/2B5/8/PPP1NnPP/RNBQK2R w KQ - 1 8";
 	Position initialPosition = Position(fen);
 	//Position initialPosition = UCI::ParsePosition("position startpos");
 	//Position initialPosition = UCI::ParsePosition("position startpos moves d2d4 a7a6 a2a3");
-	//Position initialPosition = UCI::ParsePosition("position fen 8/k1P5/8/1K6/8/8/8/8 w - - 0 1 moves e1d1 b7h1");
-	int depth = 4;
+	//Position initialPosition = UCI::ParsePosition("position fen 8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - moves a5a6");
 
-	std::cout << initialPosition.PositionToFullReport() << std::endl;
+	//std::cout << initialPosition.PositionToFullReport() << std::endl;
 
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
@@ -150,7 +158,7 @@ void TestPerft(){
 
 	//Perft2
 	//std::cout << initialPosition.PositionToFullReport() << std::endl;
-	//Evaluation::PerftSearch2(initialPosition, depth, depth, {"d2d4","a7a6","a2a3"});
+	//Evaluation::PerftSearch2(initialPosition, depth, depth, {"c7c5"});
 	//Evaluation::PerftSearch2(initialPosition, depth, depth, {"e1d1", "b7h1", "d1c1"});
 	Evaluation::PerftSearch2(initialPosition, depth, depth);
 
@@ -268,11 +276,11 @@ int main()
 	//Test Bitboard
 	//TestBitboard();
 	//Test Perft
-	//TestPerft();
+	TestPerft();
 	//Test Magic Bitboard
 	//TestMagic();
 	//Test Evaluation
-	TestEvaluation();
+	//TestEvaluation();
 
 
 	return 0;

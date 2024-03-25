@@ -153,6 +153,7 @@ CMakeFiles/ChessEngineProject.dir/BitUtil.cpp.o: ../BitUtil.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/vector \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bit_reference \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__split_buffer \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/array \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/unordered_map \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__hash_table \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/cmath \
@@ -475,6 +476,7 @@ CMakeFiles/ChessEngineProject.dir/Bitboards.cpp.o: ../Bitboards.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/optional \
   ../SquareControl.h \
   ../BitUtil.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/array \
   ../MagicUtil.h \
   ../MagicBits.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream \
@@ -726,6 +728,7 @@ CMakeFiles/ChessEngineProject.dir/ChessEngineProject.cpp.o: ../ChessEngineProjec
   ../ChessUtil.h \
   ../SquareControl.h \
   ../BitUtil.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/array \
   ../Bitboards.h \
   ../MagicUtil.h \
   ../MagicBits.h \
@@ -1220,6 +1223,7 @@ CMakeFiles/ChessEngineProject.dir/Debug.cpp.o: ../Debug.cpp \
   ../ChessUtil.h \
   ../SquareControl.h \
   ../BitUtil.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/array \
   ../Bitboards.h \
   ../MagicUtil.h \
   ../MagicBits.h
@@ -1466,6 +1470,7 @@ CMakeFiles/ChessEngineProject.dir/Evaluation.cpp.o: ../Evaluation.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   ../BitUtil.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/array \
   ../Bitboards.h \
   ../MagicUtil.h \
   ../MagicBits.h \
@@ -1718,6 +1723,7 @@ CMakeFiles/ChessEngineProject.dir/LegalChecker.cpp.o: ../LegalChecker.cpp \
   ../ChessUtil.h \
   ../SquareControl.h \
   ../BitUtil.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/array \
   ../Bitboards.h \
   ../MagicUtil.h \
   ../MagicBits.h \
@@ -1961,7 +1967,8 @@ CMakeFiles/ChessEngineProject.dir/MagicBits.cpp.o: ../MagicBits.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   ../SquareControl.h \
   ../ChessUtil.h \
-  ../BitUtil.h
+  ../BitUtil.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/array
 
 CMakeFiles/ChessEngineProject.dir/MagicUtil.cpp.o: ../MagicUtil.cpp \
   ../MagicUtil.h \
@@ -2201,6 +2208,7 @@ CMakeFiles/ChessEngineProject.dir/MagicUtil.cpp.o: ../MagicUtil.cpp \
   ../SquareControl.h \
   ../ChessUtil.h \
   ../BitUtil.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/array \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/fstream \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/stack \
@@ -2448,6 +2456,7 @@ CMakeFiles/ChessEngineProject.dir/MoveGenerator.cpp.o: ../MoveGenerator.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   ../BitUtil.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/array \
   ../Bitboards.h \
   ../MagicUtil.h \
   ../MagicBits.h \
@@ -2931,6 +2940,7 @@ CMakeFiles/ChessEngineProject.dir/Position.cpp.o: ../Position.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   ../BitUtil.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/array \
   ../Bitboards.h \
   ../MagicUtil.h \
   ../MagicBits.h \
@@ -3175,6 +3185,7 @@ CMakeFiles/ChessEngineProject.dir/Score.cpp.o: ../Score.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   ../BitUtil.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/array \
   ../Bitboards.h \
   ../MagicUtil.h \
   ../MagicBits.h \
@@ -3656,6 +3667,7 @@ CMakeFiles/ChessEngineProject.dir/State.cpp.o: ../State.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   ../BitUtil.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/array \
   ../Bitboards.h \
   ../MagicUtil.h \
   ../MagicBits.h \
@@ -3908,6 +3920,7 @@ CMakeFiles/ChessEngineProject.dir/UCI.cpp.o: ../UCI.cpp \
   ../ChessUtil.h \
   ../SquareControl.h \
   ../BitUtil.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/array \
   ../Bitboards.h \
   ../MagicUtil.h \
   ../MagicBits.h \
@@ -4669,6 +4682,8 @@ CMakeFiles/ChessEngineProject.dir/Validator.cpp.o: ../Validator.cpp \
 /Library/Developer/CommandLineTools/usr/include/c++/v1/algorithm:
 
 /Library/Developer/CommandLineTools/usr/include/c++/v1/limits.h:
+
+/Library/Developer/CommandLineTools/usr/include/c++/v1/array:
 
 /Library/Developer/CommandLineTools/usr/include/c++/v1/filesystem:
 

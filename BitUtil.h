@@ -3,6 +3,7 @@
 #include <climits>
 #include <string>
 #include <vector>
+#include <array>
 #include <unordered_map>
 #include <iostream>
 
@@ -30,7 +31,7 @@ public:
     static std::unordered_map<char, unsigned long long> friendlyCastleBlockingBits;
 
 	static std::string bitboardToString(unsigned long long bitboard);
-	static std::vector<short> getBitPositions(unsigned long long bitboard);
+	static std::array<short, 64> getBitPositions(unsigned long long bitboard);
     static short getNumberOnBits(unsigned long long bitboard);
 
     static unsigned long long knightControlBits(unsigned long long knightbits);

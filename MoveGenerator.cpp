@@ -124,56 +124,40 @@ void MoveGenerator::AddPawnMoves(Position& position, std::vector<unsigned short>
 }
 
 void MoveGenerator::KingMoves(std::vector<unsigned short>& moves, Position& position){
-	//std::cout << "############################" << std::endl;
 	//King moves
-	//ChessUtil::PrintMoveList(moves);
 	short starting = position.bitboards.KingLocation(position.whiteTurn);
 	unsigned long long friendlyBit = position.whiteTurn ? position.bitboards.allWhiteBitboard() : position.bitboards.allBlackBitboard();
 	unsigned long long enemyBits = position.whiteTurn ? position.bitboards.allBlackBitboard() : position.bitboards.allWhiteBitboard();
 	unsigned long long enemyControlBits = position.bitboards.controlledBits(!position.whiteTurn); 
 	unsigned long long targetBits = ChessUtil::squareControlMap[starting].kingControlBitboard & ~(enemyControlBits | friendlyBit);
-	friendlyBit &= ~position.bitboards.GetPieceBitboard(position.whiteTurn, 5);
-	//std::cout << "friendlyBit\n" << BitUtil::bitboardToString(friendlyBit) << std::endl;
-	//if(starting == 6) std::cout << "enemyControlBits\n" << BitUtil::bitboardToString(enemyControlBits) << std::endl;
-	//if(starting == 6) std::cout << "targetBits\n" << BitUtil::bitboardToString(targetBits) << std::endl;
-	//Castling moves
+	friendlyBit &= ~position.bitboards.GetPieceBitboard(position.whiteTurn, 5);//Castling moves
 	char kingColor = position.whiteTurn ? 'K' : 'k';
 	char queenColor = position.whiteTurn ? 'Q' : 'q';
 	if(position.GetCastlingQuota(kingColor)){
-		//std::cout << "GetCastlingQuota: " << kingColor << std::endl;
 		unsigned long long blockingBit = (enemyControlBits & BitUtil::castleBlockingBits[kingColor]) | ((friendlyBit | enemyBits) & BitUtil::friendlyCastleBlockingBits[kingColor]);
 		short target = ChessUtil::castlingTargetMapping[kingColor];
-		//if(kingColor == 'k')std::cout << BitUtil::bitboardToString(blockingBit) << std::endl;
 		if(blockingBit == 0ULL) {
 			unsigned short&& move = ChessUtil::SimpleMove(starting, target);
-			//std::cout << ChessUtil::SimpleMoveToString(move) << std::endl;
 			moves.push_back(move);
-			//if(!position.whiteTurn) std::cout << ChessUtil::SimpleMoveToString(move) << std::endl;
 		}
 	}
 	if(position.GetCastlingQuota(queenColor)){
-		//std::cout << "GetCastlingQuota: " << queenColor << std::endl;
 		unsigned long long blockingBit = (enemyControlBits & BitUtil::castleBlockingBits[queenColor]) | ((friendlyBit | enemyBits) & BitUtil::friendlyCastleBlockingBits[queenColor]);
 		short target = ChessUtil::castlingTargetMapping[queenColor];
-		//if(queenColor == 'q')std::cout << BitUtil::bitboardToString(blockingBit) << std::endl;
 		if(blockingBit == 0ULL) {
 			unsigned short&& move = ChessUtil::SimpleMove(starting, target);
-			//std::cout << ChessUtil::SimpleMoveToString(move) << std::endl;
 			moves.push_back(move);
-			//if(!position.whiteTurn) std::cout << ChessUtil::SimpleMoveToString(move) << std::endl;
 		}
 	}
 
-	std::vector<short> legalSquares = BitUtil::getBitPositions(targetBits);
-	for(short target : legalSquares){
-		//std::cout << "target: " << target << std::endl;
+	std::array<short, 64> legalSquares = BitUtil::getBitPositions(targetBits);
+	for(int i = 0; i < 64; i++){
+		short target = legalSquares[i];
+		if(target == 99) break;
 		bool capture = (enemyBits & (1ULL << target)) > 0ULL;
 		unsigned short&& move = ChessUtil::SimpleMove(starting, target, capture);
 		moves.push_back(move);
-		//std::cout << "move: " << ChessUtil::SimpleMoveToString(move) << std::endl;
 	}
-	//ChessUtil::PrintMoveList(moves);
-	//std::cout << "############################" << std::endl;
 }
 
 void MoveGenerator::KnightMoves(std::vector<unsigned short>& moves, Position& position){
@@ -182,14 +166,20 @@ void MoveGenerator::KnightMoves(std::vector<unsigned short>& moves, Position& po
 	unsigned long long emptyEnemyAndCheckedBy = (position.bitboards.allEmptySquareBitboard() | enemyBits) & position.bitboards.checkedBitboard;
 	knightBits &= ~position.bitboards.pinnedBitboard;
 
-	std::vector<short> knightSquare = BitUtil::getBitPositions(knightBits);
+	std::array<short, 64> knightSquare = BitUtil::getBitPositions(knightBits);
 	//std::cout << BitUtil::bitboardToString(knightBits) << std::endl;
-	for(short starting : knightSquare){
+	for(int i = 0; i < 64; i++){
+		short starting = knightSquare[i];
+		//std::cout << knightSquare[i] << ", ";
+		if(starting == 99) break;
 		unsigned long long targetBits = ChessUtil::squareControlMap[starting].knightControlBitboard;
-		//std::cout << BitUtil::bitboardToString(targetBits) << std::endl;
 		targetBits &= emptyEnemyAndCheckedBy;
-		std::vector<short> targetSquare = BitUtil::getBitPositions(targetBits);
-		for(short target :targetSquare){
+		//std::cout << BitUtil::bitboardToString(targetBits) << std::endl;
+		std::array<short, 64> targetSquare = BitUtil::getBitPositions(targetBits);
+		for(int j = 0; j < 64; j++){
+			short target = targetSquare[j];
+			//std::cout << target << ", ";
+			if(target == 99) break;
 			bool capture = (enemyBits & (1ULL << target)) > 0ULL;
 			unsigned short&& move = ChessUtil::SimpleMove(starting, target, capture);
 			moves.push_back(move);
@@ -203,16 +193,20 @@ void MoveGenerator::SlidingMoves(std::vector<unsigned short>& moves, Position& p
 	unsigned long long diagonalPieces = (position.whiteTurn) ? position.bitboards.whiteBitboards[1] | position.bitboards.whiteBitboards[3] : position.bitboards.blackBitboards[1] | position.bitboards.blackBitboards[3];
 	unsigned long long nonDiagonalPieces = (position.whiteTurn) ? position.bitboards.whiteBitboards[1] | position.bitboards.whiteBitboards[4] : position.bitboards.blackBitboards[1] | position.bitboards.blackBitboards[4];
 	unsigned long long enemyBits = (position.whiteTurn) ? position.bitboards.allBlackBitboard() : position.bitboards.allWhiteBitboard();
-	std::vector<short> diagonalPiecesSquares = BitUtil::getBitPositions(diagonalPieces);
-	std::vector<short> nonDiagonalPiecesSquares = BitUtil::getBitPositions(nonDiagonalPieces);
+	std::array<short, 64> diagonalPiecesSquares = BitUtil::getBitPositions(diagonalPieces);
+	std::array<short, 64> nonDiagonalPiecesSquares = BitUtil::getBitPositions(nonDiagonalPieces);
 
-	for(short starting : diagonalPiecesSquares){
+	for(int i = 0; i < 64; i++){
+		short starting = diagonalPiecesSquares[i];
+		if(starting == 99) break;
 		bool pinned = ((1ULL << starting) & position.bitboards.pinnedBitboard) > 0ULL;
 		unsigned long long movableBitsWhenPinned = pinned ? position.bitboards.pinnedRays[starting] : ~0ULL;
 		unsigned long long targetBits = position.bitboards.slidingControlBits(position.whiteTurn, starting, 3);
 		targetBits &= (movableBitsWhenPinned & targetBitsWhenChecked);
-		std::vector<short> targetSquare = BitUtil::getBitPositions(targetBits);
-		for(short target :targetSquare){
+		std::array<short, 64> targetSquare = BitUtil::getBitPositions(targetBits);
+		for(int j = 0; j < 64; j++){
+			short target = targetSquare[j];
+			if(target == 99) break;
 			bool capture = (enemyBits & (1ULL << target)) > 0ULL;
 			unsigned short&& move = ChessUtil::SimpleMove(starting, target, capture);
 			moves.push_back(move);
@@ -221,13 +215,17 @@ void MoveGenerator::SlidingMoves(std::vector<unsigned short>& moves, Position& p
 		//std::cout << BitUtil::bitboardToString(targetBits) << std::endl;
 	}
 
-	for(short starting : nonDiagonalPiecesSquares){
+	for(int i = 0; i < 64; i++){
+		short starting = nonDiagonalPiecesSquares[i];
+		if(starting == 99) break;
 		bool pinned = ((1ULL << starting) & position.bitboards.pinnedBitboard) > 0ULL;
 		unsigned long long movableBitsWhenPinned = pinned ? position.bitboards.pinnedRays[starting] : ~0ULL;
 		unsigned long long targetBits = position.bitboards.slidingControlBits(position.whiteTurn, starting, 4);
 		targetBits &= (movableBitsWhenPinned & targetBitsWhenChecked);
-		std::vector<short> targetSquare = BitUtil::getBitPositions(targetBits);
-		for(short target :targetSquare){
+		std::array<short, 64> targetSquare = BitUtil::getBitPositions(targetBits);
+		for(int j = 0; j < 64; j++){
+			short target = targetSquare[j];
+			if(target == 99) break;
 			bool capture = (enemyBits & (1ULL << target)) > 0ULL;
 			unsigned short&& move = ChessUtil::SimpleMove(starting, target, capture);
 			moves.push_back(move);
@@ -243,13 +241,15 @@ void MoveGenerator::PawnMoves(std::vector<unsigned short>& moves, Position& posi
 	unsigned long long pawnBits = white ? position.bitboards.whiteBitboards[0] : position.bitboards.blackBitboards[0];
 	unsigned long long enemyBits = white ? position.bitboards.allBlackBitboard() : position.bitboards.allWhiteBitboard();
 	unsigned long long friendlyBits = white ? position.bitboards.allWhiteBitboard() : position.bitboards.allBlackBitboard();
-	std::vector<short> pawnSquares = BitUtil::getBitPositions(pawnBits);
+	std::array<short, 64> pawnSquares = BitUtil::getBitPositions(pawnBits);
 
 	if(position.enPassantSquare != 99){
 		enPassantBit |= 1ULL << position.enPassantSquare;
 	}
 
-	for(short starting : pawnSquares){
+	for(int i = 0; i < 64; i++){
+		short starting = pawnSquares[i];
+		if(starting == 99) break;
 		unsigned long long targetBits = 0ULL;
 		//Push
 		unsigned long long pushOneBits = white ? ChessUtil::squareControlMap[starting].pawnShiftUpBitboard : ChessUtil::squareControlMap[starting].pawnShiftDownBitboard;
@@ -273,8 +273,10 @@ void MoveGenerator::PawnMoves(std::vector<unsigned short>& moves, Position& posi
 		unsigned long long targetBitsWhenChecked = position.check ? position.bitboards.checkedBitboard : ~0ULL;
 		if(position.enPassantSquare != 99) targetBitsWhenChecked |= 1ULL << position.enPassantSquare;
 		targetBits &= (movableBitsWhenPinned & targetBitsWhenChecked);
-		std::vector<short> targetSquares = BitUtil::getBitPositions(targetBits);
-		for(short target : targetSquares){
+		std::array<short, 64> targetSquares = BitUtil::getBitPositions(targetBits);
+		for(int j = 0; j < 64; j++){
+			short target = targetSquares[j];
+			if(target == 99) break;
 			bool capture = (enemyBits & (1ULL << target)) > 0ULL || target == position.enPassantSquare;
 			AddPawnMoves(position, moves, starting, target, capture);
 		}

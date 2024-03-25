@@ -246,8 +246,10 @@ unsigned long long Bitboards::controlledBits(bool white){
         }else if(i==5){
             result |= BitUtil::kingControlBits(bitboards[i]);
         }else{
-            std::vector<short> squares = BitUtil::getBitPositions(bitboards[i]);
-            for(short square : squares){
+            std::array<short, 64> squares = BitUtil::getBitPositions(bitboards[i]);
+            for(int j = 0; j < 64; j++){
+                short square = squares[j];
+                if(square == 99) break;
                 result |= slidingControlBits(white, square, i, false, true);
             }
         }
@@ -284,7 +286,7 @@ unsigned long long Bitboards::slidingControlBits(bool white, short square, short
     return result;
 }
 
-std::vector<short> Bitboards::checkedAt(bool white){
+std::array<short, 2> Bitboards::checkedAt(bool white){
     short kingLocation = KingLocation(white);
     unsigned long long pawnControl = white ? ChessUtil::squareControlMap[kingLocation].pawnControlUpBitboard : ChessUtil::squareControlMap[kingLocation].pawnControlDownBitboard;
     unsigned long long knightControl = ChessUtil::squareControlMap[kingLocation].knightControlBitboard;
@@ -297,7 +299,11 @@ std::vector<short> Bitboards::checkedAt(bool white){
     nonDiagonalControl &= white ? blackBitboards[1] | blackBitboards[4] : whiteBitboards[1] | whiteBitboards[4];
 
     unsigned long long checkedByBits = pawnControl | knightControl | diagonalControl | nonDiagonalControl;
-    return BitUtil::getBitPositions(checkedByBits);
+    std::array<short, 64> squares = BitUtil::getBitPositions(checkedByBits);
+    std::array<short, 2> result;
+    result[0] = squares[0];
+    result[1] = squares[1];
+    return result;
 }
 
 std::string Bitboards::BitboardsToString(){

@@ -237,6 +237,7 @@ CMakeFiles/ChessEngineProject.dir/MagicUtil.cpp.o: \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/SquareControl.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/ChessUtil.h \
   /Users/francis3245/Documents/workspace/C++/ChessEngineProject/ChessEngineProject/BitUtil.h \
+  /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/array \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/fstream \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/filesystem \
   /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1/stack \

@@ -96,32 +96,34 @@ std::string BitUtil::bitboardToString(unsigned long long bitboard){
     return result;
 } 
 
-std::vector<short> BitUtil::getBitPositions(unsigned long long bitboard){
-    std::vector<short> result;
+std::array<short, 64> BitUtil::getBitPositions(unsigned long long bitboard){
+    std::array<short, 64> result;
     unsigned long long tmpBitboard = bitboard;
+    short counter = 0;
 
+    //result.fill(99);
     while(tmpBitboard > 0ULL){
         int leadingZeros = __builtin_clzll(tmpBitboard);
         short leftMostIndex = 63 - leadingZeros;
-        result.push_back(leftMostIndex);
+        //result.push_back(leftMostIndex);
+        result[counter] = leftMostIndex;
         tmpBitboard &= ~(1ULL << leftMostIndex);
+        counter = counter + 1;
+        //std::cout << counter << ". " << leftMostIndex << std::endl;
     }
+    if(counter < 63) result[counter] = 99;
+    if(counter == 0) result[1] = 99;
     return result;
 }
 
 short BitUtil::getNumberOnBits(unsigned long long bitboard){
-    //short result;
-    //unsigned long long tmpBitboard = bitboard;
-    //
-    //while(tmpBitboard > 0ULL){
-    //    int leadingZeros = __builtin_clzll(tmpBitboard);
-    //    short leftMostIndex = 63 - leadingZeros;
-    //    result+=1;
-    //    tmpBitboard &= ~(1ULL << leftMostIndex);
-    //}
-    //return result;
-    std::vector<short> bits = getBitPositions(bitboard);
-    return bits.size();
+    std::array<short, 64> bits = getBitPositions(bitboard);
+    short result = 0;
+    for(int i = 0; i < 64; i++){
+        if(bits[i] == 99) break;
+        result++;
+    }
+    return result;
 }
 
 unsigned long long BitUtil::knightControlBits(unsigned long long knightbits){
@@ -230,9 +232,10 @@ unsigned long long BitUtil::GetMagicKey(unsigned long long allPieces, short squa
 }
 
 bool BitUtil::AllBitsOnSameRank(unsigned long long bits){
-    std::vector<short> squares = getBitPositions(bits);
+    std::array<short, 64> squares = getBitPositions(bits);
     short rank = 0;
-    for(int i = 0; i < squares.size(); i++){
+    for(int i = 0; i < 64; i++){
+        if(squares[i] == 99) break;
         short newRank = ChessUtil::GetRank(squares[i]);
         if(i > 0){
             if(rank != newRank) return false;
@@ -243,9 +246,10 @@ bool BitUtil::AllBitsOnSameRank(unsigned long long bits){
 }
 
 bool BitUtil::AllBitsOnSameFile(unsigned long long bits){
-    std::vector<short> squares = getBitPositions(bits);
+    std::array<short, 64> squares = getBitPositions(bits);
     short file = 0;
-    for(int i = 0; i < squares.size(); i++){
+    for(int i = 0; i < 64; i++){
+        if(squares[i] == 99) break;
         short newFile = ChessUtil::GetFile(squares[i]);
         if(i > 0){
             if(file != newFile) return false;

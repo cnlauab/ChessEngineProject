@@ -324,7 +324,9 @@ std::vector<short> Position::GetCheckedByAndUpdatePin(bool white){
 }
 
 bool Position::IsChecked(bool white){
-	return bitboards.checkedAt(white).size() > 0;
+	std::array<short, 2> cA = bitboards.checkedAt(white);
+	//if(ChessUtil::SimpleMoveToString(stateStack.top().prevMove) == "b5c6")std::cout << cA[0] << "," << cA[1] << std::endl;
+	return !(cA[0] == 99 && cA[1] == 99);
 }
 
 bool Position::IsEndgame(){

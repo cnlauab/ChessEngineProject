@@ -5,19 +5,21 @@ MagicBits::MagicBits(){
         //std::cout << "MagicBits at " << ChessUtil::SquareToString(squareControl.origin) << std::endl;
         unsigned long long rookMask = squareControl.rookMagicBitMask;
         unsigned long long bishopMask = squareControl.bishopMagicBitMask;
-        std::vector<short> rookIndex = BitUtil::getBitPositions(rookMask);
-        std::vector<short> bishopIndex = BitUtil::getBitPositions(bishopMask);
-        short rookMaskLength = rookIndex.size();
-        short bishopMaskLength = bishopIndex.size();
+        std::array<short, 64> rookIndex = BitUtil::getBitPositions(rookMask);
+        std::array<short, 64> bishopIndex = BitUtil::getBitPositions(bishopMask);
+        short rookMaskLength = BitUtil::getNumberOnBits(rookMask);
+        short bishopMaskLength = BitUtil::getNumberOnBits(bishopMask);
         unsigned long long rookMax = (1ULL << rookMaskLength) - 1;
         unsigned long long bishopMax = (1ULL << bishopMaskLength) - 1;
 
         for(unsigned long long bits = 0ULL; bits <= bishopMax; bits += 1ULL){
-            std::vector<short> onBits = BitUtil::getBitPositions(bits);
+            std::array<short, 64> onBits = BitUtil::getBitPositions(bits);
             std::vector<short> blockerBits;
             unsigned long long indexBits = 0ULL;
             unsigned long long magicBits = 0ULL;
-            for(short onIndex : onBits){
+            for(int i = 0; i < 64; i++){
+                short onIndex = onBits[i];
+                if(onIndex == 99) break;
                 blockerBits.push_back(bishopIndex[onIndex]);
                 indexBits |= 1ULL << bishopIndex[onIndex];
             }
@@ -47,11 +49,13 @@ MagicBits::MagicBits(){
         }
 
         for(unsigned long long bits = 0ULL; bits <= rookMax; bits += 1ULL){
-            std::vector<short> onBits = BitUtil::getBitPositions(bits);
+            std::array<short, 64> onBits = BitUtil::getBitPositions(bits);
             std::vector<short> blockerBits;
             unsigned long long indexBits = 0ULL;
             unsigned long long magicBits = 0ULL;
-            for(short onIndex : onBits){
+            for(int i = 0; i < 64; i++){
+                short onIndex = onBits[i];
+                if(onIndex == 99) break;
                 blockerBits.push_back(rookIndex[onIndex]);
                 indexBits |= 1ULL << rookIndex[onIndex];
             }

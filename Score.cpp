@@ -62,9 +62,10 @@ void Score::calculatePawnStructureScore(Position& position){
     short numberOfIsolatedPawn;
     short numberOfBackwardPawn;
     //White
-    std::vector<short> pawns = BitUtil::getBitPositions(position.bitboards.GetPieceBitboard(true,0));
-    for(short square : pawns){
-
+    std::array<short, 64> pawns = BitUtil::getBitPositions(position.bitboards.GetPieceBitboard(true,0));
+    for(int i = 0; i < 64; i++){
+        short square = pawns[i];
+        if(square == 99) break;
         short file = ChessUtil::GetFile(square);
         short rank = ChessUtil::GetRank(square);
         unsigned long long passedPawnMask = ((~0ULL) << (rank + 1)) & (BitUtil::GetFileBit(file) | BitUtil::GetFileBit(file + 1) | BitUtil::GetFileBit(file - 1));//Forward bits & opposite color pawn

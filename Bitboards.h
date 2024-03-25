@@ -45,7 +45,7 @@ class Bitboards {
 
         unsigned long long controlledBits(bool white);
         unsigned long long slidingControlBits(bool white, short square, short typeIndex, bool includeKing = true, bool includeFriendly = false);
-        std::vector<short> checkedAt(bool white);
+        std::array<short, 2> checkedAt(bool white);
 
         std::string BitboardsToString();
         std::string ToFen();
